@@ -2,14 +2,30 @@
 
 .UserBlock {
   margin: 1rem;
+
+  &:hover {
+    .Icon {
+      transform: translateY(-0.5rem);
+    }
+  }
 }
 
 .UserBlockContent {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-basis: content;
+  min-width: 0;
+  
+  min-width: 0;
+  max-width: 100%;
+  position: relative;
 
   .Avatar {
     width: 3rem;
     height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
     background-color: $primary;
     color: $white;
     border-radius: 50%;
@@ -24,6 +40,14 @@
   .User {
     font-size: 14px;
     line-height: 1.45;
-    padding: 4px;
+    padding: 0.25rem 1.375rem 0.25rem 0;
+    min-width: 0px;
+  }
+
+  .Icon {
+    position: absolute;
+    right: 0;
+    bottom: 0.25rem;
+    transition: transform .3s ease-in-out;
   }
 }

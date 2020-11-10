@@ -1,6 +1,7 @@
 @import "bootstrap/variables";
 
 .Box {
+  position: relative;
   padding: 1rem;
   border-radius: 10px;
   background-color: $white;
