@@ -1,0 +1,53 @@
+@import "bootstrap/variables";
+
+.ButtonBox {
+  position: relative;
+  display: inline-block;
+}
+
+.ButtonBase {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  padding: 0 .25rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  height: 2rem;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: background .3s $transitionFunc;
+
+  &:hover {
+    background-color: $gray-200;
+  }
+  
+  &:active {
+    background-color: $gray-300;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: $buttonFocused;
+  }
+
+  &.ButtonPrimary {
+    background-color: $primary;
+    color: $white;
+    padding: 0 .75rem;
+  
+  &:hover {
+    background-color: darken($primary, 5%);
+  }
+  
+  &:active {
+    background-color: darken($primary, 10%);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: $buttonFocused;
+  }
+  }
+}

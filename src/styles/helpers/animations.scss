@@ -1,0 +1,18 @@
+@keyframes Aside-Slide-Out {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-110%);
+  }
+}
+
+@keyframes Aside-Slide-In {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+

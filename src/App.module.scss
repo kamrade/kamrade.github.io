@@ -1,5 +1,23 @@
 @import "bootstrap/variables";
 
+.Main {
+  position: relative;
+}
+
 .Content {
   padding-left: $asideWidth;
+  transition: padding .2s $transitionFunc;
+
+  &.ContentExpanded {
+    padding-left: 0;
+  }
+}
+
+.AsideToggler {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  z-index: $zIndexAsideToggler;
+  border-radius: 0 8px 8px 0;
 }

@@ -3,9 +3,17 @@
 
 @import "./styles/helpers/text-overflow.scss";
 @import "./styles/helpers/inline-block.scss";
+@import "./styles/helpers/animations.scss";
+
+
+html {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
