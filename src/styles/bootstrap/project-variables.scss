@@ -6,3 +6,11 @@ $asideWidth: 18rem;
 
 $transitionFunc: cubic-bezier(0.15, 0.5, 0.5, 1);
 $buttonFocused: 0 0 0 .2rem rgba(0,0,0,0.1);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);

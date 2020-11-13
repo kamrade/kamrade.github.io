@@ -1,6 +1,6 @@
 // Sidebar component
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ForwardedRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import s from './Aside.module.scss';
@@ -12,9 +12,10 @@ const sx = classNames.bind(s);
 
 export interface IAsideProps {
   isShowing: boolean;
+  hide: () => void;
 };
 
-export const Aside = ({ isShowing }: IAsideProps) => {
+export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: ForwardedRef<HTMLDivElement>) => {
 
   const [ isDisplaying, setIsDisplaying ] = useState(true);
 
@@ -38,17 +39,17 @@ export const Aside = ({ isShowing }: IAsideProps) => {
   }
 
   return (
-    <aside className={asideClassNames} onAnimationEnd={ handleAnimationEnd }>
+    <aside ref={ref} className={asideClassNames} onAnimationEnd={ handleAnimationEnd }>
 
       <UserBlock username="Dennis" companyName="Muzq" />
 
-      <AsideElement>
+      <AsideElement hide={hide}>
         <NavLink exact to="/wheelson">
           Wheelson
         </NavLink>
       </AsideElement>
       
-      <AsideElement>
+      <AsideElement hide={hide}>
         <NavLink exact to="/exchange">
           Exchange
         </NavLink>
@@ -56,4 +57,4 @@ export const Aside = ({ isShowing }: IAsideProps) => {
 
     </aside>
   );
-}
+});

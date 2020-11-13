@@ -1,4 +1,5 @@
 @import "bootstrap/variables";
+@import "bootstrap/mixins";
 
 .Main {
   position: relative;
@@ -7,6 +8,10 @@
 .Content {
   padding-left: $asideWidth;
   transition: padding .2s $transitionFunc;
+
+  @include media-breakpoint-down(md) {
+    padding-left: 0;
+  }
 
   &.ContentExpanded {
     padding-left: 0;
