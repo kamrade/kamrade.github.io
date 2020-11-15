@@ -1,0 +1,21 @@
+@import "bootstrap/variables";
+
+.Accordion {
+
+  .AccordionToggler {
+    display: block;
+  }
+
+  .AccordionContentWrapper {
+    overflow: hidden;
+    transition: height .2s $transitionFunc;
+  }
+
+  .AccordionContent {
+    display: block;
+  }
+
+  .AccordionContentItem {
+    display: block;
+  }
+}

@@ -1,6 +1,8 @@
 @import-normalize;
 @import "./styles//bootstrap/bootstrap.scss";
 
+@import "./styles/components/link.scss";
+
 @import "./styles/helpers/text-overflow.scss";
 @import "./styles/helpers/inline-block.scss";
 @import "./styles/helpers/animations.scss";

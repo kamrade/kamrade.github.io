@@ -1,12 +1,10 @@
 // Sidebar component
 
 import React, { useState, useEffect, ForwardedRef } from 'react';
-import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import s from './Aside.module.scss';
-
 import { UserBlock } from 'shared/UserBlock/UserBlock';
-import { AsideElement } from 'shared/AsideElement/AsideElement';
+import { AsideNav } from 'shared/AsideNav/AsideNav';
 
 const sx = classNames.bind(s);
 
@@ -42,18 +40,7 @@ export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: Fo
     <aside ref={ref} className={asideClassNames} onAnimationEnd={ handleAnimationEnd }>
 
       <UserBlock username="Dennis" companyName="Muzq" />
-
-      <AsideElement hide={hide}>
-        <NavLink exact to="/wheelson">
-          Wheelson
-        </NavLink>
-      </AsideElement>
-      
-      <AsideElement hide={hide}>
-        <NavLink exact to="/exchange">
-          Exchange
-        </NavLink>
-      </AsideElement>
+      <AsideNav></AsideNav>
 
     </aside>
   );

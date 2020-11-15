@@ -19,12 +19,22 @@ const sx = classNames.bind(s);
 
 function App() {
 
-  const size = useWindowSize();
+  // console.log(':: render app');
+
   const [ showAside, setShowAside ] = useState(true);
   const [ showAsideMemo, setShowAsideMemo ] = useState(true);
 
   const refAside = useRef<HTMLDivElement>(null);
   const refAsideToggler = useRef<HTMLDivElement>(null);
+
+  const size = useWindowSize();
+
+  // save showAside value if screen more than 992px
+  useEffect(() => {
+    if (size?.width >= 992) {
+      setShowAsideMemo(showAside);
+    }
+  }, [showAside, size.width]);
 
   // it should work only for small screens and when Aside is showed (to hide it)
   useOnClickOutside([refAside, refAsideToggler], () => {
@@ -34,26 +44,33 @@ function App() {
   // hide aside when after window resizing screen width become smaller than 992 (lg-breakpoint)
   useEffect(() => {
     if (size.width && size.width < 992) {
-      setShowAsideMemo(showAside);
       setShowAside(false);
     } else {
       setShowAside(showAsideMemo);
     }
-  
     // eslint-disable-next-line
-  }, [ size.width ]);
+  }, [size.width, setShowAside]);
+
+  const toggleAside = () => {
+    setShowAside(!showAside);
+  }
+
+  const hideAsideIfMobile = () => {
+    if (size.width < 992) {
+      setShowAside(false);
+    }
+  }
 
   return (
     <div className={s.Main}>
-      
+
       <div className={s.AsideToggler} ref={refAsideToggler}>
-        <Button onClick={ () => setShowAside(!showAside) }>
+        <Button onClick={ toggleAside }>
           <Icon color="#212529" icon="hamburger" size={24} stroke={2} />
         </Button>
       </div>
 
-      
-      <Aside isShowing={showAside} ref={refAside} hide={ () => setShowAside(false) }/>
+      <Aside isShowing={showAside} ref={refAside} hide={ hideAsideIfMobile }/>
 
       <div className={sx({
         Content: true,

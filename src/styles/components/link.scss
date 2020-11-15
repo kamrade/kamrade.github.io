@@ -1,0 +1,19 @@
+a {
+  color: $gray-600;
+  transition: color .3s $transitionFunc;
+
+  &:hover {
+    color: $gray-700;
+    text-decoration: none;
+  }
+
+  &.active {
+    color: $primary;
+    font-weight: 600;
+    
+    &:hover {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+}

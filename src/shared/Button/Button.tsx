@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import s from './Button.module.scss';
 import classNames from 'classnames/bind';
 import { tuple } from 'shared/utils/type';
@@ -14,7 +14,9 @@ export interface IBaseButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
 };
 
-export const Button = (props: IBaseButtonProps ) => {
+export const Button = memo((props: IBaseButtonProps ) => {
+
+  // console.log(':: button render');
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -24,7 +26,7 @@ export const Button = (props: IBaseButtonProps ) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { onClick } = props;
     // if loading => return
-    
+
     if ( onClick ) {
       (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
     }
@@ -37,4 +39,4 @@ export const Button = (props: IBaseButtonProps ) => {
       </button>
     </div>
   );
-}
+});

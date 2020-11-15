@@ -7,16 +7,15 @@ export interface IWindowSize {
 }
 
 export const useWindowSize = () => {
-  
+
   const [windowSize, setWindowSize] = useState<IWindowSize>({
     width: 0,
     heigth: 0
   });
 
   useLayoutEffect(() => {
-    
+
     const handleResize = () => {
-      console.log('::: resize');
       setWindowSize({
         width: window.innerWidth,
         heigth: window.innerHeight
@@ -35,5 +34,5 @@ export const useWindowSize = () => {
   }, []) // Empty array ensures that effect is only run on mount
 
   return windowSize;
-  
+
 }
