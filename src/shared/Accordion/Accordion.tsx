@@ -6,6 +6,7 @@ import { isObject } from 'shared/utils/isObject';
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
   accordionState?: boolean;
+  navState?: any;
   onChange?: (v: boolean) => void;
 }
 
@@ -14,12 +15,12 @@ type AccordionNamedChildrenSlots = {
   content: ReactChild[]
 }
 
-export const Accordion = (props: IAccordionProps) => {
+export const Accordion = ({ children, onChange, accordionState, navState }: IAccordionProps) => {
 
-  const { children, onChange, accordionState } = props;
 
   const [ isShowed, setIsShowed ] = useState(false);
   const [ contentHeight, setContentHeight ] = useState(0);
+  const [ oldNavState, setOldNavState] = useState(navState);
   const refAccordionContent = useRef<HTMLDivElement>(null);
 
   if (!children) {
@@ -42,6 +43,18 @@ export const Accordion = (props: IAccordionProps) => {
     }
   }
 
+  useEffect(() => {
+    const keys = Object.keys(oldNavState);
+    for (let i = 0; i < keys.length; i++) {
+      if (oldNavState[keys[i]] !== navState[keys[i]]) {
+        setContentHeight(refAccordionContent?.current?.clientHeight || 0);
+        return;
+      }
+    }
+    setOldNavState(navState);
+
+  }, [navState]);
+
   // change accordion state if get value from props
   useEffect(() => {
     if (accordionState) {
@@ -54,7 +67,7 @@ export const Accordion = (props: IAccordionProps) => {
   // get correct height for accordion content
   useEffect(() => {
     setContentHeight(refAccordionContent?.current?.clientHeight || 0);
-  }, [setContentHeight]);
+  }, [setContentHeight, isShowed]);
 
   if (isNamedSlots(children)) {
     const { toggler, content } = children;

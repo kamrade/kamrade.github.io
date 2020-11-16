@@ -11,7 +11,16 @@ export const menuItems = [{
 }, {
   id: 'components',
   togglerTitle: 'Components',
-  nav: [{
+  nav: [
+    {
+    id: 'subgroup',
+    togglerTitle: 'Subgroup',
+    nav: [{
+      title: 'Subgroup item',
+      link: '/subgroup-item'
+    }]
+  },
+  {
     title: 'Alerts',
     link: '/alerts'
   }, {

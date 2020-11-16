@@ -1,17 +1,49 @@
 import React from 'react';
-import { AsideElement } from 'shared/AsideElement/AsideElement';
-import { Icon } from 'shared/Icon/Icon';
+import { Accordion } from 'shared/Accordion/Accordion';
+import { AsideNavGroupHead } from 'shared/AsideNav/AsideNavGroupHead/AsideNavGroupHead';
+import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
 
 export interface IAsideNavGroupProps {
-  groupState: boolean;
-  title: string;
+  navState: any;
+  group: any;
+  onChange: (groupId: string, value: boolean) => void;
 }
 
-export const AsideNavGroup = ({ groupState, title }: IAsideNavGroupProps) => {
+export const AsideNavGroup = ({navState, onChange, group}: IAsideNavGroupProps) => {
+
+  const handleChange = (value: boolean) => {
+    onChange(group.id, value);
+  }
+
   return (
-    <AsideElement interactive={true}>
-      <Icon color={groupState ? '#007bff' : '#212529'  } icon={groupState ? 'chevronDown' : 'chevronRight'} size={20} stroke={1.5} />
-      {title}
-    </AsideElement>
+    <div>
+      <Accordion
+        navState={navState}
+        accordionState={navState[ group.id ]}
+        onChange={ handleChange }
+      >
+        {{
+          toggler:
+            <AsideNavGroupHead
+              groupState={navState[ group.id ]}
+              title={group.togglerTitle} />,
+
+          content:
+            group.nav.map((item: any, j: number) => {
+              if (item.id) {
+                return <AsideNavGroup
+                  navState={navState}
+                  key={j}
+                  group={item}
+                  onChange={onChange}/>
+              }
+              return <AsideNavItem
+                      key={j}
+                      title={item.title}
+                      link={item.link} />
+            })
+        }}
+      </Accordion>
+    </div>
   );
 }
