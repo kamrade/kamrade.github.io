@@ -1,0 +1,30 @@
+// const animateHeight = ({timing, draw, duration}: any) => {
+//   const start = performance.now();
+//   animationRef.current = requestAnimationFrame(function animate(time: number) {
+//     let timeFraction = (time - start) / duration;
+//     timeFraction = timeFraction > 1 ? 1 : timeFraction;
+//     let progress = timing(timeFraction);
+//     draw(progress);
+//     timeFraction < 1
+//       ? requestAnimationFrame(animate)
+//       : cancelAnimationFrame(animationRef.current);
+//   })
+// }
+//
+// const animateIn = () => {
+//   const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
+//   animateHeight({
+//     timing: quad,
+//     draw: (progress: number) => setAnimatedHeight(progress * (contentBlockHeight)),
+//     duration: 150
+//   });
+// }
+//
+// const animateOut = () => {
+//   const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
+//   animateHeight({
+//     timing: quad,
+//     draw: (progress: number) => setAnimatedHeight(contentBlockHeight - progress * contentBlockHeight),
+//     duration: 150
+//   });
+// }

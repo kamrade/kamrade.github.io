@@ -17,9 +17,11 @@ type AccordionNamedChildrenSlots = {
 
 export const Accordion = ({ children, onChange, accordionState, navState }: IAccordionProps) => {
 
+  console.log(':: accordion render');
 
   const [ isShowed, setIsShowed ] = useState(false);
   const [ contentHeight, setContentHeight ] = useState(0);
+  const [ animatedHeight, setAnimatedHeight ] = useState(0);
   const [ oldNavState, setOldNavState] = useState(navState);
   const refAccordionContent = useRef<HTMLDivElement>(null);
 
@@ -27,7 +29,7 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
     throw new Error('children is mandatory!');
   }
 
-  const toggleAccordion = (_e: React.SyntheticEvent) => {
+  const toggleAccordion = () => {
     if (onChange) {
       onChange(!isShowed);
     }
@@ -44,6 +46,15 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
   }
 
   useEffect(() => {
+    console.log(':: height changed');
+    if (isShowed) {
+      setAnimatedHeight(contentHeight);
+    } else {
+      setAnimatedHeight(0);
+    }
+  }, [contentHeight, isShowed]);
+
+  useEffect(() => {
     const keys = Object.keys(oldNavState);
     for (let i = 0; i < keys.length; i++) {
       if (oldNavState[keys[i]] !== navState[keys[i]]) {
@@ -55,20 +66,21 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
 
   }, [navState]);
 
-  // change accordion state if get value from props
+  // update isShowed accordingly accordionState
   useEffect(() => {
     if (accordionState) {
       if (accordionState !== isShowed) {
         setIsShowed(accordionState);
       }
     }
-  }, [ accordionState, isShowed ]);
+  }, [ accordionState ]);
 
   // get correct height for accordion content
   useEffect(() => {
     setContentHeight(refAccordionContent?.current?.clientHeight || 0);
-  }, [setContentHeight, isShowed]);
+  }, [isShowed]);
 
+  // render
   if (isNamedSlots(children)) {
     const { toggler, content } = children;
     return (
@@ -79,7 +91,6 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
               {toggler}
             </div>
           : null}
-
 
         <div className={s.AccordionContentWrapper} style={{height: getContentWrapperHeight() }}>
           <div ref={refAccordionContent} className={s.AccordionContent}>
