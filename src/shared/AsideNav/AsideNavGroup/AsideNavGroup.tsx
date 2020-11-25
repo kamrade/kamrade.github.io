@@ -15,11 +15,16 @@ export const AsideNavGroup = ({navState, onChange, group}: IAsideNavGroupProps) 
     onChange(group.id, value);
   }
 
+  const localChange = (groupId: string, value: boolean) => {
+    onChange(groupId, value);
+  }
+
   return (
     <div>
       <Accordion
         navState={navState}
         accordionState={navState[ group.id ]}
+        id={group.id}
         onChange={ handleChange }
       >
         {{
@@ -35,7 +40,7 @@ export const AsideNavGroup = ({navState, onChange, group}: IAsideNavGroupProps) 
                   navState={navState}
                   key={j}
                   group={item}
-                  onChange={onChange}/>
+                  onChange={localChange}/>
               }
               return <AsideNavItem
                       key={j}

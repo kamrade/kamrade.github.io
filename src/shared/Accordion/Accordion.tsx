@@ -5,6 +5,7 @@ import { isObject } from 'shared/utils/isObject';
 
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
+  id?: string;
   accordionState?: boolean;
   navState?: any;
   onChange?: (v: boolean) => void;
@@ -15,13 +16,10 @@ type AccordionNamedChildrenSlots = {
   content: ReactChild[]
 }
 
-export const Accordion = ({ children, onChange, accordionState, navState }: IAccordionProps) => {
-
-  console.log(':: accordion render');
+export const Accordion = ({ children, onChange, accordionState, navState, id }: IAccordionProps) => {
 
   const [ isShowed, setIsShowed ] = useState(false);
   const [ contentHeight, setContentHeight ] = useState(0);
-  const [ animatedHeight, setAnimatedHeight ] = useState(0);
   const [ oldNavState, setOldNavState] = useState(navState);
   const refAccordionContent = useRef<HTMLDivElement>(null);
 
@@ -29,6 +27,7 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
     throw new Error('children is mandatory!');
   }
 
+  //--- TOGGLE HANDLER
   const toggleAccordion = () => {
     if (onChange) {
       onChange(!isShowed);
@@ -36,7 +35,7 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
     setIsShowed(!isShowed);
   }
 
-  // get heigth for animated wrapper
+  //--- GET WRAPPER HEIGHT
   const getContentWrapperHeight = () => {
     if (isShowed) {
       return contentHeight + 'px';
@@ -45,44 +44,39 @@ export const Accordion = ({ children, onChange, accordionState, navState }: IAcc
     }
   }
 
-  useEffect(() => {
-    console.log(':: height changed');
-    if (isShowed) {
-      setAnimatedHeight(contentHeight);
-    } else {
-      setAnimatedHeight(0);
-    }
-  }, [contentHeight, isShowed]);
-
+  //--- ON MODULE CHANGES
   useEffect(() => {
     const keys = Object.keys(oldNavState);
+
     for (let i = 0; i < keys.length; i++) {
       if (oldNavState[keys[i]] !== navState[keys[i]]) {
         setContentHeight(refAccordionContent?.current?.clientHeight || 0);
         return;
       }
     }
+
     setOldNavState(navState);
 
-  }, [navState]);
+  }, [navState, oldNavState]);
 
-  // update isShowed accordingly accordionState
+  //--- UPDATE STATE FROM PROPS (IF NEEDED)
   useEffect(() => {
     if (accordionState) {
       if (accordionState !== isShowed) {
         setIsShowed(accordionState);
       }
     }
-  }, [ accordionState ]);
+  }, [ accordionState, isShowed ]);
 
-  // get correct height for accordion content
+  //--- GET HEIGHT
   useEffect(() => {
     setContentHeight(refAccordionContent?.current?.clientHeight || 0);
   }, [isShowed]);
 
-  // render
+  //--- RENDER
   if (isNamedSlots(children)) {
     const { toggler, content } = children;
+
     return (
       <div className={s.Accordion}>
 
