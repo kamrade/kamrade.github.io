@@ -11,6 +11,7 @@
 - [ ] Start unit testing
 - [ ] Improve performance
 - [X] Fix AsideNav any type for state. Just add [key:string]: <type>
+- [ ] Find a way to avoid use setTimeout in the Accordion Component
 
 ## Milestones
 - [ ] Implement UserMenu dropdown using React Portal.
@@ -22,4 +23,5 @@
 - [X] Recursive render of navigation bar in Aside
 - [ ] Change Aside width handler
 - [ ] Animate AsideNavGroup height with JS
-- [ ] Correct offset for every Accordion subitem layer
+- [X] Correct offset for every Accordion subitem layer
+

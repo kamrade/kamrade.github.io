@@ -5,10 +5,14 @@ import { isObject } from 'shared/utils/isObject';
 
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
+
   id?: string;
+
   accordionState?: boolean;
-  navState?: any;
-  onChange?: (v: boolean) => void;
+  onChange?: (id: string, v: boolean) => void;
+
+  isContentUpdated?: boolean;
+  onUpdate?: () => void;
 }
 
 type AccordionNamedChildrenSlots = {
@@ -16,12 +20,12 @@ type AccordionNamedChildrenSlots = {
   content: ReactChild[]
 }
 
-export const Accordion = ({ children, onChange, accordionState, navState, id }: IAccordionProps) => {
+export const Accordion = ({ children, accordionState, onChange, id, isContentUpdated, onUpdate }: IAccordionProps) => {
 
   const [ isShowed, setIsShowed ] = useState(false);
   const [ contentHeight, setContentHeight ] = useState(0);
-  const [ oldNavState, setOldNavState] = useState(navState);
   const refAccordionContent = useRef<HTMLDivElement>(null);
+  const mounted = useRef(false);
 
   if (!children) {
     throw new Error('children is mandatory!');
@@ -30,34 +34,40 @@ export const Accordion = ({ children, onChange, accordionState, navState, id }: 
   //--- TOGGLE HANDLER
   const toggleAccordion = () => {
     if (onChange) {
-      onChange(!isShowed);
+      onChange(id || '', !isShowed);
     }
     setIsShowed(!isShowed);
   }
 
   //--- GET WRAPPER HEIGHT
-  const getContentWrapperHeight = () => {
-    if (isShowed) {
-      return contentHeight + 'px';
-    } else {
-      return 0;
-    }
+  const getWrapperHeight = () => isShowed ? contentHeight + 'px' : 0;
+
+  //--- SET WRAPPER HEIGHT (BASED ON CONTENT)
+  const setWrapperHeight = () => {
+    const h = refAccordionContent?.current?.clientHeight;
+    setContentHeight(h || 0);
   }
 
-  //--- ON MODULE CHANGES
+  //--- COMPONENT DID UPDATE
   useEffect(() => {
-    const keys = Object.keys(oldNavState);
-
-    for (let i = 0; i < keys.length; i++) {
-      if (oldNavState[keys[i]] !== navState[keys[i]]) {
-        setContentHeight(refAccordionContent?.current?.clientHeight || 0);
-        return;
-      }
+    if (!mounted.current) {
+      console.log('mounted:', id);
+      mounted.current = true;
+    } else {
+      console.log('updated:', id);
+      console.log(id, 'isShowed', isShowed);
     }
+  });
 
-    setOldNavState(navState);
-
-  }, [navState, oldNavState]);
+  //--- EVENT: CHILD UPDATED
+  useEffect(() => {
+    if (isContentUpdated) {
+      setTimeout(() => {
+        setWrapperHeight();
+        onUpdate && onUpdate();
+      });
+    }
+  }, [isContentUpdated, onUpdate]);
 
   //--- UPDATE STATE FROM PROPS (IF NEEDED)
   useEffect(() => {
@@ -68,15 +78,18 @@ export const Accordion = ({ children, onChange, accordionState, navState, id }: 
     }
   }, [ accordionState, isShowed ]);
 
-  //--- GET HEIGHT
+  //--- CHANGE HEIGHT WHEN STATE CHANGED
   useEffect(() => {
-    setContentHeight(refAccordionContent?.current?.clientHeight || 0);
+    setWrapperHeight();
   }, [isShowed]);
 
+
+
+  //---
   //--- RENDER
+  //---
   if (isNamedSlots(children)) {
     const { toggler, content } = children;
-
     return (
       <div className={s.Accordion}>
 
@@ -86,7 +99,7 @@ export const Accordion = ({ children, onChange, accordionState, navState, id }: 
             </div>
           : null}
 
-        <div className={s.AccordionContentWrapper} style={{height: getContentWrapperHeight() }}>
+        <div className={s.AccordionContentWrapper} style={{height: getWrapperHeight() }}>
           <div ref={refAccordionContent} className={s.AccordionContent}>
             { content
                 ? content.map((item, i) =>

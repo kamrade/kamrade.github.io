@@ -2,6 +2,7 @@
 @import "src/styles/bootstrap/mixins";
 
 .Accordion {
+  position: relative;
 
   .AccordionToggler {
     display: block;
@@ -9,7 +10,7 @@
 
   .AccordionContentWrapper {
     overflow: hidden;
-    // transition: height .2s $transitionFunc;
+    //transition: height .2s $transitionFunc;
   }
 
   .AccordionContent {

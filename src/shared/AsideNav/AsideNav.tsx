@@ -13,7 +13,9 @@ export const AsideNav = () => {
     applications: false,
     components: false,
     subgroup: false,
-    subsubgroup: false
+    subgroupLevel2: false,
+    subgroupLevel3: false,
+    subgroupLevel4: false
   });
 
   const handleChange = (groupId: string, value: boolean) => {
@@ -28,7 +30,6 @@ export const AsideNav = () => {
             key={i}
             group={group}
             onChange={handleChange}/>)
-
       }
     </div>
   );

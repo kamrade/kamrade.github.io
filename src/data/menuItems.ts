@@ -15,11 +15,28 @@ export const menuItems = [{
     id: 'subgroup',
     togglerTitle: 'Subgroup',
     nav: [{
-      id: 'subsubgroup',
-      togglerTitle: 'Sub-subgroup',
+      id: 'subgroupLevel2',
+      togglerTitle: 'Subgroup level 2',
       nav: [{
-        title: 'Sub-subgroup item 1',
-        link: '/sub-subgroup-item-1'
+        id: 'subgroupLevel3',
+        togglerTitle: 'Subgroup level 3',
+        nav: [{
+          id: 'subgroupLevel4',
+          togglerTitle: 'Subgroup level 4',
+          nav: [{
+            title: 'Subgroup level 4 item 1',
+            link: '/subgroup-l4-item-1'
+          }]
+        }, {
+          title: 'Subgroup level 3 item 1',
+          link: '/subgroup-l3-item-1'
+        }]
+      }, {
+        title: 'Subgroup level 2 item 1',
+        link: '/subgroup-l2-item-1'
+      }, {
+        title: 'Subgroup level 2 item 2',
+        link: '/subgroup-l2-item-2'
       }]
     }, {
       title: 'Subgroup item 1',
