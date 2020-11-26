@@ -3,6 +3,7 @@ import s from './Accordion.module.scss';
 
 import { quad } from 'shared/utils/timing-functions';
 import { isObject } from 'shared/utils/isObject';
+import { animate } from 'shared/utils/animate';
 
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
@@ -21,60 +22,30 @@ const accordionAnimationDuration = 120;
 
 export const Accordion = ({ children, accordionState, onChange, id }: IAccordionProps) => {
 
-  const [ isShowed, setIsShowed ] = useState(false);
+  const [ isShowed, setIsShowed ] = useState<boolean>(false);
   const refAccordionContent = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>(0);
+  const [ animatedHeight, setAnimatedHeight] = useState<number>(0);
+  const [ isAnimated, setIsAnimated ] = useState<boolean>(false);
 
-  // Animate Accordion
-  const animationRef = useRef(0);
-  const [ animatedHeight, setAnimatedHeight] = useState(0);
-  const [ isAnimated, setIsAnimated ] = useState(false);
-
+  //--- CHECK ACCORDION HAS CHILDREN
   if (!children) {
     throw new Error('children is mandatory!');
-  }
-
-  const animateHeight = ({timing, draw, duration, animationRef, onAnimationEnd}: any) => {
-    const start = performance.now();
-    animationRef.current = requestAnimationFrame(function animate(time: number) {
-
-      let timeFraction = (time - start) / duration;
-      timeFraction = timeFraction > 1 ? 1 : timeFraction;
-      let progress = timing(timeFraction);
-      draw(progress);
-
-      if (timeFraction < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        onAnimationEnd && onAnimationEnd();
-        cancelAnimationFrame(animationRef.current);
-      }
-    })
   }
 
   //--- ANIMATE ACCORDION IN OR OUT
   useEffect(() => {
     if (isAnimated) {
-      if (isShowed) {
-        const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
-        animateHeight({
-          animationRef,
-          timing: quad,
-          draw: (progress: number) => setAnimatedHeight(progress * (contentBlockHeight)),
-          duration: accordionAnimationDuration,
-          onAnimationEnd: () => setIsAnimated(false)
-        })
-      } else {
-        const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
-        animateHeight({
-          animationRef,
-          timing: quad,
-          draw: (progress: number) => setAnimatedHeight(contentBlockHeight - progress * contentBlockHeight),
-          duration: accordionAnimationDuration,
-          onAnimationEnd: () => setIsAnimated(false)
-        });
-      }
+      const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
+      animate({
+        animationRef,
+        timing: quad,
+        draw: (progress:number) => setAnimatedHeight(isShowed ? progress * (contentBlockHeight) : contentBlockHeight - progress * contentBlockHeight),
+        duration: accordionAnimationDuration,
+        onAnimationEnd: () => setIsAnimated(false)
+      });
     }
-  }, [isShowed, isAnimated])
+  }, [isShowed, isAnimated]);
 
   //--- TOGGLE HANDLER. EMIT ONCHANGE EVENT (IF EXISTS)
   const toggleAccordion = () => {
@@ -87,7 +58,7 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
     setIsAnimated(true);
   }, [isShowed]);
 
-  //--- UPDATE STATE FROM PROPS (IF NEEDED)
+  //--- UPDATE STATE FROM PROPS (PARENT) (IF NEEDED)
   useEffect(() => {
     if (accordionState) {
       if (accordionState !== isShowed) {
@@ -102,7 +73,9 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
   //--- RENDER
   //---
   if (isNamedSlots(children)) {
+
     const { toggler, content } = children;
+
     return (
       <div className={s.Accordion}>
 
@@ -123,10 +96,8 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
                     {item}
                   </div>)
                 : null }
-
           </div>
         </div>
-
       </div>
     )
   }

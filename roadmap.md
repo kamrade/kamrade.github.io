@@ -12,16 +12,20 @@
 - [ ] Improve performance
 - [X] Fix AsideNav any type for state. Just add [key:string]: <type>
 - [ ] Find a way to avoid use setTimeout in the Accordion Component
+- [ ] Check out isNamedSlots function in Accordion Component. And check out result if not true.
 
 ## Milestones
 - [ ] Implement UserMenu dropdown using React Portal.
-- [X] Implement AsideGroupAccordion component
 - [ ] Implement AnchorButton component
-- [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [ ] Use css variables. Sync it with TS
+
+### Accordion. NavGroup.
+- [X] Implement AsideGroupAccordion component
+- [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [X] Control Accordion state from parent
 - [X] Recursive render of navigation bar in Aside
 - [ ] Change Aside width handler
-- [ ] Animate AsideNavGroup height with JS
+- [X] Animate AsideNavGroup height with JS
 - [X] Correct offset for every Accordion subitem layer
+- [ ] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
 

@@ -47,10 +47,7 @@ export const menuItems = [{
         nav: [{
           id: 'subgroupLevel4',
           togglerTitle: 'Subgroup level 4',
-          nav: [{
-            title: 'Subgroup level 4 item 1',
-            link: '/subgroup-l4-item-1'
-          }]
+          nav: []
         }, {
           title: 'Subgroup level 3 item 1',
           link: '/subgroup-l3-item-1'
