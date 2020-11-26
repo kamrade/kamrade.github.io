@@ -9,8 +9,10 @@
   }
 
   .AccordionContentWrapper {
-    overflow: hidden;
     //transition: height .2s $transitionFunc;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px dashed $gray-200;
   }
 
   .AccordionContent {

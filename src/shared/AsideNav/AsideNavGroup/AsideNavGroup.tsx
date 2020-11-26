@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Accordion } from 'shared/Accordion/Accordion';
 import { AsideNavGroupHead } from 'shared/AsideNav/AsideNavGroupHead/AsideNavGroupHead';
 import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
@@ -12,16 +12,10 @@ export interface IAsideNavGroupProps {
 
 export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroupProps) => {
 
-  const [isUpdated, setIsUpdated] = useState(false);
   let groupLevel = level ? level : 0;
 
   const handleChange = (groupId: string, value: boolean) => {
-    setIsUpdated(true);
     onChange(groupId, value);
-  }
-
-  const handleUpdate = () => {
-    setIsUpdated(false);
   }
 
   return (
@@ -30,9 +24,6 @@ export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroup
         accordionState={navState[ group.id ]}
         id={group.id}
         onChange={ handleChange }
-
-        isContentUpdated={isUpdated}
-        onUpdate={handleUpdate}
       >
         {{
           toggler:

@@ -1,18 +1,14 @@
 import React, { ReactChild, useState, useRef, useEffect } from 'react';
 import s from './Accordion.module.scss';
 
+import { quad } from 'shared/utils/timing-functions';
 import { isObject } from 'shared/utils/isObject';
 
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
-
-  id?: string;
-
-  accordionState?: boolean;
-  onChange?: (id: string, v: boolean) => void;
-
-  isContentUpdated?: boolean;
-  onUpdate?: () => void;
+  id?: string; // using for identify accordion
+  accordionState?: boolean; // using for control accordion from outside
+  onChange?: (id: string, v: boolean) => void; // using in pair with accordionState to control outside
 }
 
 type AccordionNamedChildrenSlots = {
@@ -20,54 +16,76 @@ type AccordionNamedChildrenSlots = {
   content: ReactChild[]
 }
 
-export const Accordion = ({ children, accordionState, onChange, id, isContentUpdated, onUpdate }: IAccordionProps) => {
+//--- OPTIONS
+const accordionAnimationDuration = 120;
+
+export const Accordion = ({ children, accordionState, onChange, id }: IAccordionProps) => {
 
   const [ isShowed, setIsShowed ] = useState(false);
-  const [ contentHeight, setContentHeight ] = useState(0);
   const refAccordionContent = useRef<HTMLDivElement>(null);
-  const mounted = useRef(false);
+
+  // Animate Accordion
+  const animationRef = useRef(0);
+  const [ animatedHeight, setAnimatedHeight] = useState(0);
+  const [ isAnimated, setIsAnimated ] = useState(false);
 
   if (!children) {
     throw new Error('children is mandatory!');
   }
 
-  //--- TOGGLE HANDLER
-  const toggleAccordion = () => {
-    if (onChange) {
-      onChange(id || '', !isShowed);
+  const animateHeight = ({timing, draw, duration, animationRef, onAnimationEnd}: any) => {
+    const start = performance.now();
+    animationRef.current = requestAnimationFrame(function animate(time: number) {
+
+      let timeFraction = (time - start) / duration;
+      timeFraction = timeFraction > 1 ? 1 : timeFraction;
+      let progress = timing(timeFraction);
+      draw(progress);
+
+      if (timeFraction < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        onAnimationEnd && onAnimationEnd();
+        cancelAnimationFrame(animationRef.current);
+      }
+    })
+  }
+
+  //--- ANIMATE ACCORDION IN OR OUT
+  useEffect(() => {
+    if (isAnimated) {
+      if (isShowed) {
+        const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
+        animateHeight({
+          animationRef,
+          timing: quad,
+          draw: (progress: number) => setAnimatedHeight(progress * (contentBlockHeight)),
+          duration: accordionAnimationDuration,
+          onAnimationEnd: () => setIsAnimated(false)
+        })
+      } else {
+        const contentBlockHeight = refAccordionContent?.current?.clientHeight || 0;
+        animateHeight({
+          animationRef,
+          timing: quad,
+          draw: (progress: number) => setAnimatedHeight(contentBlockHeight - progress * contentBlockHeight),
+          duration: accordionAnimationDuration,
+          onAnimationEnd: () => setIsAnimated(false)
+        });
+      }
     }
+  }, [isShowed, isAnimated])
+
+  //--- TOGGLE HANDLER. EMIT ONCHANGE EVENT (IF EXISTS)
+  const toggleAccordion = () => {
+    onChange && onChange(id || '', !isShowed);
     setIsShowed(!isShowed);
   }
 
-  //--- GET WRAPPER HEIGHT
-  const getWrapperHeight = () => isShowed ? contentHeight + 'px' : 0;
-
-  //--- SET WRAPPER HEIGHT (BASED ON CONTENT)
-  const setWrapperHeight = () => {
-    const h = refAccordionContent?.current?.clientHeight;
-    setContentHeight(h || 0);
-  }
-
-  //--- COMPONENT DID UPDATE
+  //--- ANIMATE HEIGHT AFTER STATE CHANGED
   useEffect(() => {
-    if (!mounted.current) {
-      console.log('mounted:', id);
-      mounted.current = true;
-    } else {
-      console.log('updated:', id);
-      console.log(id, 'isShowed', isShowed);
-    }
-  });
-
-  //--- EVENT: CHILD UPDATED
-  useEffect(() => {
-    if (isContentUpdated) {
-      setTimeout(() => {
-        setWrapperHeight();
-        onUpdate && onUpdate();
-      });
-    }
-  }, [isContentUpdated, onUpdate]);
+    setIsAnimated(true);
+  }, [isShowed]);
 
   //--- UPDATE STATE FROM PROPS (IF NEEDED)
   useEffect(() => {
@@ -77,11 +95,6 @@ export const Accordion = ({ children, accordionState, onChange, id, isContentUpd
       }
     }
   }, [ accordionState, isShowed ]);
-
-  //--- CHANGE HEIGHT WHEN STATE CHANGED
-  useEffect(() => {
-    setWrapperHeight();
-  }, [isShowed]);
 
 
 
@@ -99,7 +112,10 @@ export const Accordion = ({ children, accordionState, onChange, id, isContentUpd
             </div>
           : null}
 
-        <div className={s.AccordionContentWrapper} style={{height: getWrapperHeight() }}>
+        <div className={s.AccordionContentWrapper} style={{
+          height: isAnimated ? animatedHeight + 'px' : 'auto',
+          display: !isShowed && !isAnimated ? 'none' : 'block'
+        }}>
           <div ref={refAccordionContent} className={s.AccordionContent}>
             { content
                 ? content.map((item, i) =>

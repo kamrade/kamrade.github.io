@@ -1,3 +1,27 @@
+export const menuItemsSm = [{
+  id: 'apps',
+  togglerTitle: 'Applications',
+  nav: [{
+    title: 'Wheelson',
+    link: '/wheelson'
+  }, {
+    title: 'Exchange',
+    link: '/exchange'
+  }, {
+    title: 'Test01',
+    link: '/test-01'
+  }, {
+    title: 'Test02',
+    link: '/test-02'
+  }, {
+    title: 'Test03',
+    link: '/test-03'
+  }, {
+    title: 'Test04',
+    link: '/test-04'
+  }]
+}];
+
 export const menuItems = [{
   id: 'applications',
   togglerTitle: 'Applications',
