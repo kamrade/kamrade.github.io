@@ -22,7 +22,18 @@ export const menuItemsSm = [{
   }]
 }];
 
-export const menuItems = [{
+export interface IMenuLink {
+  title: string;
+  link: string;
+}
+
+export interface IMenuItem {
+  id: string;
+  togglerTitle: string;
+  nav: (IMenuLink | IMenuItem)[]
+}
+
+export const menuItems: (IMenuItem | IMenuLink)[] = [{
   id: 'applications',
   togglerTitle: 'Applications',
   nav: [{
