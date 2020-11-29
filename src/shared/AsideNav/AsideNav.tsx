@@ -7,7 +7,16 @@ export interface INavState {
   [key: string]: boolean;
 }
 
-// TODO: Do not delete it! It's another interesting solution.
+export interface IStateField {
+  children: string[];
+  folded: boolean;
+}
+
+export interface IAnNavState {
+  [key: string]: IStateField;
+}
+
+// TODO: Do NOT delete it! It's another interesting solution.
 /*
 let groups: any[] = [];
 function createNavState(menuItems: (IMenuItem | IMenuLink)[], parent: any) {
@@ -30,10 +39,11 @@ createNavState(menuItems, groups);
 console.log(groups);
 */
 
-function createNavState() {
+function createNavState(): IAnNavState {
 
-  let navState: any = {};
+  let navState: IAnNavState = {};
 
+  // Function which get navState and give it value
   const fillNavState = (menuItems: (IMenuItem | IMenuLink)[]) => {
 
     menuItems.map((menuItem: IMenuItem | IMenuLink ) => {
@@ -42,6 +52,7 @@ function createNavState() {
         navState[menuItem.id] = { children: [], folded: false };
         let currentParent = menuItem;
 
+        // Function which get specific menu item, get all its children names and insert them to navState['specific menu item'].children
         let getAllChild = (currentMenuItem: (IMenuItem | IMenuLink)) => {
           if ('nav' in currentMenuItem) {
             currentMenuItem.nav.map(currentItem => {
@@ -55,7 +66,6 @@ function createNavState() {
         }
 
         getAllChild(currentParent);
-
         'nav' in menuItem && fillNavState(menuItem.nav);
       }
       return null;
@@ -65,12 +75,7 @@ function createNavState() {
   fillNavState(menuItems);
   return navState;
 }
-
 console.log(createNavState());
-
-
-
-
 
 
 export const AsideNav = () => {
