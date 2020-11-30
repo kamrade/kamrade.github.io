@@ -29,5 +29,5 @@
 - [X] Animate AsideNavGroup height with JS
 - [X] Correct offset for every Accordion subitem layer
 - [ ] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
-- [ ] Change NavState implementation for AsideNav Component
+- [-] Change NavState implementation for AsideNav Component
 

@@ -3,16 +3,16 @@ import s from './AsideNav.module.scss';
 import { AsideNavGroup } from 'shared/AsideNav/AsideNavGroup/AsideNavGroup';
 import { menuItems, IMenuItem, IMenuLink } from 'data/menuItems';
 
-export interface INavState {
-  [key: string]: boolean;
-}
+// export interface INavState {
+//   [key: string]: boolean;
+// }
 
 export interface IStateField {
   children: string[];
   folded: boolean;
 }
 
-export interface IAnNavState {
+export interface INavState {
   [key: string]: IStateField;
 }
 
@@ -39,9 +39,9 @@ createNavState(menuItems, groups);
 console.log(groups);
 */
 
-function createNavState(): IAnNavState {
+function createNavState(): INavState {
 
-  let navState: IAnNavState = {};
+  let navState: INavState = {};
 
   // Function which get navState and give it value
   const fillNavState = (menuItems: (IMenuItem | IMenuLink)[]) => {
@@ -80,17 +80,10 @@ console.log(createNavState());
 
 export const AsideNav = () => {
 
-  const [navState, setNavState] = useState<INavState>({
-    applications: false,
-    components: false,
-    subgroup: false,
-    subgroupLevel2: false,
-    subgroupLevel3: false,
-    subgroupLevel4: false
-  });
+  const [navState, setNavState] = useState<INavState>(createNavState());
 
   const handleChange = (groupId: string, value: boolean) => {
-    setNavState({ ...navState, [groupId]: value});
+    setNavState({ ...navState, [groupId]: { children: navState[groupId].children, folded: value }});
   }
 
   return (

@@ -21,7 +21,7 @@ export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroup
   return (
     <>
       <Accordion
-        accordionState={navState[ group.id ]}
+        accordionState={navState[ group.id ].folded}
         id={group.id}
         onChange={ handleChange }
       >
@@ -29,7 +29,7 @@ export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroup
           toggler:
             <AsideNavGroupHead
               innerPadding={ (level || 0) * 16 }
-              groupState={navState[ group.id ]}
+              groupState={navState[ group.id ].folded}
               title={group.togglerTitle} />,
 
           content:
