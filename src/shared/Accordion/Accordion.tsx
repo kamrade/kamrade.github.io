@@ -62,6 +62,7 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
   useEffect(() => {
     if (accordionState) {
       if (accordionState !== isShowed) {
+        console.log('Update value from props');
         setIsShowed(accordionState);
       }
     }
