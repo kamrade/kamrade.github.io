@@ -56,14 +56,13 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
 
   //--- UPDATE STATE FROM PROPS (PARENT) (IF NEEDED)
   useEffect(() => {
-    if (accordionState) {
+    if (accordionState !== undefined && accordionState !== null) {
       if (accordionState !== isShowed) {
-        console.log('Update value from props');
         setIsShowed(accordionState);
         setIsAnimated(true);
       }
     }
-  }, [ accordionState, isShowed ]);
+  }, [accordionState, isShowed]);
 
   const getWrapperStyles = () => {
     return {
