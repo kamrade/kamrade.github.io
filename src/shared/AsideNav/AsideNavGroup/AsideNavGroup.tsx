@@ -6,7 +6,7 @@ import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
 export interface IAsideNavGroupProps {
   navState: any;
   group: any;
-  foldAll: (id: string, currentValue: boolean) => void;
+  foldAll: (id: string) => void;
   onChange: (groupId: string, value: boolean) => void;
   level?: number;
 }

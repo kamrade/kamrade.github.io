@@ -84,7 +84,7 @@ export const AsideNav = () => {
     setNavState({ ...navState, [groupId]: { children: navState[groupId].children, folded: value }});
   }
 
-  const foldAll = (id: string, currentValue: boolean) => {
+  const foldAll = (id: string) => {
 
     // TODO: Make it smarter
     let newState = { ...navState };

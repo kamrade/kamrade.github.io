@@ -9,7 +9,7 @@ interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
   id: string; // using for identify accordion
   accordionState?: boolean; // using for control accordion from outside
-  foldAll?: (id: string, currentValue: boolean) => void;
+  foldAll?: (id: string) => void;
   onChange?: (id: string, v: boolean) => void; // using in pair with accordionState to control outside
 }
 
@@ -50,7 +50,7 @@ export const Accordion = ({ children, accordionState, onChange, id, foldAll }: I
 
   //--- TOGGLE HANDLER. EMIT ONCHANGE EVENT (IF EXISTS)
   const toggleAccordion = (e: React.MouseEvent) => {
-    (e.altKey && foldAll) && foldAll(id, isShowed);
+    (e.altKey && foldAll) && foldAll(id);
     onChange && onChange(id || '', !isShowed);
     setIsShowed(!isShowed);
     setIsAnimated(true);

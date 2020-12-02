@@ -28,7 +28,10 @@
 - [X] Recursive render of navigation bar in Aside
 - [X] Animate AsideNavGroup height with JS
 - [X] Correct offset for every Accordion subitem layer
-- [-] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
+- [X] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
 - [X] Change NavState implementation for AsideNav Component
 - [ ] Aside with nice icons.
+- [ ] Auto collapse if another expand
+- [ ] If user collapse the group and in this group located active link, the group should be lightened in certain way.
+- [ ] If user reload the page - open accordion group of current page
 
