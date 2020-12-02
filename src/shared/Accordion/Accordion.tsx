@@ -7,8 +7,9 @@ import { animate } from 'shared/utils/animate';
 
 interface IAccordionProps {
   children: ReactChild | AccordionNamedChildrenSlots;
-  id?: string; // using for identify accordion
+  id: string; // using for identify accordion
   accordionState?: boolean; // using for control accordion from outside
+  foldAll?: (id: string, currentValue: boolean) => void;
   onChange?: (id: string, v: boolean) => void; // using in pair with accordionState to control outside
 }
 
@@ -20,7 +21,7 @@ type AccordionNamedChildrenSlots = {
 //--- OPTIONS
 const accordionAnimationDuration = 120;
 
-export const Accordion = ({ children, accordionState, onChange, id }: IAccordionProps) => {
+export const Accordion = ({ children, accordionState, onChange, id, foldAll }: IAccordionProps) => {
 
   const [ isShowed, setIsShowed ] = useState<boolean>(false);
   const refAccordionContent = useRef<HTMLDivElement>(null);
@@ -48,7 +49,8 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
   }, [isShowed, isAnimated]);
 
   //--- TOGGLE HANDLER. EMIT ONCHANGE EVENT (IF EXISTS)
-  const toggleAccordion = () => {
+  const toggleAccordion = (e: React.MouseEvent) => {
+    (e.altKey && foldAll) && foldAll(id, isShowed);
     onChange && onChange(id || '', !isShowed);
     setIsShowed(!isShowed);
     setIsAnimated(true);

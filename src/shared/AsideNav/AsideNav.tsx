@@ -84,6 +84,21 @@ export const AsideNav = () => {
     setNavState({ ...navState, [groupId]: { children: navState[groupId].children, folded: value }});
   }
 
+  const foldAll = (id: string, currentValue: boolean) => {
+
+    // TODO: Make it smarter
+    let newState = { ...navState };
+    let v = !newState[id].folded;
+    newState[id].folded = v;
+    navState[id].children.map(item => {
+      newState[item].folded = v;
+      return null;
+    });
+
+    setNavState(newState);
+
+  }
+
   return (
     <div className={s.AsideNav}>
       { menuItems.map((group, i) =>
@@ -91,6 +106,7 @@ export const AsideNav = () => {
             navState={navState}
             key={i}
             group={group}
+            foldAll={foldAll}
             onChange={handleChange}/>)
       }
     </div>

@@ -6,11 +6,12 @@ import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
 export interface IAsideNavGroupProps {
   navState: any;
   group: any;
+  foldAll: (id: string, currentValue: boolean) => void;
   onChange: (groupId: string, value: boolean) => void;
   level?: number;
 }
 
-export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroupProps) => {
+export const AsideNavGroup = ({navState, onChange, foldAll, group, level}: IAsideNavGroupProps) => {
 
   let groupLevel = level ? level : 0;
 
@@ -23,6 +24,7 @@ export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroup
       <Accordion
         accordionState={navState[ group.id ].folded}
         id={group.id}
+        foldAll={foldAll}
         onChange={ handleChange }
       >
         {{
@@ -39,6 +41,7 @@ export const AsideNavGroup = ({navState, onChange, group, level}: IAsideNavGroup
                   level={groupLevel+1}
                   navState={navState}
                   key={j}
+                  foldAll={foldAll}
                   group={item}
                   onChange={handleChange}/>
               }

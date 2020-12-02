@@ -19,15 +19,16 @@
 - [ ] Implement AnchorButton component
 - [ ] Use css variables. Sync it with TS
 - [ ] Implement certain Home Page
+- [ ] Change Aside width handler
 
 ### Accordion. NavGroup.
 - [X] Implement AsideGroupAccordion component
 - [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [X] Control Accordion state from parent
 - [X] Recursive render of navigation bar in Aside
-- [ ] Change Aside width handler
 - [X] Animate AsideNavGroup height with JS
 - [X] Correct offset for every Accordion subitem layer
-- [ ] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
-- [-] Change NavState implementation for AsideNav Component
+- [-] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
+- [X] Change NavState implementation for AsideNav Component
+- [ ] Aside with nice icons.
 
