@@ -75,8 +75,6 @@ function createNavState(): INavState {
   fillNavState(menuItems);
   return navState;
 }
-console.log(createNavState());
-
 
 export const AsideNav = () => {
 

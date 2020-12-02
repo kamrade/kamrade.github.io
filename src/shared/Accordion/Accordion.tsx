@@ -51,12 +51,8 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
   const toggleAccordion = () => {
     onChange && onChange(id || '', !isShowed);
     setIsShowed(!isShowed);
-  }
-
-  //--- ANIMATE HEIGHT AFTER STATE CHANGED
-  useEffect(() => {
     setIsAnimated(true);
-  }, [isShowed]);
+  }
 
   //--- UPDATE STATE FROM PROPS (PARENT) (IF NEEDED)
   useEffect(() => {
@@ -64,9 +60,17 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
       if (accordionState !== isShowed) {
         console.log('Update value from props');
         setIsShowed(accordionState);
+        setIsAnimated(true);
       }
     }
   }, [ accordionState, isShowed ]);
+
+  const getWrapperStyles = () => {
+    return {
+      height: isAnimated ? animatedHeight + 'px' : 'auto',
+      display: !isShowed && !isAnimated ? 'none' : 'block'
+    };
+  }
 
 
 
@@ -86,13 +90,10 @@ export const Accordion = ({ children, accordionState, onChange, id }: IAccordion
             </div>
           : null}
 
-        <div className={s.AccordionContentWrapper} style={{
-          height: isAnimated ? animatedHeight + 'px' : 'auto',
-          display: !isShowed && !isAnimated ? 'none' : 'block'
-        }}>
+        <div className={s.AccordionContentWrapper} style={getWrapperStyles()}>
           <div ref={refAccordionContent} className={s.AccordionContent}>
             { content
-                ? content.map((item, i) =>
+                ? content.map((item: ReactChild, i: number) =>
                   <div key={i} className={s.AccordionContentItem}>
                     {item}
                   </div>)
