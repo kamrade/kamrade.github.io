@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Accordion } from 'shared/Accordion/Accordion';
 import { AsideNavGroupHead } from 'shared/AsideNav/AsideNavGroupHead/AsideNavGroupHead';
 import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
@@ -13,7 +14,16 @@ export interface IAsideNavGroupProps {
 
 export const AsideNavGroup = ({navState, onChange, foldAll, group, level}: IAsideNavGroupProps) => {
 
+  const location = useLocation();
   let groupLevel = level ? level : 0;
+  let activeRoute = false;
+
+  for (let i = 0; i < group.nav.length; i++) {
+    if (group.nav[i].link === location.pathname) {
+      activeRoute = true;
+      break;
+    }
+  }
 
   const handleChange = (groupId: string, value: boolean) => {
     onChange(groupId, value);
@@ -30,6 +40,7 @@ export const AsideNavGroup = ({navState, onChange, foldAll, group, level}: IAsid
         {{
           toggler:
             <AsideNavGroupHead
+              activeRoute={activeRoute}
               innerPadding={ (level || 0) * 16 }
               groupState={navState[ group.id ].folded}
               title={group.togglerTitle} />,

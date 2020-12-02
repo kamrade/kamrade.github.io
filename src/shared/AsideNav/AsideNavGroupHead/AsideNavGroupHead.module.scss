@@ -1,7 +1,7 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
 
-.AsideNavItem {
+.AsideNavGroupHead {
   &.Active {
     position: relative;
     &::after {
