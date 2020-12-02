@@ -47,6 +47,13 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   id: 'components',
   togglerTitle: 'Components',
   nav: [{
+    id: 'helpers',
+    togglerTitle: 'Helpers',
+    nav: [{
+      title: 'Spacers',
+      link: '/spacers'
+    }]
+  }, {
     title: 'Alerts',
     link: '/alerts'
   }, {

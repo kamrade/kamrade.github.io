@@ -23,15 +23,15 @@
 
 ### Accordion. NavGroup.
 - [X] Implement AsideGroupAccordion component
-- [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [X] Control Accordion state from parent
 - [X] Recursive render of navigation bar in Aside
 - [X] Animate AsideNavGroup height with JS
 - [X] Correct offset for every Accordion subitem layer
 - [X] CMD (Ctrl) + Click should fold/unfold all the tree of AsideNav
 - [X] Change NavState implementation for AsideNav Component
+- [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [ ] Aside with nice icons.
-- [ ] Auto collapse if another expand
-- [ ] If user collapse the group and in this group located active link, the group should be lightened in certain way.
+- [ ] Auto collapse if another expand (option)
+- [-] If user collapse the group and in this group located active link, the group should be lightened in certain way.
+      If the group is nested indicator should be on each group.
 - [ ] If user reload the page - open accordion group of current page
-

@@ -15,8 +15,6 @@ export interface IAsideNavGroupHeadProps {
 
 export const AsideNavGroupHead = ({ groupState, title, innerPadding, activeRoute }: IAsideNavGroupHeadProps) => {
 
-  console.log(activeRoute);
-
   const asideNavItemClassNames = sx({
     AsideNavGroupHead: true,
     Active: activeRoute,
