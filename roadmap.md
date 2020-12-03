@@ -35,3 +35,5 @@
 - [-] If user collapse the group and in this group located active link, the group should be lightened in certain way.
       If the group is nested indicator should be on each group.
 - [ ] If user reload the page - open accordion group of current page
+- [ ] Rename Accordion component to ToggleList. Rename AsideNav to Accordion.
+- [ ] Each data block in menuItems should has an unique id.

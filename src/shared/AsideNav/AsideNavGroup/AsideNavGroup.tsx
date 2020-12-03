@@ -16,11 +16,11 @@ export const AsideNavGroup = ({navState, onChange, foldAll, group, level}: IAsid
 
   const location = useLocation();
   let groupLevel = level ? level : 0;
-  let activeRoute = false;
+  let active = false;
 
   for (let i = 0; i < group.nav.length; i++) {
     if (group.nav[i].link === location.pathname) {
-      activeRoute = true;
+      active = true;
       break;
     }
   }
@@ -40,7 +40,7 @@ export const AsideNavGroup = ({navState, onChange, foldAll, group, level}: IAsid
         {{
           toggler:
             <AsideNavGroupHead
-              activeRoute={activeRoute}
+              active={active}
               innerPadding={ (level || 0) * 16 }
               groupState={navState[ group.id ].folded}
               title={group.togglerTitle} />,

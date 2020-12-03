@@ -47,7 +47,7 @@ function createNavState(): INavState {
   const fillNavState = (menuItems: (IMenuItem | IMenuLink)[]) => {
 
     menuItems.map((menuItem: IMenuItem | IMenuLink ) => {
-      if ('id' in menuItem) {
+      if ('id' in menuItem) { // this is a group
 
         navState[menuItem.id] = { children: [], folded: false };
         let currentParent = menuItem;
