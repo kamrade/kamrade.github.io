@@ -32,7 +32,7 @@
 - [ ] Hide Aside if click on navigation on mobile (use Context?)
 - [ ] Aside with nice icons.
 - [ ] Auto collapse if another expand (option)
-- [-] If user collapse the group and in this group located active link, the group should be lightened in certain way.
+- [X] If user collapse the group and in this group located active link, the group should be lightened in certain way.
       If the group is nested indicator should be on each group.
 - [ ] If user reload the page - open accordion group of current page
 - [ ] Rename Accordion component to ToggleList. Rename AsideNav to Accordion.

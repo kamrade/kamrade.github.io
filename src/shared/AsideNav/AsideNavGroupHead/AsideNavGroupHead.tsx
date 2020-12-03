@@ -10,14 +10,14 @@ export interface IAsideNavGroupHeadProps {
   groupState: boolean;
   title: string;
   innerPadding?: number;
-  active?: boolean;
+  active? : boolean;
 }
 
 export const AsideNavGroupHead = ({ groupState, title, innerPadding, active }: IAsideNavGroupHeadProps) => {
 
   const asideNavItemClassNames = sx({
     AsideNavGroupHead: true,
-    Active: active,
+    Active: active && !groupState
   });
 
   return (
