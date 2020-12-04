@@ -20,6 +20,7 @@
 - [ ] Use css variables. Sync it with TS
 - [ ] Implement certain Home Page
 - [ ] Change Aside width handler
+- [ ] Choose theme
 
 ### Accordion. NavGroup.
 - [X] Implement AsideGroupAccordion component
@@ -36,4 +37,12 @@
       If the group is nested indicator should be on each group.
 - [ ] If user reload the page - open accordion group of current page
 - [ ] Rename Accordion component to ToggleList. Rename AsideNav to Accordion.
-- [ ] Each data block in menuItems should has an unique id.
+- [ ] All data blocks in menuItems should have a unique id.
+- [ ] Search in nested Tree
+
+### Input
+- [ ] forwardRef
+
+
+### Button
+- [ ] forwardRef
