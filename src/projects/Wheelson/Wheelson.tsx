@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { Icon } from 'shared/Icon/Icon';
 import { Button } from 'shared/Button/Button';
 
 export default function Wheelson() {
+
+  const buttonRef = useRef(null);
+
+  const baseButtonClick = (e: React.SyntheticEvent) => {
+    console.log(buttonRef);
+    console.log(e.target);
+  }
+
   return (
     <div className="page">
 
-      <header className="pt-5 pb-3"></header>
+      <header className="pt-5 pb-3" />
 
       <div className="container">
         <h1>Wheelson Page</h1>
@@ -17,7 +25,7 @@ export default function Wheelson() {
         </div>
 
         <div className="mt-3">
-          <Button>Base Button</Button>{' '}
+          <Button ref={buttonRef} onClick={baseButtonClick} >Base Button</Button>{' '}
           <Button type="primary">Primary Button</Button>
         </div>
 

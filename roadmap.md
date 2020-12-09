@@ -23,6 +23,9 @@
 - [ ] Choose theme
 
 ### Accordion. NavGroup.
+
+    > Structure: AsideNav > AsideNavGroup > Accordion > AsideNavGroupHead, AsideNavItem
+
 - [X] Implement AsideGroupAccordion component
 - [X] Control Accordion state from parent
 - [X] Recursive render of navigation bar in Aside

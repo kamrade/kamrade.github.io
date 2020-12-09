@@ -32,7 +32,7 @@ export const Button = memo( forwardRef( (props: IBaseButtonProps, ref: Forwarded
 
   return (
     <div className={s.ButtonBox}>
-      <button onClick={handleClick} type="button" className={buttonClassNames}>
+      <button ref={ref} onClick={handleClick} type="button" className={buttonClassNames}>
         {props.children}
       </button>
     </div>
