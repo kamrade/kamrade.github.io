@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef} from 'react';
 import { Icon } from 'shared/Icon/Icon';
 import { Button } from 'shared/Button/Button';
 
@@ -19,15 +19,27 @@ export default function Wheelson() {
       <div className="container">
         <h1>Wheelson Page</h1>
 
-        <div>
+        <div className="mb-5">
           <Icon color="#B343CF" icon="chevronLeft" size={24} stroke={1.5} />
           <span className='inline-block'>Some text</span>
         </div>
 
-        <div className="mt-3">
+        <div className="my-2">
           <Button ref={buttonRef} onClick={baseButtonClick} >Base Button</Button>{' '}
-          <Button type="primary">Primary Button</Button>
+          <Button type="primary">Primary Button</Button>{' '}
+          <Button disabled>Disabled Button</Button>{' '}
+          <Button type="dark">Dark Button</Button>{' '}
         </div>
+
+        <div className="my-2">
+          <Button type="secondary">
+            <span style={{marginLeft: '-6px'}}>
+              <Icon color="#B343CF" icon="chevronLeft" size={20} stroke={1.5} />
+            </span>
+            Secondary Button with Icon
+          </Button>{' '}
+        </div>
+
 
 
       </div>

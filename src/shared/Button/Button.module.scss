@@ -1,17 +1,12 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
 
-.ButtonBox {
-  position: relative;
-  display: inline-block;
-}
-
 .ButtonBase {
   display: inline-block;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.45;
-  padding: 0 .25rem;
+  padding: 0 .75rem;
   outline: none;
   border: none;
   background-color: transparent;
@@ -20,12 +15,18 @@
   box-shadow: none;
   transition: background .3s $transitionFunc;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: $gray-200;
   }
   
   &:active {
     background-color: $gray-300;
+  }
+
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    color: $gray-900;
+    cursor: default;
   }
   
   &:focus {
@@ -33,22 +34,56 @@
     box-shadow: $buttonFocused;
   }
 
-  &.ButtonPrimary {
+  &.Secondary {
+    background-color: $gray-200;
+
+    &:hover {
+      background-color: darken($gray-200, $hover-factor);
+    }
+
+    &:active {
+      background-color: darken($gray-200, $active-factor);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: $buttonFocused;
+    }
+  }
+
+  &.Primary {
     background-color: $primary;
     color: $white;
-    padding: 0 .75rem;
   
-  &:hover {
-    background-color: darken($primary, 5%);
+    &:hover {
+      background-color: darken($primary, $hover-factor);
+    }
+
+    &:active {
+      background-color: darken($primary, $active-factor);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: $buttonFocused;
+    }
   }
-  
-  &:active {
-    background-color: darken($primary, 10%);
-  }
-  
-  &:focus {
-    outline: none;
-    box-shadow: $buttonFocused;
-  }
+
+  &.Dark {
+    background-color: $gray-800;
+    color: $white;
+
+    &:hover {
+      background-color: darken($gray-800, $hover-factor);
+    }
+
+    &:active {
+      background-color: darken($gray-800, $active-factor);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: $buttonFocused;
+    }
   }
 }

@@ -4,8 +4,12 @@ $zIndexAsideToggler: $zIndexAside + 1;
 
 $asideWidth: 18rem;
 
+$hover-factor: 5%;
+$active-factor: 10%;
+
 $transitionFunc: cubic-bezier(0.15, 0.5, 0.5, 1);
 $buttonFocused: 0 0 0 .2rem rgba(0,0,0,0.1);
+$btn-disabled-opacity: 0.6;
 
 $grid-breakpoints: (
   xs: 0,
