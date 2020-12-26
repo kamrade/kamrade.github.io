@@ -1,24 +1,61 @@
-import React, {useRef} from 'react';
-import s from './Input.module.scss';
+/*
+  ## Input roadmap
+  - [ ] 
+*/
 
-export type SizeType = 'small' | 'middle' | 'large' | undefined;
+import React, {ForwardedRef, forwardRef, ForwardRefRenderFunction} from 'react';
+import classNames from "classnames/bind";
+import s from './Input.module.scss';
+import { tuple } from 'shared/utils/type';
+
+const sx = classNames.bind(s);
+
+const InputTypes = tuple(
+  'button',
+  'checkbox',
+  'color',
+  'date',
+  'datetime-local',
+  'email',
+  'file',
+  'hidden',
+  'image',
+  'month',
+  'number',
+  'password',
+  'radio',
+  'range',
+  'reset',
+  'search',
+  'submit',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week'
+);
+
+export type InputType = typeof InputTypes[number];
 
 export interface IInputProps {
-  size?: SizeType;
+  type?: InputType;
 }
 
-export const Input = () => {
+const InternalInput: ForwardRefRenderFunction<unknown, IInputProps> = (props: IInputProps, ref: ForwardedRef<any>) => {
 
-  const saveInput = useRef(null);
+  let inputClassNames = sx({
+    InputBase: true
+  });
 
   return (
-    <div className={s.InputContainer}>
-
-      <input
-        type="text"
-        ref={saveInput}
-      />
-
-    </div>
+    <input
+      className={inputClassNames}
+      type="text"
+      ref={ref}
+    />
   );
-}
+};
+
+const Input = forwardRef<unknown, IInputProps>( InternalInput );
+Input.displayName = 'Input';
+export {Input};

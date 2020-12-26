@@ -9,6 +9,8 @@
   - [ ] More themes
   - [ ] More themes
   - [ ] Use mixins and loops for theming and sizing.
+  - [ ] Circled button
+  - [ ] Link and Anchor button
 */
 
 import React, { memo, forwardRef, ForwardedRef, ForwardRefRenderFunction } from 'react';
@@ -56,7 +58,5 @@ const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (pro
 };
 
 const Button = memo(forwardRef<unknown, IBaseButtonProps>( InternalButton ));
-
 Button.displayName = 'Button';
-
-export { Button };
+export {Button};

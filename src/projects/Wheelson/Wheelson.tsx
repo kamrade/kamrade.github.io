@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import { Icon } from 'shared/Icon/Icon';
 import { Button } from 'shared/Button/Button';
+import { Input } from 'shared/Input/Input';
 
 export default function Wheelson() {
 
@@ -38,6 +39,10 @@ export default function Wheelson() {
             </span>
             Secondary Button with Icon
           </Button>{' '}
+        </div>
+
+        <div className="my-2">
+          <Input />
         </div>
 
 
