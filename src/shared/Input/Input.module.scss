@@ -2,5 +2,12 @@
 @import "src/styles/bootstrap/mixins";
 
 .InputBase {
-
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  padding: 0 .25rem;
+  border: 2px solid $gray-200;
+  height: 2rem;
+  border-radius: 6px;
 }

@@ -1,6 +1,6 @@
 /*
   ## Input roadmap
-  - [ ] 
+  - [ ]
 */
 
 import React, {ForwardedRef, forwardRef, ForwardRefRenderFunction} from 'react';
