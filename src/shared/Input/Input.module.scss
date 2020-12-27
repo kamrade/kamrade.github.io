@@ -10,4 +10,35 @@
   border: 2px solid $gray-200;
   height: 2rem;
   border-radius: 6px;
+
+  &:focus {
+    outline: none;
+    border-color: $gray-800;
+  }
+
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    color: $gray-900;
+    cursor: default;
+  }
+
+  .Focused {
+
+  }
+
+  .Touched {
+
+  }
+
+  .Untouched {
+
+  }
+
+  .Dirty {
+
+  }
+
+  .Pristine {
+    
+  }
 }
