@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 
 import Wheelson from './projects/Wheelson/Wheelson';
 import Exchange from './projects/Exchange/Exchange';
+import Formaline from './projects/Formaline/Formaline';
 import NoMatch from './projects/NoMatch/NoMatch';
 
 import s from './App.module.scss';
@@ -80,6 +81,7 @@ function App() {
           <Route exact path='/'><Redirect to='/wheelson' /></Route>
           <Route exact path='/wheelson'><Wheelson /></Route>
           <Route exact path='/exchange'><Exchange /></Route>
+          <Route exact path='/formaline'><Formaline /></Route>
           <Route path="**"><NoMatch /></Route>
         </Switch>
       </div>

@@ -42,6 +42,9 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'Exchange',
     link: '/exchange'
+  }, {
+    title: 'Formaline',
+    link: '/formaline'
   }]
 }, {
   id: 'components',
