@@ -18,13 +18,14 @@ import s from './Button.module.scss';
 import classNames from 'classnames/bind';
 import { tuple } from 'shared/utils/type';
 
-const ButtonTypes = tuple('primary', 'secondary', 'dark');
-export type ButtonType = typeof ButtonTypes[number];
+const ButtonThemes = tuple('primary', 'secondary', 'dark');
+export type ButtonTheme = typeof ButtonThemes[number];
 
 const sx = classNames.bind(s);
 
 export interface IBaseButtonProps {
-  type?: ButtonType;
+  type?: string;
+  theme?: ButtonTheme;
   children: any;
   onClick?: React.MouseEventHandler<HTMLElement>;
   disabled?: boolean;
@@ -32,13 +33,13 @@ export interface IBaseButtonProps {
 
 const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (props: IBaseButtonProps, ref: ForwardedRef<any> ) => {
 
-  const {type, children, ...rest} = props;
+  const {theme, children, ...rest} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
-    Primary: type === 'primary',
-    Secondary: type === 'secondary',
-    Dark: type === 'dark'
+    Primary: theme === 'primary',
+    Secondary: theme === 'secondary',
+    Dark: theme === 'dark'
   });
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
