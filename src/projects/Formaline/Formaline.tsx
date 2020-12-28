@@ -3,43 +3,29 @@
   - [ ] --
  */
 
-import React, {useReducer} from 'react';
+import React, {useReducer, ChangeEvent, FocusEvent} from 'react';
+
 import {Input} from 'shared/Input/Input';
 import {FormRow} from 'shared/FormRow';
 import {Button} from 'shared/Button';
 import {Card} from 'shared/Card';
 
+import {onInputChange, onInputFocus, onInputBlur} from './FormalineUtils';
+import {initialState} from './FormalineTypes';
+import {formsReducer} from './FormalineReducer';
+
 import s from './Formaline.module.scss';
-import {onInputChange} from './FormalineUtils';
-import {UPDATE_FORM, IAction, IFormState, initialState} from './FormalineTypes';
-
-const formsReducer = (state: IFormState, action: IAction) => {
-  switch (action.type) {
-    case UPDATE_FORM:
-      const { name, value, errors, touched, dirty } = action.data;
-
-      return {
-        ...state,
-        [name]: {
-          ...state[name],
-          value, errors, touched, dirty
-        }
-      }
-    default:
-      return state;
-  }
-}
 
 export default function Formaline() {
+
   const [formState, dispatch] = useReducer(formsReducer, initialState);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onInputChange({
-      name: e.target.name,
-      value: e.target.value,
-      dispatch,
-      formState
-    });
-  }
+
+  const baseEventHandlerParams = (e: ChangeEvent<HTMLInputElement> | FocusEvent<HTMLInputElement>) => ({
+    name: e.target.name,
+    value: e.target.value,
+    dispatch,
+    formState
+  });
 
   return (
     <div className="page">
@@ -52,11 +38,14 @@ export default function Formaline() {
         <form>
           <FormRow>
             <Input
+              autoComplete='off'
               name='username'
               placeholder='Username'
               type='text'
               value={formState.username.value}
-              onChange={handleChange} />
+              onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
+              onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
           </FormRow>
 
           <FormRow>
@@ -65,7 +54,9 @@ export default function Formaline() {
               placeholder='Password'
               type='password'
               value={formState.password.value}
-              onChange={handleChange} />
+              onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
+              onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
           </FormRow>
           <FormRow>
             <Button type="submit" theme='dark'>Submit</Button>
@@ -73,8 +64,8 @@ export default function Formaline() {
         </form>
 
         <Card>
-          <pre className={'mb-0'}>
-            Test
+          <pre style={{marginBottom: 0, fontSize: '12px'}}>
+            {JSON.stringify(formState, undefined, 2)}
           </pre>
         </Card>
 

@@ -23,6 +23,7 @@ export interface IInputProps {
   name?: string;
   placeholder?: string;
   type?: InputType;
+  autoComplete?: 'on' | 'off';
 
   value?: string;
   disabled?: boolean;

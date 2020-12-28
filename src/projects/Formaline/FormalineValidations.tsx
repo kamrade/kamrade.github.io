@@ -1,6 +1,7 @@
 export const formalineValidations = (name: string, value: string) => {
   let errors = [];
   switch (name) {
+
     case 'username':
       if (value.trim() === "") {
         errors.push('Username can\'t be empty');
@@ -15,8 +16,10 @@ export const formalineValidations = (name: string, value: string) => {
         errors.push('Username should not be longer than 64 characters');
       }
       break;
+
     case 'password':
       break;
+
     default:
       break;
   }
