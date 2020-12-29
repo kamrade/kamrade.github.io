@@ -1,7 +1,8 @@
+import {Box} from './Box';
+import {Card} from './Card';
 import {Button} from './Button';
+import {Icon} from './Icon';
 import {Input} from './Input';
 import {FormRow} from './FormRow';
-import {Accordion} from './Accordion';
-import {Box} from './Box';
 
-export {Button, Input, FormRow, Accordion, Box};
+export {Box, Card, Button, Input, FormRow, Icon};

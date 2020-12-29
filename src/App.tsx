@@ -9,7 +9,7 @@ import NoMatch from './projects/NoMatch/NoMatch';
 
 import s from './App.module.scss';
 
-import { Aside } from './shared/Aside/Aside';
+import { Aside } from './components/Aside/Aside';
 import { Icon } from 'shared/Icon/Icon';
 import { Button } from 'shared/Button/Button';
 

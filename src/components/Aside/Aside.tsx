@@ -4,7 +4,7 @@ import React, { useState, useEffect, ForwardedRef } from 'react';
 import classNames from 'classnames/bind';
 import s from './Aside.module.scss';
 import { UserBlock } from 'shared/UserBlock/UserBlock';
-import { AsideNav } from 'shared/AsideNav/AsideNav';
+import { AsideNav } from 'components/Aside/AsideNav/AsideNav';
 
 const sx = classNames.bind(s);
 
@@ -40,7 +40,7 @@ export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: Fo
     <aside ref={ref} className={asideClassNames} onAnimationEnd={ handleAnimationEnd }>
 
       <UserBlock username="Dennis" companyName="Muzq" />
-      <AsideNav></AsideNav>
+      <AsideNav />
 
     </aside>
   );

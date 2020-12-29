@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { AsideElement } from 'shared/AsideElement/AsideElement';
+import { AsideElement } from 'components/Aside/AsideElement/AsideElement';
 
 export interface IAsideNavItemProps {
   title: string;

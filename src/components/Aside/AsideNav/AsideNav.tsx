@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import s from './AsideNav.module.scss';
-import { AsideNavGroup } from 'shared/AsideNav/AsideNavGroup/AsideNavGroup';
+import { AsideNavGroup } from 'components/Aside/AsideNav/AsideNavGroup/AsideNavGroup';
 import { menuItems, IMenuItem, IMenuLink } from 'data/menuItems';
 
 export interface IStateField {

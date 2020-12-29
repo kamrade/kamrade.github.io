@@ -4,11 +4,7 @@
  */
 
 import React, {useReducer, ChangeEvent, FocusEvent} from 'react';
-
-import {Input} from 'shared/Input/Input';
-import {FormRow} from 'shared/FormRow';
-import {Button} from 'shared/Button';
-import {Card} from 'shared/Card';
+import {Input, FormRow, Button, Card} from 'shared';
 
 import {onInputChange, onInputFocus, onInputBlur} from './FormalineUtils';
 import {initialState} from './FormalineTypes';
@@ -42,6 +38,12 @@ export default function Formaline() {
               name='username'
               placeholder='Username'
               type='text'
+
+              touched={formState.username.touched}
+              dirty={formState.username.dirty}
+              focused={formState.username.focused}
+              valid={formState.username.errors.length > 0}
+
               value={formState.username.value}
               onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
               onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
@@ -53,6 +55,12 @@ export default function Formaline() {
               name='password'
               placeholder='Password'
               type='password'
+
+              touched={formState.password.touched}
+              dirty={formState.password.dirty}
+              focused={formState.password.focused}
+              valid={formState.password.errors.length > 0}
+
               value={formState.password.value}
               onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
               onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}

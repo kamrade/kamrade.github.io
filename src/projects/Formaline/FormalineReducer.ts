@@ -1,6 +1,6 @@
 import {BLUR_FORM, FOCUS_FORM, IAction, IFormState, UPDATE_FORM} from "./FormalineTypes";
 
-export const formsReducer = (state: IFormState, action: IAction) => {
+export const formsReducer = (state: IFormState, action: IAction): IFormState => {
   switch (action.type) {
 
     case BLUR_FORM:

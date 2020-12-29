@@ -1,7 +1,7 @@
 import React from 'react';
-import { Accordion } from 'shared/Accordion/Accordion';
-import { AsideNavGroupHead } from 'shared/AsideNav/AsideNavGroupHead/AsideNavGroupHead';
-import { AsideNavItem } from 'shared/AsideNav/AsideNavItem/AsideNavItem';
+import { Accordion } from 'components/Aside/Accordion/Accordion';
+import { AsideNavGroupHead } from 'components/Aside/AsideNav/AsideNavGroupHead/AsideNavGroupHead';
+import { AsideNavItem } from 'components/Aside/AsideNav/AsideNavItem/AsideNavItem';
 
 export interface IAsideNavGroupProps {
   navState: any;

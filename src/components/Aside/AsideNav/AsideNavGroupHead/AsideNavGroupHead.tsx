@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsideElement } from 'shared/AsideElement/AsideElement';
+import { AsideElement } from 'components/Aside/AsideElement/AsideElement';
 import { Icon } from 'shared/Icon/Icon';
 import classNames from 'classnames/bind';
 import s from './AsideNavGroupHead.module.scss';

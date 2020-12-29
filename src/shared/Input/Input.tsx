@@ -17,8 +17,6 @@ import s from './Input.module.scss';
 import {InputType} from './InputType';
 const sx = classNames.bind(s);
 
-
-
 export interface IInputProps {
   name?: string;
   placeholder?: string;
@@ -28,6 +26,12 @@ export interface IInputProps {
   value?: string;
   disabled?: boolean;
   required?: boolean;
+
+  touched?: boolean;
+  dirty?: boolean;
+  focused?: boolean;
+  valid?: boolean;
+
 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
