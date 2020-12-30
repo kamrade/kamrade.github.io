@@ -15,7 +15,9 @@ import React, {useState, forwardRef} from 'react';
 import classNames from "classnames/bind";
 import s from './Input.module.scss';
 import {InputType} from './InputType';
+import {isNil} from 'lodash';
 const sx = classNames.bind(s);
+
 
 export interface IInputProps {
   name?: string;
@@ -44,7 +46,17 @@ export interface IInputProps {
 const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
   (props: IInputProps, ref: React.ForwardedRef<any>) => {
 
-  const {value: propsValue, onChange, onFocus, onBlur, type, ...other} = props;
+  const {
+    value: propsValue,
+    onChange,
+    onFocus,
+    onBlur,
+    type,
+    touched: propsTouched,
+    dirty: propsDirty,
+    focused: propsFocused,
+    valid: propsValid,
+    ...other} = props;
 
   const [focused, setFocused] = useState<boolean>(false);
   const [touched, setTouched] = useState<boolean>(false);
@@ -56,27 +68,28 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     Touched:    touched,
     Untouched:  !touched,
     Dirty:      dirty,
-    Pristine:   !dirty
-
+    Pristine:   !dirty,
+    Valid:      propsValid,
+    Invalid:    !propsValid,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDirty(true);
+    isNil(propsDirty) && setDirty(true);
     if (onChange) {
       onChange(e);
     }
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    setFocused(true);
-    setTouched(true);
+    isNil(propsFocused) && setFocused(true);
+    isNil(propsTouched) && setTouched(true);
     if (onFocus) {
       onFocus(e);
     }
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setFocused(false);
+    isNil(propsFocused) && setFocused(false);
     if (onBlur) {
       onBlur(e);
     }

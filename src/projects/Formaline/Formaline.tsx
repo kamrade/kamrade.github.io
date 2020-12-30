@@ -42,7 +42,7 @@ export default function Formaline() {
               touched={formState.username.touched}
               dirty={formState.username.dirty}
               focused={formState.username.focused}
-              valid={formState.username.errors.length > 0}
+              valid={formState.username.errors.length === 0}
 
               value={formState.username.value}
               onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
@@ -59,7 +59,7 @@ export default function Formaline() {
               touched={formState.password.touched}
               dirty={formState.password.dirty}
               focused={formState.password.focused}
-              valid={formState.password.errors.length > 0}
+              valid={formState.password.errors.length === 0}
 
               value={formState.password.value}
               onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}

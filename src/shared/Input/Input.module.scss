@@ -22,23 +22,31 @@
     cursor: default;
   }
 
-  .Focused {
+  &.Valid {
 
   }
 
-  .Touched {
+  &.Invalid {
+    border-color: $red;
+  }
+
+  &.Focused {
 
   }
 
-  .Untouched {
+  &.Touched {
 
   }
 
-  .Dirty {
+  &.Untouched {
 
   }
 
-  .Pristine {
-    
+  &.Dirty {
+
+  }
+
+  &.Pristine {
+
   }
 }
