@@ -1,14 +1,15 @@
 /*
   ## Input roadmap
   - [x] Placeholder
-  - [ ] Uncontrolled functionality
+  - [x] Uncontrolled functionality
   - [ ] Textarea
   - [ ] Input state:
         - [x] touched, untouched
         - [x] dirty, pristine
-        - [ ] valid, invalid
+        - [x] valid, invalid
+        - [ ] inner valid/invalid state
   - [ ] required, pattern
-  - [ ] select and blur methods
+  - [x] focus and blur methods
 */
 
 import React, {useState, forwardRef} from 'react';
@@ -64,11 +65,11 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
 
   let inputClassNames = sx({
     InputBase:  true,
-    Focused:    focused,
-    Touched:    touched,
-    Untouched:  !touched,
-    Dirty:      dirty,
-    Pristine:   !dirty,
+    Focused:    isNil(propsFocused) ? focused : propsFocused,
+    Touched:    isNil(propsTouched) ? touched : propsTouched,
+    Untouched:  isNil(propsTouched) ? !touched : !propsTouched,
+    Dirty:      isNil(propsDirty) ? dirty : propsDirty,
+    Pristine:   isNil(propsDirty) ? !dirty : !propsDirty,
     Valid:      propsValid,
     Invalid:    !propsValid,
   });

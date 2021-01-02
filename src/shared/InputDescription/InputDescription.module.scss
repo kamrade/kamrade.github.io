@@ -1,0 +1,10 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.InputDescription {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  &.Error {
+    color: $red;
+  }
+}

@@ -5,6 +5,7 @@ export const formalineValidations = (name: string, value: string) => {
     case 'username':
       if (value.trim() === "") {
         errors.push('Username can\'t be empty');
+        break;
       }
       if (!/^[a-zA-Z0-9]+$/.test(value)) {
         errors.push('Invalid Username. Avoid Special characters');

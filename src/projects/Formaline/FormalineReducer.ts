@@ -9,7 +9,8 @@ export const formsReducer = (state: IFormState, action: IAction): IFormState => 
         [action.data.name]: {
           ...state[action.data.name],
           touched: action.data.touched,
-          focused: action.data.focused
+          focused: action.data.focused,
+          errors: action.data.errors
         }
       }
 
@@ -19,7 +20,8 @@ export const formsReducer = (state: IFormState, action: IAction): IFormState => 
         [action.data.name]: {
           ...state[action.data.name],
           touched: action.data.touched,
-          focused: action.data.focused
+          focused: action.data.focused,
+          errors: action.data.errors
         }
       }
 
