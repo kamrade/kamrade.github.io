@@ -2,10 +2,16 @@
   ## Card roadmap
   - [ ] Interactive
   - [ ] Link
+  - [x] Closable
 */
 
 import React, { ReactChild } from 'react';
-import CardStyles from './Card.module.scss';
+import {isNil} from 'lodash';
+import classNames from "classnames/bind";
+import s from './Card.module.scss';
+import {Icon} from "../Icon";
+
+const sx = classNames.bind(s);
 
 /*
   We had to change type from ReactNode to ReactChild
@@ -15,9 +21,12 @@ import CardStyles from './Card.module.scss';
   of our children as object.
 */
 
+type CardThemes = 'default' | 'error';
 
 type CardProps = {
-  children: ReactChild | NamedChildrenSlots
+  children: ReactChild | NamedChildrenSlots;
+  theme?: CardThemes;
+  onClose?: (e:React.MouseEvent<HTMLDivElement>) => void;
 }
 
 type NamedChildrenSlots = {
@@ -28,27 +37,35 @@ type NamedChildrenSlots = {
 
 export const Card = (props: CardProps) => {
 
-  const { children } = props;
+  const { children, theme, onClose } = props;
+
+  let cardClassNames = sx({
+    Card: true,
+    Error: isNil(theme) ? false : theme
+  });
 
   // runtime check so app will throw when consumer forgot to provide children
   if (!children) {
     throw new Error('children is mandatory!');
   }
 
-  if (isNamedSlots(children)) {
-    const { header, content, actions } = children;
-    return (
-      <div className={CardStyles.Card}>
-        { header ? <div className={CardStyles.CardHeader}>{header}</div> : null }
-        <div className={CardStyles.CardContent}>{content}</div>
-        { actions ? <div className={CardStyles.CardActions}>{actions}</div> : null }
+  return (
+    <div className={cardClassNames}>
 
-      </div>
-    )
-  }
+      {isNamedSlots(children) && (<>
+        { children.header ? <div className={s.CardHeader}>{children.header}</div> : null }
+        <div className={s.CardContent}>{children.content}</div>
+        { children.actions ? <div className={s.CardActions}>{children.actions}</div> : null }
+      </>)}
 
-  return <div className={CardStyles.Card}>{children}</div>
 
+      {!isNamedSlots(children) && (<span className={s.ChildrenWrapper}>{children}</span>)}
+      {onClose && <div className={s.Close} onClick={ (e:React.MouseEvent<HTMLDivElement>) => onClose(e) }>
+        <Icon color="#212529" icon="x" size={24} stroke={2} />
+      </div>}
+
+    </div>
+  )
 
 }
 

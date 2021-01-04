@@ -5,7 +5,7 @@ export const onInputChange = ({name, value, dispatch, formState}: any) => {
   const errors: string[] = formalineValidations(name, value);
   dispatch({
     type: UPDATE_FORM,
-    data: {name, value, touched: true, dirty: true, focused: formState[name].focused, errors}
+    data: {name, value, touched: formState[name].touched, dirty: true, focused: formState[name].focused, errors}
   });
 };
 
@@ -13,7 +13,7 @@ export const onInputFocus = ({name, value, dispatch, formState}: any) => {
   const errors: string[] = formalineValidations(name, value);
   dispatch({
     type: FOCUS_FORM,
-    data: {name, value, touched: true, dirty: formState[name].dirty, focused: true, errors}
+    data: {name, value, touched: formState[name].touched, dirty: formState[name].dirty, focused: true, errors}
   })
 }
 

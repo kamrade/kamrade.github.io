@@ -45,6 +45,9 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'Formaline',
     link: '/formaline'
+  }, {
+    title: 'Rx Tutorial',
+    link: '/rx-tutorial'
   }]
 }, {
   id: 'components',

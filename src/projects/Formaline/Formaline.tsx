@@ -3,20 +3,51 @@
   - [ ] --
  */
 
-import React, {useReducer, ChangeEvent, FocusEvent} from 'react';
+import React, {useReducer, useState, ChangeEvent, FocusEvent} from 'react';
 import {Input, FormRow, Button, Card, InputDescription} from 'shared';
+import axios, {AxiosResponse} from 'axios';
 
 import {onInputChange, onInputFocus, onInputBlur} from './FormalineUtils';
-import {initialState} from './FormalineTypes';
+import {initialState, UPDATE_FORM} from './FormalineTypes';
 import {formsReducer} from './FormalineReducer';
-import {from, Observable} from 'rxjs';
-import {map, filter} from 'rxjs/operators';
+import {formalineValidations} from './FormalineValidations';
 
 import s from './Formaline.module.scss';
 
+/*
+// COMPONENT
+ */
 export default function Formaline() {
 
   const [formState, dispatch] = useReducer(formsReducer, initialState);
+  const [formError, setFormError] = useState('');
+
+  const isFormValid = () => {
+
+    let formIsValid = true;
+
+    for (let key in formState) {
+      if (formState.hasOwnProperty(key)) {
+        let fieldState = formState[key];
+
+        if (fieldState.dirty && fieldState.touched) {
+          if (fieldState.errors && fieldState.errors.length)
+            formIsValid = false;
+        } else {
+          let errors: string[] = formalineValidations(fieldState.name, fieldState.value);
+          if (errors.length > 0) {
+            dispatch({
+              type: UPDATE_FORM,
+              data: {...fieldState, touched: true, dirty: true, errors}
+            });
+            formIsValid = false;
+          }
+        }
+      }
+    }
+
+    return formIsValid;
+  }
 
   const baseEventHandlerParams = (e: ChangeEvent<HTMLInputElement> | FocusEvent<HTMLInputElement>) => ({
     name: e.target.name,
@@ -25,23 +56,26 @@ export default function Formaline() {
     formState
   });
 
+  const submitAuthForm = (e: React.SyntheticEvent) => {
+    e.preventDefault();
 
-  // <<<<<<<<<<<<<<<<
+    if ( isFormValid() ) {
+      axios.post('http://localhost:4000/api/auth/signup', {
+        username: formState.username.value,
+        password: formState.password.value
+      }).then((res: AxiosResponse<any>) => {
+        console.log(res)
+      }).catch(err => {
+        const errorMessage = err.response.data.error || 'Unknown error';
+        console.dir(errorMessage);
+        setFormError(errorMessage);
+      });
+    }
+  }
 
-  let numbersObservable: Observable<number> = from([1,2,3,4,5]);
-  let squareNumbers = numbersObservable.pipe(
-    filter(val => val > 2),
-    map(val => val * val)
-  );
-
-  let subscription = squareNumbers.subscribe(val => {
-    console.log(val);
-    subscription.unsubscribe();
-  });
-
-  // >>>>>>>>>>>>>>>>
-
-
+  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    onInputFocus(baseEventHandlerParams(e));
+  }
 
   return (
     <div className="page">
@@ -51,7 +85,14 @@ export default function Formaline() {
       <div className={s.FormalineContainer}>
         <h1 className='mb-3 page-title'>Formaline Page</h1>
 
-        <form>
+        <form onSubmit={submitAuthForm}>
+
+          {formError &&
+            <Card theme='error' onClose={() => setFormError('')}>
+              <>{formError}</>
+            </Card>
+          }
+
           <FormRow>
             <>
               <Input
@@ -67,35 +108,45 @@ export default function Formaline() {
 
                 value={formState.username.value}
                 onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
-                onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
+                onFocus={handleInputFocus}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
 
-              { formState.username.errors.length > 0 && !formState.username.focused && formState.username.touched &&
-                  <InputDescription type='error' message='Error'/>
+              { formState.username.errors.length > 0 && formState.username.touched &&
+                  <InputDescription type='error' message={formState.username.errors.join(', ')}/>
               }
             </>
 
           </FormRow>
 
           <FormRow>
-            <Input
-              name='password'
-              placeholder='Password'
-              type='password'
+            <>
+              <Input
+                name='password'
+                placeholder='Password'
+                type='password'
 
-              touched={formState.password.touched}
-              dirty={formState.password.dirty}
-              focused={formState.password.focused}
-              valid={formState.password.errors.length === 0}
+                touched={formState.password.touched}
+                dirty={formState.password.dirty}
+                focused={formState.password.focused}
+                valid={formState.password.errors.length === 0}
 
-              value={formState.password.value}
-              onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
-              onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
+                value={formState.password.value}
+                onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
+                onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
+              { formState.password.errors.length > 0 && formState.password.touched &&
+                <InputDescription type='error' message={formState.password.errors.join(', ')}/>
+              }
+            </>
           </FormRow>
           <FormRow>
-            <Button type="submit" theme='dark'>Submit</Button>
+            <>
+              <Button type="submit" theme='dark'>Submit</Button>{' '}
+              <Button theme='secondary'>Test</Button>
+            </>
           </FormRow>
+
+
         </form>
 
         <Card>

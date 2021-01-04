@@ -24,7 +24,7 @@ export type ButtonTheme = typeof ButtonThemes[number];
 const sx = classNames.bind(s);
 
 export interface IBaseButtonProps {
-  type?: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
   theme?: ButtonTheme;
   children: any;
   onClick?: React.MouseEventHandler<HTMLElement>;
@@ -33,7 +33,7 @@ export interface IBaseButtonProps {
 
 const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (props: IBaseButtonProps, ref: ForwardedRef<any> ) => {
 
-  const {theme, children, ...rest} = props;
+  const {theme, children, type, ...rest} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -52,7 +52,7 @@ const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (pro
   }
 
   return (
-    <button { ...rest } ref={ref} onClick={handleClick} type="button" className={buttonClassNames}>
+    <button { ...rest } ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
       {children}
     </button>
   );

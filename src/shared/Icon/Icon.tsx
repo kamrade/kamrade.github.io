@@ -1,5 +1,9 @@
 // If user use wrong icon type should throw an Error
 // I use stroke icons because it is more flexible than use shapes in icons
+/*
+  ## Icon roadmap
+  - [ ] Handle events like onClick
+*/
 
 import React from 'react';
 import s from './Icon.module.scss';
@@ -25,6 +29,10 @@ const icons: any = {
     <path fillRule="evenodd" clipRule="evenodd" d="M14 3H21V10H14V3Z" stroke={color} strokeWidth={weight} strokeLinejoin="round"/>
     <path fillRule="evenodd" clipRule="evenodd" d="M14 14H21V21H14V14Z" stroke={color} strokeWidth={weight} strokeLinejoin="round"/>
     <path fillRule="evenodd" clipRule="evenodd" d="M3 14H10V21H3V14Z" stroke={color} strokeWidth={weight} strokeLinejoin="round"/>
+  </>),
+  x: (color: string, weight: number) => (<>
+      <path d="M18 6L6 18" stroke="#1E222A" strokeWidth="2" strokeLinejoin="round"/>
+      <path d="M6 6L18 18" stroke="#1E222A" strokeWidth="2" strokeLinejoin="round"/>
   </>)
 
 }

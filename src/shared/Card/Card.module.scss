@@ -3,10 +3,24 @@
 
 
 .Card {
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: $border-radius;
   background-color: $white;
   margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  position: relative;
+
+  .ChildrenWrapper {
+    display: block;
+    margin: 0;
+  }
+
+  &.Error {
+    background-color: rgba($red, 0.1);
+    border: 1px solid rgba($red, 0.3);
+    border-left-width: 4px;
+  }
 
   .CardHeader {
 
@@ -18,5 +32,18 @@
 
   .CardActions {
 
+  }
+
+  .Close {
+    position: absolute;
+    right: 0.875rem;
+    top: 0.875rem;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.1);
+    }
   }
 }

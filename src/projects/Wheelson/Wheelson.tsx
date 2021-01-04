@@ -27,7 +27,7 @@ export default function Wheelson() {
           <span style={{width: '100%'}} className='mr-1'>
             <Input placeholder='Enter value' value={value} onChange={handleChange} />
           </span>
-          <Button type='dark' onClick={handleSubmit}>Submit</Button>
+          <Button theme='dark' onClick={handleSubmit}>Submit</Button>
         </div>
 
         <div className='mb-3'>
@@ -41,7 +41,7 @@ export default function Wheelson() {
             {{
               header: 'Another Card',
               content: (<p>Test message</p>),
-              actions: (<><Button type='dark'>Test</Button></>)
+              actions: (<><Button theme='dark'>Test</Button></>)
             }}
           </Card>
         </div>

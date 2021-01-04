@@ -11,7 +11,7 @@ export const formalineValidations = (name: string, value: string) => {
         errors.push('Invalid Username. Avoid Special characters');
       }
       if (value.length < 3) {
-        errors.push('Username should be at least 3 characters length');
+        errors.push('Username should be at least 3 characters long');
       }
       if (value.length > 64) {
         errors.push('Username should not be longer than 64 characters');
@@ -19,6 +19,13 @@ export const formalineValidations = (name: string, value: string) => {
       break;
 
     case 'password':
+      if (value.trim() === "") {
+        errors.push('Password can\'t be empty');
+        break;
+      }
+      if (value.length < 8) {
+        errors.push('Username should be at least 8 characters long');
+      }
       break;
 
     default:

@@ -6,6 +6,7 @@ import Wheelson from './projects/Wheelson/Wheelson';
 import Exchange from './projects/Exchange/Exchange';
 import Formaline from './projects/Formaline/Formaline';
 import NoMatch from './projects/NoMatch/NoMatch';
+import RxTutorial from "./projects/RxTutorial/RxTutorial";
 
 import s from './App.module.scss';
 
@@ -15,6 +16,7 @@ import { Button } from 'shared/Button/Button';
 
 import { useWindowSize } from 'hooks/useWindowSize';
 import { useOnClickOutside } from 'hooks/useOnClickOutside';
+
 
 const sx = classNames.bind(s);
 
@@ -82,6 +84,7 @@ function App() {
           <Route exact path='/wheelson'><Wheelson /></Route>
           <Route exact path='/exchange'><Exchange /></Route>
           <Route exact path='/formaline'><Formaline /></Route>
+          <Route exact path='/rx-tutorial'><RxTutorial /></Route>
           <Route path="**"><NoMatch /></Route>
         </Switch>
       </div>

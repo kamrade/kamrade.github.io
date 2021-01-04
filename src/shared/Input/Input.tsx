@@ -10,6 +10,8 @@
         - [ ] inner valid/invalid state
   - [ ] required, pattern
   - [x] focus and blur methods
+  - [ ] uncontrolled input state (touched, dirty, valid, etc)
+  - [ ] focused input after submit should display errors if has
 */
 
 import React, {useState, forwardRef} from 'react';
@@ -70,8 +72,8 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     Untouched:  isNil(propsTouched) ? !touched : !propsTouched,
     Dirty:      isNil(propsDirty) ? dirty : propsDirty,
     Pristine:   isNil(propsDirty) ? !dirty : !propsDirty,
-    Valid:      propsValid,
-    Invalid:    !propsValid,
+    Valid:      isNil(propsValid) ? true : propsValid,
+    Invalid:    isNil(propsValid) ? false : !propsValid,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +85,6 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     isNil(propsFocused) && setFocused(true);
-    isNil(propsTouched) && setTouched(true);
     if (onFocus) {
       onFocus(e);
     }
@@ -91,6 +92,7 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     isNil(propsFocused) && setFocused(false);
+    isNil(propsTouched) && setTouched(true);
     if (onBlur) {
       onBlur(e);
     }

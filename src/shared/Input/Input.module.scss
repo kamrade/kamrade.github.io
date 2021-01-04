@@ -27,9 +27,7 @@
   }
 
   &.Invalid.Touched {
-    &:not(.Focused) {
-      border-color: $red;
-    }
+    border-color: $red;
   }
 
   &.Focused {
