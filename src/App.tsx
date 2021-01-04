@@ -80,11 +80,11 @@ function App() {
         ContentExpanded: !showAside
       })}>
         <Switch>
-          <Route exact path='/'><Redirect to='/wheelson' /></Route>
-          <Route exact path='/wheelson'><Wheelson /></Route>
-          <Route exact path='/exchange'><Exchange /></Route>
-          <Route exact path='/formaline'><Formaline /></Route>
-          <Route exact path='/rx-tutorial'><RxTutorial /></Route>
+          <Route exact path='/'><Redirect to='/apps/wheelson' /></Route>
+          <Route exact path='/apps/wheelson'><Wheelson /></Route>
+          <Route exact path='/apps/exchange'><Exchange /></Route>
+          <Route exact path='/apps/formaline'><Formaline /></Route>
+          <Route exact path='/apps/rx-tutorial'><RxTutorial /></Route>
           <Route path="**"><NoMatch /></Route>
         </Switch>
       </div>

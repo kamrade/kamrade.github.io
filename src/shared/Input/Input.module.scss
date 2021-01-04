@@ -6,10 +6,16 @@
   width: 100%;
   font-size: 0.875rem;
   line-height: 1.45;
-  padding: 0 .25rem;
-  border: 1px solid $gray-200;
-  height: 2rem;
+  padding: 0.5rem .5rem;
+  border: 2px solid $gray-200;
+  background-color: $gray-200;
+  height: 2.5rem;
   border-radius: $border-radius;
+  transition: border-color .2s ease-in-out;
+
+  &:hover {
+    border-color: $gray-300;
+  }
 
   &:focus {
     outline: none;

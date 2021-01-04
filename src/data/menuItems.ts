@@ -38,16 +38,16 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   togglerTitle: 'Applications',
   nav: [{
     title: 'Wheelson',
-    link: '/wheelson'
+    link: '/apps/wheelson'
   }, {
     title: 'Exchange',
-    link: '/exchange'
+    link: '/apps/exchange'
   }, {
     title: 'Formaline',
-    link: '/formaline'
+    link: '/apps/formaline'
   }, {
     title: 'Rx Tutorial',
-    link: '/rx-tutorial'
+    link: '/apps/rx-tutorial'
   }]
 }, {
   id: 'components',

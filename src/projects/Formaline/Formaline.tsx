@@ -83,7 +83,7 @@ export default function Formaline() {
       <header className="pt-5 pb-3" />
 
       <div className={s.FormalineContainer}>
-        <h1 className='mb-3 page-title'>Formaline Page</h1>
+        <h4 style={{marginBottom: '1.75rem', fontWeight: 'bold'}}>Formaline Page</h4>
 
         <form onSubmit={submitAuthForm}>
 
@@ -95,11 +95,12 @@ export default function Formaline() {
 
           <FormRow>
             <>
+              <label htmlFor='username-field'>Username</label>
               <Input
                 autoComplete='off'
                 name='username'
-                placeholder='Username'
                 type='text'
+                id='username-field'
 
                 touched={formState.username.touched}
                 dirty={formState.username.dirty}
@@ -116,14 +117,16 @@ export default function Formaline() {
               }
             </>
 
+
           </FormRow>
 
           <FormRow>
             <>
+              <label htmlFor='password-field'>Password</label>
               <Input
                 name='password'
-                placeholder='Password'
                 type='password'
+                id='password-field'
 
                 touched={formState.password.touched}
                 dirty={formState.password.dirty}
@@ -134,6 +137,7 @@ export default function Formaline() {
                 onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
                 onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
+
               { formState.password.errors.length > 0 && formState.password.touched &&
                 <InputDescription type='error' message={formState.password.errors.join(', ')}/>
               }
@@ -141,19 +145,18 @@ export default function Formaline() {
           </FormRow>
           <FormRow>
             <>
-              <Button type="submit" theme='dark'>Submit</Button>{' '}
-              <Button theme='secondary'>Test</Button>
+              <Button type="submit" theme='dark'>Submit</Button>
             </>
           </FormRow>
 
 
         </form>
 
-        <Card>
-          <pre style={{marginBottom: 0, fontSize: '12px'}}>
-            {JSON.stringify(formState, undefined, 2)}
-          </pre>
-        </Card>
+        {/*<Card>*/}
+        {/*  <pre style={{marginBottom: 0, fontSize: '12px'}}>*/}
+        {/*    {JSON.stringify(formState, undefined, 2)}*/}
+        {/*  </pre>*/}
+        {/*</Card>*/}
 
       </div>
     </div>
