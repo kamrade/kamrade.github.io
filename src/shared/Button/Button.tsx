@@ -1,5 +1,5 @@
 /*
-  ## Button roadmap
+  ## TODO: Button roadmap
   - [ ] Loading
   - [ ] Icon
   - [ ] Negative margin for child Icons
@@ -29,17 +29,21 @@ export interface IBaseButtonProps {
   children: any;
   onClick?: React.MouseEventHandler<HTMLElement>;
   disabled?: boolean;
+  wide?: boolean;
+  block?: boolean;
 }
 
 const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (props: IBaseButtonProps, ref: ForwardedRef<any> ) => {
 
-  const {theme, children, type, ...rest} = props;
+  const {theme, children, type, wide, block, ...rest} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
     Primary: theme === 'primary',
     Secondary: theme === 'secondary',
-    Dark: theme === 'dark'
+    Dark: theme === 'dark',
+    Wide: wide,
+    Block: block
   });
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

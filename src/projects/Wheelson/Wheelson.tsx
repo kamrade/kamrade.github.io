@@ -46,8 +46,6 @@ export default function Wheelson() {
           </Card>
         </div>
 
-
-
       </div>
     </div>
   )

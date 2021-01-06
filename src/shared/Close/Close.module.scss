@@ -1,0 +1,17 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1;
+  transition: background-color .2s ease-in-out;
+  border-radius: $border-radius;
+  font-size: 0.875rem;
+  line-height: 1.45;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+}

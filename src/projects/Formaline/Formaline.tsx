@@ -14,6 +14,9 @@ import {formalineValidations} from './FormalineValidations';
 
 import s from './Formaline.module.scss';
 
+import {Modal} from 'shared/Modal/Modal';
+
+
 /*
 // COMPONENT
  */
@@ -21,6 +24,7 @@ export default function Formaline() {
 
   const [formState, dispatch] = useReducer(formsReducer, initialState);
   const [formError, setFormError] = useState('');
+  const [modal, setModal] = useState(false);
 
   const isFormValid = () => {
 
@@ -145,18 +149,29 @@ export default function Formaline() {
           </FormRow>
           <FormRow>
             <>
-              <Button type="submit" theme='dark'>Submit</Button>
+              <Button wide={true} type='submit' theme='dark'>Submit</Button>
             </>
           </FormRow>
 
 
         </form>
 
-        {/*<Card>*/}
-        {/*  <pre style={{marginBottom: 0, fontSize: '12px'}}>*/}
-        {/*    {JSON.stringify(formState, undefined, 2)}*/}
-        {/*  </pre>*/}
-        {/*</Card>*/}
+        <div className="my-5">
+          <Button onClick={() => setModal(true)}>ShowModal</Button>
+          <Modal showModal={modal} setModal={setModal}/>
+        </div>
+
+        <Card>{{
+          header: (<div>Header</div>),
+          content: (<div>Content</div>),
+          actions: (<div><Button block={true} theme={'dark'}>Close</Button></div>)
+        }}</Card>
+
+        <Card>
+          <pre style={{marginBottom: 0, fontSize: '12px'}}>
+            {JSON.stringify(formState, undefined, 2)}
+          </pre>
+        </Card>
 
       </div>
     </div>

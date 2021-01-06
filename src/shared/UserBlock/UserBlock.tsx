@@ -1,5 +1,3 @@
-// Just usermenu
-
 import React from 'react';
 import s from './UserBlock.module.scss';
 import { Box } from 'shared/Box/Box';

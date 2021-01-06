@@ -6,7 +6,7 @@
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.45;
-  padding: 0.625rem 1.5rem;
+  padding: 0.625rem .5rem;
   outline: none;
   border: none;
   background-color: transparent;
@@ -14,6 +14,15 @@
   border-radius: $border-radius;
   box-shadow: none;
   transition: background .3s $transitionFunc;
+
+  &.Wide {
+    padding: 0.625rem 1.5rem;
+  }
+
+  &.Block {
+    display: block;
+    width: 100%;
+  }
 
   &:not(:disabled):hover {
     background-color: $gray-200;

@@ -1,15 +1,15 @@
 /*
-  ## Card roadmap
+  ## TODO: Card roadmap
   - [ ] Interactive
   - [ ] Link
   - [x] Closable
 */
 
 import React, { ReactChild } from 'react';
+import {Close} from "shared/Close/Close";
 import {isNil} from 'lodash';
 import classNames from "classnames/bind";
 import s from './Card.module.scss';
-import {Icon} from "../Icon";
 
 const sx = classNames.bind(s);
 
@@ -51,18 +51,18 @@ export const Card = (props: CardProps) => {
 
   return (
     <div className={cardClassNames}>
+      <div className="Content">
+        {isNamedSlots(children) && (<>
+          { children.header ? <div className={s.CardHeader}>{children.header}</div> : null }
+          <div className={s.CardContent}>{children.content}</div>
+          { children.actions ? <div className={s.CardActions}>{children.actions}</div> : null }
+        </>)}
 
-      {isNamedSlots(children) && (<>
-        { children.header ? <div className={s.CardHeader}>{children.header}</div> : null }
-        <div className={s.CardContent}>{children.content}</div>
-        { children.actions ? <div className={s.CardActions}>{children.actions}</div> : null }
-      </>)}
 
+        {!isNamedSlots(children) && (<span className={s.ChildrenWrapper}>{children}</span>)}
+      </div>
 
-      {!isNamedSlots(children) && (<span className={s.ChildrenWrapper}>{children}</span>)}
-      {onClose && <div className={s.Close} onClick={ (e:React.MouseEvent<HTMLDivElement>) => onClose(e) }>
-        <Icon color="#212529" icon="x" size={24} stroke={2} />
-      </div>}
+      {onClose && <Close onClose={onClose} />}
 
     </div>
   )

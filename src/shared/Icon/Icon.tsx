@@ -1,7 +1,7 @@
 // If user use wrong icon type should throw an Error
 // I use stroke icons because it is more flexible than use shapes in icons
 /*
-  ## Icon roadmap
+  ## TODO: Icon roadmap
   - [ ] Handle events like onClick
 */
 

@@ -1,0 +1,22 @@
+# MVP 0
+
+- [ ] SVG image for each element
+- [ ] Node component.
+      - [ ] Appear
+      - [ ] Disappear
+      - [ ] Selected
+      - [ ] Select In
+      - [ ] Select Out
+      - [ ] Hovered
+      - [ ] Active
+      - [ ] Keyboard selection
+
+- [ ] Board component
+      - [ ] Array of Nodes
+      - [ ] Selected Nodes (multiply, no more than three)
+      - [ ] Check chain (if three node selected. if can't define chain - reset selection)
+      - [ ] Generate board.
+            - [ ] At least one chain (12 nodes board)
+            - [ ] At least 4 chains (12 nodes board)
+            - [ ] More complex chain sequences (I think this is not for MVP)
+

@@ -5,5 +5,7 @@ import {Icon} from './Icon';
 import {Input} from './Input';
 import {FormRow} from './FormRow';
 import {InputDescription} from './InputDescription';
+import {Close} from './Close';
 
-export {Box, Card, Button, Input, FormRow, Icon, InputDescription};
+
+export {Box, Card, Button, Input, FormRow, Icon, InputDescription, Close};

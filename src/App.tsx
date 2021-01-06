@@ -69,7 +69,7 @@ function App() {
 
       <div className={s.AsideToggler} ref={refAsideToggler}>
         <Button onClick={ toggleAside }>
-          <Icon color="#212529" icon="hamburger" size={24} stroke={2} />
+          <Icon color="#212529" icon="hamburger" size={20} stroke={2} />
         </Button>
       </div>
 
@@ -80,11 +80,11 @@ function App() {
         ContentExpanded: !showAside
       })}>
         <Switch>
-          <Route exact path='/'><Redirect to='/apps/wheelson' /></Route>
+          <Route exact path='/'><Redirect to='/apps/formaline' /></Route>
           <Route exact path='/apps/wheelson'><Wheelson /></Route>
+          <Route exact path='/apps/rx-tutorial'><RxTutorial /></Route>
           <Route exact path='/apps/exchange'><Exchange /></Route>
           <Route exact path='/apps/formaline'><Formaline /></Route>
-          <Route exact path='/apps/rx-tutorial'><RxTutorial /></Route>
           <Route path="**"><NoMatch /></Route>
         </Switch>
       </div>

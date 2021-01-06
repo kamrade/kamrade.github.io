@@ -1,0 +1,39 @@
+/*
+TODO: Roadmap
+- [ ] Max height?
+- [ ] Scroll inside modal?
+ */
+
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Root {
+  position: fixed;
+  z-index: $zindex-modal-backdrop;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+
+  .Backdrop {
+    position: absolute;
+    z-index: $zindex-modal-backdrop;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba($gray-200, 0.95);
+  }
+
+  .Content {
+    position: relative;
+    z-index: $zindex-modal;
+    padding: 2rem;
+    background-color: $white;
+    margin: auto;
+    width: 50%;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+}
