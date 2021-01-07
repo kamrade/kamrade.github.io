@@ -16,6 +16,7 @@ import s from './Formaline.module.scss';
 
 import {Modal} from 'shared/Modal/Modal';
 
+const authServer = process.env.REACT_APP_AUTH_SERVER;
 
 /*
 // COMPONENT
@@ -64,13 +65,14 @@ export default function Formaline() {
     e.preventDefault();
 
     if ( isFormValid() ) {
-      axios.post('http://localhost:4000/api/auth/signup', {
+      axios.post(`http://${authServer}/api/auth/signup`, {
         username: formState.username.value,
         password: formState.password.value
       }).then((res: AxiosResponse<any>) => {
         console.log(res)
       }).catch(err => {
-        const errorMessage = err.response.data.error || 'Unknown error';
+        const errorMessage = (err.response && err.response.data && err.response.data.error) || 'Unknown error';
+        // const errorMessage = err.response.data.error || 'Unknown error';
         console.dir(errorMessage);
         setFormError(errorMessage);
       });
