@@ -57,19 +57,19 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
     togglerTitle: 'Helpers',
     nav: [{
       title: 'Spacers',
-      link: '/spacers'
+      link: '/apps/spacers'
     }]
   }, {
     title: 'Alerts',
-    link: '/alerts'
+    link: '/apps/alerts'
   }, {
     title: 'Badge',
-    link: '/badge'
+    link: '/apps/badge'
   }, {
     title: 'Breadcrumb',
-    link: '/breadcrumb'
+    link: '/apps/breadcrumb'
   }, {
     title: 'Buttons',
-    link: '/buttons'
+    link: '/apps/buttons'
   }]
 }];

@@ -1,28 +1,6 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
 
-.Main {
+.Root {
   position: relative;
-}
-
-.Content {
-  padding-left: $asideWidth;
-  transition: padding .2s $transitionFunc;
-
-  @include media-breakpoint-down(md) {
-    padding-left: 0;
-  }
-
-  &.ContentExpanded {
-    padding-left: 0;
-  }
-}
-
-.AsideToggler {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  z-index: $zIndexAsideToggler;
-  border-radius: 0 8px 8px 0;
 }
