@@ -19,6 +19,10 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
+$grid-columns: 24;
+$grid-gutter-width: 32px;
+$grid-row-columns: 6;
+
 $border-radius: 0.5rem;
 $box-shadow: 0 0 40px rgba(0,0,0,0.1);
 

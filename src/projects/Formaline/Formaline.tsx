@@ -85,96 +85,98 @@ export default function Formaline() {
 
   return (
     <div className="page">
+      <div className="container">
 
-      <header className="pt-5 pb-3" />
+        <header className="pt-5 pb-3" />
 
-      <div className={s.FormalineContainer}>
-        <h4 style={{marginBottom: '1.75rem', fontWeight: 'bold'}}>Formaline Page</h4>
+        <div className={s.FormalineContainer}>
+          <h4 style={{marginBottom: '1.75rem', fontWeight: 'bold'}}>Formaline Page</h4>
 
-        <form onSubmit={submitAuthForm}>
+          <form onSubmit={submitAuthForm}>
 
-          {formError &&
-            <Card theme='error' onClose={() => setFormError('')}>
-              <>{formError}</>
-            </Card>
-          }
+            {formError &&
+              <Card theme='error' onClose={() => setFormError('')}>
+                <>{formError}</>
+              </Card>
+            }
 
-          <FormRow>
-            <>
-              <label htmlFor='username-field'>Username</label>
-              <Input
-                autoComplete='off'
-                name='username'
-                type='text'
-                id='username-field'
+            <FormRow>
+              <>
+                <label htmlFor='username-field'>Username</label>
+                <Input
+                  autoComplete='off'
+                  name='username'
+                  type='text'
+                  id='username-field'
 
-                touched={formState.username.touched}
-                dirty={formState.username.dirty}
-                focused={formState.username.focused}
-                valid={formState.username.errors.length === 0}
+                  touched={formState.username.touched}
+                  dirty={formState.username.dirty}
+                  focused={formState.username.focused}
+                  valid={formState.username.errors.length === 0}
 
-                value={formState.username.value}
-                onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
-                onFocus={handleInputFocus}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
+                  value={formState.username.value}
+                  onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
+                  onFocus={handleInputFocus}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
 
-              { formState.username.errors.length > 0 && formState.username.touched &&
-                  <InputDescription type='error' message={formState.username.errors.join(', ')}/>
-              }
-            </>
-
-
-          </FormRow>
-
-          <FormRow>
-            <>
-              <label htmlFor='password-field'>Password</label>
-              <Input
-                name='password'
-                type='password'
-                id='password-field'
-
-                touched={formState.password.touched}
-                dirty={formState.password.dirty}
-                focused={formState.password.focused}
-                valid={formState.password.errors.length === 0}
-
-                value={formState.password.value}
-                onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
-                onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
-
-              { formState.password.errors.length > 0 && formState.password.touched &&
-                <InputDescription type='error' message={formState.password.errors.join(', ')}/>
-              }
-            </>
-          </FormRow>
-          <FormRow>
-            <>
-              <Button wide={true} type='submit' theme='dark'>Submit</Button>
-            </>
-          </FormRow>
+                { formState.username.errors.length > 0 && formState.username.touched &&
+                    <InputDescription type='error' message={formState.username.errors.join(', ')}/>
+                }
+              </>
 
 
-        </form>
+            </FormRow>
 
-        <div className="my-5">
-          <Button onClick={() => setModal(true)}>ShowModal</Button>
-          <Modal showModal={modal} setModal={setModal}/>
+            <FormRow>
+              <>
+                <label htmlFor='password-field'>Password</label>
+                <Input
+                  name='password'
+                  type='password'
+                  id='password-field'
+
+                  touched={formState.password.touched}
+                  dirty={formState.password.dirty}
+                  focused={formState.password.focused}
+                  valid={formState.password.errors.length === 0}
+
+                  value={formState.password.value}
+                  onBlur={(e: FocusEvent<HTMLInputElement>) => onInputBlur(baseEventHandlerParams(e))}
+                  onFocus={(e: FocusEvent<HTMLInputElement>) => onInputFocus(baseEventHandlerParams(e))}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => onInputChange(baseEventHandlerParams(e))} />
+
+                { formState.password.errors.length > 0 && formState.password.touched &&
+                  <InputDescription type='error' message={formState.password.errors.join(', ')}/>
+                }
+              </>
+            </FormRow>
+            <FormRow>
+              <>
+                <Button wide={true} type='submit' theme='dark'>Submit</Button>
+              </>
+            </FormRow>
+
+
+          </form>
+
+          <div className="my-5">
+            <Button onClick={() => setModal(true)}>ShowModal</Button>
+            <Modal showModal={modal} setModal={setModal}/>
+          </div>
+
+          <Card>{{
+            header: (<div>Header</div>),
+            content: (<div>Content</div>),
+            actions: (<div><Button block={true} theme={'dark'}>Close</Button></div>)
+          }}</Card>
+
+          <Card>
+            <pre style={{marginBottom: 0, fontSize: '12px'}}>
+              {JSON.stringify(formState, undefined, 2)}
+            </pre>
+          </Card>
+
         </div>
-
-        <Card>{{
-          header: (<div>Header</div>),
-          content: (<div>Content</div>),
-          actions: (<div><Button block={true} theme={'dark'}>Close</Button></div>)
-        }}</Card>
-
-        <Card>
-          <pre style={{marginBottom: 0, fontSize: '12px'}}>
-            {JSON.stringify(formState, undefined, 2)}
-          </pre>
-        </Card>
-
       </div>
     </div>
   )
