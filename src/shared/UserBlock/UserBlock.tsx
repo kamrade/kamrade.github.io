@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './UserBlock.module.scss';
-import { Box } from 'shared/Box/Box';
-import { Icon } from 'shared/Icon/Icon';
+import { Box, Icon } from 'shared';
+import { AuthButton } from './AuthButton';
 
 export interface IUserBlockProps {
   username: string;
@@ -27,8 +27,12 @@ export const UserBlock = ({ username, companyName }: IUserBlockProps ) => {
           <div className={s.Icon}>
             <Icon color="#B343CF" icon="chevronDown" size={24} stroke={2} />
           </div>
-
         </div>
+
+        <div className="pt-3">
+          <AuthButton />
+        </div>
+
       </Box>
     </div>
   );

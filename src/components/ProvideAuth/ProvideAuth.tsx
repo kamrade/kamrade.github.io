@@ -13,7 +13,7 @@ export function ProvideAuth({children}: IProvideAuthProps) {
   )
 }
 
-function useAuth() {
+export function useAuth() {
   return useContext(authContext);
 }
 

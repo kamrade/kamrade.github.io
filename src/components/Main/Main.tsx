@@ -13,6 +13,7 @@ import NoMatch from "projects/NoMatch/NoMatch";
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
 import classNames from "classnames/bind";
+import { PrivateRoute } from "components/ProvideAuth/PrivateRoute";
 
 const sx = classNames.bind(s);
 
@@ -77,7 +78,9 @@ export const Main = () => {
         <Switch>
           <Route exact path={path}><Redirect to='/apps/formaline' /></Route>
           <Route exact path={`${path}/wheelson`}><Wheelson /></Route>
-          <Route exact path={`${path}/rx-tutorial`}><RxTutorial /></Route>
+
+          <PrivateRoute exact path={`${path}/rx-tutorial`}><RxTutorial /></PrivateRoute>
+
           <Route exact path={`${path}/exchange`}><Exchange /></Route>
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
           <Route path={`${path}/**`}><NoMatch /></Route>
