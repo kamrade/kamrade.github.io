@@ -13,7 +13,6 @@
 
 .UserBlockContent {
   display: flex;
-  justify-content: space-between;
   flex-wrap: nowrap;
   flex-basis: content;
   min-width: 0;
@@ -22,7 +21,7 @@
   max-width: 100%;
   position: relative;
 
-  .Avatar {
+  .Avatar, .GuestAvatar {
     width: 3rem;
     height: 3rem;
     min-width: 3rem;
@@ -36,6 +35,10 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+  }
+
+  .GuestAvatar {
+    background-color: $gray-200;
   }
 
   .User {
