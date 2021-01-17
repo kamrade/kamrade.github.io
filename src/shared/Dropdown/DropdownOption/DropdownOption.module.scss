@@ -1,0 +1,10 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.DropdownOption {
+  padding: .625rem;
+  transition: background .2s ease-in-out;
+  &:hover {
+    background-color: $gray-100;
+  }
+}

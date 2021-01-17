@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './UserBlock.module.scss';
 import { Box, Icon } from 'shared';
-import { AuthButton } from './AuthButton';
+// import { AuthButton } from './AuthButton';
 import { useAuth } from "../../components/ProvideAuth/ProvideAuth";
 
 export interface IUserBlockProps {
