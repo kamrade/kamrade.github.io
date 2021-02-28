@@ -17,6 +17,7 @@ export default function Exchange() {
         <header className="pt-5 pb-3" />
         <h1 className='mb-3 page-title'>Exchange Page</h1>
 
+
         <div className="mb-3">
           <Dropdown>
             {{
@@ -33,6 +34,7 @@ export default function Exchange() {
           </Dropdown>
         </div>
 
+
         <div className="mb-3">
           <Dropdown>
             {{
@@ -46,7 +48,9 @@ export default function Exchange() {
           </Dropdown>
         </div>
 
+
         <p>Text after</p>
+
 
       </div>
     </div>

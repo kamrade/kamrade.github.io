@@ -25,13 +25,13 @@ export const Dropdown = ({children}: IDropdownProps) => {
 
   const { toggler, content } = children;
 
-  const toggleDropdown = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const toggleDropdown = (_e: React.MouseEvent<HTMLDivElement>): void => {
     refInput.current?.focus();
     setOpen(!open);
   }
 
-  const optionClickHandler = (e: React.MouseEvent<HTMLDivElement>, i: number): void => {
-    // console.log('on option click', i);
+  const optionClickHandler = (_e: React.MouseEvent<HTMLDivElement>, i: number): void => {
+    console.log('on option click', i);
   }
 
   useOnClickOutside([refDropdown], () => {
@@ -50,7 +50,7 @@ export const Dropdown = ({children}: IDropdownProps) => {
           </div>
 
           {/* Dynamic */}
-          <div className={`${s.Dropdown} ${s.DropdownDynamic}`} >
+          <div className={`${s.Dropdown} ${s.DropdownDynamic}`} style={{zIndex: open ? 10010 : 1000}}>
             <div className={s.DropdownToggler}>{toggler}</div>
             {open &&
               <div className={s.DropdownContent}>
