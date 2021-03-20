@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {Dropdown, DropdownOption, DropdownToggler} from 'shared';
+import {Button, Card, Dropdown, DropdownOption, DropdownToggler, Modal} from 'shared';
 
 export default function Exchange() {
 
   const values = ['Setting', 'Profile', 'Sign Out'];
   const [valueIndex, setValueIndex] = useState<number>(0);
+  const [modal, setModal] = useState(false);
 
   const setActive = (i: number) => {
     setValueIndex(i);
@@ -50,6 +51,17 @@ export default function Exchange() {
 
 
         <p>Text after</p>
+
+        <Card>{{
+          header: (<div>Header</div>),
+          content: (<div>Content</div>),
+          actions: (<div><Button block={true} theme={'dark'}>Close</Button></div>)
+        }}</Card>
+
+        <div className="my-5">
+          <Button onClick={() => setModal(true)}>ShowModal</Button>
+          <Modal showModal={modal} setModal={setModal}/>
+        </div>
 
 
       </div>

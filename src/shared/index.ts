@@ -7,6 +7,20 @@ import {FormRow} from './FormRow';
 import {InputDescription} from './InputDescription';
 import {Close} from './Close';
 import {Dropdown, DropdownOption, DropdownToggler} from './Dropdown';
+import {Modal} from './Modal';
 
 
-export {Box, Card, Button, Input, FormRow, Icon, InputDescription, Close, Dropdown, DropdownOption, DropdownToggler};
+export {
+  Box,
+  Card,
+  Button,
+  Input,
+  FormRow,
+  Icon,
+  InputDescription,
+  Close,
+  Dropdown,
+  DropdownOption,
+  DropdownToggler,
+  Modal
+};
