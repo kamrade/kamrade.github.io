@@ -24,7 +24,7 @@ export default function Formaline() {
   const [formState, dispatch] = useReducer(formsReducer, initialState);
   const [formError, setFormError] = useState('');
 
-  const isFormValid = () => {
+  const isFormValid = () => { // check the whole form to validity
 
     let formIsValid = true;
 
@@ -37,7 +37,7 @@ export default function Formaline() {
             formIsValid = false;
         } else {
           let errors: string[] = formalineValidations(fieldState.name, fieldState.value);
-          if (errors.length > 0) {
+          if (errors.length > 0) { // if has errors -- update state.
             dispatch({
               type: UPDATE_FORM,
               data: {...fieldState, touched: true, dirty: true, errors}
@@ -52,6 +52,7 @@ export default function Formaline() {
   }
 
   const baseEventHandlerParams = (e: ChangeEvent<HTMLInputElement> | FocusEvent<HTMLInputElement>) => ({
+    // get params for each field
     name: e.target.name,
     value: e.target.value,
     dispatch,
@@ -68,7 +69,7 @@ export default function Formaline() {
       }).then((res: AxiosResponse<any>) => {
         console.log(res)
       }).catch(err => {
-        const errorMessage = (err.response && err.response.data && err.response.data.error) || 'Unknown error';
+        const errorMessage = (err.response && err.response.data && err.response.data.error) || 'Server is currently unavailable';
         // const errorMessage = err.response.data.error || 'Unknown error';
         console.dir(errorMessage);
         setFormError(errorMessage);
