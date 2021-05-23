@@ -1,3 +1,5 @@
+// Component ProvideAuth provide context
+
 import React, {createContext, useContext} from 'react';
 import {useProvideAuth} from './useProvideAuth';
 import {IAuthContext, IProvideAuthProps} from './ProvideAuthTyping';
@@ -16,7 +18,3 @@ export function ProvideAuth({children}: IProvideAuthProps) {
 export function useAuth() {
   return useContext(authContext);
 }
-
-
-
-

@@ -50,7 +50,7 @@ export const Dropdown = ({children}: IDropdownProps) => {
           </div>
 
           {/* Dynamic */}
-          <div className={`${s.Dropdown} ${s.DropdownDynamic}`} style={{zIndex: open ? 10010 : 1000}}>
+          <div className={`${s.Dropdown} ${s.DropdownDynamic}`} style={{zIndex: open ? 1 : 0}}>
             <div className={s.DropdownToggler}>{toggler}</div>
             {open &&
               <div className={s.DropdownContent}>

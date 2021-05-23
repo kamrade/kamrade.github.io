@@ -18,10 +18,12 @@ export const AuthPage = () => {
   }
 
   return (
-    <div>
+    <div className={`container`}>
+
       <p>You must log in to view the page at {from.pathname}</p>
       <Button onClick={login}>Log in</Button>
       <NavLink exact to='/'>Back to App</NavLink>
+
     </div>
   );
 }

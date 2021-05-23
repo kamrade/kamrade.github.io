@@ -1,3 +1,6 @@
+// Component redirects to path /auth
+// if no user is authenticated.
+
 import React from 'react';
 import {useAuth} from './ProvideAuth';
 import { Route, Redirect } from "react-router-dom";
