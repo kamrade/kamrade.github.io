@@ -21,12 +21,11 @@ import {InputType} from './InputType';
 import {isNil} from 'lodash';
 const sx = classNames.bind(s);
 
-
 export interface IInputProps {
   name?: string;
   placeholder?: string;
-  type?: InputType;
-  autoComplete?: 'on' | 'off';
+  type?: string;
+  autoComplete?: string;
   id?: string;
 
   value?: string;
@@ -37,7 +36,6 @@ export interface IInputProps {
   dirty?: boolean;
   focused?: boolean;
   valid?: boolean;
-
 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;

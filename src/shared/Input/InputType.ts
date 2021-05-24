@@ -1,6 +1,5 @@
 import { tuple } from 'shared/utils/type';
 
-
 const InputTypes = tuple(
   'button',
   'checkbox',

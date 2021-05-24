@@ -8,6 +8,7 @@ import {InputDescription} from './InputDescription';
 import {Close} from './Close';
 import {Dropdown, DropdownOption, DropdownToggler} from './Dropdown';
 import {Modal} from './Modal';
+import {Formq, FormqInput} from './Formq';
 
 
 export {
@@ -15,6 +16,8 @@ export {
   Card,
   Button,
   Input,
+  Formq,
+  FormqInput,
   FormRow,
   Icon,
   InputDescription,
