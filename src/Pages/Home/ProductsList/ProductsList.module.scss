@@ -1,0 +1,21 @@
+@import 'scss/variables';
+@import 'scss/mixins';
+
+.muzq-section--products-list {
+
+}
+
+.muzqImages__productList {
+  width: 100%;
+  padding: 1rem;
+
+  .muzqImages__productListContent {
+    margin-bottom: 1rem;
+  }
+
+  .imageWrapper {
+    // border: 1px solid $gray-300;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+}

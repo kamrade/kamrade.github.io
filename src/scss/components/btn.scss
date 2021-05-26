@@ -1,0 +1,27 @@
+.btn-sm {
+  line-height: 1.45;
+}
+
+.muzq-icon-button {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  transition: background .2s ease-in-out;
+  @include media-breakpoint-down(xs) {
+    padding: 0.5rem 0;
+  }
+
+  &:hover {
+    background: rgba(0,0,0,0.05);
+  }
+
+  &:active {
+    background: rgba(0,0,0,0.2);
+  }
+
+  &:focus {
+    outline: none;
+    background: rgba(0,0,0,0.1);
+  }
+
+}

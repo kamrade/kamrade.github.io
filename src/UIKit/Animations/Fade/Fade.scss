@@ -1,0 +1,39 @@
+@import 'src/scss/variables';
+
+.animator {
+  position: relative;
+  z-index: $zindex-tooltip + 1;
+
+  &.animator-fade {
+    opacity: 0;
+
+    &.animator-in {
+      animation: .3s ease-in-out fadeIn;
+      opacity: 1;
+    }
+
+    &.animator-out {
+      animation: .3s ease-in-out fadeOut;
+      opacity: 0;
+    }
+  }
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0
+  }
+}

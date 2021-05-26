@@ -1,0 +1,120 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.muzq-theme-switcher {
+  position: relative;
+  background-color: rgba($gray-200, 0.5);
+  color: $gray-900;
+  border-radius: 10px;
+  padding: .125rem;
+  max-width: 80px;
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+  transition-property: transform, background;
+  width: 58px;
+  height: 20px;
+
+  .muzq-theme-switcher--screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+
+  &.dark {
+    background-color: rgba($primary-dark, 0.6);
+
+    &:active {
+      background-color: rgba($primary-dark, 0.5);
+    }
+
+    .muzq-theme-switcher--switch {
+      transform: translateX(38px);
+      background-color: $gray-900;
+    }
+    .muzq-theme-switcher--text {
+      transform: translateX(0px);
+      color: $gray-900;
+    }
+
+    .muzq-theme-switcher--hover-effect {
+      border-color: rgba($primary-dark, 1);
+    }
+  }
+
+  .muzq-theme-switcher--hover-effect {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    border: 2px solid $gray-300;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    transition-property: opacity, clip;
+
+    &.right {
+      clip: rect(0px, auto, auto, 46px);
+    }
+
+    &.left {
+      clip: rect(0px, 16px, auto, 0px);
+    }
+
+  }
+
+  &:hover {
+    .muzq-theme-switcher--hover-effect {
+      opacity: 0.5;
+    }
+  }
+
+  &:active {
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  &:active, &.focus {
+    .muzq-theme-switcher--hover-effect {
+      &.right {
+        clip: rect(0px, auto, auto, 31px);
+        opacity: 1;
+      }
+
+      &.left {
+        clip: rect(0px, 31px, auto, 0px);
+        opacity: 1;
+      }
+
+    }
+  }
+
+  .muzq-theme-switcher--switch {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: $white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform .2s ease-in-out;
+  }
+
+  .muzq-theme-switcher--text {
+    position: absolute;
+    left: 6px;
+    transform: translateX(16px);
+    top: 1px;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 600;
+    text-transform: capitalize;
+    user-select: none;
+    transition: transform .2s ease-in-out;
+  }
+}

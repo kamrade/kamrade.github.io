@@ -1,0 +1,19 @@
+@import 'src/scss/variables';
+@import 'src/scss/mixins';
+
+.PageHeading {
+  padding: 1rem 0;
+
+  @include media-breakpoint-down(sm) {
+    padding: .5rem 0;
+  }
+
+  h1 {
+    font-size: 23px;
+    line-height: 1.2;
+    margin-bottom: 0;
+    @include media-breakpoint-down(sm) {
+      font-size: 27px;
+    }
+  }
+}

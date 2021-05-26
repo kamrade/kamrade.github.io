@@ -1,0 +1,12 @@
+.muzq-image-box {
+  min-height: 120px;
+  background-color: $gray-100;
+  color: $gray-300;
+  margin-bottom: 1rem;
+}
+
+.dark {
+  .muzq-image-box {
+    background-color: $gray-900;
+  }
+}

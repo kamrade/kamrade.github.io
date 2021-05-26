@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "custom-variables";
+
+:root {
+  --muzq-body-bg:    $white;
+  --muzq-text-color: $gray-900;
+}
+
+$accent: #FA2196;

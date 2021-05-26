@@ -1,0 +1,174 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.animator {
+  position: relative;
+  z-index: $zindex-tooltip + 1;
+
+  &.animator-fade {
+    opacity: 0;
+
+    &.animator-in {
+      animation: .5s ease-in-out fadeIn;
+      opacity: 1;
+    }
+
+    &.animator-out {
+      animation: .5s ease-in-out fadeOut;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+.adaptive-menu {
+  position: fixed;
+  z-index: $zindex-tooltip + 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--muzq-text-color);
+  background: var(--muzq-body-bg);
+
+  .mobile-menu-toggler--wrapper {
+    text-align: right;
+  }
+
+  .muzq-mobile-menu--header {
+    padding: 1rem 0;
+    @include media-breakpoint-down(sm) {
+      padding: .5rem 0;
+    }
+  }
+
+  .adaptive-menu-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+
+    .adaptive-menu-body-content {
+      margin: auto;
+    }
+  }
+
+  .muzq-adaptive-menu--footer {
+    font-size: 1rem !important;
+    line-height: 1.5;
+    padding: .75rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: $gray-500;
+
+    a, a:visited, a:link {
+      font-size: 1rem;
+      line-height: 1.5;
+      display: inline;
+      padding: 0;
+      font-weight: 400;
+    }
+  }
+
+  a, a:link, a:visited, a:hover {
+    color: var(--muzq-link-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--muzq-text-color);
+  }
+
+  .muzq-adaptive-menu--item {
+    display: block;
+    font-size: 9vw;
+    line-height: 1.15;
+    font-weight: 900;
+    transition: color .2s ease-in-out;
+    overflow: hidden;
+
+    @for $i from 0 through 3 {
+      &:nth-child(#{$i + 1}) .muzq-roulette.show, &:nth-child(#{$i + 1}) .muzq-roulette.hide {
+        animation-delay: 0.1s * $i;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 12vw;
+    }
+
+    .muzq-roulette {
+      display: block;
+      position: relative;
+      transform: translateY(100%);
+
+      &.hide {
+        animation: .4s ease-in-out scrollIn;
+        transform: translateY(0);
+      }
+
+      &.show {
+        animation: .4s ease-in-out scrollOut;
+        transform: translateY(100%);
+
+        &.static {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    &.active {
+      color: $gray-600;
+    }
+
+    &:not(.active):hover {
+      color: $green;
+    }
+
+  }
+}
+
+@keyframes scrollIn {
+  0% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(110%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scrollOut {
+  0% {
+    transform: translateY(100%);
+  }
+  80% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
