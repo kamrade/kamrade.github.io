@@ -1,20 +1,39 @@
-import React, {useReducer, createContext, useContext} from 'react';
+import React, {useReducer, createContext, useContext, useEffect} from 'react';
 import s from './Formq.module.scss';
 import {formqReducer} from './FormqReducer';
-import {IFormqProps, IFormqContext} from './FormqTypes';
+import {IFormqProps, IFormqContext, IFormqState, IFormqAction} from './FormqTypes';
 
 const formqContext = createContext<IFormqContext | null>(null);
 
-export const Formq = ({children, initialFormqState}: IFormqProps) => {
+export const Formq = ({children, initialFormqState, validations}: IFormqProps) => {
 
-  Object.keys(initialFormqState).map((key, i) => {
-    if (initialFormqState[key].data.name !== key) {
-      throw new Error('Initial object name should be same as field "name"');
-    }
-    return null;
-  })
+  // FORMQ STATE INIT
+  useEffect(() => {
+    Object.keys(initialFormqState).map((key, i) => {
+      if (initialFormqState[key].name !== key) {
+        throw new Error('Initial object name should be same as field "name"');
+      }
+      return null;
+    });
 
-  const [formqState, dispatch] = useReducer(formqReducer, initialFormqState);
+    Object.keys(initialFormqState).map((key, _i) => {
+      initialFormqState[key].touched = false;
+      initialFormqState[key].dirty = false;
+      initialFormqState[key].focused = false;
+      initialFormqState[key].errors = [];
+      return null;
+    });
+  }, [initialFormqState]);
+
+  const [formqState, dispatch] = useReducer((state: IFormqState, action: IFormqAction ) => {
+    // It also can be implemented with useEffect(() => {}, [formqState])
+    // But I don't want to execute validations on every event, only on change.
+    return formqReducer(state, action, validations);
+  }, initialFormqState);
+
+  // useEffect(() => {
+  //   console.log('formqState changed');
+  // }, [formqState]);
 
   return (
     <formqContext.Provider value={{formqState, dispatch}}>

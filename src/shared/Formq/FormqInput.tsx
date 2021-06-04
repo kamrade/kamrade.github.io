@@ -24,7 +24,8 @@ export const FormqInput = ({name}: IFormqInputProps) => {
   return (
     <>
       <Input
-        {...inputState.data}
+        {...inputState}
+        valid={!(inputState.errors && inputState.errors.length > 0)}
         onChange={(event) => {
             dispatch && dispatch({
               type: UPDATE,
@@ -49,15 +50,16 @@ export const FormqInput = ({name}: IFormqInputProps) => {
             data: {
               name: name,
               value: event.target.value,
+              touched: inputState?.touched
             }
           });
         }}
       />
 
-      {
-        inputState.errors && inputState.errors.length > 0 && inputState.data.touched &&
-          <InputDescription type='error' message={inputState.errors.join(', ')}/>
+      { inputState.errors && inputState.errors.length > 0 && inputState.touched && inputState.dirty &&
+        <InputDescription type='error' message={inputState.errors.join(', ')}/>
       }
+
     </>
   );
 

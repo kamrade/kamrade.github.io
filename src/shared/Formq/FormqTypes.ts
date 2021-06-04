@@ -13,25 +13,21 @@ export interface IFormqAction {
 export interface IPayload {
   name: string;
   value: string;
+  touched?: boolean;
 }
 
 // Formq context (state)
-export interface IFormqData {
+export interface IFormqFieldState {
   name: string;
   placeholder?: string;
-  autoComplete?: string; // TODO: make its own type
-  type?: string; // TODO: make its own type
+  autoComplete?: string;   // TODO: make its own type
+  type?: string;           // TODO: make its own type
   id?: string;
   value: string;
-  touched: boolean;
-  dirty: boolean;
-  focused: boolean;
-}
-
-export interface IFormqFieldState {
-  data: IFormqData;
-  errors: string[];
-  validations: () => string[];
+  touched?: boolean;
+  dirty?: boolean;
+  focused?: boolean;
+  errors?: string[];
 }
 
 export interface IFormqState {
@@ -46,5 +42,6 @@ export interface IFormqContext {
 // Formq props
 export interface IFormqProps {
   initialFormqState: IFormqState;
+  validations: (name: string, value: string) => string[];
   children: React.ReactChild;
 }
