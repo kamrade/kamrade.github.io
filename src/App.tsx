@@ -16,9 +16,9 @@ import NoMatch from './Pages/NoMatch/NoMatch';
 
 // --- DATA ---
 import { IDataModel } from 'data/model';
-import { enData } from 'data/en';
-import { ruData } from 'data/ru';
-import { uaData } from 'data/ua';
+import { enData } from 'data/lang/en';
+import { ruData } from 'data/lang/ru';
+import { uaData } from 'data/lang/ua';
 import { capitalize } from './helpers/capitalize';
 
 export type Language = 'en' | 'ru' | 'ua';

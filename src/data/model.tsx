@@ -6,4 +6,6 @@ export interface IMainMenu {
 export interface IDataModel {
   currentLanguage: string;
   mainMenu: IMainMenu[];
+  heroTitle: string[];
+  heroDescription: string;
 }

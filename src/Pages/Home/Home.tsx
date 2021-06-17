@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import s from './Home.module.scss';
 import lottie from 'lottie-web';
-// import { animation } from 'data/simpleAnimation';
 import { running_line as animation } from 'data/running-line/running-line';
 import { HeroBlock } from './HeroBlock/HeroBlock';
 import { ProductsList } from './ProductsList/ProductsList';
