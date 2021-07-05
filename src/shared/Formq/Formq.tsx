@@ -1,11 +1,20 @@
+/*
+// interface
+// validate all fields in the STATE
+// clear all errors
+//
+*/
+
+
 import React, {useReducer, createContext, useContext, useEffect} from 'react';
 import s from './Formq.module.scss';
 import {formqReducer} from './FormqReducer';
 import {IFormqProps, IFormqContext, IFormqState, IFormqAction} from './FormqTypes';
+import { PREVALIDATE } from 'shared/Formq/FormqTypes';
 
 const formqContext = createContext<IFormqContext | null>(null);
 
-export const Formq = ({children, initialFormqState, validations}: IFormqProps) => {
+export const Formq = ({children, initialFormqState, validations, onSubmit}: IFormqProps) => {
 
   // FORMQ STATE INIT
   useEffect(() => {
@@ -23,6 +32,7 @@ export const Formq = ({children, initialFormqState, validations}: IFormqProps) =
       initialFormqState[key].errors = [];
       return null;
     });
+
   }, [initialFormqState]);
 
   const [formqState, dispatch] = useReducer((state: IFormqState, action: IFormqAction ) => {
@@ -35,10 +45,27 @@ export const Formq = ({children, initialFormqState, validations}: IFormqProps) =
   //   console.log('formqState changed');
   // }, [formqState]);
 
+  const submitAuthForm = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    Object.keys(formqState).forEach((name, _i) => {
+      console.log(validations(name, formqState[name].value));
+      dispatch({
+        type: PREVALIDATE,
+        data: {
+          name: name,
+          value: formqState[name].value // this is not necessary here
+        }
+      });
+    });
+    onSubmit(formqState);
+  }
+
   return (
     <formqContext.Provider value={{formqState, dispatch}}>
       <div className={s.Formq}>
-        {children}
+        <form onSubmit={submitAuthForm}>
+          {children}
+        </form>
       </div>
     </formqContext.Provider>
   )

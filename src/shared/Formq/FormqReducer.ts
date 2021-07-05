@@ -1,6 +1,6 @@
 // TODO: dirty should become false if user changed value to its initial state.
 
-import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR} from './FormqTypes';
+import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, PREVALIDATE} from './FormqTypes';
 
 let lastValue = '';
 
@@ -19,6 +19,17 @@ export const formqReducer = (
   }
 
   switch (action.type) {
+    case PREVALIDATE:
+      return {
+        ...state,
+        [name]: {
+          ...state[name],
+          dirty: true,
+          touched: true,
+          errors: validations(name, value)
+        }
+      }
+
     case UPDATE:
       let errors = validations(name, value);
       const newState = {

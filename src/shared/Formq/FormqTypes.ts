@@ -1,9 +1,10 @@
 import {Dispatch} from 'react';
 
 // Actions (Reducer)
-export const UPDATE = "UPDATE_FIELD";
-export const FOCUS = "FOCUS_FIELD";
-export const BLUR = "BLUR_FIELD";
+export const UPDATE      = "UPDATE_FIELD";
+export const FOCUS       = "FOCUS_FIELD";
+export const BLUR        = "BLUR_FIELD";
+export const PREVALIDATE = "PREVALIDATE";
 
 export interface IFormqAction {
   type: string;
@@ -43,5 +44,6 @@ export interface IFormqContext {
 export interface IFormqProps {
   initialFormqState: IFormqState;
   validations: (name: string, value: string) => string[];
+  onSubmit: (formqState: IFormqState) => void;
   children: React.ReactChild;
 }

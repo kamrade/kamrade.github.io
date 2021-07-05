@@ -17,7 +17,6 @@
 import React, {useState, forwardRef} from 'react';
 import classNames from "classnames/bind";
 import s from './Input.module.scss';
-import {InputType} from './InputType';
 import {isNil} from 'lodash';
 const sx = classNames.bind(s);
 
