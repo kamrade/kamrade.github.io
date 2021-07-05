@@ -13,6 +13,16 @@ let initialState = {
     id: 'username',
     value: '',
   },
+
+  password: {
+    name: 'password',
+    placeholder: 'Password',
+    autoComplete: 'off',
+    type: 'password',
+    id: 'password',
+    value: '',
+  },
+
   email: {
     name: 'email',
     placeholder: 'Email',
@@ -78,6 +88,8 @@ export const AuthPage = () => {
     console.log('::: submit auth form');
   }
 
+
+
   return (
     <div className={`container`}>
 
@@ -87,12 +99,19 @@ export const AuthPage = () => {
 
       <Formq initialFormqState={initialState} validations={authPageValidations}>
         <form onSubmit={submitAuthForm}>
+
           <div className='mb-3'>
             <FormqInput name='username' />
           </div>
+
           <div className='mb-3'>
             <FormqInput name='email' />
           </div>
+
+          <div className='mb-3'>
+            <FormqInput name='password' />
+          </div>
+
         </form>
       </Formq>
 

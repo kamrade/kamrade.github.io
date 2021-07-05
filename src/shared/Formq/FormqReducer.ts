@@ -47,14 +47,12 @@ export const formqReducer = (
 
     case BLUR:
 
-      console.log(lastValue === value);
-
       return {
         ...state,
         [name]: {
           ...state[name],
           value: value,
-          // if user didn't change anything just focus and blur, do not set touched ti true
+          // if user didn't change anything just focus and blur, do not set touched to true
           touched: touched ? touched : !(lastValue === value),
           focused: false
         }

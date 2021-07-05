@@ -26,7 +26,7 @@ export const Formq = ({children, initialFormqState, validations}: IFormqProps) =
   }, [initialFormqState]);
 
   const [formqState, dispatch] = useReducer((state: IFormqState, action: IFormqAction ) => {
-    // It also can be implemented with useEffect(() => {}, [formqState])
+    // This can also be implemented with useEffect(() => {}, [formqState])
     // But I don't want to execute validations on every event, only on change.
     return formqReducer(state, action, validations);
   }, initialFormqState);
