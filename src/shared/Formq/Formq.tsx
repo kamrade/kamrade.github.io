@@ -1,7 +1,12 @@
 /*
-// interface
-// validate all fields in the STATE
-// clear all errors
+
+// INTERFACE
+
+// [X] validate all fields in the STATE
+// [X] clear all errors
+// [ ] use Map or Set instead of just Object
+// [ ] Property isValid for form
+//
 //
 */
 
@@ -10,7 +15,7 @@ import React, {useReducer, createContext, useContext, useEffect} from 'react';
 import s from './Formq.module.scss';
 import {formqReducer} from './FormqReducer';
 import {IFormqProps, IFormqContext, IFormqState, IFormqAction} from './FormqTypes';
-import { PREVALIDATE } from 'shared/Formq/FormqTypes';
+import { PREVALIDATE, RESET } from 'shared/Formq/FormqTypes';
 
 const formqContext = createContext<IFormqContext | null>(null);
 
@@ -18,6 +23,8 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
 
   // FORMQ STATE INIT
   useEffect(() => {
+
+    // Check for name property present in initial state
     Object.keys(initialFormqState).map((key, i) => {
       if (initialFormqState[key].name !== key) {
         throw new Error('Initial object name should be same as field "name"');
@@ -25,6 +32,7 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
       return null;
     });
 
+    // fill tech fields
     Object.keys(initialFormqState).map((key, _i) => {
       initialFormqState[key].touched = false;
       initialFormqState[key].dirty = false;
@@ -35,20 +43,19 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
 
   }, [initialFormqState]);
 
-  const [formqState, dispatch] = useReducer((state: IFormqState, action: IFormqAction ) => {
-    // This can also be implemented with useEffect(() => {}, [formqState])
-    // But I don't want to execute validations on every event, only on change.
-    return formqReducer(state, action, validations);
-  }, initialFormqState);
+  // This might be implemented with useEffect(() => {}, [formqState])
+  // But I don't want to execute validations on every event, only on change.
+  const reducer = (state: IFormqState, action: IFormqAction ): IFormqState => formqReducer(state, action, validations, initialFormqState);
+  const [formqState, dispatch] = useReducer(reducer, initialFormqState);
 
   // useEffect(() => {
   //   console.log('formqState changed');
   // }, [formqState]);
 
-  const submitAuthForm = (event: React.SyntheticEvent) => {
+  const submitForm = (event: React.SyntheticEvent) => {
+
     event.preventDefault();
     Object.keys(formqState).forEach((name, _i) => {
-      console.log(validations(name, formqState[name].value));
       dispatch({
         type: PREVALIDATE,
         data: {
@@ -57,15 +64,20 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
         }
       });
     });
+
     onSubmit(formqState);
+  }
+
+  const clearForm = (_event: React.SyntheticEvent) => {
+    dispatch({ type: RESET  });
   }
 
   return (
     <formqContext.Provider value={{formqState, dispatch}}>
       <div className={s.Formq}>
-        <form onSubmit={submitAuthForm}>
-          {children}
-        </form>
+
+        {children({submitForm, clearForm})}
+
       </div>
     </formqContext.Provider>
   )

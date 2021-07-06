@@ -1,24 +1,30 @@
 // TODO: dirty should become false if user changed value to its initial state.
 
-import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, PREVALIDATE} from './FormqTypes';
+import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, PREVALIDATE, RESET} from './FormqTypes';
 
 let lastValue = '';
 
 export const formqReducer = (
   state: IFormqState,
   action: IFormqAction,
-  validations: (name: string, value: string) => string[]
+  validations: (name: string, value: string) => string[],
+  initialState: IFormqState
 ) => {
 
-  let name = action.data.name;
-  let value = action.data.value;
-  let touched = action.data.touched;
+  let name = action?.data?.name || '';
+  let value = action?.data?.value || '';
+  let touched = action?.data?.touched || '';
 
-  if (!name) {
+  if (!name && action.type !== RESET) {
     throw new Error('Please provide initial name for each field');
   }
 
   switch (action.type) {
+
+    case RESET:
+      return initialState;
+
+    // Validations triggering when user trying to submit a form
     case PREVALIDATE:
       return {
         ...state,

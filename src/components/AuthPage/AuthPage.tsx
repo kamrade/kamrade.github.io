@@ -7,6 +7,7 @@ import {Button, Formq, FormqInput} from 'shared';
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
 
+
 export const AuthPage = () => {
 
   let history = useHistory();
@@ -38,22 +39,27 @@ export const AuthPage = () => {
         initialFormqState={initialState}
         validations={authPageValidations}
         onSubmit={onSubmit}>
+        {
+          ({ submitForm, clearForm }: any) => ( // TODO: typing
+            <form onSubmit={submitForm}>
+              <div className='mb-3'>
+                <FormqInput name='username' />
+              </div>
 
-        <>
-          <div className='mb-3'>
-            <FormqInput name='username' />
-          </div>
+              <div className='mb-3'>
+                <FormqInput name='email' />
+              </div>
 
-          <div className='mb-3'>
-            <FormqInput name='email' />
-          </div>
+              <div className='mb-3'>
+                <FormqInput name='password' />
+              </div>
+              <Button wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
+              <Button wide={true} type='submit' theme='dark'>Submit</Button>
+            </form>
+          )
+        }
 
-          <div className='mb-3'>
-            <FormqInput name='password' />
-          </div>
 
-          <Button wide={true} type='submit' theme='dark'>Submit</Button>
-        </>
       </Formq>
 
     </div>

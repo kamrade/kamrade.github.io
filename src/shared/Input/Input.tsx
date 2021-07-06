@@ -18,31 +18,9 @@ import React, {useState, forwardRef} from 'react';
 import classNames from "classnames/bind";
 import s from './Input.module.scss';
 import {isNil} from 'lodash';
+import {IInputProps} from 'shared/Input/InputType';
+
 const sx = classNames.bind(s);
-
-export interface IInputProps {
-  name?: string;
-  placeholder?: string;
-  type?: string;
-  autoComplete?: string;
-  id?: string;
-
-  value?: string;
-  disabled?: boolean;
-  required?: boolean;
-
-  touched?: boolean;
-  dirty?: boolean;
-  focused?: boolean;
-  valid?: boolean;
-
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-
-  onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
-}
 
 const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
   (props: IInputProps, ref: React.ForwardedRef<any>) => {
