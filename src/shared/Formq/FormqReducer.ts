@@ -24,7 +24,7 @@ export const formqReducer = (
     case RESET:
       return initialState;
 
-    // Validations triggering when user trying to submit a form
+    // Prevalidations triggering when user trying to submit a form
     case PREVALIDATE:
 
       let updState: IFormqState = {};

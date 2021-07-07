@@ -46,10 +46,10 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     Focused:    isNil(propsFocused) ? focused : propsFocused,
     Touched:    isNil(propsTouched) ? touched : propsTouched,
     Untouched:  isNil(propsTouched) ? !touched : !propsTouched,
-    Dirty:      isNil(propsDirty) ? dirty : propsDirty,
-    Pristine:   isNil(propsDirty) ? !dirty : !propsDirty,
-    Valid:      isNil(propsValid) ? true : propsValid,
-    Invalid:    isNil(propsValid) ? false : !propsValid,
+    Dirty:      isNil(propsDirty)   ? dirty : propsDirty,
+    Pristine:   isNil(propsDirty)   ? !dirty : !propsDirty,
+    Valid:      isNil(propsValid)   ? true : propsValid,
+    Invalid:    isNil(propsValid)   ? false : !propsValid,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

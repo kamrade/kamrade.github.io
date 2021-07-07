@@ -1,18 +1,22 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
-import {Button, Formq, FormqInput} from 'shared';
+import {Button, Formq, FormqInput, Modal, Input} from 'shared';
 import {IFormqState} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
 
+// let fState: IFormqState = initialState;
 
 export const AuthPage = () => {
 
   let history = useHistory();
   let location = useLocation();
   let auth = useAuth();
+  const fState = useRef<IFormqState>(initialState);
+
+  const [modal, setModal] = useState(false);
 
   let {from}: any = location.state || { from: {pathname: '/'} };
 
@@ -22,9 +26,11 @@ export const AuthPage = () => {
     })
   }
 
-  const onSubmit = async (_formqState: IFormqState, isValid: boolean) => {
-    // console.log(':: submit in AuthPage');
-    console.log(isValid);
+  const onSubmit = async (formqState: IFormqState, isValid: boolean) => {
+    fState.current = formqState;
+    if (isValid) {
+      setModal(true);
+    }
   }
 
   return (
@@ -55,6 +61,11 @@ export const AuthPage = () => {
                 <FormqInput name='password' />
               </div>
 
+              <div className='mb-3'>
+                <Input disabled={true} placeholder='Disabled field' />
+              </div>
+
+
               <Button wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
               <Button wide={true} type='submit' theme='dark'>Submit</Button>
 
@@ -64,6 +75,17 @@ export const AuthPage = () => {
         }
 
       </Formq>
+
+      <Modal showModal={modal} setModal={setModal}>
+        <div>
+          {Object.keys(fState.current).map((el, i) => (
+            <div key={i} className='mb-1'>
+              <span className='text-muted'>{el}:</span>
+              {fState.current[el].value}
+            </div>
+          ))}
+        </div>
+      </Modal>
 
     </div>
   );

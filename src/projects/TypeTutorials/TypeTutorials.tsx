@@ -28,11 +28,11 @@ function setContents(box: {contents: any}, newContents: any) {
 
 let cont1 = {contents: 400}
 setContents(cont1, 122);
-console.log('new content 1:', cont1);
+// console.log('new content 1:', cont1);
 
 let cont2 = {contents: true}
 setContents(cont2, false);
-console.log('new content 2:', cont2);
+// console.log('new content 2:', cont2);
 
 
 /*

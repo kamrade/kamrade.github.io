@@ -10,7 +10,7 @@ export const Modal = ({ children, showModal, setModal }: IModal) => {
     (showModal && <div className={s.Root}>
       <div className={s.Backdrop} onClick={(e: React.MouseEvent<HTMLDivElement>) => setModal && setModal(false)} />
       <div className={s.Content}>
-        <div>This is modal</div>
+        <h3>This is modal</h3>
         {children}
         <Close onClose={(e: React.MouseEvent<HTMLDivElement>) => setModal && setModal(false)} />
       </div>

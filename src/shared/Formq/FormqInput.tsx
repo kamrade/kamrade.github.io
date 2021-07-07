@@ -2,8 +2,9 @@ import React from 'react';
 import {useFormq} from './Formq';
 import {Input, InputDescription} from 'shared';
 import {UPDATE, FOCUS, BLUR} from 'shared/Formq/FormqTypes';
+import {IInputProps} from 'shared/Input/InputType';
 
-export interface IFormqInputProps {
+export interface IFormqInputProps extends IInputProps {
   name: string;
 }
 
