@@ -2,6 +2,9 @@ export const menuItemsSm = [{
   id: 'apps',
   togglerTitle: 'Applications',
   nav: [{
+    title: 'Typing tutorial',
+    link: '/typing'
+  }, {
     title: 'Wheelson',
     link: '/wheelson'
   }, {
@@ -37,6 +40,9 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   id: 'applications',
   togglerTitle: 'Applications',
   nav: [{
+    title: 'Typing tutorial',
+    link: '/apps/typing'
+  }, {
     title: 'Wheelson',
     link: '/apps/wheelson'
   }, {

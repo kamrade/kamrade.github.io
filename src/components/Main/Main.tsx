@@ -10,6 +10,7 @@ import RxTutorial from "projects/RxTutorial/RxTutorial";
 import Exchange from "projects/Exchange/Exchange";
 import Formaline from "projects/Formaline/Formaline";
 import NoMatch from "projects/NoMatch/NoMatch";
+import TypeTutorials from "projects/TypeTutorials/TypeTutorials";
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
 import classNames from "classnames/bind";
@@ -81,6 +82,7 @@ export const Main = () => {
 
           <PrivateRoute exact path={`${path}/rx-tutorial`}><RxTutorial /></PrivateRoute>
 
+          <Route exact path={`${path}/typing`}><TypeTutorials /></Route>
           <Route exact path={`${path}/exchange`}><Exchange /></Route>
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
           <Route path={`${path}/**`}><NoMatch /></Route>

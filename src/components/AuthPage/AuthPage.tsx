@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import {IFormqState} from 'shared/Formq/FormqTypes';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
 import {Button, Formq, FormqInput} from 'shared';
+import {IFormqState} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
@@ -22,10 +22,9 @@ export const AuthPage = () => {
     })
   }
 
-  const onSubmit = (formqState: IFormqState) => {
-    Object.keys(formqState).forEach((name, _i) => {
-      console.log(name, ': ', formqState[name].value);
-    })
+  const onSubmit = async (formqState: IFormqState) => {
+    console.log(':: submit in AuthPage');
+    console.log(formqState);
   }
 
   return (
@@ -40,8 +39,10 @@ export const AuthPage = () => {
         validations={authPageValidations}
         onSubmit={onSubmit}>
         {
-          ({ submitForm, clearForm }: any) => ( // TODO: typing
-            <form onSubmit={submitForm}>
+          ({ handleSubmit, clearForm }: any) => ( // TODO: typing
+
+            <form onSubmit={handleSubmit} >
+
               <div className='mb-3'>
                 <FormqInput name='username' />
               </div>
@@ -53,12 +54,14 @@ export const AuthPage = () => {
               <div className='mb-3'>
                 <FormqInput name='password' />
               </div>
+
               <Button wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
               <Button wide={true} type='submit' theme='dark'>Submit</Button>
+
             </form>
+
           )
         }
-
 
       </Formq>
 
