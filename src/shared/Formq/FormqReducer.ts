@@ -26,17 +26,19 @@ export const formqReducer = (
 
     // Validations triggering when user trying to submit a form
     case PREVALIDATE:
-      console.log('prevalidate', name);
-      
-      return {
-        ...state,
-        [name]: {
+
+      let updState: IFormqState = {};
+
+      Object.keys(state).forEach((name, _i) => {
+        updState[name] = {
           ...state[name],
           dirty: true,
           touched: true,
-          errors: validations(name, value) // TODO: This is not neccessary
+          errors: validations(name, state[name].value)
         }
-      }
+      });
+
+      return updState;
 
 
     case UPDATE:

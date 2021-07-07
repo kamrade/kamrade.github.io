@@ -39,6 +39,6 @@ export interface IFormqContext {
 export interface IFormqProps {
   initialFormqState: IFormqState;
   validations: (name: string, value: string) => string[];
-  onSubmit: (formqState: any) => void;
+  onSubmit: (formqState: any, isValid: boolean) => void;
   children: (args: any) => React.ReactChild;
 }

@@ -74,26 +74,28 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
   const [isSubmitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (isSubmitting) {
-      console.log(':: submitting');
-      onSubmit(formqState);
-      // sync
-      setSubmitting(false);
+
+    const checkFormqValidity = () => {
+      let names: string[] = Object.keys(formqState);
+      for (let i = 0; i < names.length; i++ ) {
+        let errors = formqState[ names[i] ].errors;
+        if (errors?.length) {
+          return false;
+        }
+      }
+      return true;
     }
 
-  }, [formqState]);
+    if (isSubmitting) {
+      onSubmit(formqState, checkFormqValidity());
+      setSubmitting(false); // this should be async
+    }
+
+  }, [formqState, isSubmitting, onSubmit]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
-    Object.keys(formqState).forEach((name, _i) => dispatch({
-      type: PREVALIDATE,
-      data: {
-        name,
-        value: formqState[name].value
-      }
-    }));
-
+    dispatch({type: PREVALIDATE});
     setSubmitting(true);
   }
 

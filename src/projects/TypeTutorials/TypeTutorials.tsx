@@ -41,19 +41,28 @@ console.log('new content 2:', cont2);
 
 */
 
-interface Box<Type> {
-  contents: Type;
-}
+// interface Box<Type> {
+//   contents: Type;
+// }
+//
+// interface StringBox {
+//   contents: string;
+// }
 
-interface StringBox {
-  contents: string;
-}
-
-let boxA: Box<string> = {contents: 'Hello'};
+// let boxA: Box<string> = {contents: 'Hello'};
 // boxA.contents;
 
-let boxB: StringBox = {contents: 'world'};
+// let boxB: StringBox = {contents: 'world'};
 // boxB.contents;
+
+
+/*
+
+  --------------
+
+*/
+
+
 
 export default function TypeTutorials() {
 

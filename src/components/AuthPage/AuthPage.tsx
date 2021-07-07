@@ -22,9 +22,9 @@ export const AuthPage = () => {
     })
   }
 
-  const onSubmit = async (formqState: IFormqState) => {
-    console.log(':: submit in AuthPage');
-    console.log(formqState);
+  const onSubmit = async (_formqState: IFormqState, isValid: boolean) => {
+    // console.log(':: submit in AuthPage');
+    console.log(isValid);
   }
 
   return (
