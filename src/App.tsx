@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 import {AuthPage} from 'components/AuthPage/AuthPage';
+import {MainPage} from 'components/MainPage/MainPage';
 import {Main} from 'components/Main/Main';
 
 import s from './App.module.scss';
@@ -13,7 +14,8 @@ function App() {
     <div className={s.Root}>
 
       <Switch>
-        <Route exact path='/'><Redirect to='/apps/formaline' /></Route>
+        <Route exact path='/'><Redirect to='/main' /></Route>
+        <Route path='/main'><MainPage /></Route>
         <Route path='/auth'><AuthPage /></Route>
         <Route path={'/apps'}><Main /></Route>
         <Route path="**"><NoMatch /></Route>

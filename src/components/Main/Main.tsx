@@ -18,6 +18,8 @@ import { PrivateRoute } from "components/ProvideAuth/PrivateRoute";
 
 const sx = classNames.bind(s);
 
+const showAsideBreakpoint = 768;
+
 export const Main = () => {
 
   let { path } = useRouteMatch();
@@ -30,9 +32,9 @@ export const Main = () => {
 
   const size = useWindowSize();
 
-  // save showAside value if screen more than 992px
+  // save showAside value if screen more than ${showAsideBreakpoint} px
   useEffect(() => {
-    if (size?.width >= 992) {
+    if (size?.width >= showAsideBreakpoint) {
       setShowAsideMemo(showAside);
     }
   }, [showAside, size.width]);
@@ -40,11 +42,11 @@ export const Main = () => {
   // it should work only for small screens and when Aside is showed (to hide it)
   useOnClickOutside([refAside, refAsideToggler], () => {
     setShowAside(false);
-  }, (showAside && size.width < 992));
+  }, (showAside && size.width < showAsideBreakpoint));
 
-  // hide aside when after window resizing screen width become smaller than 992 (lg-breakpoint)
+  // hide aside when after window resizing screen width become smaller than ${showAsideBreakpoint} (md-breakpoint)
   useEffect(() => {
-    if (size.width && size.width < 992) {
+    if (size.width && size.width < showAsideBreakpoint) {
       setShowAside(false);
     } else {
       setShowAside(showAsideMemo);
@@ -57,13 +59,14 @@ export const Main = () => {
   }
 
   const hideAsideIfMobile = () => {
-    if (size.width < 992) {
+    if (size.width < showAsideBreakpoint) {
       setShowAside(false);
     }
   }
 
   return (
     <div className={s.Main}>
+
       <div className={s.AsideToggler} ref={refAsideToggler}>
         <Button onClick={ toggleAside }>
           <Icon color="#212529" icon="hamburger" size={20} stroke={2} />
