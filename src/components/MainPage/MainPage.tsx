@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './MainPage.module.scss';
-import classNames from "classnames/bind";
-const sx = classNames.bind(s);
+// import classNames from "classnames/bind";
+// const sx = classNames.bind(s);
 
 export const MainPage = () => {
 

@@ -38,7 +38,7 @@ import React, {useReducer, createContext, useContext, useEffect, useState} from 
 import s from './Formq.module.scss';
 import {formqReducer} from './FormqReducer';
 import {IFormqProps, IFormqContext, IFormqState, IFormqAction} from './FormqTypes';
-import { RESET, PREVALIDATE } from 'shared/Formq/FormqTypes';
+import { RESET, PREVALIDATE, DISABLE_FORM, ENABLE_FORM} from 'shared/Formq/FormqTypes';
 
 const formqContext = createContext<IFormqContext | null>(null);
 
@@ -71,7 +71,10 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
   const reducer = (state: IFormqState, action: IFormqAction ): IFormqState => formqReducer(state, action, validations, initialFormqState);
   const [formqState, dispatch] = useReducer(reducer, initialFormqState);
 
+  // If user submit form, useEffect is waiting for this flag
   const [isSubmitting, setSubmitting] = useState(false);
+  // Awoid double onSubmit execution
+  const [submitCatch, setSubmitCatch] = useState(false);
 
   useEffect(() => {
 
@@ -86,23 +89,26 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
       return true;
     }
 
-    if (isSubmitting) {
+    if (isSubmitting && !submitCatch) { // TODO: awoid double submitting
       let isFormValid = checkFormqValidity();
-      onSubmit(formqState, isFormValid);
-      setSubmitting(false); // this should be async
+      setSubmitCatch(true);
 
-      // TODO: before reset need blur all inputs inside.
-      if (clearAfterSubmit && isFormValid) {
-        dispatch({ type: RESET });
-      }
+      onSubmit(formqState, isFormValid).then(() => {
+        setSubmitting(false); // this should be async
+        dispatch({type: ENABLE_FORM});
+        (clearAfterSubmit && isFormValid) && dispatch({ type: RESET });
+        setSubmitCatch(false);
+      });
 
     }
 
-  }, [formqState, isSubmitting, onSubmit, clearAfterSubmit]);
+
+  }, [formqState, isSubmitting, onSubmit, clearAfterSubmit, submitCatch]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     dispatch({type: PREVALIDATE});
+    dispatch({type: DISABLE_FORM});
     setSubmitting(true);
   }
 
@@ -115,7 +121,7 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
     <formqContext.Provider value={{formqState, dispatch}}>
       <div className={s.Formq}>
 
-        {   children( {handleSubmit, clearForm} )   }
+        {   children( {handleSubmit, clearForm, isSubmitting} )   }
 
       </div>
     </formqContext.Provider>

@@ -26,11 +26,24 @@ export const AuthPage = () => {
     })
   }
 
-  const onSubmit = async (formqState: IFormqState, isValid: boolean) => {
-    fState.current = formqState;
+  const onSubmit = (formqState: IFormqState, isValid: boolean) => {
+
     if (isValid) {
-      setModal(true);
+      // Generate random reject and show server error message
+      return new Promise((resolve, _reject) => {
+        setTimeout(() => {
+
+          fState.current = formqState;
+          isValid && setModal(true);
+          resolve('done');
+
+        }, 2000);
+      });
+    } else {
+      return new Promise((resolve) => resolve());
     }
+
+
   }
 
   return (
@@ -46,7 +59,7 @@ export const AuthPage = () => {
         clearAfterSubmit={true}
         onSubmit={onSubmit}>
         {
-          ({ handleSubmit, clearForm }: any) => ( // TODO: typing
+          ({ handleSubmit, clearForm , isSubmitting}: any) => ( // TODO: typing
 
             <form onSubmit={handleSubmit} >
 
@@ -63,7 +76,7 @@ export const AuthPage = () => {
               </div>
 
               <div className='mb-3'>
-                <Input disabled={true} placeholder='Disabled field' />
+                <Input disabled placeholder='Disabled field' />
               </div>
 
               <div className='mb-3'>
@@ -71,8 +84,8 @@ export const AuthPage = () => {
               </div>
 
 
-              <Button wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
-              <Button wide={true} type='submit' theme='dark'>Submit</Button>
+              <Button disabled={isSubmitting} wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
+              <Button disabled={isSubmitting} wide={true} type='submit' theme='dark'>Submit</Button>
 
             </form>
 

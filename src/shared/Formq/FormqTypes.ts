@@ -6,6 +6,8 @@ export const FOCUS         = 'FOCUS_FIELD';
 export const BLUR          = 'BLUR_FIELD';
 export const RESET         = 'RESET_FORM';
 export const PREVALIDATE   = 'PREVALIDATE';
+export const DISABLE_FORM  = 'DISABLE_FORM';
+export const ENABLE_FORM   = 'ENABLE_FORM';
 
 export interface IFormqAction {
   type: string;
@@ -24,6 +26,7 @@ export interface IFormqFieldState {
   dirty?: boolean;
   focused?: boolean;
   errors?: string[];
+  disabled?: boolean;
 }
 
 export interface IFormqState {
@@ -39,7 +42,7 @@ export interface IFormqContext {
 export interface IFormqProps {
   initialFormqState: IFormqState;
   validations: (name: string, value: string) => string[];
-  onSubmit: (formqState: any, isValid: boolean) => void;
+  onSubmit: (formqState: any, isValid: boolean) => any;
   clearAfterSubmit: boolean;
   children: (args: any) => React.ReactChild;
 }

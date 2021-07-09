@@ -1,6 +1,6 @@
 // TODO: dirty should become false if user changed value to its initial state.
 
-import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, RESET, PREVALIDATE} from './FormqTypes';
+import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, RESET, PREVALIDATE, DISABLE_FORM, ENABLE_FORM} from './FormqTypes';
 
 let lastValue = '';
 
@@ -15,7 +15,7 @@ export const formqReducer = (
   let value = action?.data?.value || '';
   let touched = action?.data?.touched || '';
 
-  if (!name && action.type !== RESET && action.type !== PREVALIDATE) {
+  if (!name && action.type !== RESET && action.type !== PREVALIDATE  && action.type !== DISABLE_FORM  && action.type !== ENABLE_FORM) {
     throw new Error('Please provide initial name for each field');
   }
 
@@ -23,6 +23,34 @@ export const formqReducer = (
 
     case RESET:
       return initialState;
+
+    // TODO: Correct implementation for DISABLE/ENABLE
+    case DISABLE_FORM:
+
+      let uState: IFormqState = {};
+
+      Object.keys(state).forEach((name, _i) => {
+        uState[name] = {
+          ...state[name],
+          disabled: true
+        }
+      });
+
+      return uState;
+
+    case ENABLE_FORM:
+
+      let eState: IFormqState = {};
+
+      Object.keys(state).forEach((name, _i) => {
+        eState[name] = {
+          ...state[name],
+          disabled: false
+        }
+      });
+
+      return eState;
+
 
     // Prevalidations triggering when user trying to submit a form
     case PREVALIDATE:
