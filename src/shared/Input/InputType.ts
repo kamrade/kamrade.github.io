@@ -27,6 +27,8 @@ const InputTypes = tuple(
 
 export type InputType = typeof InputTypes[number];
 
+export type InputSize = 'sm' | 'md' | 'lg';
+
 export interface IInputProps {
   name?: string;
   placeholder?: string;
@@ -42,6 +44,8 @@ export interface IInputProps {
   dirty?: boolean;
   focused?: boolean;
   valid?: boolean;
+
+  size?: InputSize;
 
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;

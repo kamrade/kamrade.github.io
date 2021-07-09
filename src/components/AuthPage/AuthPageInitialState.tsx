@@ -6,6 +6,7 @@ export const initialState = {
     type: 'text',
     id: 'username',
     value: '',
+    size: 'lg'
   },
 
   password: {
@@ -15,6 +16,7 @@ export const initialState = {
     type: 'password',
     id: 'password',
     value: '',
+    size: 'lg'
   },
 
   email: {
@@ -24,5 +26,6 @@ export const initialState = {
     type: 'text',
     id: 'email',
     value: '',
+    size: 'lg'
   },
 };

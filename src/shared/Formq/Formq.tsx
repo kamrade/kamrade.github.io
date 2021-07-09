@@ -42,7 +42,7 @@ import { RESET, PREVALIDATE } from 'shared/Formq/FormqTypes';
 
 const formqContext = createContext<IFormqContext | null>(null);
 
-export const Formq = ({children, initialFormqState, validations, onSubmit}: IFormqProps) => {
+export const Formq = ({children, initialFormqState, validations, onSubmit, clearAfterSubmit}: IFormqProps) => {
 
   // FORMQ STATE INIT
   useEffect(() => {
@@ -87,11 +87,18 @@ export const Formq = ({children, initialFormqState, validations, onSubmit}: IFor
     }
 
     if (isSubmitting) {
-      onSubmit(formqState, checkFormqValidity());
+      let isFormValid = checkFormqValidity();
+      onSubmit(formqState, isFormValid);
       setSubmitting(false); // this should be async
+
+      // TODO: before reset need blur all inputs inside.
+      if (clearAfterSubmit && isFormValid) {
+        dispatch({ type: RESET });
+      }
+
     }
 
-  }, [formqState, isSubmitting, onSubmit]);
+  }, [formqState, isSubmitting, onSubmit, clearAfterSubmit]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();

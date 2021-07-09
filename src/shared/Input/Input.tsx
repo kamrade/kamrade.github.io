@@ -18,7 +18,7 @@ import React, {useState, forwardRef} from 'react';
 import classNames from "classnames/bind";
 import s from './Input.module.scss';
 import {isNil} from 'lodash';
-import {IInputProps} from 'shared/Input/InputType';
+import {IInputProps, InputSize} from 'shared/Input/InputType';
 
 const sx = classNames.bind(s);
 
@@ -35,14 +35,20 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     dirty: propsDirty,
     focused: propsFocused,
     valid: propsValid,
+    size,
     ...other} = props;
 
   const [focused, setFocused] = useState<boolean>(false);
   const [touched, setTouched] = useState<boolean>(false);
   const [dirty, setDirty]     = useState<boolean>(false);
 
+  let inputSize: InputSize = size ? size : 'md';
+
   let inputClassNames = sx({
     InputBase:  true,
+    InputSM:    inputSize === 'sm',
+    InputMD:    inputSize === 'md',
+    InputLG:    inputSize === 'lg',
     Focused:    isNil(propsFocused) ? focused : propsFocused,
     Touched:    isNil(propsTouched) ? touched : propsTouched,
     Untouched:  isNil(propsTouched) ? !touched : !propsTouched,

@@ -43,6 +43,7 @@ export const AuthPage = () => {
       <Formq
         initialFormqState={initialState}
         validations={authPageValidations}
+        clearAfterSubmit={true}
         onSubmit={onSubmit}>
         {
           ({ handleSubmit, clearForm }: any) => ( // TODO: typing
@@ -63,6 +64,10 @@ export const AuthPage = () => {
 
               <div className='mb-3'>
                 <Input disabled={true} placeholder='Disabled field' />
+              </div>
+
+              <div className='mb-3'>
+                <Input size='sm' placeholder='Disabled field' />
               </div>
 
 
