@@ -1,8 +1,8 @@
 import React, {useState, useRef} from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
-import {Button, Formq, FormqInput, Modal, Input} from 'shared';
-import {IFormqState} from 'shared/Formq/FormqTypes';
+import {Button, Formq, FormqInput, Modal} from 'shared';
+import {IFormqState, IFormqReturnArgs} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
@@ -26,23 +26,20 @@ export const AuthPage = () => {
     })
   }
 
-  const onSubmit = (formqState: IFormqState, isValid: boolean) => {
+  const onSubmit = (formqState: IFormqState, isValid: boolean): Promise<string> => {
 
-    if (isValid) {
-      // Generate random reject and show server error message
-      return new Promise((resolve, _reject) => {
+    // Generate random reject and show server error message
+    return new Promise((resolve, _reject) => {
+      if (isValid) {
         setTimeout(() => {
-
           fState.current = formqState;
           isValid && setModal(true);
           resolve('done');
-
         }, 2000);
-      });
-    } else {
-      return new Promise((resolve) => resolve());
-    }
-
+      } else {
+        resolve('done');
+      }
+    });
 
   }
 
@@ -59,7 +56,7 @@ export const AuthPage = () => {
         clearAfterSubmit={true}
         onSubmit={onSubmit}>
         {
-          ({ handleSubmit, clearForm , isSubmitting}: any) => ( // TODO: typing
+          ({ handleSubmit, clearForm , isSubmitting}: IFormqReturnArgs) => ( // TODO: typing
 
             <form onSubmit={handleSubmit} >
 
@@ -75,15 +72,7 @@ export const AuthPage = () => {
                 <FormqInput name='password' />
               </div>
 
-              <div className='mb-3'>
-                <Input disabled placeholder='Disabled field' />
-              </div>
-
-              <div className='mb-3'>
-                <Input size='sm' placeholder='Disabled field' />
-              </div>
-
-
+              {/* Create FormqButton which be able to disable automatically, based on Formq context */}
               <Button disabled={isSubmitting} wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
               <Button disabled={isSubmitting} wide={true} type='submit' theme='dark'>Submit</Button>
 

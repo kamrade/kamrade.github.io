@@ -92,9 +92,10 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
     if (isSubmitting && !submitCatch) { // TODO: awoid double submitting
       let isFormValid = checkFormqValidity();
       setSubmitCatch(true);
+      isFormValid && dispatch({type: DISABLE_FORM});
 
       onSubmit(formqState, isFormValid).then(() => {
-        setSubmitting(false); // this should be async
+        setSubmitting(false);
         dispatch({type: ENABLE_FORM});
         (clearAfterSubmit && isFormValid) && dispatch({ type: RESET });
         setSubmitCatch(false);
@@ -108,7 +109,6 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     dispatch({type: PREVALIDATE});
-    dispatch({type: DISABLE_FORM});
     setSubmitting(true);
   }
 

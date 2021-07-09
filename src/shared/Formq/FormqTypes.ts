@@ -38,11 +38,17 @@ export interface IFormqContext {
   dispatch: Dispatch<IFormqAction>;
 }
 
+export interface IFormqReturnArgs {
+  handleSubmit: (e: React.SyntheticEvent) => void;
+  clearForm: (e: React.SyntheticEvent) => void;
+  isSubmitting: boolean;
+}
+
 // Formq props
 export interface IFormqProps {
   initialFormqState: IFormqState;
   validations: (name: string, value: string) => string[];
-  onSubmit: (formqState: any, isValid: boolean) => any;
+  onSubmit: (formqState: any, isValid: boolean) => Promise<string>;
   clearAfterSubmit: boolean;
-  children: (args: any) => React.ReactChild;
+  children: (args: IFormqReturnArgs) => React.ReactChild;
 }

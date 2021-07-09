@@ -19,43 +19,39 @@ export const formqReducer = (
     throw new Error('Please provide initial name for each field');
   }
 
+  let updState: IFormqState = {};
+
   switch (action.type) {
 
     case RESET:
       return initialState;
 
-    // TODO: Correct implementation for DISABLE/ENABLE
+    // TODO: refactor DISABLE/ENABLE
     case DISABLE_FORM:
 
-      let uState: IFormqState = {};
-
       Object.keys(state).forEach((name, _i) => {
-        uState[name] = {
+        updState[name] = {
           ...state[name],
           disabled: true
         }
       });
 
-      return uState;
+      return updState;
 
     case ENABLE_FORM:
 
-      let eState: IFormqState = {};
-
       Object.keys(state).forEach((name, _i) => {
-        eState[name] = {
+        updState[name] = {
           ...state[name],
           disabled: false
         }
       });
 
-      return eState;
+      return updState;
 
 
     // Prevalidations triggering when user trying to submit a form
     case PREVALIDATE:
-
-      let updState: IFormqState = {};
 
       Object.keys(state).forEach((name, _i) => {
         updState[name] = {
@@ -70,8 +66,7 @@ export const formqReducer = (
 
 
     case UPDATE:
-
-      const newState = {
+      return {
         ...state,
         [name]: {
           ...state[name],
@@ -80,7 +75,6 @@ export const formqReducer = (
           errors: validations(name, value)
         }
       }
-      return newState;
 
     case FOCUS:
 
