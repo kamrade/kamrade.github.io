@@ -1,11 +1,13 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
-import {Button, Formq, FormqInput, Modal} from 'shared';
+import {Button, Formq, FormqInput, Modal, FormRow} from 'shared';
 import {IFormqState, IFormqReturnArgs} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
+
+import s from './AuthPage.module.scss';
 
 // let fState: IFormqState = initialState;
 
@@ -17,6 +19,7 @@ export const AuthPage = () => {
   const fState = useRef<IFormqState>(initialState);
 
   const [modal, setModal] = useState(false);
+  const mountedRef = useRef<boolean>(false);
 
   let {from}: any = location.state || { from: {pathname: '/'} };
 
@@ -26,6 +29,14 @@ export const AuthPage = () => {
     })
   }
 
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      console.log('::: unmount');
+      mountedRef.current = false;
+    }
+  }, []);
+
   const onSubmit = (formqState: IFormqState, isValid: boolean): Promise<string> => {
 
     // Generate random reject and show server error message
@@ -34,66 +45,86 @@ export const AuthPage = () => {
         setTimeout(() => {
           fState.current = formqState;
           isValid && setModal(true);
-          resolve('done');
+          console.log('is mounted:', mountedRef.current);
+          resolve('token pair');
         }, 2000);
       } else {
-        resolve('done');
+        resolve('invalid');
       }
     });
 
   }
 
   return (
-    <div className={`container`}>
+    <div className={s.AuthPage}>
+      <div className={s.AuthPageContent}>
+        <div className={`container`}>
 
-      <p>You must log in to view the page at {from.pathname}</p>
-      <Button onClick={login}>Log in</Button>
-      <NavLink exact to='/'>Back to App</NavLink>
 
-      <Formq
-        initialFormqState={initialState}
-        validations={authPageValidations}
-        clearAfterSubmit={true}
-        onSubmit={onSubmit}>
-        {
-          ({ handleSubmit, clearForm , isSubmitting}: IFormqReturnArgs) => ( // TODO: typing
+              <FormRow>
+                <NavLink exact to='/'>Back to App</NavLink>
+              </FormRow>
 
-            <form onSubmit={handleSubmit} >
+              {/*<p>You must log in to view the page at {from.pathname}</p>*/}
+              <h1>Sign Up</h1>
+              <p className='mb-5'>Enter your credentials</p>
+              {/* <Button onClick={login}>Log in</Button> */}
 
-              <div className='mb-3'>
-                <FormqInput name='username' />
-              </div>
 
-              <div className='mb-3'>
-                <FormqInput name='email' />
-              </div>
+              <Formq
+                initialFormqState={initialState}
+                validations={authPageValidations}
+                clearAfterSubmit={true}
+                onSubmit={onSubmit}>
+                {
+                  ({ handleSubmit, clearForm , isSubmitting}: IFormqReturnArgs) => ( // TODO: typing
 
-              <div className='mb-3'>
-                <FormqInput name='password' />
-              </div>
+                    <form onSubmit={handleSubmit} >
 
-              {/* Create FormqButton which be able to disable automatically, based on Formq context */}
-              <Button disabled={isSubmitting} wide={true} type='button' theme='secondary' onClick={clearForm}>Clear</Button>{' '}
-              <Button disabled={isSubmitting} wide={true} type='submit' theme='dark'>Submit</Button>
+                      <FormRow>
+                        <FormqInput name='username' />
+                      </FormRow>
 
-            </form>
+                      <FormRow>
+                        <FormqInput name='email' />
+                      </FormRow>
 
-          )
-        }
+                      <FormRow>
+                        <FormqInput name='password' />
+                      </FormRow>
 
-      </Formq>
+                      {/* Create FormqButton which be able to disable automatically, based on Formq context */}
 
-      <Modal showModal={modal} setModal={setModal}>
-        <div>
-          {Object.keys(fState.current).map((el, i) => (
-            <div key={i} className='mb-1'>
-              <span className='text-muted'>{el}:</span>
-              {fState.current[el].value}
-            </div>
-          ))}
+                      { /*
+                      <FormRow>
+                        <Button size='lg' disabled={isSubmitting} block={true} type='reset' theme='secondary' onClick={clearForm}>Clear</Button>
+                      </FormRow>
+                      */ }
+
+                      <FormRow>
+                        <Button size='lg' disabled={isSubmitting} block={true} type='submit' theme='primary'>Submit</Button>
+                      </FormRow>
+
+                    </form>
+
+                  )
+                }
+
+              </Formq>
+
+              <Modal showModal={modal} setModal={setModal}>
+                <div>
+                  {Object.keys(fState.current).map((el, i) => (
+                    <div key={i} className='mb-1'>
+                      <span className='text-muted'>{el}:</span>
+                      {fState.current[el].value}
+                    </div>
+                  ))}
+                </div>
+              </Modal>
+
         </div>
-      </Modal>
-
+      </div>
     </div>
   );
 }

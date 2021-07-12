@@ -10,13 +10,31 @@
   outline: none;
   border: none;
   background-color: transparent;
-  height: 2.5rem;
+  // height: 2.5rem;
   border-radius: $border-radius;
   box-shadow: none;
   transition: background .3s $transitionFunc;
 
+  &.ButtonSM {
+    padding: .25rem .25rem;
+  }
+
+  &.ButtonMD {
+
+  }
+
+  &.ButtonLG {
+    padding: 1rem .5rem;
+  }
+
   &.Wide {
     padding: 0.625rem 1.5rem;
+    &.ButtonSM {
+      padding: .375rem 1.5rem;
+    }
+    &.ButtonLG {
+      padding: 1.125rem 1.5rem;
+    }
   }
 
   &.Block {

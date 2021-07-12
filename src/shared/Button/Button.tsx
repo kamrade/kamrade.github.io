@@ -21,6 +21,8 @@ import { tuple } from 'shared/utils/type';
 const ButtonThemes = tuple('primary', 'secondary', 'dark');
 export type ButtonTheme = typeof ButtonThemes[number];
 
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
 const sx = classNames.bind(s);
 
 export interface IBaseButtonProps {
@@ -31,11 +33,12 @@ export interface IBaseButtonProps {
   disabled?: boolean;
   wide?: boolean;
   block?: boolean;
+  size?: ButtonSize;
 }
 
 const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (props: IBaseButtonProps, ref: ForwardedRef<any> ) => {
 
-  const {theme, children, type, wide, block, ...rest} = props;
+  const {theme, children, type, wide, block, size, ...rest} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -43,7 +46,9 @@ const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (pro
     Secondary: theme === 'secondary',
     Dark: theme === 'dark',
     Wide: wide,
-    Block: block
+    Block: block,
+    ButtonSM: size === 'sm',
+    ButtonLG: size === 'lg'
   });
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

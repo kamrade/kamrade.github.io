@@ -1,0 +1,24 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.AuthPage {
+  text-align: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  .AuthPageContent {
+    margin: auto;
+    min-width: 300px;
+
+    @media only screen and (min-width: 440px) {
+      min-width: 400px;
+    }
+
+    @media only screen and (min-width: 560px) {
+      min-width: 520px;
+    }
+
+  }
+}

@@ -22,19 +22,23 @@ export const FormqInput = ({name}: IFormqInputProps) => {
     throw new Error('No dispatcher provided.');
   }
 
+  const handleChange = (e: React.SyntheticEvent | any) => {
+    dispatch && dispatch({
+      type: UPDATE,
+      data: {
+        name: name,
+        value: e.target.value
+      }
+    });
+  }
+
   return (
     <>
       <Input
         {...inputState}
         valid={!(inputState.errors && inputState.errors.length > 0)}
         onChange={(event) => {
-            dispatch && dispatch({
-              type: UPDATE,
-              data: {
-                name: name,
-                value: event.target.value,
-              }
-            });
+          handleChange(event);
         }}
         onFocus={(event) => {
           dispatch && dispatch({
