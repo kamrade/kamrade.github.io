@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
-import {Button, Formq, FormqInput, Modal, FormRow} from 'shared';
+import {Button, Formq, FormqInput, Modal, FormRow, Icon} from 'shared';
 import {IFormqState, IFormqReturnArgs} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
@@ -62,7 +62,10 @@ export const AuthPage = () => {
 
 
               <FormRow>
-                <NavLink exact to='/'>Back to App</NavLink>
+                <>
+                  <Icon size={20} icon='chevronLeft'></Icon>
+                  <NavLink exact to='/'>Back to App</NavLink>
+                </>
               </FormRow>
 
               {/*<p>You must log in to view the page at {from.pathname}</p>*/}
