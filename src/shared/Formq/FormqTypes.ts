@@ -8,6 +8,7 @@ export const RESET         = 'RESET_FORM';
 export const PREVALIDATE   = 'PREVALIDATE';
 export const DISABLE_FORM  = 'DISABLE_FORM';
 export const ENABLE_FORM   = 'ENABLE_FORM';
+export const VALIDATE      = 'VALIDATE';
 
 export interface IFormqAction {
   type: string;

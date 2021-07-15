@@ -1,6 +1,6 @@
 // TODO: dirty should become false if user changed value to its initial state.
 
-import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, RESET, PREVALIDATE, DISABLE_FORM, ENABLE_FORM} from './FormqTypes';
+import {IFormqState, IFormqAction, UPDATE, FOCUS, BLUR, RESET, PREVALIDATE, DISABLE_FORM, ENABLE_FORM, VALIDATE} from './FormqTypes';
 
 let lastValue = '';
 
@@ -11,9 +11,10 @@ export const formqReducer = (
   initialState: IFormqState
 ) => {
 
-  let name = action?.data?.name || '';
-  let value = action?.data?.value || '';
-  let touched = action?.data?.touched || '';
+  let name = action.data?.name;
+  let value = action.data?.value;
+  let touched = action.data?.touched;
+  let validate = action.data?.validate;
 
   if (!name && action.type !== RESET && action.type !== PREVALIDATE  && action.type !== DISABLE_FORM  && action.type !== ENABLE_FORM) {
     throw new Error('Please provide initial name for each field');
@@ -64,15 +65,34 @@ export const formqReducer = (
 
       return updState;
 
-
-    case UPDATE:
+    case VALIDATE:
       return {
         ...state,
         [name]: {
           ...state[name],
-          value: value,
-          dirty: true,
           errors: validations(name, value)
+        }
+      }
+
+    case UPDATE:
+      if (validate) {
+        return {
+          ...state,
+          [name]: {
+            ...state[name],
+            value: value,
+            dirty: true,
+            errors: validations(name, value)
+          }
+        }
+      } else {
+        return {
+          ...state,
+          [name]: {
+            ...state[name],
+            value: value,
+            dirty: true,
+          }
         }
       }
 
@@ -98,7 +118,8 @@ export const formqReducer = (
           value: value,
           // if user didn't change anything just focus and blur, do not set touched to true
           touched: touched ? touched : !(lastValue === value),
-          focused: false
+          focused: false,
+          errors: validations(name, value)
         }
       }
 

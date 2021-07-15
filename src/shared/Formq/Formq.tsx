@@ -103,6 +103,8 @@ export const Formq = ({children, initialFormqState, validations, onSubmit, clear
 
     }
 
+    // clear at the end. need?
+
 
   }, [formqState, isSubmitting, onSubmit, clearAfterSubmit, submitCatch]);
 
