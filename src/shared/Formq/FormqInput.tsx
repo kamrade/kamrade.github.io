@@ -24,19 +24,18 @@ export const FormqInput = ({name}: IFormqInputProps) => {
     throw new Error('No dispatcher provided.');
   }
 
-  const updateQuery = () => {
+  const updateQuery = debounce(() => {
     // to avoid calling validate function every word changed.
     dispatch && dispatch({
       type: VALIDATE,
-      data: { name, inputValue }
+      data: { name, value: inputValue }
     });
-  }
+  }, 500)
 
-  const delayedQuery = useCallback( debounce(updateQuery, 500), [inputValue] );
+  const delayedQuery = useCallback( updateQuery, [inputValue, updateQuery] );
 
   useEffect(() => {
     delayedQuery();
-
    // Cancel the debounce on useEffect cleanup.
    return delayedQuery.cancel;
 }, [inputValue, delayedQuery]);

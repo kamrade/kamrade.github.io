@@ -11,10 +11,10 @@ export const formqReducer = (
   initialState: IFormqState
 ) => {
 
-  let name = action.data?.name;
-  let value = action.data?.value;
-  let touched = action.data?.touched;
-  let validate = action.data?.validate;
+  let name = action?.data?.name;
+  let value = action?.data?.value;
+  let touched = action?.data?.touched;
+  let validate = action?.data?.validate;
 
   if (!name && action.type !== RESET && action.type !== PREVALIDATE  && action.type !== DISABLE_FORM  && action.type !== ENABLE_FORM) {
     throw new Error('Please provide initial name for each field');

@@ -32,7 +32,6 @@ export const AuthPage = () => {
   useEffect(() => {
     mountedRef.current = true;
     return () => {
-      console.log('::: unmount');
       mountedRef.current = false;
     }
   }, []);
