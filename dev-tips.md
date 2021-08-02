@@ -1,3 +1,11 @@
+## Image sizes
+- Thumbnails: 1440x1440 -> 20x20 -> Base64
+- Images: 1920-width -> compress
+
+## Image name format
+<Project name (3 letters)>_<slide number | 'thumbnail'>
+Example: EWS_thumbnail, EWS_slide_01
+
 ## Backlog
 - [ ] Avoid to use :global in the Aside component.
 - [X] useWindowResize hook
