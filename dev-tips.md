@@ -82,3 +82,7 @@ Example: EWS_thumbnail, EWS_slide_01
 
 - Difference between useMemo and useCallback
   https://medium.com/@jan.hesters/usecallback-vs-usememo-c23ad1dc60
+
+
+### Setup gh-pahes
+https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
