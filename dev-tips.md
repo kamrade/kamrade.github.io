@@ -86,3 +86,4 @@ Example: EWS_thumbnail, EWS_slide_01
 
 ### Setup gh-pahes
 https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
+Don't forget to change in Setting source branch to gh-pages.
