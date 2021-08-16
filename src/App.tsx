@@ -3,7 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 
 import {AuthPage} from 'components/AuthPage/AuthPage';
 import {MainPage} from 'components/MainPage/MainPage';
-import {Main} from 'components/Main/Main';
+import {Main} from 'components/ShowcasePage/ShowcasePage';
 
 import s from './App.module.scss';
 import NoMatch from "projects/NoMatch/NoMatch";

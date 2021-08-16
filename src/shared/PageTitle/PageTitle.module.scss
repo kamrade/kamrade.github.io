@@ -1,0 +1,17 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.PageTitle {
+  margin-bottom: 5rem;
+  font-size: 32px;
+  line-height: 35px;
+  font-weight: 600;
+  color: $gray-800;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.5px;
+  }
+}

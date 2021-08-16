@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
-import s from './Main.module.scss';
+import s from './ShowcasePage.module.scss';
 
 import {Button, Icon} from "shared";
 import {Aside} from "components/Aside/Aside";

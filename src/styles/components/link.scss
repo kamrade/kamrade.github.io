@@ -1,6 +1,6 @@
 a {
   color: $gray-600;
-  transition: color .3s $transitionFunc;
+  transition: color 0.3s $transitionFunc;
 
   &:hover {
     color: $gray-700;
@@ -8,11 +8,10 @@ a {
   }
 
   &.active {
-    color: $primary;
-    font-weight: 600;
-    
+    color: $milq-color;
+
     &:hover {
-      color: $primary;
+      color: $milq-color;
       text-decoration: none;
     }
   }
