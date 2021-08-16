@@ -1,0 +1,17 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.line-chart--axis {
+  .domain {
+    display: none;
+  }
+  .tick {
+    line {
+      color: $gray-100;
+    }
+    text {
+      color: $gray-600;
+      font-family: $font-family-sans-serif;
+    }
+  }
+}

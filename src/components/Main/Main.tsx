@@ -10,7 +10,7 @@ import RxTutorial from "projects/RxTutorial/RxTutorial";
 import Exchange from "projects/Exchange/Exchange";
 import Formaline from "projects/Formaline/Formaline";
 import NoMatch from "projects/NoMatch/NoMatch";
-import TypeTutorials from "projects/TypeTutorials/TypeTutorials";
+import {LineChartPage} from "projects/LineChart/LineChartPage";
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
 import classNames from "classnames/bind";
@@ -80,12 +80,12 @@ export const Main = () => {
         ContentExpanded: !showAside
       })}>
         <Switch>
-          <Route exact path={path}><Redirect to='/apps/formaline' /></Route>
+          <Route exact path={path}><Redirect to='/apps/linechart' /></Route>
           <Route exact path={`${path}/wheelson`}><Wheelson /></Route>
 
           <PrivateRoute exact path={`${path}/rx-tutorial`}><RxTutorial /></PrivateRoute>
 
-          <Route exact path={`${path}/typing`}><TypeTutorials /></Route>
+          <Route exact path={`${path}/linechart`}><LineChartPage /></Route>
           <Route exact path={`${path}/exchange`}><Exchange /></Route>
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
           <Route path={`${path}/**`}><NoMatch /></Route>

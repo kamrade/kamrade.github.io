@@ -1,0 +1,14 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.dot {
+  r: 7;
+  fill: $gray-100;
+  stroke: $primary;
+  stroke-width: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    r: 10;
+  }
+}

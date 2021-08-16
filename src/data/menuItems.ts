@@ -40,8 +40,8 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   id: 'applications',
   togglerTitle: 'Applications',
   nav: [{
-    title: 'Typing tutorial',
-    link: '/apps/typing'
+    title: 'Line chart',
+    link: '/apps/linechart'
   }, {
     title: 'Wheelson',
     link: '/apps/wheelson'

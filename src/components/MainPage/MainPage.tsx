@@ -23,7 +23,7 @@ export const MainPage = () => {
             <div className={s.MenuItem}>Home</div>
             <div className={s.MenuItem}>Contacts</div>
             <div className={s.MenuItem}>About</div>
-            <div className={s.MenuItem}><NavLink exact to='/apps/typing'>Showcase</NavLink></div>
+            <div className={s.MenuItem}><NavLink exact to='/apps/'>Showcase</NavLink></div>
           </div>
         </header>
 

@@ -1,4 +1,6 @@
-$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $zIndexAside: 101;
 $zIndexAsideToggler: $zIndexAside + 1;
 
@@ -8,7 +10,7 @@ $hover-factor: 5%;
 $active-factor: 10%;
 
 $transitionFunc: cubic-bezier(0.15, 0.5, 0.5, 1);
-$buttonFocused: 0 0 0 .2rem rgba(0,0,0,0.1);
+$buttonFocused: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
 $btn-disabled-opacity: 0.5;
 
 $grid-breakpoints: (
@@ -16,7 +18,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 );
 
 $grid-columns: 24;
@@ -24,23 +26,21 @@ $grid-gutter-width: 8px;
 $grid-row-columns: 6;
 
 $border-radius: 0.5rem;
-$box-shadow: 0 0 40px rgba(0,0,0,0.1);
-$dropdownBoxShadow:
-  rgba(21, 23, 26, 0.03) 0 0.1rem 0.5rem 0,
-  rgba(21, 23, 26, 0.07) 0 0.4rem 1rem 0,
-  rgba(21, 23, 26, 0.04) 0 1px 0 0;
+$box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+$dropdownBoxShadow: rgba(21, 23, 26, 0.03) 0 0.1rem 0.5rem 0,
+  rgba(21, 23, 26, 0.07) 0 0.4rem 1rem 0, rgba(21, 23, 26, 0.04) 0 1px 0 0;
 
-$white:    #fff !default;
-$gray-100: #F5F8FA !default;
-$gray-200: #EAEEF2 !default;
-$gray-300: #D4DBE1 !default;
-$gray-400: #AFBCC7 !default;
-$gray-500: #94A2AD !default;
-$gray-600: #6C7984 !default;
-$gray-700: #58636B !default;
-$gray-800: #3F474D !default;
-$gray-900: #1A1C1D !default;
-$black:    #000 !default;
+$white: #fff !default;
+$gray-100: #f5f8fa !default;
+$gray-200: #eaeef2 !default;
+$gray-300: #d4dbe1 !default;
+$gray-400: #afbcc7 !default;
+$gray-500: #94a2ad !default;
+$gray-600: #6c7984 !default;
+$gray-700: #58636b !default;
+$gray-800: #3f474d !default;
+$gray-900: #1a1c1d !default;
+$black: #000 !default;
 
-$primary: #2995F8;
-$milq-color: #04BA8E;
+$primary: #2995f8;
+$milq-color: #04ba8e;

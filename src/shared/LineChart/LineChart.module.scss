@@ -1,0 +1,17 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.lineChartWrapper {
+  background-color: $gray-100;
+  border-radius: 22px;
+
+  svg.lineChartSvg {
+    overflow: visible !important;
+
+    .line {
+      fill: transparent;
+      stroke: $primary;
+      stroke-width: 3px;
+    }
+  }
+}

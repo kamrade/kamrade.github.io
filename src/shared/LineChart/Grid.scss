@@ -1,0 +1,15 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.line-chart--grid {
+  .domain {
+    display: none;
+  }
+  .tick {
+    color: $gray-200;
+
+    &:first-of-type {
+      color: $gray-300;
+    }
+  }
+}

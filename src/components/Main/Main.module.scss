@@ -6,8 +6,8 @@
 }
 
 .Content {
-  padding-left: $asideWidth;
-  transition: padding .2s $transitionFunc;
+  padding-left: $asideWidth + 1rem;
+  transition: padding 0.2s $transitionFunc;
 
   @include media-breakpoint-down(sm) {
     padding-left: 0;
