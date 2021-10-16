@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ProgressiveImage } from 'shared/ProgressiveImage/ProgressiveImage';
 import {PageTitle} from 'shared/PageTitle/PageTitle';
+import {ScrambledText} from 'shared/ScrambledText/ScrambledText';
 
 import {thumbnail as extremeWavesThumb} from 'data/images/extreme-waves';
 import {thumbnail as turnoversFlowThumb} from 'data/images/turnovers-flow';
@@ -21,6 +22,9 @@ export const MainPageContent = () => {
             Create <span className={s.Milq}>products</span> <br />
             for the perfect experience
           </PageTitle>
+          <div style={{ padding: '16px' }}>
+            <ScrambledText value={'Helo there, mate'} />
+          </div>
           <p className={s.Desc}>
             I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World
           </p>

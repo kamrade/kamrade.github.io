@@ -8,10 +8,10 @@ a {
   }
 
   &.active {
-    color: $milq-color;
+    color: $link-color;
 
     &:hover {
-      color: $milq-color;
+      color: darken($link-color, $hover-factor);
       text-decoration: none;
     }
   }

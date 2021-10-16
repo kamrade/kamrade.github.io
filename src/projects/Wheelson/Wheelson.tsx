@@ -1,20 +1,26 @@
-import React, {useState, ChangeEvent} from 'react';
-import { Button } from 'shared/Button/Button';
-import { Input } from 'shared/Input/Input';
-import { Card } from 'shared/Card/Card';
-
+import React, {useState, useEffect} from 'react';
+const axios = require('axios').default;
 
 export default function Wheelson() {
 
-  const [value, setValue] = useState('');
+  const [rowData, setRowData] = useState<any>([]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  interface getDataParams {
+    sortField: 'string'
   }
 
-  const handleSubmit = () => {
-    console.log(value);
+  const getData = (params?: getDataParams) => {
+    let requestUrl = 'http://localhost:4001/api/wheelson?';
+    if (params) {
+      requestUrl += params.sortField ? `sort=${params.sortField}` : '';
+    }
+    return axios.get(requestUrl)
   }
+
+  useEffect(() => {
+    getData()
+      .then((result: any) => setRowData(result.data));
+  }, [])
 
   return (
     <div className="page">
@@ -22,30 +28,15 @@ export default function Wheelson() {
       <header className="pt-5 pb-3" />
 
       <div className="container">
-        <h1 className='mb-3 page-title'>Wheelson Page</h1>
+        <h1 className='mb-3 page-title'>Wheelson Datagrid</h1>
 
-        <div className='d-flex mb-3'>
-          <span style={{width: '100%'}} className='mr-1'>
-            <Input placeholder='Enter value' value={value} onChange={handleChange} />
-          </span>
-          <Button theme='dark' onClick={handleSubmit}>Submit</Button>
-        </div>
-
-        <div className='mb-3'>
-          <Card>
-            <>The value = {value}</>
-          </Card>
-        </div>
-
-        <div className='mb-3'>
-          <Card>
-            {{
-              header: 'Another Card',
-              content: (<p>Test message</p>),
-              actions: (<><Button theme='dark'>Test</Button></>)
-            }}
-          </Card>
-        </div>
+        {rowData && rowData.map((item: any, i: number) => {
+          return (
+              <div key={i}>
+                {item && item.company}
+              </div>
+          )
+        })}
 
       </div>
     </div>
