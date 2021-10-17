@@ -15,7 +15,7 @@ export function Axis({h, axis, axisType}: AxisProps) {
 
   useEffect(() => {
     d3.select(elRef.current).call(axis);
-  }, []);
+  }, [axis]);
 
   return (
     <g

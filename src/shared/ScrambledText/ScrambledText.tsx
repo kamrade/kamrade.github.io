@@ -16,7 +16,8 @@ export const ScrambledText: React.FC<ScrambledTextProps> = ({value}) => {
 
   const elRef = useRef<HTMLDivElement>(null);
 
-  let chars = '!<>-_\\/[]{}—=+*^?#________';
+  // let chars = '!<>-_\\/[]{}—=+*^?#________';
+  let chars = '!<>-_\\/[          #________';
   let resolved: any;
   let queue: any[] = [];
   let frameRequest: number;
@@ -34,6 +35,7 @@ export const ScrambledText: React.FC<ScrambledTextProps> = ({value}) => {
 
   useEffect(() => {
     next();
+    // eslint-disable-next-line
   }, []);
 
   // рисует одну фразу в цикле, увеличивает counter, когда counter достигает максимума — сбрасывает counter на 0

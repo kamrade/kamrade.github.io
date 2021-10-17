@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import s from './MainPage.module.scss';
 
 import {MainPageContent} from './MainPageContent';

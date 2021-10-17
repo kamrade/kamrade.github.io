@@ -9,18 +9,20 @@ export default function Wheelson() {
     sortField: 'string'
   }
 
-  const getData = (params?: getDataParams) => {
-    let requestUrl = 'http://localhost:4001/api/wheelson?';
-    if (params) {
-      requestUrl += params.sortField ? `sort=${params.sortField}` : '';
-    }
-    return axios.get(requestUrl)
-  }
+
 
   useEffect(() => {
+    const getData = (params?: getDataParams) => {
+      let requestUrl = 'http://localhost:4001/api/wheelson?';
+      if (params) {
+        requestUrl += params.sortField ? `sort=${params.sortField}` : '';
+      }
+      return axios.get(requestUrl)
+    }
+
     getData()
       .then((result: any) => setRowData(result.data));
-  }, [])
+  }, []);
 
   return (
     <div className="page">

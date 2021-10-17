@@ -1,5 +1,4 @@
-import React, {useRef, useEffect} from 'react';
-import * as d3 from 'd3';
+import React from 'react';
 
 import './Dots.scss';
 
@@ -18,11 +17,6 @@ export function Dots({data, x, y}: DotsProps) {
       cx={x(d.date)}
       cy={y(d.count)}
       key={i}
-      
-      // r={7}
-      // fill="#7dc7f4"
-      // stroke="#3f5175"
-      // strokeWidth="5px"
       
     />
   ))

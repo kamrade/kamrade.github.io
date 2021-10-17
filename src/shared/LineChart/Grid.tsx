@@ -15,7 +15,7 @@ export function Grid({h, w, grid}: GridProps) {
 
   useEffect(() => {
     d3.select(elRef.current).call(grid);
-  }, []);
+  }, [grid]);
 
   return (
     <g
