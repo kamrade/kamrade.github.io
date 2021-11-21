@@ -15,7 +15,7 @@ export const MainPage = () => {
   return (
     <>
       <div className={`container`}>
-        
+
         <header className={s.Header}>
           <div className={s.Title}>Dennis Mikhailov</div>
           <div className={s.Menu}>
@@ -23,6 +23,7 @@ export const MainPage = () => {
             <div className={s.MenuItem}><NavLink exact to='/main/contacts'>Contacts</NavLink></div>
             <div className={s.MenuItem}><NavLink exact to='/main/about'>About</NavLink></div>
             <div className={s.MenuItem}><NavLink exact to='/apps'>Showcase</NavLink></div>
+            <div className={s.MenuItem}><NavLink exact to='/triads'>Triads</NavLink></div>
           </div>
         </header>
       </div>
@@ -32,8 +33,8 @@ export const MainPage = () => {
         <Route path='/main/about'><AboutPage /></Route>
         <Route path='/main/contacts'><ContactsPage /></Route>
       </Switch>
-      
-      
+
+
     </>
   );
 }

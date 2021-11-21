@@ -14,7 +14,7 @@ import {LineChartPage} from "projects/LineChart/LineChartPage";
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
 import classNames from "classnames/bind";
-import { PrivateRoute } from "components/ProvideAuth/PrivateRoute";
+import {PrivateRoute} from "components/ProvideAuth/PrivateRoute";
 
 const sx = classNames.bind(s);
 

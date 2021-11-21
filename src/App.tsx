@@ -4,6 +4,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import {AuthPage} from 'components/AuthPage/AuthPage';
 import {MainPage} from 'components/MainPage/MainPage';
 import {Main} from 'components/ShowcasePage/ShowcasePage';
+import TriadsPage from 'components/Triads/TriadsPage';
 
 import s from './App.module.scss';
 import NoMatch from "projects/NoMatch/NoMatch";
@@ -18,6 +19,7 @@ function App() {
         <Route path='/main'><MainPage /></Route>
         <Route path='/auth'><AuthPage /></Route>
         <Route path={'/apps'}><Main /></Route>
+        <Route path={'/triads'}><TriadsPage /></Route>
         <Route path="**"><NoMatch /></Route>
       </Switch>
 
