@@ -23,6 +23,8 @@ export const AuthPage = () => {
 
   let {from}: any = location.state || { from: {pathname: '/'} };
 
+  // TODO: fix it
+  // eslint-disable-next-line
   let login = () => {
     auth?.signin(() => {
       history.replace(from);

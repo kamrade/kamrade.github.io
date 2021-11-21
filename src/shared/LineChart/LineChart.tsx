@@ -13,7 +13,8 @@ export interface LineChartProps {
 }
 
 export function LineChart({data, width, height, margin, chartId}: LineChartProps) {
-
+  // TODO: fix
+  // eslint-disable-next-line
   const [size, setSize] = useState({
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom,
