@@ -1,0 +1,8 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.TriadsBoard {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+}

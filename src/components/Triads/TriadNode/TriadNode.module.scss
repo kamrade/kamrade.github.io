@@ -1,0 +1,69 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+$triadPrimary: #FED914;
+$triadSecondary: #0BDB45;
+$triadTetriary: #2B99FF;
+$nodeBg: #37362D;
+
+.TriadNode {
+  width: 120px;
+  height: 120px;
+  background-color: $nodeBg;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: $border-radius;
+  position: relative;
+  transition: background .3s ease-in-out;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background: darken($nodeBg, 5%);
+  }
+
+  .TriadNodeShape {
+    transition: transform .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .SvgShape {
+    margin: auto;
+    fill: rgba(0,0,0,0.2);
+
+    &.Primary {
+      fill: $triadPrimary;
+    }
+
+    &.Secondary {
+      fill: $triadSecondary;
+    }
+
+    &.Tetriary {
+      fill: $triadTetriary;
+    }
+
+    &.Lg {
+      transform: scale(1.8);
+    }
+
+    &.Md {
+      transform: scale(1.4);
+    }
+
+    &.Sm {
+
+    }
+
+  }
+
+}

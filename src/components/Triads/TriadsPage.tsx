@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Icon } from 'shared';
+import TriadsBoard from './TriadsBoard/TriadsBoard';
 import s from './TriadsPage.module.scss';
 
 const TriadsPage: React.FC = () => {
@@ -19,7 +20,7 @@ const TriadsPage: React.FC = () => {
       </div>
 
       <div className={s.TriadsPageContent}>
-        Triads Page
+        <TriadsBoard></TriadsBoard>
       </div>
 
 
