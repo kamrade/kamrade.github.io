@@ -1,20 +1,20 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
 
-$triadPrimary: #FED914;
-$triadSecondary: #0BDB45;
-$triadTetriary: #2B99FF;
-$nodeBg: #37362D;
+$triadPrimary: #fed914;
+$triadSecondary: #0bdb45;
+$triadTetriary: #2b99ff;
+$nodeBg: #37362d;
 
 .TriadNode {
-  width: 120px;
-  height: 120px;
+  width: 70px;
+  height: 70px;
   background-color: $nodeBg;
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: $border-radius;
   position: relative;
-  transition: background .3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 
   &:last-of-type {
     margin-right: 0;
@@ -25,45 +25,81 @@ $nodeBg: #37362D;
   }
 
   .TriadNodeShape {
-    transition: transform .3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     width: 100%;
     height: 100%;
     cursor: pointer;
     display: flex;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
   .SvgShape {
     margin: auto;
-    fill: rgba(0,0,0,0.2);
+    fill: rgba(0, 0, 0, 0.2);
+
+    > svg {
+      overflow: visible;
+      fill: "inherit";
+    }
 
     &.Primary {
       fill: $triadPrimary;
+
+      &.Solid {
+        fill: $triadPrimary;
+      }
+
+      &.Outline {
+        > svg > path {
+          fill: transparent;
+          stroke: $triadPrimary;
+          stroke-width: 4px;
+          stroke-linecap: round;
+          transform-origin: 50% 50%;
+          transform: scale(0.95);
+        }
+      }
     }
 
     &.Secondary {
       fill: $triadSecondary;
+
+      &.Solid {
+        fill: $triadSecondary;
+      }
+
+      &.Outline {
+        > svg > path {
+          fill: transparent;
+          stroke: $triadSecondary;
+          stroke-width: 4px;
+          stroke-linecap: round;
+          transform-origin: 50% 50%;
+          transform: scale(0.95);
+        }
+      }
     }
 
     &.Tetriary {
       fill: $triadTetriary;
+
+      &.Solid {
+        fill: $triadTetriary;
+      }
+
+      &.Outline {
+        > svg > path {
+          fill: transparent;
+          stroke: $triadTetriary;
+          stroke-width: 4px;
+          stroke-linecap: round;
+          transform-origin: 50% 50%;
+          transform: scale(0.95);
+        }
+      }
     }
-
-    &.Lg {
-      transform: scale(1.8);
-    }
-
-    &.Md {
-      transform: scale(1.4);
-    }
-
-    &.Sm {
-
-    }
-
   }
-
 }
