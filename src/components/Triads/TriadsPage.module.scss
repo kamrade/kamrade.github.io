@@ -1,7 +1,6 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
-
-$triadPageBg: #23221C;
+@import "./triads.variables.scss";
 
 .TriadsPage {
   height: 100vh;

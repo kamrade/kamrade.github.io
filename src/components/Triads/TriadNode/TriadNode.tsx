@@ -9,20 +9,27 @@ export type TriadNodeColor = 'primary' | 'secondary' | 'tertiary';
 export type TriadNodeFill = 'solid' | 'outline' | 'pattern';
 
 export interface ITriadNodeProps {
-  size?: TriadNodeSize;
-  shape?: TriadNodeShape;
-  color?: TriadNodeColor;
-  fill?: TriadNodeFill;
+  size: TriadNodeSize;
+  shape: TriadNodeShape;
+  color: TriadNodeColor;
+  fill: TriadNodeFill;
+  keyId: number;
+  onClick: (key: number) => void;
+  selected: boolean;
 }
 
-export const TriadNode: React.FC<ITriadNodeProps> = ({size = 'lg', shape = 'triangle', color = 'tertiary', fill = 'solid'}) => {
+export const TriadNode: React.FC<ITriadNodeProps> = ({
+  size = 'lg', 
+  shape = 'triangle', 
+  color = 'tertiary', 
+  fill = 'solid', 
+  keyId, 
+  onClick,
+  selected
+}) => {
 
   const shapeClassName = sx({
     SvgShape: true,
-    
-    Lg: size === 'lg',
-    Md: size === 'md',
-    Sm: size === 'sm',
     
     Primary: color === 'primary',
     Secondary: color === 'secondary',
@@ -33,6 +40,11 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({size = 'lg', shape = 'tria
     Pattern: fill === 'pattern',
   })
 
+  const triadNodeClassName = sx({
+    TriadNode: true,
+    Selected: selected
+  })
+
   const shapeFill = 
     fill === 'solid' ? 'inherit' 
     : fill === 'outline' ? 'transparent' 
@@ -41,110 +53,32 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({size = 'lg', shape = 'tria
 
 
   const svgWidth = {
-    triangle: {
-      lg: [49,42],
-      md: [32,27],
-      sm: [22,18]
-    },
-    square: {
-      lg: [41,40],
-      md: [31,30],
-      sm: [20,20]
-    },
-    circle: {
-      lg: [41,40],
-      md: [31,30],
-      sm: [20,20]
-    }
+    triangle: { lg: [48,42], md: [32,27], sm: [22,18] },
+    square: { lg: [40,40], md: [30,30], sm: [20,20] },
+    circle: { lg: [40,40], md: [30,30], sm: [20,20] }
   }
-
-
-  const primaryColor    = '#fed914';
-  const secondaryColor  = '#0bdb45';
-  const tertiaryColor   = '#2b99ff';
-
-  const colors: any = { primary: primaryColor, secondary: secondaryColor, tertiary: tertiaryColor };
-
+  
   return (
-    <div className={s.TriadNode}>
-
-
+    <div className={triadNodeClassName} onClick={() => onClick && onClick(keyId)}>
       <div className={s.TriadNodeShape}>
         
-        
-        { shape === 'triangle' &&
-            <div className={shapeClassName}>
-              <svg width={svgWidth[shape][size][0]} height={svgWidth[shape][size][1]} viewBox={`0 0 ${svgWidth[shape][size][0]} ${svgWidth[shape][size][1]}`} xmlns="http://www.w3.org/2000/svg">              
-                <defs>
-                  { Object.keys(colors).map((colorName, i) => (
-                    <pattern key={i} id={`pattern-${colorName}`} x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-                      <path d="M0,5H10" strokeWidth="6" stroke={colors[colorName]} />
-                    </pattern>
-                  ))}
-                </defs>
+        <div className={shapeClassName}>
+          <svg width={svgWidth[shape][size][0]} height={svgWidth[shape][size][1]} viewBox={`0 0 ${svgWidth[shape][size][0]} ${svgWidth[shape][size][1]}`} xmlns="http://www.w3.org/2000/svg">              
+            { size === 'lg' && shape === 'triangle' && <path d="M24.2487 0L48.4974 42H0L24.2487 0Z" fill={shapeFill} /> }
+            { size === 'md' && shape === 'triangle' && <path d="M15.5885 0L31.1769 27H0L15.5885 0Z" fill={shapeFill} /> }
+            { size === 'sm' && shape === 'triangle' && <path d="M11.0002 0L21.3925 18H0.60791L11.0002 0Z" fill={shapeFill} /> }
 
-                { size === 'lg' && <path d="M24.2487 0L48.4974 42H0L24.2487 0Z" fill={shapeFill}/> }
-                { size === 'md' && <path d="M15.5885 0L31.1769 27H0L15.5885 0Z" fill={shapeFill}/> }
-                { size === 'sm' && <path d="M11.0002 0L21.3925 18H0.60791L11.0002 0Z" fill={shapeFill}/> }
-              </svg>
-            </div>
-        }
+            { size === 'lg' && shape === 'square' && <path d="M0.248535 0H40.2485V40H0.248535V0Z" fill={shapeFill} /> }
+            { size === 'md' && shape === 'square' && <path d="M0.588379 0H30.5884V30H0.588379V0Z" fill={shapeFill} /> }
+            { size === 'sm' && shape === 'square' && <path d="M0 0H20V20H0V0Z" fill={shapeFill} /> }
 
-
-
-        { shape === 'square' &&
-            <div className={shapeClassName}>
-
-              { size === 'lg' &&
-                <svg width="41" height="40" viewBox="0 0 41 40" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0.248535 0H40.2485V40H0.248535V0Z" fill="inherit"/>
-                </svg>              
-              }
-
-              { size === 'md' &&
-                <svg width="31" height="30" viewBox="0 0 31 30" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="0.588379" width="30" height="30" fill="inherit"/>
-                </svg>
-              }
-
-              { size === 'sm' &&
-                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="20" height="20" fill="inherit"/>
-                </svg>                
-              }
-
-            </div>
-        }
-
-
-
-        { shape === 'circle' &&
-            <div className={shapeClassName}>
-
-              { size === 'lg' &&
-                <svg width="41" height="40" viewBox="0 0 41 40" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M40.2485 20C40.2485 31.0457 31.2942 40 20.2485 40C9.20284 40 0.248535 31.0457 0.248535 20C0.248535 8.9543 9.20284 0 20.2485 0C31.2942 0 40.2485 8.9543 40.2485 20Z" fill="inherit"/>
-                </svg>
-              }
-
-              { size === 'md' && 
-                  <svg width="31" height="30" viewBox="0 0 31 30" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="15.5884" cy="15" r="15" fill="inherit"/>
-                  </svg>
-              }
-
-              { size === 'sm' &&
-                  <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="10" cy="10" r="10" fill="inherit"/>
-                  </svg>
-              }
-              
-            </div>
-        }
+            { size === 'lg' && shape === 'circle' && <path d="M40.2485 20C40.2485 31.0457 31.2942 40 20.2485 40C9.20284 40 0.248535 31.0457 0.248535 20C0.248535 8.9543 9.20284 0 20.2485 0C31.2942 0 40.2485 8.9543 40.2485 20Z" fill={shapeFill}/> }
+            { size === 'md' && shape === 'circle' && <path d="M30.5884 15C30.5884 23.2843 23.8727 30 15.5884 30C7.30411 30 0.588379 23.2843 0.588379 15C0.588379 6.71573 7.30411 0 15.5884 0C23.8727 0 30.5884 6.71573 30.5884 15Z" fill={shapeFill}/> }
+            { size === 'sm' && shape === 'circle' && <path d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill={shapeFill}/> }
+          </svg>
+        </div>
 
       </div>
-
-
     </div>
   )
 };

@@ -2,7 +2,8 @@
 @import "src/styles/bootstrap/mixins";
 
 .TriadsBoard {
-  padding: 4rem;
   display: flex;
   flex-wrap: wrap;
+  width: 258px;
+  margin: 0 -8px 0 8px;
 }
