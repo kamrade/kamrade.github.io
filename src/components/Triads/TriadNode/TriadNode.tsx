@@ -15,11 +15,7 @@ export interface ITriadNodeProps {
   fill?: TriadNodeFill;
 }
 
-const primaryColor    = '#fed914';
-const secondaryColor  = '#0bdb45';
-const tertiaryColor   = '#2b99ff';
-
-export const TriadNode: React.FC<ITriadNodeProps> = ({size, shape, color, fill}) => {
+export const TriadNode: React.FC<ITriadNodeProps> = ({size = 'lg', shape = 'triangle', color = 'tertiary', fill = 'solid'}) => {
 
   const shapeClassName = sx({
     SvgShape: true,
@@ -43,6 +39,32 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({size, shape, color, fill})
     : fill === 'pattern' ? `url(#pattern-${color})`
     : 'transparent';
 
+
+  const svgWidth = {
+    triangle: {
+      lg: [49,42],
+      md: [32,27],
+      sm: [22,18]
+    },
+    square: {
+      lg: [41,40],
+      md: [31,30],
+      sm: [20,20]
+    },
+    circle: {
+      lg: [41,40],
+      md: [31,30],
+      sm: [20,20]
+    }
+  }
+
+
+  const primaryColor    = '#fed914';
+  const secondaryColor  = '#0bdb45';
+  const tertiaryColor   = '#2b99ff';
+
+  const colors: any = { primary: primaryColor, secondary: secondaryColor, tertiary: tertiaryColor };
+
   return (
     <div className={s.TriadNode}>
 
@@ -52,40 +74,19 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({size, shape, color, fill})
         
         { shape === 'triangle' &&
             <div className={shapeClassName}>
-              
-              {size === 'lg' &&
-                <svg width="49" height="42" viewBox="0 0 49 42" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="pattern-primary" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-                      <path d="M0,5H10" stroke-width="6" stroke={primaryColor} />
+              <svg width={svgWidth[shape][size][0]} height={svgWidth[shape][size][1]} viewBox={`0 0 ${svgWidth[shape][size][0]} ${svgWidth[shape][size][1]}`} xmlns="http://www.w3.org/2000/svg">              
+                <defs>
+                  { Object.keys(colors).map((colorName, i) => (
+                    <pattern key={i} id={`pattern-${colorName}`} x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                      <path d="M0,5H10" strokeWidth="6" stroke={colors[colorName]} />
                     </pattern>
-                    <pattern id="pattern-secondary" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-                      <path d="M0,5H10" stroke-width="6" stroke={secondaryColor} />
-                    </pattern>
-                    <pattern id="pattern-tertiary" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-                      <path d="M0,5H10" stroke-width="6" stroke={tertiaryColor} />
-                    </pattern>
-                  </defs>
+                  ))}
+                </defs>
 
-                  <path d="M24.2487 0L48.4974 42H0L24.2487 0Z" fill={shapeFill}/>
-
-                </svg>                
-              }
-
-              
-              { size === 'md' &&
-                <svg width="32" height="27" viewBox="0 0 32 27" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15.5885 0L31.1769 27H0L15.5885 0Z" fill={shapeFill}/>
-                </svg>
-              }
-              
-              { size === 'sm' &&
-              
-                <svg width="22" height="18" viewBox="0 0 22 18" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.0002 0L21.3925 18H0.60791L11.0002 0Z" fill={shapeFill}/>
-                </svg>                
-              }
-
+                { size === 'lg' && <path d="M24.2487 0L48.4974 42H0L24.2487 0Z" fill={shapeFill}/> }
+                { size === 'md' && <path d="M15.5885 0L31.1769 27H0L15.5885 0Z" fill={shapeFill}/> }
+                { size === 'sm' && <path d="M11.0002 0L21.3925 18H0.60791L11.0002 0Z" fill={shapeFill}/> }
+              </svg>
             </div>
         }
 
