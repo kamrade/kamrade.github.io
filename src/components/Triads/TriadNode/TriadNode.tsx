@@ -1,22 +1,9 @@
 import React from 'react';
-import s from './TriadNode.module.scss';
 import classNames from "classnames/bind";
+
+import { ITriadNodeProps } from './TriadNode.types';
+import s from './TriadNode.module.scss';
 const sx = classNames.bind(s);
-
-export type TriadNodeSize = 'sm' | 'md' | 'lg';
-export type TriadNodeShape = 'triangle' | 'square' | 'circle';
-export type TriadNodeColor = 'primary' | 'secondary' | 'tertiary';
-export type TriadNodeFill = 'solid' | 'outline' | 'pattern';
-
-export interface ITriadNodeProps {
-  size: TriadNodeSize;
-  shape: TriadNodeShape;
-  color: TriadNodeColor;
-  fill: TriadNodeFill;
-  keyId: number;
-  onClick: (key: number) => void;
-  selected: boolean;
-}
 
 export const TriadNode: React.FC<ITriadNodeProps> = ({
   size = 'lg', 

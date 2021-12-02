@@ -1,32 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { TriadNode, TriadNodeShape, TriadNodeSize, TriadNodeColor, TriadNodeFill } from '../TriadNode/TriadNode';
+import React, { useState } from 'react';
+import { TriadNode } from '../TriadNode/TriadNode';
+import { shapes, sizes, colors, fills } from '../TriadNode/TriadNode.types';
+import { initiateTriads } from './initiateTriads';
 import s from './TriadsBoard.module.scss';
-
-const shapes: TriadNodeShape[] = ['triangle', 'square', 'circle'];
-const sizes: TriadNodeSize[]   = ['lg', 'md', 'sm'];
-const colors: TriadNodeColor[] = ['primary', 'secondary', 'tertiary'];
-const fills: TriadNodeFill[]   = ['solid', 'outline', 'pattern'];
-
-const randomIntFromInterval = (min: number, max: number): number => { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-const initiateTriads = () => {
-  let triads = [];
-  let current = [];
-  for (let i = 0; i < 12; i++) {
-    current = [];
-    for (let j = 0; j < 4; j++) {
-      current.push(randomIntFromInterval(0, 2));
-    }
-    triads.push(current);
-  }
-  return triads;
-}
 
 const TriadsBoard = () => {
 
-  const [selection, setSelection] = useState<number[]>();
+  const [selection, setSelection] = useState<number[]>([]);
   const [triads] = useState<number[][]>(initiateTriads());
 
 
@@ -42,10 +22,6 @@ const TriadsBoard = () => {
       }
     }
   }
-
-  useEffect(() => {
-    console.log(selection);
-  }, [selection]);
 
   return (
     <div className={s.TriadsBoard}>
