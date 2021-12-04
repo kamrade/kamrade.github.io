@@ -13,6 +13,10 @@
   transition: background 0.2s ease-in-out;
   border: 3px solid transparent;
 
+  &:nth-child(3n + 3) {
+    margin-right: 0;
+  }
+
   &.Selected {
     background: transparent;
     opacity: 0.7;

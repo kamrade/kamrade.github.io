@@ -30,6 +30,8 @@ export const triadDetector = (triadBoard: number[][]): number[][][] => {
           console.log('--- --- ---');
         }
 
+        return null;
+
       });
     }
     return counter++;

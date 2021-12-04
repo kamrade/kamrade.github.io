@@ -11,8 +11,7 @@ const TriadsBoard = () => {
   const [triads] = useState<number[][]>(initiateTriads());
 
   useEffect(() => {
-    let possibleTriads = triadDetector(triads);
-
+    triadDetector(triads);
   }, [triads]);
 
 
@@ -30,23 +29,28 @@ const TriadsBoard = () => {
   }
 
   return (
-    <div className={s.TriadsBoard}>
+    <div>
+      
+      <div className={s.TriadsBoard}>
+        {triads.map((triad, i) => (
+          <TriadNode
+            key={i}
+            keyId={i}
+            selected={selection?.includes(i) || false}
+            onClick={triadClickHandler}
+            size={sizes[triad[0]]}
+            shape={shapes[triad[1]]}
+            color={colors[triad[2]]}
+            fill={fills[triad[3]]}
+          /> 
+        ))}
 
-      {triads.map((triad, i) => (
-        <TriadNode
-          key={i}
-          keyId={i}
-          selected={selection?.includes(i) || false}
-          onClick={triadClickHandler}
-          size={sizes[triad[0]]}
-          shape={shapes[triad[1]]}
-          color={colors[triad[2]]}
-          fill={fills[triad[3]]}
-        /> ))}
-
-        <div className="couples">
+        <div className={s.actions}>
           <Button theme='primary' block={true}>Refresh</Button>
         </div>
+
+      </div>
+
 
 
     </div>
