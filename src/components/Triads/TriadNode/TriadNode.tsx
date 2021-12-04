@@ -65,6 +65,8 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({
           </svg>
         </div>
 
+        <div className={s.tileNumber}>{ keyId }</div>
+
       </div>
     </div>
   )

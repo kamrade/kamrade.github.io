@@ -9,8 +9,8 @@ export interface ITriadNodeProps {
   color:    TriadNodeColor;
   fill:     TriadNodeFill;
   keyId:    number;
-  onClick:  (key: number) => void;
-  selected: boolean;
+  onClick?:  (key: number) => void;
+  selected?: boolean;
 }
 
 export const shapes: TriadNodeShape[]  = ['triangle', 'square', 'circle'];

@@ -39,6 +39,16 @@
     height: 100%;
     cursor: pointer;
     display: flex;
+    position: relative;
+
+    .tileNumber {
+      position: absolute;
+      opacity: 0.3;
+      color: white;
+      font-size: 12px;
+      right: 0.25rem;
+      top: 0;
+    }
   }
 
   .SvgShape {

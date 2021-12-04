@@ -1,4 +1,4 @@
-import { randomIntFromInterval } from "helpers/randomIntFromInterval";
+import { randomIntFromInterval } from "helpers";
 
 export const initiateTriads = () => {
   let triads = [];
