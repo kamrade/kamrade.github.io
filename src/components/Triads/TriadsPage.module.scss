@@ -12,29 +12,9 @@
     margin: auto;
   }
 
-  .TriadPageHead {
-    width: $triadsBoardWidth;
-    margin: 0 auto;
-    font-size: 28px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-top: 4rem;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    border-radius: $border-radius;
-    transition: background 0.3s ease-in-out;
-    user-select: none;
-    vertical-align: middle;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  }
-
   .BackLink {
     position: absolute;
+    z-index: $zindex-fixed;
     top: 1rem;
     left: 2rem;
   }
@@ -45,36 +25,5 @@
     border-radius: $border-radius;
     background-color: $triadElementBg;
     position: relative;
-  }
-
-  .TriadsButton {
-    background: $nodeBg;
-    color: $triadPrimary;
-    border: none;
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: $border-radius;
-    transition: background 0.3s ease-in-out;
-    margin-bottom: 1rem;
-
-    &:hover {
-      background: darken($nodeBg, 5%);
-    }
-
-    &:active {
-      background: $triadPageBg;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 1px 1px $triadPrimary, 0 0 16px 0 rgba($triadPrimary, 0.2);
-    }
-  }
-
-  .TriadsActions {
-    flex-grow: 3;
-    margin: 0 auto;
-    width: $triadsBoardWidth;
   }
 }

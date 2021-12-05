@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './TriadsMenu.module.scss';
 
@@ -8,6 +8,22 @@ interface ITriadsMenu {
 }
 
 const TriadsMenu: React.FC<ITriadsMenu> = ({setShowMenu, showMenu}) => {
+
+  useEffect(() => {
+
+    const keyHandler = (e: any) => {
+      if (e.key === 'Escape') {
+        setShowMenu(false);
+      }
+    }
+
+   document.addEventListener('keydown', keyHandler);
+
+   return () => {
+     document.removeEventListener('keydown', keyHandler);
+   }
+
+  }, [setShowMenu]);
 
   const hideMenu = () => {
     setShowMenu(false);
@@ -30,9 +46,11 @@ const TriadsMenu: React.FC<ITriadsMenu> = ({setShowMenu, showMenu}) => {
           </button>
         </NavLink>
 
-        <button type='button' className={s.TriadMenuButton} style={{color: 'white'}} onClick={hideMenu}>
-          Cancel
-        </button>
+        <div className={s.controlBlock}>
+          <button type='button' className={s.TriadMenuButton} style={{color: 'white'}} onClick={hideMenu}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -48,4 +48,4 @@ const TriadsBoard: React.FC<ITriadBoardProps> = ({ triads, selection, setSelecti
   )
 };
 
-export default TriadsBoard;
+export { TriadsBoard };

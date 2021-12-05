@@ -1,0 +1,1 @@
+export { TriadsBoard } from './TriadsBoard';
