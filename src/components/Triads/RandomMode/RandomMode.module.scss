@@ -2,10 +2,6 @@
 @import "src/styles/bootstrap/mixins";
 @import "../triads.variables.scss";
 
-.TriadsBoard {
-  padding: 4rem 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: $triadsBoardWidth;
-  margin: 0 auto;
+.RandomMode {
+  position: relative;
 }

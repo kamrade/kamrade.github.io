@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TriadNode } from '../TriadNode/TriadNode';
 import { shapes, sizes, colors, fills } from '../TriadNode/TriadNode.types';
-import { initiateTriads, triadDetector } from 'components/Triads/triadHelpers';
+
 import s from './TriadsBoard.module.scss';
-import { Button } from 'shared';
 
-const TriadsBoard = () => {
+interface ITriadBoardProps {
+  triads: number[][];
+  selection: number[];
+  setSelection: (selection: number[]) => void;
+}
 
-  const [selection, setSelection] = useState<number[]>([]);
-  const [triads] = useState<number[][]>(initiateTriads());
+const TriadsBoard: React.FC<ITriadBoardProps> = ({ triads, selection, setSelection }) => {
 
-  useEffect(() => {
-    triadDetector(triads);
-  }, [triads]);
-
-
+  // selection handler
   const triadClickHandler = (keyId: number) => {
     if (selection?.includes(keyId)) {
       let newSelection = selection.filter((f) => f !== keyId);
@@ -45,14 +43,7 @@ const TriadsBoard = () => {
           /> 
         ))}
 
-        <div className={s.actions}>
-          <Button theme='primary' block={true}>Refresh</Button>
-        </div>
-
       </div>
-
-
-
     </div>
   )
 };
