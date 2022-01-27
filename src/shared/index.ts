@@ -9,7 +9,7 @@ import {Close} from './Close';
 import {Dropdown, DropdownOption, DropdownToggler} from './Dropdown';
 import {Modal} from './Modal';
 import {Formq, FormqInput} from './Formq';
-
+import {PopupNotification} from "./PopupNotification";
 
 export {
   Box,
@@ -25,5 +25,6 @@ export {
   Dropdown,
   DropdownOption,
   DropdownToggler,
-  Modal
+  Modal,
+  PopupNotification
 };

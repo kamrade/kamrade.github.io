@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { Icon } from 'shared';
 import { TriadsBoard } from '../TriadsBoard';
-import { triadPrimary } from 'components/Triads/constants/css';
 import { ITriadsFound } from '../triadHelpers/triad-detector';
 import { initiateTriads, triadDetector } from 'components/Triads/triadHelpers';
 import s from './RandomMode.module.scss';
+import { PopupNotification } from 'shared';
 
 interface IRandomModeProps {
   setShowMenu: (showMenu: boolean) => void;
@@ -17,21 +16,27 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
   const [triads, setTriads] = useState<number[][]>( initiateTriads() );
   const [selection, setSelection] = useState<number[]>([]);
   const [triadsFound, setTriadsFound] = useState<ITriadsFound[]>([]);
-  
+  const [result, setResult] = useState<boolean>(false);
+
   useEffect(() => {
+    // New set generated
     let founded = triadDetector(triads);
     setTriadsFound(founded);
+    setResult(false);
   }, [triads]);
 
   useEffect(() => {
     if (selection.length >= 3) {
-      triadsFound.map((tr, i) => {
+      triadsFound.map((tr, _i) => {
         let keys = Object.keys(tr);
         if (keys[0] === selection[0].toString() && keys[1] === selection[1].toString() && keys[2] === selection[2].toString()) {
-          console.log('OK');
+          setResult(true);
+          setSelection([]);
         }
         return null;
       });
+    } else if (selection.length > 0) {
+      setResult(false);
     }
   }, [selection, triadsFound]);
 
@@ -44,33 +49,31 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
     <div className={s.RandomMode}>
       <div className="container-fluid">
         <div className="row">
-          
+
           <div className="col-8">
           </div>
-          
+
           <div className="col-8">
             <div className={s.TriadsPageContent}>
               <div className={s.TriadPageHead} onClick={() => setShowMenu(true)}>
-                <span style={{position: 'relative', top: '6px', marginRight: '12px'}}>
-                  <Icon color={triadPrimary} stroke={1.5} size={24} icon='hamburger' />
-                </span>
-                Triads
+                Triads. Random mode.
               </div>
-              
+
               <TriadsBoard selection={selection} setSelection={setSelection} triads={triads} />
-              
-              <div className={s.TriadsActions}>
-                <button onClick={reset} className={s.TriadsButton}>Refresh</button>
-                <button onClick={() => setSelection([])} className={s.TriadsButton}>Clear selection</button>
-              </div>
+
 
             </div>
           </div>
 
           <div className="col-8">
-            <div className={s.TriadsWidget} style={{ marginTop: '4rem' }}>
-              Triads found: {triadsFound.length}
 
+            <div className={s.TriadsWidget} style={{ marginTop: '4rem' }}>
+              <button onClick={reset} className={s.TriadsButton}>Refresh</button>
+              <button style={{marginBottom: '0'}} onClick={() => setSelection([])} className={s.TriadsButton}>Clear selection</button>
+            </div>
+
+            <div className={s.TriadsWidget}>
+              Triads possible: {triadsFound.length}
                 {triadsFound.map((triad, i) => {
                   return (
                     <div key={i}>
@@ -85,6 +88,11 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
 
         </div>
       </div>
+
+      <PopupNotification
+        popupState={{ isShowed: result }}
+        setPopupState={setResult}
+        textContent={'test'} />
     </div>
   );
 }

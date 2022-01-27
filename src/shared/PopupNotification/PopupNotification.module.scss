@@ -1,0 +1,15 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+@import "src/components/Triads/triads.variables";
+
+.PopupNotification {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  background: $triadElementBg;
+  color: $triadSecondary;
+  cursor: pointer;
+}

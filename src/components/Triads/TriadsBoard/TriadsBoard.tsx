@@ -28,7 +28,7 @@ const TriadsBoard: React.FC<ITriadBoardProps> = ({ triads, selection, setSelecti
 
   return (
     <div>
-      
+
       <div className={s.TriadsBoard}>
         {triads.map((triad, i) => (
           <TriadNode
@@ -40,7 +40,7 @@ const TriadsBoard: React.FC<ITriadBoardProps> = ({ triads, selection, setSelecti
             shape={shapes[triad[1]]}
             color={colors[triad[2]]}
             fill={fills[triad[3]]}
-          /> 
+          />
         ))}
 
       </div>

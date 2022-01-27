@@ -33,13 +33,13 @@ const TriadsMenu: React.FC<ITriadsMenu> = ({setShowMenu, showMenu}) => {
     <div className={s.TriadsMenu}>
       <div className={s.TriadsMenuContent}>
         <h3 className={s.TriadsMenuTitle}>The Triads</h3>
-        
+
         <NavLink exact to='/triads/random' onClick={hideMenu}>
           <button type='button' className={s.TriadMenuButton}>
             Random board
           </button>
         </NavLink>
-        
+
         <NavLink exact to='/triads/career' onClick={hideMenu}>
           <button type='button' className={s.TriadMenuButton}>
             Career

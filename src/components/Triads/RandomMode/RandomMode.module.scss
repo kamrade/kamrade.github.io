@@ -8,13 +8,13 @@
 
 .TriadPageHead {
   width: $triadsBoardWidth;
-  margin: 0 auto;
-  font-size: 28px;
+  margin: 4rem auto 0;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
-  margin-top: 4rem;
   cursor: pointer;
   padding: 0.5rem 0;
   border-radius: $border-radius;
@@ -51,8 +51,11 @@
   }
 }
 
-.TriadsActions {
-  flex-grow: 3;
-  margin: 0 auto;
-  width: $triadsBoardWidth;
+.TriadsWidget {
+  margin: 0 2rem;
+  padding: 1rem;
+  border-radius: $border-radius * 2;
+  background-color: $triadElementBg;
+  position: relative;
+  margin-bottom: 1rem;
 }
