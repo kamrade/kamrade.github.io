@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { TriadsBoard } from '../TriadsBoard';
 import { ITriadsFound } from '../triadHelpers/triad-detector';
-import { initiateTriads, triadDetector } from 'components/Triads/triadHelpers';
-import s from './RandomMode.module.scss';
+import { initiateTriads, triadDetector } from 'pages/Triads/triadHelpers';
 import { PopupNotification } from 'shared';
+
+import s from './RandomMode.module.scss';
 
 interface IRandomModeProps {
   setShowMenu: (showMenu: boolean) => void;

@@ -5,12 +5,13 @@ import s from './ShowcasePage.module.scss';
 import {Button, Icon} from "shared";
 import {Aside} from "components/Aside/Aside";
 
-import Wheelson from "projects/Wheelson/Wheelson";
-import RxTutorial from "projects/RxTutorial/RxTutorial";
-import Exchange from "projects/Exchange/Exchange";
-import Formaline from "projects/Formaline/Formaline";
-import NoMatch from "projects/NoMatch/NoMatch";
-import {LineChartPage} from "projects/LineChart/LineChartPage";
+import Wheelson from "./projects/Wheelson/Wheelson";
+import RxTutorial from "./projects/RxTutorial/RxTutorial";
+import Exchange from "./projects/Exchange/Exchange";
+import Formaline from "./projects/Formaline/Formaline";
+import NoMatch from "./projects/NoMatch/NoMatch";
+import {LineChartPage} from "./projects/LineChart/LineChartPage";
+
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
 import classNames from "classnames/bind";

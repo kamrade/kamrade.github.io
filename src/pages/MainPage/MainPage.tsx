@@ -3,8 +3,8 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 import s from './MainPage.module.scss';
 
 import {MainPageContent} from './MainPageContent';
-import {AboutPage} from 'components/AboutPage/AboutPage';
-import {ContactsPage} from 'components/ContactsPage/ContactsPage';
+import {AboutPage} from 'pages/AboutPage/AboutPage';
+import {ContactsPage} from 'pages/ContactsPage/ContactsPage';
 // import classNames from "classnames/bind";
 // const sx = classNames.bind(s);
 

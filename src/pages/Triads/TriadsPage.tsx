@@ -36,7 +36,7 @@ const TriadsPage: React.FC = () => {
         <NavLink exact to='/main'>
           <Button>
             <span style={{color: 'white'}}>
-              <Icon color={'white'} stroke={1.5} size={20} icon='chevronLeft'></Icon>
+              <Icon color={'white'} stroke={1.5} size={20} icon='chevronLeft' />
               back to the website
             </span>
           </Button>
