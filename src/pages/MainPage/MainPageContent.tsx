@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import { ProgressiveImage } from 'shared/ProgressiveImage/ProgressiveImage';
 import {PageTitle} from 'shared/PageTitle/PageTitle';
@@ -12,6 +13,7 @@ import {thumbnail as uxFlowThumb} from 'data/images/ux-flow';
 import {thumbnail as b2bcardsThumb} from 'data/images/b2bcards';
 
 import s from './MainPageContent.module.scss';
+
 
 export const MainPageContent = () => {
   return (
@@ -33,28 +35,48 @@ export const MainPageContent = () => {
 
       <div className={`container-fluid`}>
         <div className='row'>
-          <div className='col-md-8'>
 
-            <div className={s.Box}>
-              <ProgressiveImage
-                interactive={true}
-                description="Extreme Waves Rally (2014)"
-                preview={extremeWavesThumb}
-                image="/img/extreme-waves/thumbnail-compressed.png"
-                alt="extreme-waves-rally" />
-            </div>
-
-          </div>
           <div className='col-md-8'>
-            <div className={s.Box}>
-              <ProgressiveImage
-                interactive={true}
-                description="Turnovers Flow (2019)"
-                preview={turnoversFlowThumb}
-                image="/img/turnovers-flow/thumbnail-compressed.png"
-                alt="turnovers-flow-preview" />
-            </div>
+            <Link to={'/main/portfolio/extreme-waves'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Extreme Waves Rally (2014)"
+                  preview={extremeWavesThumb}
+                  image="/img/extreme-waves/thumbnail-compressed.png"
+                  alt="extreme-waves-rally" />
+              </div>
+            </Link>
           </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/b2b'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="B2BCards (2017)"
+                  preview={b2bcardsThumb}
+                  image="/img/b2bcards/thumbnail-compressed.png"
+                  alt="b2bcards-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/turnovers-flow'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Turnovers Flow (2019)"
+                  preview={turnoversFlowThumb}
+                  image="/img/turnovers-flow/thumbnail-compressed.jpg"
+                  alt="turnovers-flow-preview" />
+              </div>
+            </Link>
+          </div>
+        </div>
+        <div className='row'>
+
           <div className='col-md-8'>
             <div className={s.Box}>
               <ProgressiveImage
@@ -65,9 +87,7 @@ export const MainPageContent = () => {
                 alt="unlimint-ibank-preview" />
             </div>
           </div>
-        </div>
 
-        <div className='row'>
           <div className='col-md-8'>
             <div className={s.Box}>
               <ProgressiveImage
@@ -78,6 +98,7 @@ export const MainPageContent = () => {
                 alt="unlimint-ibank-mobile-preview" />
             </div>
           </div>
+
           <div className='col-md-8'>
             <div className={s.Box}>
               <ProgressiveImage
@@ -88,16 +109,9 @@ export const MainPageContent = () => {
                 alt="ux-flow-preview" />
             </div>
           </div>
-          <div className='col-md-8'>
-            <div className={s.Box}>
-              <ProgressiveImage
-                interactive={true}
-                description="B2BCards (2017)"
-                preview={b2bcardsThumb}
-                image="/img/b2bcards/thumbnail-compressed.png"
-                alt="b2bcards-preview" />
-            </div>
-          </div>
+
+
+
         </div>
 
       </div>

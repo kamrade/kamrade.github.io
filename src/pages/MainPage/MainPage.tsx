@@ -5,6 +5,10 @@ import s from './MainPage.module.scss';
 import {MainPageContent} from './MainPageContent';
 import {AboutPage} from 'pages/AboutPage/AboutPage';
 import {ContactsPage} from 'pages/ContactsPage/ContactsPage';
+import {ExtremeWaves} from './Portfolio/ExtremeWaves';
+import {B2B} from './Portfolio/B2B';
+import {TurnoversFlow} from "./Portfolio/TurnoversFlow";
+
 // import classNames from "classnames/bind";
 // const sx = classNames.bind(s);
 
@@ -32,6 +36,9 @@ export const MainPage = () => {
         <Route exact path='/main'><MainPageContent /></Route>
         <Route path='/main/about'><AboutPage /></Route>
         <Route path='/main/contacts'><ContactsPage /></Route>
+        <Route path='/main/portfolio/extreme-waves'><ExtremeWaves /></Route>
+        <Route path='/main/portfolio/b2b'><B2B /></Route>
+        <Route path='/main/portfolio/turnovers-flow'><TurnoversFlow /></Route>
       </Switch>
 
 
