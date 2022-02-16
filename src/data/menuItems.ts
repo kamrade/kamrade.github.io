@@ -16,18 +16,25 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
     title: 'Line chart',
     link: '/apps/linechart'
   }, {
-    title: 'Wheelson',
-    link: '/apps/wheelson'
-  }, {
-    title: 'Exchange',
-    link: '/apps/exchange'
-  }, {
-    title: 'Formaline',
-    link: '/apps/formaline'
-  }, {
-    title: 'Rx Tutorial',
-    link: '/apps/rx-tutorial'
-  }]
+    title: 'RX training',
+    link: '/apps/rx-training'
+  },
+
+  // {
+  //   title: 'Wheelson',
+  //   link: '/apps/wheelson'
+  // }, {
+  //   title: 'Exchange',
+  //   link: '/apps/exchange'
+  // }, {
+  //   title: 'Formaline',
+  //   link: '/apps/formaline'
+  // }, {
+  //   title: 'Rx Tutorial',
+  //   link: '/apps/rx-tutorial'
+  // }
+
+  ]
 }, {
   id: 'components',
   togglerTitle: 'Components',

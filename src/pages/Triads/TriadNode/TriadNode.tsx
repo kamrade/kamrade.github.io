@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
+import {randomIntFromInterval} from 'helpers/random-int-from-interval';
 
 import { ITriadNodeProps } from './TriadNode.types';
 import s from './TriadNode.module.scss';
@@ -12,8 +13,18 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({
   fill = 'solid', 
   keyId, 
   onClick,
-  selected
+  selected,
 }) => {
+
+  const [invisible, setInvisible] = useState(true);
+
+  useEffect(() => {
+    setInvisible(true);
+    setTimeout(() => {
+      setInvisible(false);
+    }, randomIntFromInterval(0, 11)*50);
+  }, [size, shape, color, fill]);
+
 
   const shapeClassName = sx({
     SvgShape: true,
@@ -25,6 +36,8 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({
     Solid: fill === 'solid',
     Outline: fill === 'outline',
     Pattern: fill === 'pattern',
+
+    invisible: invisible
   })
 
   const triadNodeClassName = sx({
@@ -44,7 +57,7 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({
     square: { lg: [40,40], md: [30,30], sm: [20,20] },
     circle: { lg: [40,40], md: [30,30], sm: [20,20] }
   }
-  
+
   return (
     <div className={triadNodeClassName} onClick={() => onClick && onClick(keyId)}>
       <div className={s.TriadNodeShape}>

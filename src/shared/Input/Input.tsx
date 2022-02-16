@@ -31,10 +31,12 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     onFocus,
     onBlur,
     type,
+
     touched: propsTouched,
     dirty: propsDirty,
     focused: propsFocused,
     valid: propsValid,
+
     size,
     ...other} = props;
 

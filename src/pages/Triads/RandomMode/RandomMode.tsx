@@ -59,10 +59,7 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
               <div className={s.TriadPageHead} onClick={() => setShowMenu(true)}>
                 Triads. Random mode.
               </div>
-
               <TriadsBoard selection={selection} setSelection={setSelection} triads={triads} />
-
-
             </div>
           </div>
 

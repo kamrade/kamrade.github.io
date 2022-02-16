@@ -34,11 +34,12 @@ export interface IBaseButtonProps {
   wide?: boolean;
   block?: boolean;
   size?: ButtonSize;
+  id?: string;
 }
 
 const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (props: IBaseButtonProps, ref: ForwardedRef<any> ) => {
 
-  const {theme, children, type, wide, block, size, ...rest} = props;
+  const {theme, children, type, wide, block, size, ...other} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -61,7 +62,7 @@ const InternalButton: ForwardRefRenderFunction<unknown, IBaseButtonProps> = (pro
   }
 
   return (
-    <button { ...rest } ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
+    <button { ...other } ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
       {children}
     </button>
   );

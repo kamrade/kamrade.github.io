@@ -11,6 +11,7 @@ import Exchange from "./projects/Exchange/Exchange";
 import Formaline from "./projects/Formaline/Formaline";
 import NoMatch from "./projects/NoMatch/NoMatch";
 import {LineChartPage} from "./projects/LineChart/LineChartPage";
+import RxTraining from "./projects/RxTraining/RxTraining";
 
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
@@ -89,6 +90,7 @@ export const Main = () => {
           <Route exact path={`${path}/linechart`}><LineChartPage /></Route>
           <Route exact path={`${path}/exchange`}><Exchange /></Route>
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
+          <Route exact path={`${path}/rx-training`}><RxTraining /></Route>
           <Route path={`${path}/**`}><NoMatch /></Route>
         </Switch>
       </div>

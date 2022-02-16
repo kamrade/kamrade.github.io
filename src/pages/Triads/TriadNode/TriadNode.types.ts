@@ -11,6 +11,7 @@ export interface ITriadNodeProps {
   keyId:    number;
   onClick?:  (key: number) => void;
   selected?: boolean;
+  unvisible?: boolean;
 }
 
 export const shapes: TriadNodeShape[]  = ['triangle', 'square', 'circle'];
