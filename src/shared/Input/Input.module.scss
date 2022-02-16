@@ -6,12 +6,13 @@
   width: 100%;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  padding: .5rem .5rem;
-  border: 2px solid transparent;
-  background-color: $gray-100;
+  border: 1px solid $border-color;
+  background-color: $white;
   border-radius: $border-radius;
   transition: all .3s ease-in-out;
   cursor: pointer;
+
+  padding: .5rem .5rem;
 
   &.InputSM {
     padding: .25rem .25rem;
@@ -26,7 +27,7 @@
   }
 
   &:not(:disabled):hover {
-    background-color: darken($gray-100, $hover-factor);
+    border-color: darken($border-color, $hover-factor);
   }
 
   &:focus {

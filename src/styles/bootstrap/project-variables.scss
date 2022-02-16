@@ -25,7 +25,7 @@ $grid-columns: 24;
 $grid-gutter-width: 8px;
 $grid-row-columns: 6;
 
-$border-radius: 0.5rem;
+$border-radius: 6px;
 $box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 $dropdownBoxShadow: rgba(21, 23, 26, 0.03) 0 0.1rem 0.5rem 0,
   rgba(21, 23, 26, 0.07) 0 0.4rem 1rem 0, rgba(21, 23, 26, 0.04) 0 1px 0 0;
@@ -43,5 +43,7 @@ $gray-900: #1a1c1d !default;
 $black: #000 !default;
 
 $primary: #2995f8;
+$secondary-color: $gray-100;
 $milq-color: #04ba8e;
 $link-color: $primary;
+$border-color: $gray-200;
