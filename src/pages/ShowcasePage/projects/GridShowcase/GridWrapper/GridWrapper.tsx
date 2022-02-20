@@ -9,23 +9,35 @@ export const GridWrapper = () => {
   const [isFetching, setIsFetching] = useState<boolean>(true);
   const [hasError, setHasError] = useState<string>('');
   const [columns, setColumns] = useState<any>(null);
-  const [sortedBy, setSortedBy] = useState<string>();
 
   const cases = useCases();
 
   useEffect(() => {
+
     setColumns(cases?.getCasesColumns());
-    setSortedBy(cases?.getSortedBy());
+
+    setIsFetching(true);
     cases?.getCases()
       .then((value: any) => {
         setCasesData(value);
         setIsFetching(false);
-      }).catch(err => setHasError(err))
+      }).catch(err => setHasError(err));
+
   }, [cases]);
 
   return (
     <div className={'GridWrapper'}>
-      <Grid sortedBy={sortedBy} hasError={hasError} isFetching={isFetching} gridData={casesData} columns={columns} defaultColumnsSize={defaultColumnsSize} />
+      <Grid
+        setSortedBy={cases?.setSortedBy}
+        sortedBy={cases?.getSortedBy()}
+        sortDirection={cases?.getSortDirection && cases?.getSortDirection()}
+        hasError={hasError}
+        isFetching={isFetching}
+        gridData={casesData}
+        columns={columns}
+        defaultColumnsSize={defaultColumnsSize}
+        setSortDirection={cases?.setSortDirection}
+      />
     </div>
   )
 }

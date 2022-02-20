@@ -17,7 +17,9 @@ export interface CasesData {
 
 export const defaultColumnsSize = [320, 200, 200, 200, 320, 200];
 
-export const sortedBy = 'Assignee';
+export const sortedByDefault = 'Assignee';
+
+export const sortDirectionDefault = 'asc';
 
 export const casesColumns = [
   'Reference ID',
@@ -27,6 +29,15 @@ export const casesColumns = [
   'Descrption',
   'Status'
 ];
+
+export const casesColumnsMap = {
+  referenceId: 'Reference ID',
+  assignee: 'Assignee',
+  customerName: 'Customer Name',
+  createdOn: 'Created on',
+  description: 'Descrption',
+  status: 'Status'
+}
 
 export const casesData: CasesData[] = [{
   referenceId: '52cd20f6-90c7-11ec-b909-0242ac120002',
