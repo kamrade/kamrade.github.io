@@ -26,8 +26,8 @@ export const UserBlock = ({ username, companyName }: IUserBlockProps ) => {
           <div className={s.User}>
 
             {auth?.user
-              ? <b className="text-overflow">{ auth.user }</b>
-              : <b className="text-overflow">Guest Mode</b>
+              ? <span className="text-overflow">{ auth.user }</span>
+              : <span className="text-overflow">Guest Mode</span>
             }
 
             <br/>

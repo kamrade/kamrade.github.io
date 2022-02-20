@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {fromEvent, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
 import {FromEventTarget} from "rxjs/internal/observable/fromEvent";
-
 import {Input, Button} from 'shared';
 
 export default function RxTraining() {
@@ -35,7 +34,7 @@ export default function RxTraining() {
           <div className="col-8">
             <Input type="text" id="search"/>
           </div>
-          <div className="col-4">
+          <div className="col-8">
             <Button id="stop" theme={'secondary'}>Stop</Button>
           </div>
         </div>

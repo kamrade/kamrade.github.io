@@ -1,0 +1,71 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.GridWrapper {
+  border: 1px solid $gray-200;
+  border-radius: 8px;
+  overflow: hidden;
+  &.Error {
+    border-color: $danger;
+  }
+}
+
+.Grid {
+  width: 100%;
+  overflow-x: scroll;
+
+  .GridPreloader, .GridError {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .GridError {
+    color: $danger;
+  }
+
+  .THead {
+    display: flex;
+    background-color: $gray-200;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+
+    .ColumnCaption {
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 10px;
+      line-height: 1;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: darken($gray-200, $hover-factor);
+      }
+    }
+  }
+
+  .GridContent {
+
+  }
+
+  .GridRow {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  .GridCell {
+    padding: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+}

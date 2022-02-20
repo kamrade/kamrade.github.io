@@ -18,6 +18,9 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'RX training',
     link: '/apps/rx-training'
+  }, {
+    title: 'Grid',
+    link: '/apps/grid'
   },
 
   // {
