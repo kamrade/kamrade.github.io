@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {fromEvent, Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
+import {fromEvent, Observable, BehaviorSubject} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, takeUntil, takeWhile} from 'rxjs/operators';
 import {FromEventTarget} from "rxjs/internal/observable/fromEvent";
 import {Input, Button, Switcher} from 'shared';
 
@@ -11,22 +11,28 @@ export default function RxTraining() {
   const togglerRef     = useRef(); // unused
 
   const [formValue, setFormValue] = useState('');
-  const [searchFormIsOn, setSearchFormIsOn] = useState(true);
-  const [stream, setStream] = useState(true);
+  const [isCompleted, setIsCompleted] = useState<boolean>(true);
+  const [stream, setStream] = useState<boolean>(true);
+
+  // let toggle$: BehaviorSubject<boolean>;
+  let toggle$ = useRef<BehaviorSubject<boolean>>();
 
   // component Did Mount
   useEffect(() => {
 
     const search$: Observable<Event> = fromEvent<Event>(
-      // document.getElementById('search') as FromEventTarget<Event>,
       searchInputRef.current as unknown as FromEventTarget<Event>,
       'input'
     );
 
     const stop$: Observable<Event> = fromEvent<Event>(
-      // document.getElementById('stop') as FromEventTarget<Event>,
       stopButtonRef.current as unknown as FromEventTarget<Event>,
       'click'
+    );
+
+    toggle$.current = new BehaviorSubject<boolean>(stream);
+    toggle$.current.pipe(
+      map(value => value)
     );
 
     search$.pipe(
@@ -34,18 +40,21 @@ export default function RxTraining() {
         debounceTime(500),
         map(value => value.length > 3 ? value : ''),
         distinctUntilChanged(),
-        takeUntil(stop$)
+        takeUntil( stop$ ),
+        takeWhile(n => {
+          return toggle$?.current?.value === true;
+        })
       ).subscribe({
         next: (value) => setFormValue(value),
         error: (err) => console.log('Error', err),
-        complete: () => setSearchFormIsOn(false)
+        complete: () => setIsCompleted(false)
       });
 
-  }, []);
+  }, [stream]);
 
   useEffect(() => {
-    console.log('New form value:', formValue);
-  }, [formValue])
+    toggle$?.current?.next(stream);
+  }, [stream]);
 
   return (
     <div className="page">
@@ -69,7 +78,9 @@ export default function RxTraining() {
         <div className="row">
           <div className="col-24">
             <div className="pb-3">
-              <Switcher ref={togglerRef} onChange={() => setStream(!stream)} checked={stream}>Toggle stream</Switcher>
+              <Switcher ref={togglerRef} onChange={() => setStream(!stream)} checked={stream}>
+                Toggle stream <span className={'text-muted'}>(doesn't work yet)</span>
+              </Switcher>
             </div>
           </div>
         </div>
@@ -77,7 +88,7 @@ export default function RxTraining() {
         <div className="row">
           <div className="col-24">
             <div className="pb-3">
-              Subscriber is: {searchFormIsOn ? 'active' : 'off'}
+              <span className={'text-muted'}>Completed: </span> {isCompleted ? 'false' : 'true'}
             </div>
           </div>
         </div>
