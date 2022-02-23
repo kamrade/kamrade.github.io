@@ -3,9 +3,22 @@ import classNames from "classnames/bind";
 import s from "./Grid.module.scss";
 import * as Icon from 'react-feather';
 import {IGridProps, IGridData} from './GridTypes';
+import {casesColumnsMap} from '../CasesService/casesData';
+
 const sx = classNames.bind(s);
 
-export const Grid: React.FC<IGridProps> = ({defaultColumnsSize, columns, gridData, isFetching, hasError, sortedBy, setSortedBy, sortDirection, setSortDirection}) => {
+export const Grid: React.FC<IGridProps> = ({
+  defaultColumnsSize,
+  columns,
+  gridData,
+  isFetching,
+  hasError,
+
+  sortedBy,
+  setSortedBy,
+  sortDirection,
+  setSortDirection
+}) => {
 
   const [columnsSize /*, setColumnsSize */ ] = useState(defaultColumnsSize);
   const [fullWidth /* , setFullWidth */ ]     = useState(columnsSize.reduce((acc, val) => acc + val, 0)); // summarize all the widths of the columns together
@@ -31,15 +44,13 @@ export const Grid: React.FC<IGridProps> = ({defaultColumnsSize, columns, gridDat
 
         {hasError && <div className={s.GridError}>{hasError}</div>}
 
-        {!hasError && isFetching && <div className={s.GridPreloader}>Fetching data</div>}
-
-        {!hasError && !isFetching && <div className={s.GridContent} style={{width: `${fullWidth}px`}}>
+        {!hasError && gridData && <div className={s.GridContent} style={{width: `${fullWidth}px`}}>
 
           <div className={s.THead}>
             {columns.map((columnCaption, i) => {
               return (
                 <div className={s.ColumnCaption} key={i} style={{width: columnsSize[i]}} onClick={() => clickOnThHandler(columnCaption)}>
-                  {columnCaption}
+                  {casesColumnsMap[columnCaption]}
                   {columnCaption === sortedBy && (sortDirection === 'asc' ? <Icon.ChevronDown size={16} /> : <Icon.ChevronUp size={16} />) }
                 </div>
               )
@@ -60,7 +71,12 @@ export const Grid: React.FC<IGridProps> = ({defaultColumnsSize, columns, gridDat
             )
           })}
 
+          {!hasError && isFetching && gridData && <div className={s.GridPreloaderFast}/>}
+
         </div>}
+
+        {!hasError && isFetching && !gridData && <div className={s.GridPreloader}>Fetching data</div>}
+
       </div>
     </div>
   )

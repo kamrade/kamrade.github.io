@@ -1,11 +1,10 @@
-import React, {createContext, useContext, ReactChild, ReactChildren, useState, useCallback} from 'react';
+import React, {createContext, useContext, ReactChild, ReactChildren, useState} from 'react';
 import {
   casesData,
   CasesData,
   casesColumns,
   sortedByDefault,
-  sortDirectionDefault,
-  casesColumnsMap
+  sortDirectionDefault
 } from './casesData';
 import {randomIntFromInterval} from 'helpers';
 import {SortDirection} from '../Grid/GridTypes';
@@ -33,10 +32,6 @@ interface ICaseProviderProps {
 
 const CasesContext = createContext<ICaseContext | null>(null);
 
-export const getCasesColumns = () => {
-  return casesColumns;
-}
-
 export const CasesProvider: React.FC<ICaseProviderProps> = (props) => {
 
   const [sortedBy, setSortedBy] = useState(sortedByDefault);
@@ -45,21 +40,25 @@ export const CasesProvider: React.FC<ICaseProviderProps> = (props) => {
   const getSortedBy = () => sortedBy;
   const getSortDirection = () => sortDirection;
 
-  const getCases = useCallback(() => {
+  const getCasesColumns = () => {
+    return casesColumns;
+  }
+
+  const getCases = () => {
     let chance = randomIntFromInterval(0, 100);
+    console.log(chance);
 
     return new Promise<CasesData[]>((resolve, reject) => {
       setTimeout(() => {
-        if (chance > 5) {
-          resolve(casesData);
+        if (chance > 1) {
+          resolve(orderBy(casesData, [sortedBy], [sortDirection]));
         } else {
           reject('Data retrieval error. Please reload the page.');
         }
-
       }, 1000);
     });
 
-  }, []);
+  };
 
   const value: ICaseContext = {
     getCases: props.getCases || getCases,

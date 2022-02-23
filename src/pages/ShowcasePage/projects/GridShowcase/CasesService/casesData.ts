@@ -17,20 +17,24 @@ export interface CasesData {
 
 export const defaultColumnsSize = [320, 200, 200, 200, 320, 200];
 
-export const sortedByDefault = 'Assignee';
+export const sortedByDefault = 'assignee';
 
 export const sortDirectionDefault = 'asc';
 
 export const casesColumns = [
-  'Reference ID',
-  'Assignee',
-  'Customer Name',
-  'Created on',
-  'Descrption',
-  'Status'
+  'referenceId',
+  'assignee',
+  'customerName',
+  'createdOn',
+  'descrption',
+  'status'
 ];
 
-export const casesColumnsMap = {
+interface ICasesColumsMap {
+  [key: string]: string;
+}
+
+export const casesColumnsMap: ICasesColumsMap = {
   referenceId: 'Reference ID',
   assignee: 'Assignee',
   customerName: 'Customer Name',

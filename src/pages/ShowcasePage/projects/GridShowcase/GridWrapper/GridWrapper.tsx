@@ -8,7 +8,7 @@ export const GridWrapper = () => {
   const [casesData, setCasesData] = useState<any>(null);
   const [isFetching, setIsFetching] = useState<boolean>(true);
   const [hasError, setHasError] = useState<string>('');
-  const [columns, setColumns] = useState<any>(null);
+  const [columns, setColumns] = useState<any>([]);
 
   const cases = useCases();
 
