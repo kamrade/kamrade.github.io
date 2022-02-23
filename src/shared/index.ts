@@ -11,6 +11,7 @@ import {Modal} from './Modal';
 import {Formq, FormqInput} from './Formq';
 import {PopupNotification} from "./PopupNotification";
 import {BackToMain} from "./BackToMain";
+import {Switcher} from './Switcher';
 
 export {
   Box,
@@ -28,5 +29,6 @@ export {
   DropdownToggler,
   Modal,
   PopupNotification,
-  BackToMain
+  BackToMain,
+  Switcher
 };

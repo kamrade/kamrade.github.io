@@ -2,14 +2,17 @@ import React, {useEffect, useState, useRef} from 'react';
 import {fromEvent, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
 import {FromEventTarget} from "rxjs/internal/observable/fromEvent";
-import {Input, Button} from 'shared';
+import {Input, Button, Switcher} from 'shared';
 
 export default function RxTraining() {
 
   const searchInputRef = useRef();
-  const stopButtonRef = useRef();
+  const stopButtonRef  = useRef();
+  const togglerRef     = useRef(); // unused
+
   const [formValue, setFormValue] = useState('');
   const [searchFormIsOn, setSearchFormIsOn] = useState(true);
+  const [stream, setStream] = useState(true);
 
   // component Did Mount
   useEffect(() => {
@@ -59,6 +62,14 @@ export default function RxTraining() {
           <div className="col-8">
             <div className="pb-3">
               <Button id="stop" theme={'secondary'} ref={stopButtonRef}>Stop</Button>
+            </div>
+          </div>
+        </div>
+        
+        <div className="row">
+          <div className="col-24">
+            <div className="pb-3">
+              <Switcher ref={togglerRef} onChange={() => setStream(!stream)} checked={stream}>Toggle stream</Switcher>
             </div>
           </div>
         </div>
