@@ -1,0 +1,34 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.ColumnCaption {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .ColumnSeparator {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: $gray-200;
+    width: 3px;
+    cursor: e-resize;
+    transition: background .2s ease-in-out;
+
+    &:hover {
+      background: $gray-300;
+    }
+  }
+
+  &:hover {
+    background-color: darken($gray-200, $hover-factor);
+  }
+}

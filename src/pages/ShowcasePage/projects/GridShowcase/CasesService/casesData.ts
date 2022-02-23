@@ -16,6 +16,7 @@ export interface CasesData {
 }
 
 export const defaultColumnsSize = [320, 200, 200, 200, 320, 200];
+export const minColumnSize = 100;
 
 export const sortedByDefault = 'assignee';
 
@@ -26,7 +27,7 @@ export const casesColumns = [
   'assignee',
   'customerName',
   'createdOn',
-  'descrption',
+  'description',
   'status'
 ];
 
@@ -39,7 +40,7 @@ export const casesColumnsMap: ICasesColumsMap = {
   assignee: 'Assignee',
   customerName: 'Customer Name',
   createdOn: 'Created on',
-  description: 'Descrption',
+  description: 'Description',
   status: 'Status'
 }
 

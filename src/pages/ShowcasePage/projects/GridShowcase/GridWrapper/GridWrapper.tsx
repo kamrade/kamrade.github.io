@@ -23,7 +23,7 @@ export const GridWrapper = () => {
         setIsFetching(false);
       }).catch(err => setHasError(err));
 
-  }, [cases]);
+  }, []);
 
   return (
     <div className={'GridWrapper'}>

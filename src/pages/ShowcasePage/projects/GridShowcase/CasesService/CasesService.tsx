@@ -46,7 +46,7 @@ export const CasesProvider: React.FC<ICaseProviderProps> = (props) => {
 
   const getCases = () => {
     let chance = randomIntFromInterval(0, 100);
-    console.log(chance);
+    // console.log(chance);
 
     return new Promise<CasesData[]>((resolve, reject) => {
       setTimeout(() => {

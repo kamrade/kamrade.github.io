@@ -72,7 +72,7 @@ export const statisticsOfExistingCustomers = {
   countriesWhereTheCustomerOperatesMost: {
     country: {
       type: 'text | country',
-      titile: 'Country'
+      title: 'Country'
     },
     percentage: {
       type: 'number',

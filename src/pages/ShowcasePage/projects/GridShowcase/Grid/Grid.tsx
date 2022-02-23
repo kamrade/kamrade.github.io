@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import classNames from "classnames/bind";
 import s from "./Grid.module.scss";
-import * as Icon from 'react-feather';
 import {IGridProps, IGridData} from './GridTypes';
-import {casesColumnsMap} from '../CasesService/casesData';
+import {casesColumnsMap, minColumnSize} from '../CasesService/casesData';
+import {GridColumnCaption} from "./GridColumnCaption/GridColumnCaption";
 
 const sx = classNames.bind(s);
 
@@ -20,8 +20,25 @@ export const Grid: React.FC<IGridProps> = ({
   setSortDirection
 }) => {
 
-  const [columnsSize /*, setColumnsSize */ ] = useState(defaultColumnsSize);
-  const [fullWidth /* , setFullWidth */ ]     = useState(columnsSize.reduce((acc, val) => acc + val, 0)); // summarize all the widths of the columns together
+  const [columnsSize, setColumnsSize] = useState(defaultColumnsSize);
+  const [fullWidth, setFullWidth]     = useState(columnsSize.reduce((acc, val) => acc + val, 0)); // summarize all the widths of the columns together
+
+  const setColumn = (columnNumber: number) => {
+    return (columnValue: number) => {
+
+      if (columnValue > minColumnSize) {
+        if (columnNumber === 0) {
+          setColumnsSize([columnValue, ...columnsSize.slice(1, columnsSize.length) ])
+        } else if (columnNumber === columnsSize.length) {
+          setColumnsSize([...columnsSize.slice(0, columnsSize.length - 1), columnValue]);
+        } else {
+          setColumnsSize([ ...columnsSize.slice(0, columnNumber), columnValue, ...columnsSize.slice(columnNumber+1, columnsSize.length) ])
+        }
+        setFullWidth( columnsSize.reduce((acc, val) => acc + val, 0) );
+      }
+
+    }
+  }
 
   const clickOnThHandler = (columnCaption: string) => {
     if (columnCaption === sortedBy) {
@@ -47,14 +64,19 @@ export const Grid: React.FC<IGridProps> = ({
         {!hasError && gridData && <div className={s.GridContent} style={{width: `${fullWidth}px`}}>
 
           <div className={s.THead}>
-            {columns.map((columnCaption, i) => {
-              return (
-                <div className={s.ColumnCaption} key={i} style={{width: columnsSize[i]}} onClick={() => clickOnThHandler(columnCaption)}>
-                  {casesColumnsMap[columnCaption]}
-                  {columnCaption === sortedBy && (sortDirection === 'asc' ? <Icon.ChevronDown size={16} /> : <Icon.ChevronUp size={16} />) }
-                </div>
-              )
-            })}
+            {columns.map((columnCaption, i) =>
+              <div key={i}>
+                <GridColumnCaption
+                  columnTitle={casesColumnsMap[columnCaption]}
+                  columnCaption={columnCaption}
+                  initialColumnSize={columnsSize[i]}
+                  clickHandler={() => clickOnThHandler(columnCaption)}
+                  sortedBy={sortedBy}
+                  sortDirection={sortDirection}
+                  setColumn={setColumn(i)}
+                />
+              </div>
+            )}
           </div>
 
           {gridData?.map((row: IGridData, i: number) => {
