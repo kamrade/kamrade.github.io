@@ -1,18 +1,6 @@
 /*
-  ## TODO: Button roadmap
-  - [ ] Loading
-  - [ ] Icon
-  - [ ] Negative margin for child Icons
-  - [ ] Size
-  - [ ] Block
-  - [ ] Outline
-  - [ ] More themes
-  - [ ] More themes
-  - [ ] Use mixins and loops for theming and sizing.
-  - [ ] Circled button
-  - [ ] Link and Anchor button
-*/
-
+// ButtonComponent
+ */
 import React, { memo, forwardRef, ForwardedRef, ForwardRefRenderFunction } from 'react';
 import s from './Button.module.scss';
 import classNames from 'classnames/bind';

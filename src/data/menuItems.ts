@@ -47,15 +47,15 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
     }]
   }, {
     title: 'Alerts',
-    link: '/apps/alerts'
+    link: '/apps/uikit/alerts'
   }, {
     title: 'Badge',
-    link: '/apps/badge'
+    link: '/apps/uikit/badge'
   }, {
     title: 'Breadcrumb',
-    link: '/apps/breadcrumb'
+    link: '/apps/uikit/breadcrumb'
   }, {
     title: 'Buttons',
-    link: '/apps/buttons'
+    link: '/apps/uikit/buttons'
   }]
 }];
