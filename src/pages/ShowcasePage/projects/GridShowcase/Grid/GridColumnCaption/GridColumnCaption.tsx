@@ -2,16 +2,17 @@ import React, {useState, useEffect} from 'react';
 import s from "./GridColumnCaption.module.scss";
 import * as Icon from "react-feather";
 import {IGridColumnCaption} from './GridColumnCaptionTypes';
+import {throttle} from 'lodash';
 
 export const GridColumnCaption: React.FC<IGridColumnCaption> =
   ({columnTitle, columnCaption, initialColumnSize, clickHandler, sortedBy, sortDirection, setColumn}) => {
 
-  const [initialX, setInitialX] = useState<number>(0);
-  const [initialSize, setInitialSize] = useState<number>(initialColumnSize);
-  const [currentX, setCurrentX] = useState<number>(0);
-  const [columnSize, setColumnSize] = useState(initialColumnSize);
+  const [initialX, setInitialX]        = useState<number>(0);
+  const [initialSize, setInitialSize]  = useState<number>(initialColumnSize);
+  const [currentX, setCurrentX]        = useState<number>(0);
+  const [columnSize, setColumnSize]    = useState(initialColumnSize);
 
-  const [isResizing, setIsResizing] = useState<boolean>(false);
+  const [isResizing, setIsResizing]    = useState<boolean>(false);
 
   useEffect(() => setColumnSize(initialColumnSize), [initialColumnSize])
 
@@ -21,7 +22,7 @@ export const GridColumnCaption: React.FC<IGridColumnCaption> =
     setInitialX(e.clientX);
     setInitialSize(initialColumnSize);
     setIsResizing(true);
-    document.addEventListener('mousemove', separatorMouseMove);
+    document.addEventListener('mousemove', separatorMouseMoveThrottled);
     document.addEventListener('mouseup', separatorMouseUp);
   }
 
@@ -31,6 +32,9 @@ export const GridColumnCaption: React.FC<IGridColumnCaption> =
     setCurrentX(e.clientX);
   }
 
+  const separatorMouseMoveThrottled = throttle(separatorMouseMove, 80);
+  // const separatorMouseMoveThrottled = separatorMouseMove;
+
   useEffect(() => {
     setColumn(initialSize + (currentX - initialX));
   }, [currentX]);
@@ -38,7 +42,7 @@ export const GridColumnCaption: React.FC<IGridColumnCaption> =
   const separatorMouseUp = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
-    document.removeEventListener('mousemove', separatorMouseMove);
+    document.removeEventListener('mousemove', separatorMouseMoveThrottled);
     document.removeEventListener('mouseup', separatorMouseUp);
   }
 

@@ -7,27 +7,35 @@ export const customerInformation = {
       title: 'Legal name'
     },
     legalFormOfFinancialInstitution: {
-      type: 'text | number',
+      type: 'text', // Select?
       title: 'Legal form of financial institution'
     },
     registrationNumber: {
-      type: 'text | number',
+      type: 'text',  // Number?
       title: 'Registration number'
     },
+    dateOfRegistration: {
+      type: 'text | date',
+      title: 'Date of registration'
+    },
     countryOfIncorporation: {
-      type: 'text | countrySelector',
+      type: 'selector | countrySelector',
       title: 'Country of incorporation'
     },
-    addressOfRegistration_if_applicable: {
+    addressOfRegistration: {
       type: 'text | address',
       title: 'Address of registration (if applicable)'
     },
-    addressOfCorrespondence_if_applicable: {
+    addressOfCorrespondence: {
       type: 'text | address',
       title: 'Address of correspondence (if applicable)'
     },
-    // Licensing authority, country and license number
 
+    // Licensing authority, country and license number
+    licensing: {
+      type: 'title',
+      title: 'Licensing'
+    },
     licensingAuthority: {
       type: 'text',
       title: 'Licensing authority'
@@ -40,6 +48,11 @@ export const customerInformation = {
       type: 'number',
       title: 'License number'
     },
+    licensingSeparator: {
+      type: 'separator'
+    },
+    //- Licensing authority, country and license number
+
     nameOfTheRegulatorSupervisoryAuthority: {
       type: 'text',
       title: 'Name of the regulator/supervisory authority'

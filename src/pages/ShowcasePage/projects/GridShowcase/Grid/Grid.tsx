@@ -65,17 +65,16 @@ export const Grid: React.FC<IGridProps> = ({
 
           <div className={s.THead}>
             {columns.map((columnCaption, i) =>
-              <div key={i}>
-                <GridColumnCaption
-                  columnTitle={casesColumnsMap[columnCaption]}
-                  columnCaption={columnCaption}
-                  initialColumnSize={columnsSize[i]}
-                  clickHandler={() => clickOnThHandler(columnCaption)}
-                  sortedBy={sortedBy}
-                  sortDirection={sortDirection}
-                  setColumn={setColumn(i)}
-                />
-              </div>
+              <GridColumnCaption
+                key={i}
+                columnTitle={casesColumnsMap[columnCaption]}
+                columnCaption={columnCaption}
+                initialColumnSize={columnsSize[i]}
+                clickHandler={() => clickOnThHandler(columnCaption)}
+                sortedBy={sortedBy}
+                sortDirection={sortDirection}
+                setColumn={setColumn(i)}
+              />
             )}
           </div>
 
