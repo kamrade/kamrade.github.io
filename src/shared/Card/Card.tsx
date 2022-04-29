@@ -52,6 +52,7 @@ export const Card = (props: CardProps) => {
   return (
     <div className={cardClassNames}>
       <div className="Content">
+
         {isNamedSlots(children) && (<>
           { children.header ? <div className={s.CardHeader}>{children.header}</div> : null }
           <div className={s.CardContent}>{children.content}</div>
@@ -60,6 +61,7 @@ export const Card = (props: CardProps) => {
 
 
         {!isNamedSlots(children) && (<span className={s.ChildrenWrapper}>{children}</span>)}
+
       </div>
 
       {onClose && <Close onClose={onClose} />}

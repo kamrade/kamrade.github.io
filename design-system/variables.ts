@@ -1,19 +1,6 @@
-
-export const colorsGray = {
-  $wh: '#fff',
-  $g050: '#f5f8fa',
-  $g100: '#f1f4f6',
-  $g200: '#eaeef2',
-  $g300: '#DEE5EB',
-  $g400: '#afbcc7',
-  $g500: '#8895A0',
-  $g600: '#6c7984',
-  $g800: '#49535a',
-  $g900: '#3f474d',
-  $g910: '#353C42',
-}
-
 export const colors = {
+
+  $white: '#ffffff',
 
   // Grey
   $grey100: '#F1F4F6',
@@ -60,19 +47,11 @@ export const colors = {
   $red900: '#DF3948',
 }
 
-export const $colorMuted = colorsGray.$g600;
+export const $colorMuted = colors.$grey600;
 
 /*
  //
- // text
- // link
- // default
- // default-accent
- // primary
- // dark
- // danger
- // success
- // outline
+ // text, link, default, accent, primary, dark, danger, success, outline
  //
 */
 
@@ -80,16 +59,20 @@ export const themeColors = {
   $pri: colors.$blue700,
   $priHover: colors.$blue800,
   $priActive: colors.$blue900,
+  $priText: colors.$white,
 
   $priLight: colors.$blue100,
   $priLightHover: colors.$blue200,
   $priLightActive: colors.$blue300,
+  $priLightText: colors.$blue700,
 
-  $dangerLight: '#FEEFF0',
-  $dangerLightHover: '#FCE5E6',
-  $dangerLightActive: '#FFD7D9',
+  $dangerLight: colors.$red100,
+  $dangerLightHover: colors.$red200,
+  $dangerLightActive: colors.$red300,
+  $dangerLightText: colors.$red700,
 
-  $successLight: '#DCEDD5',
-  $successLightHover: '#CDE9C2',
-  $successLightActive: '#B5E7A0',
+  $successLight: colors.$green100,
+  $successLightHover: colors.$green100,
+  $successLightActive: colors.$green100,
+  $successLightText: colors.$green700,
 }

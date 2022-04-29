@@ -1,0 +1,39 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.DocSection {
+  padding: 1rem 0;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+
+  &.SpaceNONE {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  &.SpaceXS {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.125rem;
+  }
+
+  &.SpaceSM {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.25rem;
+  }
+
+  &.SpaceMD {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  &.SpaceLG {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+}

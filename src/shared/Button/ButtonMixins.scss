@@ -1,0 +1,35 @@
+@use "sass:math";
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+@mixin btnThemeDraw($bg, $color, $bgHover, $bgActive) {
+  background-color: $bg;
+  color: $color;
+
+  &:not(:disabled):hover {
+    background-color: $bgHover;
+  }
+
+  &:not(:disabled):active {
+    background-color: $bgActive;
+    box-shadow: none;
+  }
+}
+
+@mixin btnSizeDraw($paddingY, $paddingX, $innerSpacingX, $fontSize, $lineHeight: 1.5) {
+
+  padding: $paddingY $paddingX;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+
+  .childrenLeft {
+    margin-left: -1/2 * $paddingX;
+    margin-right: $innerSpacingX;
+  }
+
+  .childrenRight {
+    margin-right: -1/2 * $paddingX;
+    margin-left: $innerSpacingX;
+  }
+
+}

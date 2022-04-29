@@ -1,116 +1,143 @@
+@use "sass:math";
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
+@import './ButtonMixins';
 
 .ButtonBase {
-  display: inline-block;
-  font-weight: 400;
+  border-radius: $border-radius;
+  border: none;
+  border-color: transparent;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-radius: $border-radius;
-  box-shadow: none;
-  transition: background .3s $transitionFunc;
+  padding: $buttonPaddingSM-y $buttonPaddingSM-x;
+  transition: background .3s ease-in-out;
+  background-color: map-get($themes, default);
+  color: map-get($themes, defaultText);
+  vertical-align: middle;
 
-  padding: 0.5625rem .75rem;
-
-  &.ButtonSM {
-    padding: .25rem .25rem;
+  &:not(:disabled):hover {
+    background-color: map-get($themes, defaultHover);
   }
 
-  &.ButtonMD {
-
+  &:not(:disabled):active {
+    background-color: map-get($themes, defaultActive);
   }
 
-  &.ButtonLG {
-    padding: 1rem .5rem;
+  &:not(:disabled):focus {
+    box-shadow: $focus-shadow;
+    outline: none;
   }
 
-  &.Wide {
-    padding: 0.625rem 1.5rem;
-    &.ButtonSM {
-      padding: .375rem 1.5rem;
-    }
-    &.ButtonLG {
-      padding: 1.125rem 1.5rem;
-    }
+  &:disabled {
+    opacity: $btn-disabled-opacity;
   }
 
+  //~ .ButtonBase {
+  //  margin-left: 4px;
+  //}
+
+  // CHILDREN
+  .childrenBefore {
+    margin-left: -1/3 * $buttonPaddingSM-x;
+    margin-right: $buttonInnerSpacingSM-x;
+    line-height: 0;
+  }
+
+  .childrenAfter {
+    margin-right: -1/3 * $buttonPaddingSM-x;
+    margin-left: $buttonInnerSpacingSM-x;
+    line-height: 0;
+  }
+
+  // BLOCK
   &.Block {
     display: block;
     width: 100%;
   }
 
-  &:not(:disabled):hover {
-    background-color: rgba(0,0,0,0.05);
-  }
-
-  &:not(:disabled):active {
-    background-color: rgba(0,0,0,0.1);
-  }
-
-  &:disabled {
-    opacity: $btn-disabled-opacity;
-    color: $gray-900;
-    cursor: default;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: $buttonFocused;
-  }
-
-  &.Secondary {
-    background-color: $secondary-color;
-
-    &:not(:disabled):hover {
-      background-color: darken($secondary-color, $hover-factor);
-    }
-
-    &:not(:disabled):active {
-      background-color: darken($secondary-color, $active-factor);
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: $buttonFocused;
-    }
-  }
-
+  // THEME
   &.Primary {
-    background-color: $primary;
-    color: $white;
-
-    &:not(:disabled):hover {
-      background-color: darken($primary, $hover-factor);
-    }
-
-    &:not(:disabled):active {
-      background-color: darken($primary, $active-factor);
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: $buttonFocused;
-    }
+    @include btnThemeDraw($theme-pri, $theme-priText, $theme-priHover, $theme-priActive);
   }
 
   &.Dark {
-    background-color: $gray-800;
-    color: $white;
+    @include btnThemeDraw($theme-dark, $theme-darkText, $theme-darkHover, $theme-darkActive);
+  }
 
-    &:not(:disabled):hover {
-      background-color: darken($gray-800, $hover-factor);
+  &.Text {
+    @include btnThemeDraw($theme-text, $theme-textText, $theme-textHover, $theme-textActive);
+  }
+
+  &.Link {
+    @include btnThemeDraw($theme-link, $theme-linkText, $theme-linkHover, $theme-linkActive);
+  }
+
+  &.Success {
+    @include btnThemeDraw($theme-success, $theme-successText, $theme-successHover, $theme-successActive);
+  }
+
+  &.Danger {
+    @include btnThemeDraw($theme-danger, $theme-dangerText, $theme-dangerHover, $theme-dangerActive);
+  }
+
+  &.Accent {
+    @include btnThemeDraw($theme-accent, $theme-accentText, $theme-accentHover, $theme-accentActive);
+  }
+
+  // SIZE
+  &.XS {
+    @include btnSizeDraw($buttonPaddingXS-y, $buttonPaddingXS-x, $buttonInnerSpacingXS-x, $buttonFontSizeXS, $buttonLineHeightXS);
+    &.Wide {
+      padding: $buttonPaddingXS-y $buttonPaddingXS-x * 2;
     }
+  }
 
-    &:not(:disabled):active {
-      background-color: darken($gray-800, $active-factor);
+  &.SM {
+    @include btnSizeDraw($buttonPaddingSM-y, $buttonPaddingSM-x, $buttonInnerSpacingSM-x, $buttonFontSizeSM, $buttonLineHeightSM);
+    &.Wide {
+      padding: $buttonPaddingSM-y $buttonPaddingSM-x * 2;
     }
+  }
 
-    &:focus {
-      outline: none;
-      box-shadow: $buttonFocused;
+  &.MD {
+    @include btnSizeDraw($buttonPaddingMD-y, $buttonPaddingMD-x, $buttonInnerSpacingMD-x, $buttonFontSizeMD, $buttonLineHeightMD);
+    &.Wide {
+      padding: $buttonPaddingMD-y $buttonPaddingMD-x * 2;
+    }
+  }
+
+  &.LG {
+    @include btnSizeDraw($buttonPaddingLG-y, $buttonPaddingLG-x, $buttonInnerSpacingLG-x, $buttonFontSizeLG, $buttonLineHeightLG);
+    &.Wide {
+      padding: $buttonPaddingLG-y $buttonPaddingLG-x * 2;
+    }
+  }
+
+  &.Wide {
+    padding: $buttonPaddingSM-y $buttonPaddingSM-x * 2;
+  }
+
+  // SHAPE
+  &.Square {
+    border-radius: 0;
+  }
+
+  &.Circle {
+    border-radius: (2 * $buttonPaddingSM-y + $buttonLineHeightSM) / 2;
+
+    &.LG {
+      border-radius: (2 * $buttonPaddingLG-y + $buttonLineHeightLG) / 2;
+    }
+    &.MD {
+      border-radius: (2 * $buttonPaddingMD-y + $buttonLineHeightMD) / 2;
+    }
+    &.SM {
+      border-radius: (2 * $buttonPaddingSM-y + $buttonLineHeightSM) / 2;
+    }
+    &.XS {
+      border-radius: (2 * $buttonPaddingXS-y + $buttonLineHeightXS) / 2;
     }
   }
 }

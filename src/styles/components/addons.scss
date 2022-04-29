@@ -1,3 +1,12 @@
 .dud { // used in ScrambledText component
   color: $gray-200;
 }
+
+.container {
+  padding: 0 1.5rem;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0 .5rem;
+  }
+
+}

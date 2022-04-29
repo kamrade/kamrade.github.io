@@ -3,8 +3,8 @@
 
 .Card {
   padding: 1rem;
-  border-radius: $border-radius;
-  background-color: $gray-100;
+  border-radius: $border-radius * 2;
+  background-color: $theme-default;
   margin-bottom: 1rem;
   font-size: 0.875rem;
   line-height: 1.45;
@@ -32,8 +32,8 @@
   }
 
   .CardContent {
-    padding-bottom: .5rem;
-    margin-bottom: .5rem;
+    padding-bottom: .75rem;
+    margin-bottom: .75rem;
   }
 
 }

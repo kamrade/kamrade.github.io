@@ -72,7 +72,7 @@ export const AuthPage = () => {
               {/*<p>You must log in to view the page at {from.pathname}</p>*/}
               <h1>Sign Up</h1>
               <p className='mb-5'>Enter your credentials</p>
-              {/* <Button onClick={login}>Log in</Button> */}
+              {/* <UIKitButtonPage onClick={login}>Log in</UIKitButtonPage> */}
 
 
               <Formq
@@ -101,7 +101,7 @@ export const AuthPage = () => {
 
                       { /*
                       <FormRow>
-                        <Button size='lg' disabled={isSubmitting} block={true} type='reset' theme='secondary' onClick={clearForm}>Clear</Button>
+                        <UIKitButtonPage size='lg' disabled={isSubmitting} block={true} type='reset' theme='secondary' onClick={clearForm}>Clear</UIKitButtonPage>
                       </FormRow>
                       */ }
 
