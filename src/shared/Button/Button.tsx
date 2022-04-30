@@ -12,7 +12,7 @@ const sx = classNames.bind(s);
 const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: ButtonProps, ref: ForwardedRef<any> ) => {
 
   const { theme, shape, children, size,
-    disabled, type, childrenLeft, childrenRight, className, block, wide, ...other} = props;
+    disabled, type, prefix, suffix, className, block, wide, ...other} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -49,7 +49,9 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
 
   return (
     <button { ...other } disabled={disabled} ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
+      {prefix && <span className={s.buttonPrefix}>{prefix}</span>}
       {children}
+      {suffix && <span className={s.buttonSuffix}>{suffix}</span>}
     </button>
   );
 };

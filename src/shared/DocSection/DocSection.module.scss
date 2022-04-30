@@ -6,6 +6,7 @@
   border-bottom: 1px solid $border-color;
   margin-bottom: 1.5rem;
   align-items: flex-start;
+  flex-wrap: wrap;
 
   &.SpaceNONE {
     display: flex;

@@ -17,8 +17,9 @@ export interface ButtonProps {
   id?: string;
   wide?: boolean;
 
-  childrenLeft?: React.ReactNode;
-  childrenRight?: React.ReactNode;
+  // Use prefix and suffix only for insert icons or some graphic on it
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
   children: React.ReactNode;
 
   onClick?: React.MouseEventHandler<HTMLElement>;

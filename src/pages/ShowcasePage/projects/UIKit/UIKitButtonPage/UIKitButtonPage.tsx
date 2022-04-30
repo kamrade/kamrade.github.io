@@ -1,4 +1,10 @@
 import React from 'react';
+
+import { IconContext } from "react-icons";
+import { FaBeer } from 'react-icons/fa';
+import { IoMdArrowForward } from "react-icons/io";
+import { MdAddCircle, MdBookmark, MdInfoOutline, MdStars, MdChangeCircle } from "react-icons/md";
+
 import { Button, DocSection } from 'shared';
 
 export const UIKitButtonPage = () => {
@@ -60,6 +66,49 @@ export const UIKitButtonPage = () => {
           <Button wide={true} theme={'danger'}>Danger</Button>
           <Button wide={true} theme={'primary'}>Test</Button>
           <Button wide={true} theme={'dark'}>Dark</Button>
+        </DocSection>
+
+        <label>Button with icon</label>
+        <DocSection space={'sm'}>
+
+          <Button
+            prefix={<MdAddCircle />}
+            theme={'default'}
+            size={'xs'}
+          >Add</Button>
+
+          <Button
+            prefix={<MdBookmark />}
+            theme={'default'}
+            size={'sm'}
+          >Bookmark</Button>
+
+          <Button
+            prefix={<MdInfoOutline />}
+            theme={'accent'}
+            size={'md'}
+          >Information</Button>
+
+          <Button
+            prefix={<MdStars />}
+            theme={'dark'}
+            size={'lg'}
+          >Star</Button>
+
+          <Button
+            suffix={<><MdChangeCircle /></>}
+            theme={'default'}
+            size={'sm'}
+          >Refresh</Button>
+
+
+        </DocSection>
+
+        <DocSection>
+          <IconContext.Provider value={{ size: '2rem', color: "#AFBCC7", className: "icon-class-name" }}>
+            <FaBeer />
+            <IoMdArrowForward />
+          </IconContext.Provider>
         </DocSection>
 
 

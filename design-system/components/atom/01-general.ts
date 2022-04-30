@@ -1,10 +1,11 @@
 // General
 import * as Options from "./options";
 
+// React icons
 export interface Icon {
   name: Options.IconName;
   size: number;
-  type?: Options.IconType;
+  color: string;
 }
 
 // - [ ] Loading

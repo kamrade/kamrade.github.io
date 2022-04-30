@@ -34,20 +34,18 @@
     opacity: $btn-disabled-opacity;
   }
 
-  //~ .ButtonBase {
-  //  margin-left: 4px;
-  //}
-
   // CHILDREN
-  .childrenBefore {
-    margin-left: -1/3 * $buttonPaddingSM-x;
-    margin-right: $buttonInnerSpacingSM-x;
+  .buttonPrefix {
+    padding-right: .25em;
+    margin-left: -0.25em;
+    font-size: 1.2em;
     line-height: 0;
   }
 
-  .childrenAfter {
-    margin-right: -1/3 * $buttonPaddingSM-x;
-    margin-left: $buttonInnerSpacingSM-x;
+  .buttonSuffix {
+    padding-left: .25em;
+    margin-right: -0.25em;
+    font-size: 1.2em;
     line-height: 0;
   }
 
