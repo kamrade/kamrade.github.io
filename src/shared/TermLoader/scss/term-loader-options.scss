@@ -1,0 +1,49 @@
+// for gradiented
+$keyframes: (0, 12, 24, 36, 48, 60, 72, 84);
+$t-size: 3px;
+
+// for positioned blocks
+$opacity: (1, 0.84, 0.72, 0.60, 0.48, 0.36, 0.24, 0.12);
+$left: (11, 11, 11, 11, 18, 18, 18, 18);
+$top: (7, 12, 17, 22, 22, 17, 12, 7);
+
+@function get-color($opacity) {
+  @return rgba(73, 83, 90, $opacity);
+}
+
+$colors: (
+  get-color(1),
+  get-color(0.84),
+  get-color(0.72),
+  get-color(0.60),
+  get-color(0.48),
+  get-color(0.36),
+  get-color(0.24),
+  get-color(0.12)
+);
+
+@function get-gradient($color, $size) {
+  @return linear-gradient( $color $size, transparent 0 ),
+}
+
+@function decrement($number) {
+  @if $number - 1 == 0 {
+    @return 1;
+  } @else {
+    @return $number - 1;
+  }
+}
+
+@mixin get-keyframe($index) {
+  $all: ();
+
+  @for $i from $index through length($colors) {
+    $all: append($all,  get-gradient(nth($colors, $i), $t-size), $separator: comma)
+  }
+  @for $i from 1 through decrement($index) {
+    $all: append($all,  get-gradient(nth($colors, $i), $t-size), $separator: comma)
+  }
+
+  background-image: $all;
+}
+

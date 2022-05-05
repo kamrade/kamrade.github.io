@@ -1,34 +1,15 @@
-import {Box} from './Box';
-import {Card} from './Card';
-import {Button} from './Button';
-import {Icon} from './Icon';
-import {Input} from './Input';
-import {FormRow} from './FormRow';
-import {InputDescription} from './InputDescription';
-import {Close} from './Close';
-import {Dropdown, DropdownOption, DropdownToggler} from './Dropdown';
-import {Modal} from './Modal';
-import {Formq, FormqInput} from './Formq';
-import {PopupNotification} from "./PopupNotification";
-import {BackToMain} from "./BackToMain";
-import {DocSection} from "./DocSection/DocSection";
-
-export {
-  Box,
-  Card,
-  Button,
-  Input,
-  Formq,
-  FormqInput,
-  FormRow,
-  Icon,
-  InputDescription,
-  Close,
-  Dropdown,
-  DropdownOption,
-  DropdownToggler,
-  Modal,
-  PopupNotification,
-  BackToMain,
-  DocSection
-};
+export {Box} from './Box';
+export {Card} from './Card';
+export {Button} from './Button';
+export {Icon} from './Icon';
+export {Input} from './Input';
+export {FormRow} from './FormRow';
+export {InputDescription} from './InputDescription';
+export {Close} from './Close';
+export {Dropdown, DropdownOption, DropdownToggler} from './Dropdown';
+export {Modal} from './Modal';
+export {Formq, FormqInput} from './Formq';
+export {PopupNotification} from "./PopupNotification";
+export {BackToMain} from "./BackToMain";
+export {DocSection} from "./DocSection";
+export {TermLoader, TermLoaderBlocks} from "./TermLoader";

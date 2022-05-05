@@ -9,22 +9,16 @@ export interface Icon {
 }
 
 // - [ ] Loading
-// - [ ] Icon
-// - [ ] Negative margin for child Icons
-// - [ ] Size
-// - [ ] Block
 // - [ ] Outline
 // - [ ] More themes
 // - [ ] More themes
-// - [ ] Use mixins and loops for theming and sizing.
-// - [ ] Circled button
 // - [ ] Link and Anchor button
 export interface ButtonProperties {
   size?: Options.Size; // default = sm
   block?: boolean; // default = false
   theme?: Options.Theme; // default = default
-  iconBefore?: Icon;
-  iconAfter?: Icon;
+  prefix?: Icon;
+  suffix?: Icon;
   disabled?: boolean;
   loading?: boolean;
   hover: boolean;

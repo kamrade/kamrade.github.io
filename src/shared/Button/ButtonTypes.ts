@@ -10,6 +10,7 @@ export interface ButtonProps {
   theme?: ButtonTheme;
   shape?: ButtonShape;
   disabled?: boolean;
+  loading?: boolean;
   size?: ButtonSize;
   className?: string;
   style?: any;

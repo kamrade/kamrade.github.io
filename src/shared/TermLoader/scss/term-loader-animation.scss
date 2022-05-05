@@ -1,0 +1,17 @@
+@import './term-loader-options';
+
+@keyframes preloader {
+  @for $i from 1 through length($keyframes) {
+    #{nth($keyframes, $i)}% {
+      @include get-keyframe($i);
+    }
+  }
+}
+
+@keyframes preloader-block {
+  @for $i from 1 through length($keyframes) {
+    #{nth($keyframes, $i)}% {
+      opacity: nth($opacity, $i);
+    }
+  }
+}

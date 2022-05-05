@@ -5,7 +5,7 @@ import { FaBeer } from 'react-icons/fa';
 import { IoMdArrowForward } from "react-icons/io";
 import { MdAddCircle, MdBookmark, MdInfoOutline, MdStars, MdChangeCircle } from "react-icons/md";
 
-import { Button, DocSection } from 'shared';
+import { Button, DocSection, TermLoader, TermLoaderBlocks } from 'shared';
 
 export const UIKitButtonPage = () => {
   return (
@@ -35,7 +35,7 @@ export const UIKitButtonPage = () => {
 
         <label>Block button</label>
         <DocSection space={'xs'}>
-          <Button id={'block-button'} size={'sm'} block={true}>Block</Button>
+          <Button id={'block-button'} size={'sm'} block={true}>Block button</Button>
         </DocSection>
 
         <label>Shapes</label>
@@ -104,7 +104,8 @@ export const UIKitButtonPage = () => {
 
         </DocSection>
 
-        <DocSection>
+        <label>React-icons examples</label>
+        <DocSection space={'sm'}>
           <IconContext.Provider value={{ size: '2rem', color: "#AFBCC7", className: "icon-class-name" }}>
             <FaBeer />
             <IoMdArrowForward />
@@ -112,6 +113,17 @@ export const UIKitButtonPage = () => {
         </DocSection>
 
 
+        <label>Another buttons</label>
+        <DocSection space={'sm'}>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'default'} size={'sm'}>Default</Button>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'primary'} size={'sm'}>Primary</Button>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'success'} size={'sm'}>Success</Button>
+        </DocSection>
+
+        <DocSection space={'sm'}>
+          <TermLoader />
+          <TermLoaderBlocks />
+        </DocSection>
 
       </div>
     </div>

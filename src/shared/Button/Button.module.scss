@@ -16,6 +16,7 @@
   background-color: map-get($themes, default);
   color: map-get($themes, defaultText);
   vertical-align: middle;
+  position: relative;
 
   &:not(:disabled):hover {
     background-color: map-get($themes, defaultHover);
@@ -136,6 +137,21 @@
     }
     &.XS {
       border-radius: (2 * $buttonPaddingXS-y + $buttonLineHeightXS) / 2;
+    }
+  }
+  
+  &.Loading {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background-color: inherit;
     }
   }
 }
