@@ -19,21 +19,6 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
     title: 'RX training',
     link: '/apps/rx-training'
   },
-
-  // {
-  //   title: 'Wheelson',
-  //   link: '/apps/wheelson'
-  // }, {
-  //   title: 'Exchange',
-  //   link: '/apps/exchange'
-  // }, {
-  //   title: 'Formaline',
-  //   link: '/apps/formaline'
-  // }, {
-  //   title: 'Rx Tutorial',
-  //   link: '/apps/rx-tutorial'
-  // }
-
   ]
 }, {
   id: 'components',

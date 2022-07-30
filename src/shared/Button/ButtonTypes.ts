@@ -17,6 +17,7 @@ export interface ButtonProps {
   block?: boolean;
   id?: string;
   wide?: boolean;
+  bold?: boolean;
 
   // Use prefix and suffix only for insert icons or some graphic on it
   prefix?: React.ReactNode;

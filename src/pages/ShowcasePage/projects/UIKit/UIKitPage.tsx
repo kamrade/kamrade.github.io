@@ -6,7 +6,7 @@ export const UIKitPage = () => {
   return (
     <div className='container'>
       <header className="pt-5 pb-3" />
-      <h1>UIKit v.1</h1>
+      <h1 className="mb-9">UIKit — v.1.1.0</h1>
       <Switch>
         <Route path='/apps/uikit/alerts'><div>Alerts</div></Route>
         <Route path='/apps/uikit/badge'><div>Badge</div></Route>

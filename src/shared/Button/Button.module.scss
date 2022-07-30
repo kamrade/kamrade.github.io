@@ -56,6 +56,12 @@
     width: 100%;
   }
 
+  &.Bold {
+    font-weight: bold;
+  }
+
+  // VARIANT
+
   // THEME
   &.Primary {
     @include btnThemeDraw($theme-pri, $theme-priText, $theme-priHover, $theme-priActive);

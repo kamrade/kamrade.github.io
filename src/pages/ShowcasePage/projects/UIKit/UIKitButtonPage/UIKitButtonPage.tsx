@@ -10,9 +10,10 @@ import { Button, DocSection, TermLoader, TermLoaderBlocks } from 'shared';
 export const UIKitButtonPage = () => {
   return (
     <div className='uikit-page uikit-button-page'>
-      <h2>UIKitButtonPage</h2>
+      <h3>UIKit. Buttons</h3>
 
       <div className={'py-3'}>
+
         <label>Themes</label>
         <DocSection space={'sm'}>
           <Button theme={'text'}>Text</Button>
@@ -36,6 +37,11 @@ export const UIKitButtonPage = () => {
         <label>Block button</label>
         <DocSection space={'xs'}>
           <Button id={'block-button'} size={'sm'} block={true}>Block button</Button>
+        </DocSection>
+
+        <label>Bold</label>
+        <DocSection space={'sm'}>
+          <Button size={'sm'} bold={true}>Bold text in the button</Button>
         </DocSection>
 
         <label>Shapes</label>

@@ -11,7 +11,7 @@ const sx = classNames.bind(s);
 
 const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: ButtonProps, ref: ForwardedRef<any> ) => {
 
-  const { theme, shape, children, size,
+  const { theme, shape, children, size, bold,
     disabled, type, prefix, suffix, className, block, wide, loading, ...other} = props;
 
   let buttonClassNames = sx({
@@ -35,6 +35,7 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
     Square: shape === 'square',
     Rounded: shape === 'rounded',
 
+    Bold: bold,
     Loading: loading,
     Wide: wide,
     Block: block,
