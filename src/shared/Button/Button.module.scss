@@ -1,6 +1,7 @@
 @use "sass:math";
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
+@import "src/styles/helpers/animations";
 @import './ButtonMixins';
 
 .ButtonBase {
@@ -61,8 +62,26 @@
   }
 
   // VARIANT
+  // - contained
+  // - contained-light
+  // - text
+  // - outlined
 
   // THEME
+  // - primary
+  // - secondary
+  // - base
+  // - succes
+  // - danger
+  // - warning
+
+  /*
+  // primary contained
+  // primary contained-light
+  // primary text
+  // primary outlined
+   */
+
   &.Primary {
     @include btnThemeDraw($theme-pri, $theme-priText, $theme-priHover, $theme-priActive);
   }
@@ -144,8 +163,10 @@
     &.XS {
       border-radius: (2 * $buttonPaddingXS-y + $buttonLineHeightXS) / 2;
     }
+
+
   }
-  
+
   &.Loading {
     &::before {
       content: '';
@@ -159,5 +180,24 @@
       border-radius: inherit;
       background-color: inherit;
     }
+
+    .preLoader {
+      position: absolute;
+      display: inline-flex;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      height: 1em;
+      width: 1em;
+
+      .preloaderAnimator :global {
+        display: inline-flex;
+        font-size: 1em;
+        line-height: 0;
+        animation: 3s linear infinite spin;
+        transform-origin: 50% 50%;
+      }
+    }
+
   }
 }

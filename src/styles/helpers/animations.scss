@@ -16,3 +16,11 @@
   }
 }
 
+@keyframes :global(spin) {
+  0% {
+    transform: rotate(0);
+  }
+  99% {
+    transform: rotate(360deg);
+  }
+}

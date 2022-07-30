@@ -81,12 +81,14 @@ export const UIKitButtonPage = () => {
             prefix={<MdAddCircle />}
             theme={'default'}
             size={'xs'}
+            bold
           >Add</Button>
 
           <Button
             prefix={<MdBookmark />}
             theme={'default'}
             size={'sm'}
+            bold
           >Bookmark</Button>
 
           <Button
@@ -99,12 +101,14 @@ export const UIKitButtonPage = () => {
             prefix={<MdStars />}
             theme={'dark'}
             size={'lg'}
+            bold
           >Star</Button>
 
           <Button
             suffix={<><MdChangeCircle /></>}
             theme={'default'}
             size={'sm'}
+            bold
           >Refresh</Button>
 
 
@@ -119,13 +123,14 @@ export const UIKitButtonPage = () => {
         </DocSection>
 
 
-        <label>Another buttons</label>
+        <label>Loading buttons</label>
         <DocSection space={'sm'}>
           <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'default'} size={'sm'}>Default</Button>
-          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'primary'} size={'sm'}>Primary</Button>
-          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'success'} size={'sm'}>Success</Button>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'primary'} size={'md'}>Primary</Button>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'success'} size={'lg'}>Success</Button>
         </DocSection>
 
+        <label>In progress</label>
         <DocSection space={'sm'}>
           <TermLoader />
           <TermLoaderBlocks />

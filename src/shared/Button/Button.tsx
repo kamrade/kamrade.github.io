@@ -4,6 +4,7 @@
 import React, { memo, forwardRef, ForwardedRef, ForwardRefRenderFunction } from 'react';
 import s from './Button.module.scss';
 import classNames from 'classnames/bind';
+import { RiLoaderLine } from "react-icons/ri";
 
 import { ButtonProps } from './ButtonTypes'
 
@@ -54,6 +55,11 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
       {prefix && <span className={s.buttonPrefix}>{prefix}</span>}
       {children}
       {suffix && <span className={s.buttonSuffix}>{suffix}</span>}
+      {loading && <span className={s.preLoader}>
+        <span className={s.preloaderAnimator}>
+          <RiLoaderLine fontSize={'1em'}/>
+        </span>
+      </span>}
     </button>
   );
 };

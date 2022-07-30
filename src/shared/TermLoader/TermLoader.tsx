@@ -8,14 +8,14 @@ export interface ITermLoaderProps {
 export const TermLoader: React.FC<ITermLoaderProps> = () => {
 
   return (
-    <div className={'TermLoader'} />
+    <span className={'TermLoader'} />
   );
 
 }
 
 export const TermLoaderBlocks: React.FC = () => {
   return (
-    <div className={'TermLoaderBlocks'}>
+    <span className={'TermLoaderBlocks'}>
       <span className={'TermLoaderBlock'}></span>
       <span className={'TermLoaderBlock'}></span>
       <span className={'TermLoaderBlock'}></span>
@@ -24,7 +24,7 @@ export const TermLoaderBlocks: React.FC = () => {
       <span className={'TermLoaderBlock'}></span>
       <span className={'TermLoaderBlock'}></span>
       <span className={'TermLoaderBlock'}></span>
-    </div>
+    </span>
   );
 }
 
