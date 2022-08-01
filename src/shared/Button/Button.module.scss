@@ -6,25 +6,24 @@
 
 .ButtonBase {
   border-radius: $border-radius;
-  border: none;
-  border-color: transparent;
+  border: $buttonBorderSize solid transparent;
   display: inline-flex;
   align-items: center;
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: $buttonPaddingSM-y $buttonPaddingSM-x;
   transition: background .3s ease-in-out;
-  background-color: map-get($themes, default);
-  color: map-get($themes, defaultText);
+  background-color: transparent;
+  color: map-get($theme-base, text);
   vertical-align: middle;
   position: relative;
 
   &:not(:disabled):hover {
-    background-color: map-get($themes, defaultHover);
+    background-color: map-get($theme-base, bg100);
   }
 
   &:not(:disabled):active {
-    background-color: map-get($themes, defaultActive);
+    background-color: map-get($theme-base, bg200);
   }
 
   &:not(:disabled):focus {
@@ -61,54 +60,30 @@
     font-weight: bold;
   }
 
-  // VARIANT
-  // - contained
-  // - contained-light
-  // - text
-  // - outlined
 
-  // THEME
-  // - primary
-  // - secondary
-  // - base
-  // - succes
-  // - danger
-  // - warning
-
-  /*
-  // primary contained
-  // primary contained-light
-  // primary text
-  // primary outlined
-   */
+  // THEMES AND VARIANTS
+  &.Base {
+    @include btnTheming($theme-base);
+  }
 
   &.Primary {
-    @include btnThemeDraw($theme-pri, $theme-priText, $theme-priHover, $theme-priActive);
-  }
-
-  &.Dark {
-    @include btnThemeDraw($theme-dark, $theme-darkText, $theme-darkHover, $theme-darkActive);
-  }
-
-  &.Text {
-    @include btnThemeDraw($theme-text, $theme-textText, $theme-textHover, $theme-textActive);
-  }
-
-  &.Link {
-    @include btnThemeDraw($theme-link, $theme-linkText, $theme-linkHover, $theme-linkActive);
+    @include btnTheming($theme-primary);
   }
 
   &.Success {
-    @include btnThemeDraw($theme-success, $theme-successText, $theme-successHover, $theme-successActive);
+    @include btnTheming($theme-success);
   }
 
   &.Danger {
-    @include btnThemeDraw($theme-danger, $theme-dangerText, $theme-dangerHover, $theme-dangerActive);
+    @include btnTheming($theme-danger);
   }
 
-  &.Accent {
-    @include btnThemeDraw($theme-accent, $theme-accentText, $theme-accentHover, $theme-accentActive);
+  &.Warning {
+    @include btnTheming($theme-warning);
   }
+
+
+
 
   // SIZE
   &.XS {

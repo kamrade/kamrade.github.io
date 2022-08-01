@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { FaBeer } from 'react-icons/fa';
 import { IoMdArrowForward } from "react-icons/io";
 import { MdAddCircle, MdBookmark, MdInfoOutline, MdStars, MdChangeCircle } from "react-icons/md";
+import { RiArrowLeftCircleFill } from 'react-icons/ri';
 
 import { Button, DocSection, TermLoader, TermLoaderBlocks } from 'shared';
 
@@ -14,37 +15,42 @@ export const UIKitButtonPage = () => {
 
       <div className={'py-3'}>
 
-        <label>Themes</label>
+        <h4 className={'text-muted'}>Themes</h4>
         <DocSection space={'sm'}>
-          {/*<Button theme={'text'}>Text</Button>*/}
-          {/*<Button theme={'link'}>Link</Button>*/}
-          {/*<Button>Default</Button>*/}
+          <Button bold theme={'base'}>Base</Button>
+          <Button bold variant={'contained'} theme={'base'}>Base</Button>
+          <Button bold variant={'light'} theme={'base'}>Base</Button>
+          <Button bold variant={'outlined'} theme={'base'}>Base</Button>
+        </DocSection>
 
-          <Button theme={'primary'}>Primary</Button>
-          <Button variant={'contained'} theme={'primary'}>Primary</Button>
-          <Button variant={'light'} theme={'primary'}>Primary</Button>
-          <Button variant={'outlined'} theme={'primary'}>Primary</Button>
+        <DocSection space={'sm'}>
+          <Button bold theme={'primary'}>Primary</Button>
+          <Button bold variant={'contained'} theme={'primary'}>Primary</Button>
+          <Button bold variant={'light'} theme={'primary'}>Primary</Button>
+          <Button bold variant={'outlined'} theme={'primary'}>Primary</Button>
+          <Button disabled bold prefix={<MdBookmark />} theme={'primary'} size={'sm'} variant={'contained'}>Bookmark</Button>
+          <Button bold prefix={<RiArrowLeftCircleFill />} theme={'primary'} size={'sm'} variant={'outlined'}>Bookmark</Button>
+        </DocSection>
 
-          <Button theme={'base'}>Base</Button>
-          <Button variant={'contained'} theme={'base'}>Base</Button>
-          <Button variant={'light'} theme={'base'}>Base</Button>
-          <Button variant={'outlined'} theme={'base'}>Base</Button>
+        <DocSection space={'sm'}>
+          <Button bold theme={'success'}>Success</Button>
+          <Button bold variant={'contained'} theme={'success'}>Success</Button>
+          <Button bold variant={'light'} theme={'success'}>Success</Button>
+          <Button bold variant={'outlined'} theme={'success'}>Success</Button>
+        </DocSection>
 
-          <Button theme={'success'}>Success</Button>
-          <Button variant={'contained'} theme={'success'}>Success</Button>
-          <Button variant={'light'} theme={'success'}>Success</Button>
-          <Button variant={'outlined'} theme={'success'}>Success</Button>
+        <DocSection space={'sm'}>
+          <Button bold theme={'danger'}>Danger</Button>
+          <Button bold variant={'contained'} theme={'danger'}>Danger</Button>
+          <Button bold variant={'light'} theme={'danger'}>Danger</Button>
+          <Button bold variant={'outlined'} theme={'danger'}>Danger</Button>
+        </DocSection>
 
-          <Button theme={'danger'}>Danger</Button>
-          <Button variant={'contained'} theme={'danger'}>Danger</Button>
-          <Button variant={'light'} theme={'danger'}>Danger</Button>
-          <Button variant={'outlined'} theme={'danger'}>Danger</Button>
-
-          <Button theme={'warning'}>Warning</Button>
-          <Button variant={'contained'} theme={'warning'}>Warning</Button>
-          <Button variant={'light'} theme={'warning'}>Warning</Button>
-          <Button variant={'outlined'} theme={'warning'}>Warning</Button>
-
+        <DocSection space={'sm'}>
+          <Button bold theme={'warning'}>Warning</Button>
+          <Button bold variant={'contained'} theme={'warning'}>Warning</Button>
+          <Button bold variant={'light'} theme={'warning'}>Warning</Button>
+          <Button bold variant={'outlined'} theme={'warning'}>Warning</Button>
         </DocSection>
 
         <label>Sizes</label>

@@ -1,3 +1,15 @@
+$white: #fff !default;
+$gray-100: #F1F4F6 !default;
+$gray-200: #EAEEF2 !default;
+$gray-300: #DEE5EB !default;
+$gray-400: #AFBCC7 !default;
+$gray-500: #8895A0 !default;
+$gray-600: #6C7984 !default;
+$gray-700: #525D67 !default;
+$gray-800: #49535A !default;
+$gray-900: #3F474D !default;
+$black: #000 !default;
+
 // PALETTE
 $colors: (
   white: #ffffff,
@@ -53,49 +65,6 @@ $colors: (
   yellow-900: #ECC913
 );
 
-// THEMES
-$themes: (
-  text: transparent,
-  textHover: map-get($colors, gray-100),
-  textActive: map-get($colors, gray-200),
-  textText: map-get($colors, gray-900),
-
-  link: transparent,
-  linkHover: map-get($colors, gray-100),
-  linkActive: map-get($colors, gray-200),
-  linkText: map-get($colors, blue-700),
-
-  default: map-get($colors, gray-100),
-  defaultHover: map-get($colors, gray-200),
-  defaultActive: map-get($colors, gray-300),
-  defaultText: map-get($colors, gray-900),
-
-  pri: map-get($colors, blue-700),
-  priHover: map-get($colors, blue-800),
-  priActive: map-get($colors, blue-900),
-  priText: map-get($colors, white),
-
-  accent: map-get($colors, blue-100),
-  accentHover: map-get($colors, blue-200),
-  accentActive: map-get($colors, blue-300),
-  accentText: map-get($colors, blue-700),
-
-  danger: map-get($colors, red-100),
-  dangerHover: map-get($colors, red-200),
-  dangerActive: map-get($colors, red-300),
-  dangerText: map-get($colors, red-700),
-
-  success: map-get($colors, green-100),
-  successHover: map-get($colors, green-200),
-  successActive: map-get($colors, green-300),
-  successText: map-get($colors, green-700),
-
-  dark: map-get($colors, gray-700),
-  darkHover: map-get($colors, gray-800),
-  darkActive: map-get($colors, gray-900),
-  darkText: map-get($colors, white)
-);
-
 $theme-base: (
   bg100:   map-get($colors, gray-100),
   bg200:   map-get($colors, gray-200),
@@ -106,6 +75,7 @@ $theme-base: (
   text:    map-get($colors, gray-900),
   textInverted: map-get($colors, white),
   outline: map-get($colors, gray-700),
+  focus: map-get($colors, gray-700),
 );
 
 $theme-primary: (
@@ -118,6 +88,7 @@ $theme-primary: (
   text:    map-get($colors, blue-900),
   textInverted: map-get($colors, white),
   outline: map-get($colors, blue-700),
+  focus: map-get($colors, blue-700),
 );
 
 $theme-success: (
@@ -130,6 +101,7 @@ $theme-success: (
   text:    map-get($colors, green-900),
   textInverted: map-get($colors, white),
   outline: map-get($colors, green-700),
+  focus: map-get($colors, green-700),
 );
 
 $theme-danger: (
@@ -142,6 +114,7 @@ $theme-danger: (
   text:    map-get($colors, red-900),
   textInverted: map-get($colors, white),
   outline: map-get($colors, red-700),
+  focus: map-get($colors, red-700),
 );
 
 $theme-warning: (
@@ -154,63 +127,11 @@ $theme-warning: (
   text:    map-get($colors, yellow-900),
   textInverted: map-get($colors, gray-900),
   outline: map-get($colors, yellow-700),
+  focus: map-get($colors, yellow-700),
 );
 
 
-$theme-text: map-get($themes, text);
-$theme-textHover: map-get($themes, textHover);
-$theme-textActive: map-get($themes, textActive);
-$theme-textText: map-get($themes, textText);
-
-$theme-link: map-get($themes, link);
-$theme-linkHover: map-get($themes, linkHover);
-$theme-linkActive: map-get($themes, linkActive);
-$theme-linkText: map-get($themes, linkText);
-
-$theme-default: map-get($themes, default);
-$theme-defaultHover: map-get($themes, defaultHover);
-$theme-defaultActive: map-get($themes, defaultActive);
-$theme-defaultText: map-get($themes, defaultText);
-
-$theme-pri: map-get($themes, pri);
-$theme-priHover: map-get($themes, priHover);
-$theme-priActive: map-get($themes, priActive);
-$theme-priText: map-get($themes, priText);
-
-$theme-accent: map-get($themes, accent);
-$theme-accentHover: map-get($themes, accentHover);
-$theme-accentActive: map-get($themes, accentActive);
-$theme-accentText: map-get($themes, accentText);
-
-$theme-danger: map-get($themes, danger);
-$theme-dangerHover: map-get($themes, dangerHover);
-$theme-dangerActive: map-get($themes, dangerActive);
-$theme-dangerText: map-get($themes, dangerText);
-
-$theme-success: map-get($themes, success);
-$theme-successHover: map-get($themes, successHover);
-$theme-successActive: map-get($themes, successActive);
-$theme-successText: map-get($themes, successText);
-
-$theme-dark: map-get($themes, dark);
-$theme-darkHover: map-get($themes, darkHover);
-$theme-darkActive: map-get($themes, darkActive);
-$theme-darkText: map-get($themes, darkText);
-
-
-$white: #fff !default;
-$gray-100: #F1F4F6 !default;
-$gray-200: #EAEEF2 !default;
-$gray-300: #DEE5EB !default;
-$gray-400: #AFBCC7 !default;
-$gray-500: #8895A0 !default;
-$gray-600: #6C7984 !default;
-$gray-700: #525D67 !default;
-$gray-800: #49535A !default;
-$gray-900: #3F474D !default;
-$black: #000 !default;
-
-$primary: map-get($themes, primary);
+$primary: map-get($colors, blue-700);
 $secondary-color: $gray-100;
 $milq-color: #04ba8e;
 $link-color: $primary;
@@ -236,6 +157,8 @@ $spacers: map-merge(
 );
 
 // BUTTONS
+$buttonBorderSize: 1px;
+
 $buttonPaddingXS-y: 0.1875rem;
 $buttonPaddingSM-y: 0.375rem;
 $buttonPaddingMD-y: 0.625rem;
@@ -273,7 +196,7 @@ $hover-factor: 3%;
 $active-factor: 5%;
 
 $transitionFunc: cubic-bezier(0.15, 0.5, 0.5, 1);
-$focus-shadow: 0 0 0 0.15rem rgba(map-get($themes, pri), 0.2);
+$focus-shadow: 0 0 0 0.15rem rgba($primary, 0.2);
 $btn-disabled-opacity: 0.5;
 
 $grid-breakpoints: (

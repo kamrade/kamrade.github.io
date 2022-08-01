@@ -3,6 +3,7 @@ h1 {
   line-height: 1.2;
   letter-spacing: -0.5px;
   margin-bottom: 0.5em;
+  font-weight: bold;
 }
 
 h2 {
@@ -10,6 +11,7 @@ h2 {
   line-height: 1.2;
   letter-spacing: -0.5px;
   margin-bottom: 0.5em;
+  font-weight: bold;
 }
 
 h3 {
@@ -17,6 +19,13 @@ h3 {
   line-height: 1.2;
   letter-spacing: -0.25px;
   margin-bottom: 0.5em;
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.25px;
+  margin-bottom: 0.375em;
 }
 
 .page-title {
