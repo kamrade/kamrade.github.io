@@ -12,20 +12,22 @@ const sx = classNames.bind(s);
 
 const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: ButtonProps, ref: ForwardedRef<any> ) => {
 
-  const { theme, shape, children, size, bold,
+  const { theme = 'base', variant = 'text', shape, children, size, bold,
     disabled, type, prefix, suffix, className, block, wide, loading, ...other} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
 
-    Text: theme === 'text',
-    Link: theme === 'link',
-    Default: theme === 'default',
+    Base: theme === 'base',
+    Primary: theme === 'primary',
     Success: theme === 'success',
     Danger: theme === 'danger',
-    Accent: theme === 'accent',
-    Primary: theme === 'primary',
-    Dark: theme === 'dark',
+    Warning: theme === 'warning',
+
+    Text: variant === 'text',
+    Contained: variant === 'contained',
+    Light: variant === 'light',
+    Outlined: variant === 'outlined',
 
     XS: size === 'xs',
     SM: size === 'sm',

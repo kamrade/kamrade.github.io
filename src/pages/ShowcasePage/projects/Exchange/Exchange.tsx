@@ -56,7 +56,7 @@ export default function Exchange() {
         <Card>{{
           header: (<div>Header</div>),
           content: (<div>Content</div>),
-          actions: (<div><Button block={true} theme={'dark'}>Close</Button></div>)
+          actions: (<div><Button block={true} theme={'base'}>Close</Button></div>)
         }}</Card>
 
         <div className="my-5">

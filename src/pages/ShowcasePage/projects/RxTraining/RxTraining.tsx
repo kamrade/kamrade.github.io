@@ -36,7 +36,7 @@ export default function RxTraining() {
             <Input type="text" id="search"/>
           </div>
           <div className="col-4">
-            <Button id="stop" theme={'default'}>Stop</Button>
+            <Button id="stop" theme={'base'}>Stop</Button>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-// COLORS
+// PALETTE
 $colors: (
   white: #ffffff,
   gray-100: #F1F4F6,
@@ -40,9 +40,20 @@ $colors: (
   red-600: #FF858D,
   red-700: #F45B69,
   red-800: #ED4C5B,
-  red-900: #DF3948
+  red-900: #DF3948,
+
+  yellow-100: #FEFCEF,
+  yellow-200: #FFFAE1,
+  yellow-300: #FFF8D3,
+  yellow-400: #FFF5BE,
+  yellow-500: #FFEE94,
+  yellow-600: #F9E47A,
+  yellow-700: #F6DE5C,
+  yellow-800: #F3D537,
+  yellow-900: #ECC913
 );
 
+// THEMES
 $themes: (
   text: transparent,
   textHover: map-get($colors, gray-100),
@@ -84,6 +95,67 @@ $themes: (
   darkActive: map-get($colors, gray-900),
   darkText: map-get($colors, white)
 );
+
+$theme-base: (
+  bg100:   map-get($colors, gray-100),
+  bg200:   map-get($colors, gray-200),
+  bg300:   map-get($colors, gray-300),
+  bg700:   map-get($colors, gray-700),
+  bg800:   map-get($colors, gray-800),
+  bg900:   map-get($colors, gray-900),
+  text:    map-get($colors, gray-900),
+  textInverted: map-get($colors, white),
+  outline: map-get($colors, gray-700),
+);
+
+$theme-primary: (
+  bg100:   map-get($colors, blue-100),
+  bg200:   map-get($colors, blue-200),
+  bg300:   map-get($colors, blue-300),
+  bg700:   map-get($colors, blue-700),
+  bg800:   map-get($colors, blue-800),
+  bg900:   map-get($colors, blue-900),
+  text:    map-get($colors, blue-900),
+  textInverted: map-get($colors, white),
+  outline: map-get($colors, blue-700),
+);
+
+$theme-success: (
+  bg100:   map-get($colors, green-100),
+  bg200:   map-get($colors, green-200),
+  bg300:   map-get($colors, green-300),
+  bg700:   map-get($colors, green-700),
+  bg800:   map-get($colors, green-800),
+  bg900:   map-get($colors, green-900),
+  text:    map-get($colors, green-900),
+  textInverted: map-get($colors, white),
+  outline: map-get($colors, green-700),
+);
+
+$theme-danger: (
+  bg100:   map-get($colors, red-100),
+  bg200:   map-get($colors, red-200),
+  bg300:   map-get($colors, red-300),
+  bg700:   map-get($colors, red-700),
+  bg800:   map-get($colors, red-800),
+  bg900:   map-get($colors, red-900),
+  text:    map-get($colors, red-900),
+  textInverted: map-get($colors, white),
+  outline: map-get($colors, red-700),
+);
+
+$theme-warning: (
+  bg100:   map-get($colors, yellow-100),
+  bg200:   map-get($colors, yellow-200),
+  bg300:   map-get($colors, yellow-300),
+  bg700:   map-get($colors, yellow-700),
+  bg800:   map-get($colors, yellow-800),
+  bg900:   map-get($colors, yellow-900),
+  text:    map-get($colors, yellow-900),
+  textInverted: map-get($colors, gray-900),
+  outline: map-get($colors, yellow-700),
+);
+
 
 $theme-text: map-get($themes, text);
 $theme-textHover: map-get($themes, textHover);

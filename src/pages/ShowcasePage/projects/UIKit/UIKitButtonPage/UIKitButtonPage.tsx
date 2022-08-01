@@ -16,14 +16,35 @@ export const UIKitButtonPage = () => {
 
         <label>Themes</label>
         <DocSection space={'sm'}>
-          <Button theme={'text'}>Text</Button>
-          <Button theme={'link'}>Link</Button>
-          <Button>Default</Button>
-          <Button theme={'accent'}>Accent</Button>
+          {/*<Button theme={'text'}>Text</Button>*/}
+          {/*<Button theme={'link'}>Link</Button>*/}
+          {/*<Button>Default</Button>*/}
+
+          <Button theme={'primary'}>Primary</Button>
+          <Button variant={'contained'} theme={'primary'}>Primary</Button>
+          <Button variant={'light'} theme={'primary'}>Primary</Button>
+          <Button variant={'outlined'} theme={'primary'}>Primary</Button>
+
+          <Button theme={'base'}>Base</Button>
+          <Button variant={'contained'} theme={'base'}>Base</Button>
+          <Button variant={'light'} theme={'base'}>Base</Button>
+          <Button variant={'outlined'} theme={'base'}>Base</Button>
+
           <Button theme={'success'}>Success</Button>
+          <Button variant={'contained'} theme={'success'}>Success</Button>
+          <Button variant={'light'} theme={'success'}>Success</Button>
+          <Button variant={'outlined'} theme={'success'}>Success</Button>
+
           <Button theme={'danger'}>Danger</Button>
-          <Button theme={'primary'}>Test</Button>
-          <Button theme={'dark'}>Dark</Button>
+          <Button variant={'contained'} theme={'danger'}>Danger</Button>
+          <Button variant={'light'} theme={'danger'}>Danger</Button>
+          <Button variant={'outlined'} theme={'danger'}>Danger</Button>
+
+          <Button theme={'warning'}>Warning</Button>
+          <Button variant={'contained'} theme={'warning'}>Warning</Button>
+          <Button variant={'light'} theme={'warning'}>Warning</Button>
+          <Button variant={'outlined'} theme={'warning'}>Warning</Button>
+
         </DocSection>
 
         <label>Sizes</label>
@@ -46,32 +67,26 @@ export const UIKitButtonPage = () => {
 
         <label>Shapes</label>
         <DocSection space={'xs'}>
-          <Button size={'sm'} shape={'circle'} theme={'dark'}>Circle</Button>
+          <Button size={'sm'} shape={'circle'} theme={'base'}>Circle</Button>
           <Button size={'sm'} shape={'square'}>Square</Button>
         </DocSection>
 
         <label>Disabled</label>
         <DocSection space={'xs'}>
-          <Button disabled={true} theme={'text'}>Text</Button>
-          <Button disabled={true} theme={'link'}>Link</Button>
+          <Button disabled={true} theme={'base'}>Text</Button>
+          <Button disabled={true} theme={'primary'}>Link</Button>
           <Button disabled={true}>Default</Button>
-          <Button disabled={true} theme={'accent'}>Accent</Button>
           <Button disabled={true} theme={'success'}>Success</Button>
           <Button disabled={true} theme={'danger'}>Danger</Button>
           <Button disabled={true} theme={'primary'}>Test</Button>
-          <Button disabled={true} theme={'dark'}>Dark</Button>
         </DocSection>
 
         <label>Wide</label>
         <DocSection space={'sm'}>
-          <Button wide={true} theme={'text'}>Text</Button>
-          <Button wide={true} theme={'link'}>Link</Button>
           <Button wide={true}>Default</Button>
-          <Button wide={true} theme={'accent'}>Accent</Button>
           <Button wide={true} theme={'success'}>Success</Button>
           <Button wide={true} theme={'danger'}>Danger</Button>
           <Button wide={true} theme={'primary'}>Test</Button>
-          <Button wide={true} theme={'dark'}>Dark</Button>
         </DocSection>
 
         <label>Button with icon</label>
@@ -79,34 +94,34 @@ export const UIKitButtonPage = () => {
 
           <Button
             prefix={<MdAddCircle />}
-            theme={'default'}
+            theme={'base'}
             size={'xs'}
             bold
           >Add</Button>
 
           <Button
             prefix={<MdBookmark />}
-            theme={'default'}
+            theme={'base'}
             size={'sm'}
             bold
           >Bookmark</Button>
 
           <Button
             prefix={<MdInfoOutline />}
-            theme={'accent'}
+            theme={'base'}
             size={'md'}
           >Information</Button>
 
           <Button
             prefix={<MdStars />}
-            theme={'dark'}
+            theme={'base'}
             size={'lg'}
             bold
           >Star</Button>
 
           <Button
             suffix={<><MdChangeCircle /></>}
-            theme={'default'}
+            theme={'base'}
             size={'sm'}
             bold
           >Refresh</Button>
@@ -125,7 +140,7 @@ export const UIKitButtonPage = () => {
 
         <label>Loading buttons</label>
         <DocSection space={'sm'}>
-          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'default'} size={'sm'}>Default</Button>
+          <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'base'} size={'sm'}>Default</Button>
           <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'primary'} size={'md'}>Primary</Button>
           <Button loading={true} suffix={<><MdChangeCircle /></>} theme={'success'} size={'lg'}>Success</Button>
         </DocSection>

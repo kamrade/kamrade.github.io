@@ -1,10 +1,10 @@
 import React from 'react';
 
-export type ButtonVariant = 'text' | 'outlined' | 'contained' | 'contained-light'; // text = default
-export type ButtonTheme = 'text' | 'link' | 'default' | 'accent' | 'success' | 'danger' | 'primary' | 'dark';
-export type ButtonSize  = 'md' | 'lg' | 'sm' | 'xs'; // sm = default
-export type ButtonShape = 'circle' | 'square' | 'rounded'; // rounded = default
-export type ButtonType  = 'button' | 'submit' | 'reset' | undefined;
+export type ButtonVariant = 'text' | 'outlined' | 'contained' | 'light';              // default = text
+export type ButtonTheme = 'base' | 'primary' | 'success' | 'danger' | 'warning';      // default = base
+export type ButtonSize  = 'md' | 'lg' | 'sm' | 'xs';                                  // default = sm
+export type ButtonShape = 'circle' | 'square' | 'rounded';                            // default = rounded
+export type ButtonType  = 'button' | 'submit' | 'reset' | undefined;                  // default = button
 
 export interface ButtonProps {
   type?: ButtonType;
