@@ -55,7 +55,9 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
   return (
     <button { ...other } disabled={disabled || loading} ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
       {prefix && <span className={s.buttonPrefix}>{prefix}</span>}
+
       {children}
+
       {suffix && <span className={s.buttonSuffix}>{suffix}</span>}
       {loading && <span className={s.preLoader}>
         <span className={s.preloaderAnimator}>

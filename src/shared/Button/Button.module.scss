@@ -12,7 +12,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: $buttonPaddingSM-y $buttonPaddingSM-x;
-  transition: background .3s ease-in-out;
+  transition: all .3s ease-in-out;
   background-color: transparent;
   color: map-get($theme-base, text);
   vertical-align: middle;
@@ -38,16 +38,18 @@
   // CHILDREN
   .buttonPrefix {
     padding-right: .25em;
-    margin-left: -0.25em;
+    //margin-left: -0.25em;
     font-size: 1.2em;
     line-height: 0;
+    margin-top: -0.1em;
   }
 
   .buttonSuffix {
     padding-left: .25em;
-    margin-right: -0.25em;
+    //margin-right: -0.25em;
     font-size: 1.2em;
     line-height: 0;
+    margin-top: -0.1em;
   }
 
   // BLOCK
