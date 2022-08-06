@@ -16,6 +16,12 @@
       background-color: map-get($theme, bg200);
       box-shadow: none;
     }
+
+    &.Loading {
+      &::before {
+        background-color: $white;
+      }
+    }
   }
 
   &.Contained {

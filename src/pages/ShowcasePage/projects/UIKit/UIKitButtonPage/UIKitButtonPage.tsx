@@ -137,17 +137,27 @@ export const UIKitButtonPage = () => {
         <div className="mb-8">
           <h4 className={'text-muted'}>Loading</h4>
           <DocSection space={'sm'}>
-            <Button loading={true} suffix={<><RiRefreshLine /></>} theme={'base'} size={'sm'}>Default</Button>
-            <Button loading={true} suffix={<><RiRefreshLine /></>} theme={'primary'} size={'md'}>Primary</Button>
-            <Button loading={true} suffix={<><RiRefreshLine /></>} theme={'success'} size={'lg'}>Success</Button>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'light'} theme={'base'} size={'sm'}>Default</Button>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'contained'} theme={'primary'} size={'md'}>Primary</Button>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'outlined'} theme={'success'} size={'lg'}>Success</Button>
+
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'text'} theme={'base'} size={'sm'}>Default</Button>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'text'} theme={'primary'} size={'md'}>Primary</Button>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'text'} theme={'success'} size={'lg'}>Success</Button>
           </DocSection>
         </div>
+
+        <label>Test</label>
+        <DocSection space={'sm'}>
+          <Button suffix={<><RiRefreshLine /></>} variant={'light'} theme={'base'} size={'sm'}> </Button>
+        </DocSection>
 
         <label>In progress</label>
         <DocSection space={'sm'}>
           <TermLoader />
           <TermLoaderBlocks />
         </DocSection>
+
 
       </div>
     </div>
