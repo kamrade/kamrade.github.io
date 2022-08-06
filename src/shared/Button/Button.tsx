@@ -13,7 +13,7 @@ const sx = classNames.bind(s);
 const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: ButtonProps, ref: ForwardedRef<any> ) => {
 
   const { theme = 'base', variant = 'text', shape, children, size, bold,
-    disabled, type, prefix, suffix, className, block, wide, loading, ...other} = props;
+    disabled, type, prefix, suffix, className, block, wide, loading, iconButton, ...other} = props;
 
   let buttonClassNames = sx({
     ButtonBase: true,
@@ -38,6 +38,8 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
     Square: shape === 'square',
     Rounded: shape === 'rounded',
 
+    IconButton: iconButton,
+
     Bold: bold,
     Loading: loading,
     Wide: wide,
@@ -54,11 +56,11 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
 
   return (
     <button { ...other } disabled={disabled || loading} ref={ref} onClick={handleClick} type={type || 'button'} className={buttonClassNames}>
+
       {prefix && <span className={s.buttonPrefix}>{prefix}</span>}
+      {!iconButton && children}
+      {!iconButton && suffix && <span className={s.buttonSuffix}>{suffix}</span>}
 
-      {children}
-
-      {suffix && <span className={s.buttonSuffix}>{suffix}</span>}
       {loading && <span className={s.preLoader}>
         <span className={s.preloaderAnimator}>
           <RiLoaderLine fontSize={'1em'}/>

@@ -147,9 +147,12 @@ export const UIKitButtonPage = () => {
           </DocSection>
         </div>
 
-        <label>Test</label>
+        <label>Icon Button</label>
         <DocSection space={'sm'}>
-          <Button suffix={<><RiRefreshLine /></>} variant={'light'} theme={'base'} size={'sm'}> </Button>
+          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'text'} theme={'base'} size={'xs'} />
+          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'outlined'} theme={'danger'} size={'sm'} />
+          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'warning'} size={'md'} />
+          <Button iconButton shape={'circle'} prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'primary'} size={'lg'} />
         </DocSection>
 
         <label>In progress</label>
