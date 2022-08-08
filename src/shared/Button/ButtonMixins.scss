@@ -85,14 +85,8 @@
   font-size: $fontSize;
   line-height: $lineHeight;
 
-  .childrenLeft {
-    margin-left: -1/2 * $paddingX;
-    margin-right: $innerSpacingX;
-  }
-
-  .childrenRight {
-    margin-right: -1/2 * $paddingX;
-    margin-left: $innerSpacingX;
+  .buttonPrefix, .buttonSuffix, .preLoader {
+    font-size: $fontSize;
   }
 
 }

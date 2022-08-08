@@ -137,6 +137,7 @@ export const UIKitButtonPage = () => {
         <div className="mb-8">
           <h4 className={'text-muted'}>Loading</h4>
           <DocSection space={'sm'}>
+            <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'contained'} theme={'base'} size={'xs'}>Default</Button>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'light'} theme={'base'} size={'sm'}>Default</Button>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'contained'} theme={'primary'} size={'md'}>Primary</Button>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'outlined'} theme={'success'} size={'lg'}>Success</Button>
@@ -147,11 +148,13 @@ export const UIKitButtonPage = () => {
           </DocSection>
         </div>
 
+        {/* Icon Button */}
         <label>Icon Button</label>
         <DocSection space={'sm'}>
-          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'text'} theme={'base'} size={'xs'} />
+          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'base'} size={'xs'} />
           <Button iconButton prefix={<><RiRefreshLine /></>} variant={'outlined'} theme={'danger'} size={'sm'} />
           <Button iconButton prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'warning'} size={'md'} />
+          <Button iconButton prefix={<><RiRefreshLine /></>} variant={'text'} theme={'base'} size={'md'} />
           <Button iconButton shape={'circle'} prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'primary'} size={'lg'} />
         </DocSection>
 
