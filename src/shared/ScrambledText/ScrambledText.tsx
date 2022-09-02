@@ -1,37 +1,21 @@
 import React, {useRef, useEffect} from 'react';
+import {ScrambledTextProps} from ".";
 import s from './ScrambledText.module.scss';
 
-interface ScrambledTextProps {
-  value: string;
-}
-
-export const ScrambledText: React.FC<ScrambledTextProps> = ({value}) => {
-
-  /*
-  // oldText = content
-  // this.resolve = resolved
-  // this.frame = frame
-  // this.queue = queue
-   */
+export const ScrambledText: React.FC<ScrambledTextProps> = ({
+  value,
+  slideLength = 4000}) => {
 
   const elRef = useRef<HTMLDivElement>(null);
-
-  // let chars = '!<>-_\\/[]{}—=+*^?#________';
-  let chars = '!<>-_\\/[          #________';
+  let chars = '![]#____________![]#____________';
   let resolved: any;
   let queue: any[] = [];
   let frameRequest: number;
   let frame = 0; //
-  const phrases = [
-    'Neo,', // 3
-    'sooner or later', // 15
-    'you\'re going to realize', // 23
-    'just as I did', // 13
-    'that there\'s a difference', // 25
-    'between knowing the path', // 24
-    'and walking the path' // 20
-  ];
+  const phrases = value;
+
   let counter = 0;
+
 
   useEffect(() => {
     next();
@@ -42,7 +26,7 @@ export const ScrambledText: React.FC<ScrambledTextProps> = ({value}) => {
   const next = () => {
     setText(phrases[counter])
       .then(() => {
-        setTimeout(next, 2000);
+        setTimeout(next, slideLength);
       });
     counter = (counter + 1) % phrases.length;
   }

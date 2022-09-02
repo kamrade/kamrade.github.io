@@ -11,3 +11,9 @@
   line-height: 1;
 }
 
+:global {
+  .dud {
+    color: $gray-400;
+  }
+}
+

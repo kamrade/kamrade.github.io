@@ -24,8 +24,17 @@ export const MainPageContent = () => {
             Create <span className={s.Milq}>products</span> <br />
             for the perfect experience
           </PageTitle>
-          <div style={{ padding: '16px' }}>
-            <ScrambledText value={'Helo there, mate'} />
+          <div className={'p-3'}>
+            <ScrambledText
+              slideLength={5000}
+              value={[
+                '[ Product design ]',
+                '[ Prototyping ]',
+                '[ Infographic ]',
+                '[ Design systems ]',
+                '[ React components ]',
+              ]}
+            />
           </div>
           <p className={s.Desc}>
             I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World
