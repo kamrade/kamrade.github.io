@@ -13,6 +13,13 @@ export const UIKitButtonPage = () => {
       <h3>UIKit. Buttons</h3>
       <div className={'py-3'}>
 
+        <div className={'mb-8'}>
+          <h4 className={'text-muted'}>Custom button</h4>
+          <DocSection space={'sm'}>
+            <Button className={'some-custom-button'} bold theme={'base'}>Custom button</Button>
+          </DocSection>
+        </div>
+
         {/* Theme */}
         <div className={'mb-8'}>
           <h4 className={'text-muted'}>Theme</h4>

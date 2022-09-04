@@ -46,6 +46,8 @@ const InternalButton: ForwardRefRenderFunction<unknown, ButtonProps> = (props: B
     Block: block,
   });
 
+  buttonClassNames += className ? ' ' + className : '';
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { onClick } = props;
 

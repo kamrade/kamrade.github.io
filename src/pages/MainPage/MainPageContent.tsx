@@ -24,18 +24,6 @@ export const MainPageContent = () => {
             Create <span className={s.Milq}>products</span> <br />
             for the perfect experience
           </PageTitle>
-          <div className={'p-3'}>
-            <ScrambledText
-              slideLength={5000}
-              value={[
-                '[ Product design ]',
-                '[ Prototyping ]',
-                '[ Infographic ]',
-                '[ Design systems ]',
-                '[ React components ]',
-              ]}
-            />
-          </div>
           <p className={s.Desc}>
             I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World
           </p>
@@ -46,14 +34,27 @@ export const MainPageContent = () => {
         <div className='row'>
 
           <div className='col-md-8'>
-            <Link to={'/main/portfolio/extreme-waves'}>
+            <Link to={'/apps'}>
               <div className={s.Box}>
                 <ProgressiveImage
                   interactive={true}
-                  description="Extreme Waves Rally (2014)"
+                  description="Showcase (In progress from 2021)"
                   preview={extremeWavesThumb}
-                  image="/img/extreme-waves/thumbnail-compressed.png"
-                  alt="extreme-waves-rally" />
+                  image="/img/showcase/thumbnail.png"
+                  alt="Showcase" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/triads/random'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Triads (In progress from 2021)"
+                  preview={extremeWavesThumb}
+                  image="/img/triads/thumbnail.png"
+                  alt="triads" />
               </div>
             </Link>
           </div>
@@ -83,8 +84,6 @@ export const MainPageContent = () => {
               </div>
             </Link>
           </div>
-        </div>
-        <div className='row'>
 
           <div className='col-md-8'>
             <div className={s.Box}>

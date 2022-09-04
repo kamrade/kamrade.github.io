@@ -26,8 +26,6 @@ export const MainPage = () => {
             <div className={s.MenuItem}><NavLink exact to='/main'>Home</NavLink></div>
             <div className={s.MenuItem}><NavLink exact to='/main/contacts'>Contacts</NavLink></div>
             <div className={s.MenuItem}><NavLink exact to='/main/about'>About</NavLink></div>
-            <div className={s.MenuItem}><NavLink exact to='/apps'>Showcase</NavLink></div>
-            <div className={s.MenuItem}><NavLink exact to='/triads/random'>Triads</NavLink></div>
           </div>
         </header>
       </div>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import { Button, Icon } from 'shared';
+import { Button } from 'shared';
 
 import { triadColors } from './TriadNode/TriadNode.types';
 import { TriadsMenu } from './TriadsMenu/TriadsMenu';
 import { RandomMode } from './RandomMode';
 
 import s from './TriadsPage.module.scss';
+import {RiArrowLeftLine} from "react-icons/ri";
 
 const TriadsPage: React.FC = () => {
 
@@ -34,12 +35,7 @@ const TriadsPage: React.FC = () => {
       {/* Link back */}
       <div className={s.BackLink}>
         <NavLink exact to='/main'>
-          <Button>
-            <span style={{color: 'white'}}>
-              <Icon color={'white'} stroke={1.5} size={20} icon='chevronLeft' />
-              back to the website
-            </span>
-          </Button>
+          <Button prefix={<RiArrowLeftLine />} variant={'contained'} theme={'base'} size={'sm'}>back to the website</Button>
         </NavLink>
       </div>
 

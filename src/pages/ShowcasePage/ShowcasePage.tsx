@@ -85,7 +85,6 @@ export const Main = () => {
         <Switch>
           <Route exact path={path}><Redirect to='/apps/linechart' /></Route>
           <Route exact path={`${path}/wheelson`}><Wheelson /></Route>
-
           <PrivateRoute exact path={`${path}/rx-tutorial`}><RxTutorial /></PrivateRoute>
 
           <Route exact path={`${path}/linechart`}><LineChartPage /></Route>

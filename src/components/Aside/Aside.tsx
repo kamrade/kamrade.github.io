@@ -4,9 +4,10 @@ import React, { useState, useEffect, ForwardedRef } from 'react';
 import classNames from 'classnames/bind';
 import s from './Aside.module.scss';
 import { UserBlock } from 'shared/UserBlock/UserBlock';
-import { Button, Icon } from 'shared';
+import { Button } from 'shared';
 import { AsideNav } from 'components/Aside/AsideNav/AsideNav';
 import { NavLink } from 'react-router-dom';
+import {RiArrowLeftLine} from "react-icons/ri";
 
 const sx = classNames.bind(s);
 
@@ -44,12 +45,7 @@ export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: Fo
       <div className='ml-4 mt-4'>
 
         <NavLink exact to='/main'>
-          <Button>
-            <span className='text-muted'>
-              <Icon stroke={1.5} size={20} icon='chevronLeft'></Icon>
-              back to the website
-            </span>
-          </Button>
+          <Button prefix={<RiArrowLeftLine />} variant={'light'} theme={'base'} size={'sm'}>back to the website</Button>
         </NavLink>
 
       </div>
