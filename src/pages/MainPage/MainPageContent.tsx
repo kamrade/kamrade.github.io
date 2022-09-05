@@ -34,13 +34,26 @@ export const MainPageContent = () => {
         <div className='row'>
 
           <div className='col-md-8'>
+            <Link to={'/timer'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Showcase (In progress from 2021)"
+                  preview={extremeWavesThumb}
+                  image="/img/timer/Thumbnail.png"
+                  alt="Timer" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
             <Link to={'/apps'}>
               <div className={s.Box}>
                 <ProgressiveImage
                   interactive={true}
                   description="Showcase (In progress from 2021)"
                   preview={extremeWavesThumb}
-                  image="/img/showcase/thumbnail.png"
+                  image="/img/showcase/Thumbnail.png"
                   alt="Showcase" />
               </div>
             </Link>
@@ -53,7 +66,7 @@ export const MainPageContent = () => {
                   interactive={true}
                   description="Triads (In progress from 2021)"
                   preview={extremeWavesThumb}
-                  image="/img/triads/thumbnail.png"
+                  image="/img/triads/Thumbnail.png"
                   alt="triads" />
               </div>
             </Link>

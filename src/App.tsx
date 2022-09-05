@@ -8,6 +8,7 @@ import TriadsPage from 'pages/Triads/TriadsPage';
 
 import s from './App.module.scss';
 import NoMatch from "pages/ShowcasePage/projects/NoMatch/NoMatch";
+import {TimerPage} from "./pages/Timer/TimerPage";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/auth'><AuthPage /></Route>
         <Route path={'/apps'}><Main /></Route>
         <Route path={'/triads'}><TriadsPage /></Route>
+        <Route path={'/timer'}><TimerPage /></Route>
         <Route path="**"><NoMatch /></Route>
       </Switch>
 
