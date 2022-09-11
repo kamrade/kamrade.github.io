@@ -1,6 +1,4 @@
 import React from 'react';
-
-import {PageTitle} from 'shared/PageTitle/PageTitle';
 import {ScrambledText} from "../../shared/ScrambledText";
 
 export const AboutPage = () => {

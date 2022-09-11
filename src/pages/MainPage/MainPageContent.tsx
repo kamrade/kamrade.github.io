@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 import { ProgressiveImage } from 'shared/ProgressiveImage/ProgressiveImage';
 import {PageTitle} from 'shared/PageTitle/PageTitle';
-import {ScrambledText} from 'shared/ScrambledText/ScrambledText';
 
 import {thumbnail as extremeWavesThumb} from 'data/images/extreme-waves';
 import {thumbnail as turnoversFlowThumb} from 'data/images/turnovers-flow';
