@@ -42,5 +42,8 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'Buttons',
     link: '/apps/uikit/buttons'
+  }, {
+    title: 'Skeleton',
+    link: '/apps/uikit/skeleton'
   }]
 }];

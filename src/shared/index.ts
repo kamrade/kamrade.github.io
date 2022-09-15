@@ -13,3 +13,4 @@ export {PopupNotification} from "./PopupNotification";
 export {BackToMain} from "./BackToMain";
 export {DocSection} from "./DocSection";
 export {TermLoader, TermLoaderBlocks} from "./TermLoader";
+export {Skeleton} from './Skeleton';

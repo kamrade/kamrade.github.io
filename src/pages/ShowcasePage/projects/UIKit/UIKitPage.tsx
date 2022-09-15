@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import { UIKitButtonPage } from './UIKitButtonPage/UIKitButtonPage';
+import { Skeleton } from 'shared';
 
 export const UIKitPage = () => {
   return (
@@ -12,6 +13,11 @@ export const UIKitPage = () => {
         <Route path='/apps/uikit/badge'><div>Badge</div></Route>
         <Route path={'/apps/uikit/breadcrumb'}><div>Breadcrumbs</div></Route>
         <Route path={'/apps/uikit/buttons'}><UIKitButtonPage /></Route>
+        <Route path={'/apps/uikit/skeleton'}>
+          <div>
+            <Skeleton width={'300px'} height={'100px'} />
+          </div>
+        </Route>
       </Switch>
 
     </div>

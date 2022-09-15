@@ -1,0 +1,24 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Skeleton {
+  height: 1rem;
+  border-radius: $border-radius-block;
+  width: 20rem;
+  animation: loading 2s infinite linear;
+  background: $gray-300;
+  //background-image: linear-gradient(0.25turn, $gray-200, $gray-100, $gray-200);
+  background-image: linear-gradient(to right, $gray-300 0%, $gray-100 50%, $gray-300 100%);
+  background-repeat: no-repeat;
+  background-size: 30% 100%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -30% 0;
+  }
+
+  100% {
+    background-position: 130% 0;
+  }
+}
