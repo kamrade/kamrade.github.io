@@ -15,7 +15,7 @@ export const UIKitButtonPage = () => {
 
         <div className={'mb-8'}>
           <h4 className={'text-muted'}>Custom button</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button className={'some-custom-button'} bold theme={'base'}>Custom button</Button>
           </DocSection>
         </div>
@@ -23,7 +23,7 @@ export const UIKitButtonPage = () => {
         {/* Theme */}
         <div className={'mb-8'}>
           <h4 className={'text-muted'}>Theme</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold theme={'base'}>Base</Button>
             <Button bold disabled theme={'base'}>Base</Button>
             <Button bold variant={'contained'} theme={'base'}>Base</Button>
@@ -31,7 +31,7 @@ export const UIKitButtonPage = () => {
             <Button bold variant={'outlined'} theme={'base'}>Base</Button>
           </DocSection>
 
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold theme={'primary'}>Primary</Button>
             <Button bold variant={'contained'} theme={'primary'}>Primary</Button>
             <Button bold variant={'light'} theme={'primary'}>Primary</Button>
@@ -41,7 +41,7 @@ export const UIKitButtonPage = () => {
             <Button bold prefix={<RiArrowLeftCircleFill />} theme={'primary'} size={'sm'} variant={'outlined'}>Back</Button>
           </DocSection>
 
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold theme={'success'}>Success</Button>
             <Button bold variant={'contained'} theme={'success'}>Success</Button>
             <Button bold variant={'light'} theme={'success'}>Success</Button>
@@ -49,7 +49,7 @@ export const UIKitButtonPage = () => {
             <Button disabled bold variant={'outlined'} theme={'success'}>Success</Button>
           </DocSection>
 
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold theme={'danger'}>Danger</Button>
             <Button bold variant={'contained'} theme={'danger'}>Danger</Button>
             <Button disabled bold variant={'contained'} theme={'danger'}>Danger</Button>
@@ -57,7 +57,7 @@ export const UIKitButtonPage = () => {
             <Button bold variant={'outlined'} theme={'danger'}>Danger</Button>
           </DocSection>
 
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold theme={'warning'}>Warning</Button>
             <Button bold variant={'contained'} theme={'warning'}>Warning</Button>
             <Button bold variant={'light'} theme={'warning'}>Warning</Button>
@@ -70,7 +70,7 @@ export const UIKitButtonPage = () => {
         {/* Size */}
         <div className={'mb-8'}>
           <h4 className={'text-muted'}>Size</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button bold variant={'light'} size={'xs'}>XSmall</Button>
             <Button bold variant={'light'} size={'sm'}>Small</Button>
             <Button bold variant={'light'} size={'md'}>Medium</Button>
@@ -82,7 +82,7 @@ export const UIKitButtonPage = () => {
         {/* Block */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Block button</h4>
-          <DocSection space={'xs'}>
+          <DocSection flex space={'xs'}>
             <Button variant={'light'} id={'block-button'} size={'sm'} block bold>Block button</Button>
           </DocSection>
         </div>
@@ -90,7 +90,7 @@ export const UIKitButtonPage = () => {
         {/* Bold */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Bold</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button variant={'contained'} bold>Bold text in the button</Button>
             <Button variant={'light'}>Regular text in the button</Button>
           </DocSection>
@@ -99,7 +99,7 @@ export const UIKitButtonPage = () => {
         {/* Shapes */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Shapes</h4>
-          <DocSection space={'xs'}>
+          <DocSection flex space={'xs'}>
             <Button variant={'contained'}>Circle</Button>
             <Button variant={'contained'} shape={'circle'} >Circle</Button>
             <Button variant={'contained'} shape={'square'}>Square</Button>
@@ -109,7 +109,7 @@ export const UIKitButtonPage = () => {
         {/* Wide */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Wide</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button variant={'light'} wide={true}>Default</Button>
             <Button variant={'light'} wide={true} theme={'success'}>Success</Button>
             <Button variant={'light'} wide={true} theme={'danger'}>Danger</Button>
@@ -120,7 +120,7 @@ export const UIKitButtonPage = () => {
         {/* Button with icon */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Button with icon</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button prefix={<RiAddCircleFill />} variant={'contained'} size={'xs'} bold theme={'primary'}>Add</Button>
             <Button prefix={<RiBookmarkFill />} variant={'outlined'} size={'sm'} bold theme={'primary'}>Bookmark</Button>
             <Button prefix={<RiInformationLine />} variant={'light'} size={'md'}>Information</Button>
@@ -132,7 +132,7 @@ export const UIKitButtonPage = () => {
         {/* Icons */}
         <div className="mb-8">
           <h4 className={'text-muted'}>React-icons examples</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <IconContext.Provider value={{ size: '2rem', color: "#F45B69", className: "icon-class-name" }}>
               <FaBeer />
               <RiArrowRightFill />
@@ -143,7 +143,7 @@ export const UIKitButtonPage = () => {
         {/* Loading */}
         <div className="mb-8">
           <h4 className={'text-muted'}>Loading</h4>
-          <DocSection space={'sm'}>
+          <DocSection flex space={'sm'}>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'contained'} theme={'base'} size={'xs'}>Default</Button>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'light'} theme={'base'} size={'sm'}>Default</Button>
             <Button loading={true} suffix={<><RiRefreshLine /></>} variant={'contained'} theme={'primary'} size={'md'}>Primary</Button>
@@ -157,7 +157,7 @@ export const UIKitButtonPage = () => {
 
         {/* Icon Button */}
         <label>Icon Button</label>
-        <DocSection space={'sm'}>
+        <DocSection flex space={'sm'}>
           <Button iconButton prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'base'} size={'xs'} />
           <Button iconButton prefix={<><RiRefreshLine /></>} variant={'outlined'} theme={'danger'} size={'sm'} />
           <Button iconButton prefix={<><RiRefreshLine /></>} variant={'contained'} theme={'warning'} size={'md'} />
@@ -166,7 +166,7 @@ export const UIKitButtonPage = () => {
         </DocSection>
 
         <label>In progress</label>
-        <DocSection space={'sm'}>
+        <DocSection flex space={'sm'}>
           <TermLoader />
           <TermLoaderBlocks />
         </DocSection>

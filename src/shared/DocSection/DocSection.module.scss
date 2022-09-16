@@ -4,36 +4,31 @@
 .DocSection {
   padding: 3rem 0;
   border-bottom: 1px solid $border-color;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  position: relative;
 
-  &.SpaceNONE {
+  &.flex {
     display: flex;
-    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &.spaceNONE {
     gap: 0;
   }
 
-  &.SpaceXS {
-    display: flex;
-    justify-content: flex-start;
+  &.spaceXS {
     gap: 0.125rem;
   }
 
-  &.SpaceSM {
-    display: flex;
-    justify-content: flex-start;
+  &.spaceSM {
     gap: 0.25rem;
   }
 
-  &.SpaceMD {
-    display: flex;
-    justify-content: flex-start;
+  &.spaceMD {
     gap: 0.5rem;
   }
 
-  &.SpaceLG {
-    display: flex;
-    justify-content: flex-start;
+  &.spaceLG {
     gap: 1rem;
   }
 }

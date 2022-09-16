@@ -6,11 +6,12 @@
   border-radius: $border-radius-block;
   width: 20rem;
   animation: loading 2s infinite linear;
-  background: $gray-300;
+  background: $gray-200;
   //background-image: linear-gradient(0.25turn, $gray-200, $gray-100, $gray-200);
-  background-image: linear-gradient(to right, $gray-300 0%, $gray-100 50%, $gray-300 100%);
+  background-image: linear-gradient(to right, $gray-200 0%, $gray-050 50%, $gray-200 100%);
   background-repeat: no-repeat;
   background-size: 30% 100%;
+  display: inline-block;
 }
 
 @keyframes loading {

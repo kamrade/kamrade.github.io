@@ -9,21 +9,23 @@ export type Spacing = 'none' | 'xs' | 'sm' | 'md' | 'lg';
 export interface DocSectionProps {
   children: any;
   space?: Spacing;
+  flex?: boolean;
 }
 
-export const DocSection: React.FC<DocSectionProps> = ({ children, space }) => {
+export const DocSection: React.FC<DocSectionProps> = ({ children, space, flex }) => {
 
-  let buttonClassNames = sx({
+  let docSectionClassNames = sx({
     DocSection: true,
-    SpaceNONE: space === 'none',
-    SpaceXS: space === 'xs',
-    SpaceSM: space === 'sm',
-    SpaceMD: space === 'md',
-    SpaceLG: space === 'lg',
+    flex: flex,
+    spaceNONE: space === 'none',
+    spaceXS: space === 'xs',
+    spaceSM: space === 'sm',
+    spaceMD: space === 'md',
+    spaceLG: space === 'lg',
   });
 
   return (
-    <section className={buttonClassNames}>
+    <section className={docSectionClassNames}>
       {children}
     </section>
   );

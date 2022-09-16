@@ -23,7 +23,7 @@ export const Counter: React.FC<CounterProps> = ({ value }) => {
   const [prevTransition, setPrevTransition] = useState<string>(defaultTransition);
 
   useEffect(() => {
-    console.log(`value changed: ${previousValue} -> ${value}`, );
+    // console.log(`value changed: ${previousValue} -> ${value}`, );
     setPrevTransition(defaultTransition);
     setNextOpacity(1);
     setNextOffset(0);
