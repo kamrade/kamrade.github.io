@@ -1,7 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import { UIKitButtonPage } from './UIKitButtonPage';
-import { UIKitPreloadersPage } from './UIKitPreloadersPage';
+import { UIKitButton, UIKitPreloaders, UIKitInput } from './UIKitPages';
 
 export const UIKitPage = () => {
   return (
@@ -12,8 +11,11 @@ export const UIKitPage = () => {
         <Route path='/apps/uikit/alerts'><div>Alerts</div></Route>
         <Route path='/apps/uikit/badge'><div>Badge</div></Route>
         <Route path={'/apps/uikit/breadcrumb'}><div>Breadcrumbs</div></Route>
-        <Route path={'/apps/uikit/buttons'}><UIKitButtonPage /></Route>
-        <Route path={'/apps/uikit/skeleton'}><UIKitPreloadersPage/></Route>
+
+        <Route path={'/apps/uikit/buttons'}><UIKitButton /></Route>
+        <Route path={'/apps/uikit/inputs'}><UIKitInput /></Route>
+        <Route path={'/apps/uikit/skeleton'}><UIKitPreloaders/></Route>
+
       </Switch>
 
     </div>

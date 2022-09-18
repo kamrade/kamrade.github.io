@@ -14,7 +14,7 @@
     padding-top: 2.5rem;
 
     &.AsideHiddenAnimate {
-      animation: 0.3s $transitionFunc 0s Aside-Slide-Out;
+      animation: 0.3s $transition-func-cubic 0s Aside-Slide-Out;
     }
 
     &.AsideHidden {
@@ -22,7 +22,7 @@
     }
 
     &.AsideShowedAnimate {
-      animation: 0.3s $transitionFunc 0s Aside-Slide-In;
+      animation: 0.3s $transition-func-cubic 0s Aside-Slide-In;
     }
 
   }

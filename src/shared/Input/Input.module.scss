@@ -9,21 +9,39 @@
   border: 1px solid $border-color;
   background-color: $white;
   border-radius: $border-radius;
-  transition: all .3s ease-in-out;
-  cursor: pointer;
+  transition: $transition-default;
+  padding: .5625rem .5rem; // 9 x 8
 
-  padding: .5rem .5rem;
+  &.Square {
+    border-radius: 2px;
+  }
+  &.Rounded {
+    border-radius: $border-radius;
+  }
+
 
   &.InputSM {
     padding: .25rem .25rem;
+    &.Circle {
+      border-radius: 15px;
+      padding: .25rem .5rem; // 4(figma:5) x 8
+    }
   }
 
   &.InputMD {
-
+    padding: .5625rem .5rem;
+    &.Circle {
+      border-radius: 20px;
+      padding: .5625rem .75rem; // 9(figma:10) x 12
+    }
   }
 
   &.InputLG {
-    padding: 1rem .75rem;
+    padding: .875rem .75rem;
+    &.Circle {
+      border-radius: 25px;
+      padding: .875rem 1rem; // 14(figma:15) x 16
+    }
   }
 
   &:not(:disabled):hover {
@@ -34,6 +52,9 @@
     outline: none;
     border-color: $primary;
     cursor: default;
+    &:hover {
+      border-color: $primary;
+    }
   }
 
   &:disabled {

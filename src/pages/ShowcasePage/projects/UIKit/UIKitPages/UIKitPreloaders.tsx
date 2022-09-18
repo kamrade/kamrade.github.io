@@ -1,7 +1,7 @@
 import React from 'react';
 import { Skeleton, DocSection } from 'shared';
 
-export const UIKitPreloadersPage = () => {
+export const UIKitPreloaders = () => {
   return (
     <div className='uikit-page uikit-skeleton-page'>
 

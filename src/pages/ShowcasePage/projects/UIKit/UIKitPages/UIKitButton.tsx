@@ -6,7 +6,7 @@ import { RiAddCircleFill, RiArrowLeftCircleFill, RiBookmarkFill, RiChat4Fill, Ri
 
 import { Button, DocSection, TermLoader, TermLoaderBlocks } from 'shared';
 
-export const UIKitButtonPage = () => {
+export const UIKitButton = () => {
   return (
     <div className='uikit-page uikit-button-page'>
 

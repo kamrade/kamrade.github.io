@@ -150,7 +150,7 @@ export default function Formaline() {
             </FormRow>
             <FormRow>
               <>
-                <Button wide={true} type='submit' theme='base'>Submit</Button>
+                <Button wide={true} type='submit' theme='base' variant={'contained'}>Submit</Button>
               </>
             </FormRow>
 

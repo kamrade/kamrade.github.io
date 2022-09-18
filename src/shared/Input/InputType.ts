@@ -1,4 +1,5 @@
 import { tuple } from 'shared/utils/type';
+import {Shape} from 'types';
 
 const InputTypes = tuple(
   'button',
@@ -27,12 +28,14 @@ const InputTypes = tuple(
 
 export type InputType = typeof InputTypes[number];
 
+export type InputShape = Shape;
+
 export type InputSize = 'sm' | 'md' | 'lg';
 
 export interface IInputProps {
   name?: string;
   placeholder?: string;
-  type?: string;
+  type?: InputType | string;
   autoComplete?: string;
   id?: string;
 
@@ -53,4 +56,6 @@ export interface IInputProps {
 
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+
+  shape?: InputShape;
 }

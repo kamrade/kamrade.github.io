@@ -37,7 +37,8 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     focused: propsFocused,
     valid: propsValid,
 
-    size,
+    size = 'md',
+    shape = 'rounded',
     ...other} = props;
 
   const [focused, setFocused] = useState<boolean>(false);
@@ -58,6 +59,10 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
     Pristine:   isNil(propsDirty)   ? !dirty : !propsDirty,
     Valid:      isNil(propsValid)   ? true : propsValid,
     Invalid:    isNil(propsValid)   ? false : !propsValid,
+
+    Circle: shape === 'circle',
+    Square: shape === 'square',
+    Rounded: shape === 'rounded',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -217,7 +217,13 @@ $asideWidth: 18rem;
 $hover-factor: 3%;
 $active-factor: 5%;
 
-$transitionFunc: cubic-bezier(0.15, 0.5, 0.5, 1);
+// TRANSITION
+$transition-func-cubic: cubic-bezier(0.15, 0.5, 0.5, 1);
+$transition-time: .3s;
+$transition-function: ease-in-out;
+$transition-default: all $transition-time $transition-function;
+
+// CONTROLS
 $focus-shadow: 0 0 0 0.15rem rgba($primary, 0.2);
 $btn-disabled-opacity: 0.5;
 

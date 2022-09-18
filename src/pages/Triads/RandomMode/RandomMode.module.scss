@@ -18,8 +18,8 @@
   cursor: pointer;
   padding: 0.5rem 0;
   border-radius: $border-radius;
-  transition: background 0.3s ease-in-out;
   user-select: none;
+  @include transition(background);
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
@@ -34,8 +34,8 @@
   width: 100%;
   padding: 0.5rem;
   border-radius: $border-radius;
-  transition: background 0.3s ease-in-out;
   margin-bottom: 1rem;
+  @include transition(background);
 
   &:hover {
     background: darken($nodeBg, 5%);

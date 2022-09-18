@@ -1,6 +1,6 @@
 a {
   color: $gray-600;
-  transition: color 0.3s $transitionFunc;
+  transition: color 0.3s $transition-func-cubic;
 
   &:hover {
     color: $gray-700;

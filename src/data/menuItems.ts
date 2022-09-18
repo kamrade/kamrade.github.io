@@ -18,8 +18,10 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'RX training',
     link: '/apps/rx-training'
-  },
-  ]
+  }, {
+    title: 'Formaline',
+    link: '/apps/formaline'
+  }]
 }, {
   id: 'components',
   togglerTitle: 'Components',
@@ -39,6 +41,9 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'Breadcrumb',
     link: '/apps/uikit/breadcrumb'
+  }, {
+    title: 'Inputs',
+    link: '/apps/uikit/inputs'
   }, {
     title: 'Buttons',
     link: '/apps/uikit/buttons'

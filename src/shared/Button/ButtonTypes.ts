@@ -1,9 +1,10 @@
 import React from 'react';
+import {Shape} from 'types';
 
 export type ButtonVariant = 'text' | 'outlined' | 'contained' | 'light';              // default = text
 export type ButtonTheme = 'base' | 'primary' | 'success' | 'danger' | 'warning';      // default = base
 export type ButtonSize  = 'md' | 'lg' | 'sm' | 'xs';                                  // default = sm
-export type ButtonShape = 'circle' | 'square' | 'rounded';                            // default = rounded
+export type ButtonShape = Shape;                                                      // default = rounded
 export type ButtonType  = 'button' | 'submit' | 'reset' | undefined;                  // default = button
 
 export interface ButtonProps {

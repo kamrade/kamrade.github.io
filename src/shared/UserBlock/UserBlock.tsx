@@ -1,7 +1,7 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import s from './UserBlock.module.scss';
-import { Box, Icon } from 'shared';
-// import { AuthButton } from './AuthButton';
+import { Box } from 'shared';
 import { useAuth } from "../../components/ProvideAuth/ProvideAuth";
 
 export interface IUserBlockProps {
@@ -11,10 +11,12 @@ export interface IUserBlockProps {
 
 export const UserBlock = ({ username, companyName }: IUserBlockProps ) => {
 
+  const history = useHistory();
+
   let auth = useAuth();
 
   return (
-    <div className={s.UserBlock}>
+    <div className={s.UserBlock} onClick={() => history.push("/auth")}>
       <Box>
         <div className={s.UserBlockContent}>
 
@@ -39,9 +41,9 @@ export const UserBlock = ({ username, companyName }: IUserBlockProps ) => {
 
           </div>
 
-          <div className={s.Icon}>
-            <Icon color="#B343CF" icon="chevronDown" size={24} stroke={2} />
-          </div>
+          {/*<div className={s.Icon}>*/}
+          {/*  <Icon color="#B343CF" icon="chevronDown" size={24} stroke={2} />*/}
+          {/*</div>*/}
         </div>
 
       </Box>

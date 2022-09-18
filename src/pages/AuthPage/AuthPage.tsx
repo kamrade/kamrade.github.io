@@ -1,13 +1,14 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import {useAuth} from 'components/ProvideAuth/ProvideAuth';
-import {Button, Formq, FormqInput, Modal, FormRow, Icon} from 'shared';
+import {Button, Formq, FormqInput, Modal, FormRow} from 'shared';
 import {IFormqState, IFormqReturnArgs} from 'shared/Formq/FormqTypes';
 
 import { initialState } from './AuthPageInitialState';
 import { authPageValidations } from './AuthPageValidations';
 
 import s from './AuthPage.module.scss';
+import {RiArrowLeftLine} from "react-icons/ri";
 
 // let fState: IFormqState = initialState;
 
@@ -62,12 +63,11 @@ export const AuthPage = () => {
         <div className={`container`}>
 
 
-              <FormRow>
-                <>
-                  <Icon size={20} icon='chevronLeft'></Icon>
-                  <NavLink exact to='/'>Back to App</NavLink>
-                </>
-              </FormRow>
+              <div className={'mb-9'}>
+                <NavLink exact to='/apps'>
+                  <Button prefix={<RiArrowLeftLine />} variant={'text'} theme={'base'} size={'sm'}>back to the app</Button>
+                </NavLink>
+              </div>
 
               {/*<p>You must log in to view the page at {from.pathname}</p>*/}
               <h1>Sign Up</h1>
@@ -106,7 +106,7 @@ export const AuthPage = () => {
                       */ }
 
                       <FormRow>
-                        <Button size='lg' disabled={isSubmitting} block={true} type='submit' theme='primary'>Submit</Button>
+                        <Button size='lg' disabled={isSubmitting} block={true} type='submit' theme='base' variant={'contained'}>Submit</Button>
                       </FormRow>
 
                     </form>

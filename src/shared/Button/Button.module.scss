@@ -12,11 +12,11 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: $buttonPaddingSM-y $buttonPaddingSM-x;
-  transition: all .3s ease-in-out;
   background-color: transparent;
   color: map-get($theme-base, text);
   vertical-align: middle;
   position: relative;
+  @include transition(all);
 
   &:not(:disabled):hover {
     background-color: map-get($theme-base, bg100);
@@ -50,14 +50,12 @@
     padding-right: .25em;
     font-size: 1.2em;
     line-height: 0;
-    margin-top: -0.1em;
   }
 
   .buttonSuffix {
     padding-left: .25em;
     font-size: 1.2em;
     line-height: 0;
-    margin-top: -0.1em;
   }
 
   // Icon button
