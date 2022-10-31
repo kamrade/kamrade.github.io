@@ -35,6 +35,6 @@
 }
 
 .progressiveImage {
-  transition: all 1s ease-in-out;
+  transition: all .5s $transition-func-cubic;
   width: 100%;
 }
