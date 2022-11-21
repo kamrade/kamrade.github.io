@@ -9,7 +9,7 @@ export const BackToMain = () => {
       <div style={{textAlign: 'center', marginBottom: '1rem'}}>
         <Button>
           <span className='text-muted'>
-            <Icon stroke={1.75} size={20} icon='chevronLeft' color={colors.gray600} />
+            <Icon stroke={1.5} size={20} icon='chevronLeft' color={colors.gray600} />
             back
           </span>
         </Button>

@@ -7,6 +7,7 @@ import {AboutPage} from 'pages/AboutPage/AboutPage';
 import {ContactsPage} from 'pages/ContactsPage/ContactsPage';
 import {ExtremeWaves} from './Portfolio/ExtremeWaves';
 import {B2B} from './Portfolio/B2B';
+import {Mbank} from './Portfolio/Mbank';
 import {TurnoversFlow} from "./Portfolio/TurnoversFlow";
 
 // import classNames from "classnames/bind";
@@ -36,6 +37,7 @@ export const MainPage = () => {
         <Route path='/main/contacts'><ContactsPage /></Route>
         <Route path='/main/portfolio/extreme-waves'><ExtremeWaves /></Route>
         <Route path='/main/portfolio/b2b'><B2B /></Route>
+        <Route path='/main/portfolio/mbank'><Mbank /></Route>
         <Route path='/main/portfolio/turnovers-flow'><TurnoversFlow /></Route>
       </Switch>
 

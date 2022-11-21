@@ -37,7 +37,7 @@ export const MainPageContent = () => {
               <div className={s.Box}>
                 <ProgressiveImage
                   interactive={true}
-                  description="Showcase (In progress from 2021)"
+                  description="Pomodorio (In progress from 2021)"
                   preview={extremeWavesThumb}
                   image="/img/timer/Thumbnail.png"
                   alt="Timer" />
@@ -67,6 +67,19 @@ export const MainPageContent = () => {
                   preview={extremeWavesThumb}
                   image="/img/triads/Thumbnail.png"
                   alt="triads" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/extreme-waves'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Extreme waves (2014)"
+                  preview={extremeWavesThumb}
+                  image="/img/extreme-waves/thumbnail-compressed.png"
+                  alt="extreme waves" />
               </div>
             </Link>
           </div>
@@ -109,14 +122,16 @@ export const MainPageContent = () => {
           </div>
 
           <div className='col-md-8'>
-            <div className={s.Box}>
-              <ProgressiveImage
-                interactive={true}
-                description="Unlimint iBank Mobile (2021)"
-                preview={unlimintIbankMobileThumb}
-                image="/img/unlimint-ibank-mobile/thumbnail-compressed.png"
-                alt="unlimint-ibank-mobile-preview" />
-            </div>
+            <Link to={'/main/portfolio/mbank'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Unlimint iBank Mobile (2021)"
+                  preview={unlimintIbankMobileThumb}
+                  image="/img/unlimint-ibank-mobile/thumbnail.jpg"
+                  alt="unlimint-ibank-mobile-preview" />
+              </div>
+            </Link>
           </div>
 
           <div className='col-md-8'>

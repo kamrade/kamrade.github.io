@@ -10,7 +10,7 @@
     &.Interactive {
       &:hover {
         .progressiveImage {
-          transform: scale(1.1);
+          transform: scale(1.05);
         }
         .description {
           transform: translateY(0);
@@ -35,6 +35,6 @@
 }
 
 .progressiveImage {
-  transition: all .5s $transition-func-cubic;
+  transition: all .4s $transition-func-cubic;
   width: 100%;
 }
