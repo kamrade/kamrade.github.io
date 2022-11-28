@@ -1,53 +1,54 @@
 import React from 'react';
-import { Input, FormRow, DocSection } from 'shared';
+import { Input, FormRow, DocSection, Label } from 'shared';
 
 export const UIKitInput = () => {
 
   return (
     <div className='uikit-page uikit-input'>
+
+
+
       <DocSection space={'sm'}>
         <FormRow>
-          <label>
-            Position
+          <Label text={'Position'}>
             <Input size={'sm'} name={'position'} placeholder={'Your position in the company'} />
-          </label>
+          </Label>
         </FormRow>
 
         <FormRow>
-          <label>
-            Title
+          <Label text={'Title'}>
             <Input size={'md'} name={'position'} placeholder={'Please provide the title'} />
-          </label>
+          </Label>
         </FormRow>
 
         <FormRow>
-          <label>
-            Business Description
+          <Label text={'Business Description'}>
             <Input size={'lg'} name={'position'} placeholder={'Describe your business'} />
-          </label>
+          </Label>
         </FormRow>
       </DocSection>
+
+
 
       <DocSection space={'sm'}>
         <FormRow>
-          <label>
-            Circled input
+          <Label text={'Circled input'}>
             <Input shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </label>
+          </Label>
         </FormRow>
         <FormRow>
-          <label>
-            Circled input
+          <Label text={'Circled input'}>
             <Input size={'lg'} shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </label>
+          </Label>
         </FormRow>
         <FormRow>
-          <label>
-            Circled input
+          <Label text={'Circled input'}>
             <Input size={'sm'} shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </label>
+          </Label>
         </FormRow>
       </DocSection>
+
+
 
     </div>
   );

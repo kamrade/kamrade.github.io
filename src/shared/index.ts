@@ -14,3 +14,4 @@ export {BackToMain} from "./BackToMain";
 export {DocSection} from "./DocSection";
 export {TermLoader, TermLoaderBlocks} from "./TermLoader";
 export {Skeleton} from './Skeleton';
+export {Label} from './Label';

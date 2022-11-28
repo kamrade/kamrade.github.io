@@ -1,0 +1,10 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Label {
+  .LabelText {
+    display: block;
+    margin-bottom: .25rem;
+    line-height: 1.25rem;
+  }
+}
