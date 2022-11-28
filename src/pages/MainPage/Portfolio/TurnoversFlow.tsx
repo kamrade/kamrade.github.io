@@ -1,5 +1,5 @@
 import React from 'react';
-import {slide_01, slide_02} from "data/images/turnovers-flow";
+import {slide_01, slide_02} from "data/preview/turnover-flow";
 import {ProgressiveImage} from "shared/ProgressiveImage/ProgressiveImage";
 import {BackToMain} from "shared";
 
@@ -18,6 +18,7 @@ export const TurnoversFlow = () => {
         preview={slide_01}
         image="/img/turnovers-flow/slide_01.jpg"
         alt="turnovers-flow" />
+
 
     </div>
   );

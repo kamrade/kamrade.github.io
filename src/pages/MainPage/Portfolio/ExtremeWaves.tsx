@@ -1,5 +1,5 @@
 import React from 'react';
-import {slide_01, slide_02, slide_03, slide_04, slide_05} from "data/images/extreme-waves";
+import {slide_01, slide_02, slide_03, slide_04, slide_05} from "data/preview/extreme-waves";
 import {ProgressiveImage} from "shared/ProgressiveImage/ProgressiveImage";
 import {BackToMain} from "shared";
 

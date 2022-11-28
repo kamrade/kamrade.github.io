@@ -4,12 +4,17 @@ import {Link} from 'react-router-dom';
 import { ProgressiveImage } from 'shared/ProgressiveImage/ProgressiveImage';
 import {PageTitle} from 'shared/PageTitle/PageTitle';
 
-import {thumbnail as extremeWavesThumb} from 'data/images/extreme-waves';
-import {thumbnail as turnoversFlowThumb} from 'data/images/turnovers-flow';
-import {thumbnail as unlimintIbankThumb} from 'data/images/unlimint-ibank';
-import {thumbnail as unlimintIbankMobileThumb} from 'data/images/unlimint-ibank-mobile';
-import {thumbnail as uxFlowThumb} from 'data/images/ux-flow';
-import {thumbnail as b2bcardsThumb} from 'data/images/b2bcards';
+import {thumbnail as b2bcardsThumb} from 'data/preview/b2bcards';
+import {thumbnail as designSystem} from 'data/preview/design-system';
+import {thumbnail as extremeWaves} from 'data/preview/extreme-waves';
+import {thumbnail as timer} from 'data/preview/timer';
+import {thumbnail as triads} from 'data/preview/triads';
+import {thumbnail as turnoverFlow} from 'data/preview/turnover-flow';
+import {thumbnail as unlimintBank} from 'data/preview/unlimint-bank';
+import {thumbnail as unlimintMobile} from 'data/preview/unlimint-mobile';
+import {thumbnail as userFlowTool} from 'data/preview/user-flow-tool';
+
+
 
 import s from './MainPageContent.module.scss';
 
@@ -38,7 +43,7 @@ export const MainPageContent = () => {
                 <ProgressiveImage
                   interactive={true}
                   description="Pomodorio (In progress from 2021)"
-                  preview={extremeWavesThumb}
+                  preview={timer}
                   image="/img/timer/Thumbnail.png"
                   alt="Timer" />
               </div>
@@ -51,7 +56,7 @@ export const MainPageContent = () => {
                 <ProgressiveImage
                   interactive={true}
                   description="Showcase (In progress from 2021)"
-                  preview={extremeWavesThumb}
+                  preview={designSystem}
                   image="/img/showcase/Thumbnail.png"
                   alt="Showcase" />
               </div>
@@ -64,7 +69,7 @@ export const MainPageContent = () => {
                 <ProgressiveImage
                   interactive={true}
                   description="Triads (In progress from 2021)"
-                  preview={extremeWavesThumb}
+                  preview={triads}
                   image="/img/triads/Thumbnail.png"
                   alt="triads" />
               </div>
@@ -77,7 +82,7 @@ export const MainPageContent = () => {
                 <ProgressiveImage
                   interactive={true}
                   description="Extreme waves (2014)"
-                  preview={extremeWavesThumb}
+                  preview={extremeWaves}
                   image="/img/extreme-waves/thumbnail-compressed.png"
                   alt="extreme waves" />
               </div>
@@ -102,8 +107,8 @@ export const MainPageContent = () => {
               <div className={s.Box}>
                 <ProgressiveImage
                   interactive={true}
-                  description="Turnovers Flow (2019)"
-                  preview={turnoversFlowThumb}
+                  description="Turnovers Flow (2017)"
+                  preview={turnoverFlow}
                   image="/img/turnovers-flow/thumbnail-compressed.jpg"
                   alt="turnovers-flow-preview" />
               </div>
@@ -115,7 +120,7 @@ export const MainPageContent = () => {
               <ProgressiveImage
                 interactive={true}
                 description="Unlimint iBank (2019-2020)"
-                preview={unlimintIbankThumb}
+                preview={unlimintBank}
                 image="/img/unlimint-ibank/thumbnail-dark-compressed.png"
                 alt="unlimint-ibank-preview" />
             </div>
@@ -127,7 +132,7 @@ export const MainPageContent = () => {
                 <ProgressiveImage
                   interactive={true}
                   description="Unlimint iBank Mobile (2021)"
-                  preview={unlimintIbankMobileThumb}
+                  preview={unlimintMobile}
                   image="/img/unlimint-ibank-mobile/thumbnail.jpg"
                   alt="unlimint-ibank-mobile-preview" />
               </div>
@@ -139,7 +144,7 @@ export const MainPageContent = () => {
               <ProgressiveImage
                 interactive={true}
                 description="UX Flow (2016)"
-                preview={uxFlowThumb}
+                preview={userFlowTool}
                 image="/img/ux-flow/thumbnail-compressed.png"
                 alt="ux-flow-preview" />
             </div>

@@ -3,22 +3,9 @@ import s from './ProgressiveImage.module.scss';
 import classNames from 'classnames/bind';
 import {isNil} from 'lodash';
 // import {Loader} from 'UIKit/Icons';
+import {ProgressiveImageProps, ProgressiveImageState} from '.';
 
 const sx = classNames.bind(s);
-
-export interface ProgressiveImageProps {
-  preview: string;
-  image: string;
-  alt: string;
-
-  interactive?: boolean;
-  description?: string;
-}
-
-export interface ProgressiveImageState {
-  currentImage: string;
-  loading: boolean;
-}
 
 export const ProgressiveImage = (props: ProgressiveImageProps) => {
 
@@ -57,7 +44,7 @@ export const ProgressiveImage = (props: ProgressiveImageProps) => {
   const style = (loading: boolean) => {
     return {
       filter: `${loading ? 'blur(40px)' : ''}`,
-      transform: `${loading ? 'scale(0.9)' : ''}`
+      transform: `${loading ? 'scale(0.95)' : ''}`
     }
   };
 
