@@ -32,19 +32,13 @@ export const UIKitInput = () => {
 
       <DocSection space={'sm'}>
         <FormRow>
-          <Label text={'Circled input'}>
-            <Input shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </Label>
+          <Input size={'sm'} shape={'circle'} name={'circled_input_small'} placeholder={'Circled input small'} />
         </FormRow>
         <FormRow>
-          <Label text={'Circled input'}>
-            <Input size={'lg'} shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </Label>
+          <Input size={'md'} shape={'circle'} name={'circled_input_medium'} placeholder={'Circled input medium'} />
         </FormRow>
         <FormRow>
-          <Label text={'Circled input'}>
-            <Input size={'sm'} shape={'circle'} name={'circled-input'} placeholder={'Circled input'} />
-          </Label>
+          <Input size={'lg'} shape={'circle'} name={'circled_input_large'} placeholder={'Circled input large'} />
         </FormRow>
       </DocSection>
 

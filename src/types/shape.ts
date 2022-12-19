@@ -1,1 +1,1 @@
-export type Shape = 'circle' | 'square' | 'rounded';
+export type Shape = 'circle' | 'square' | 'soft-square' | 'rounded';

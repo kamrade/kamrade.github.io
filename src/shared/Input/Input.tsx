@@ -49,9 +49,11 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
 
   let inputClassNames = sx({
     InputBase:  true,
+
     InputSM:    inputSize === 'sm',
     InputMD:    inputSize === 'md',
     InputLG:    inputSize === 'lg',
+
     Focused:    isNil(propsFocused) ? focused : propsFocused,
     Touched:    isNil(propsTouched) ? touched : propsTouched,
     Untouched:  isNil(propsTouched) ? !touched : !propsTouched,
@@ -62,6 +64,7 @@ const InternalInput: React.ForwardRefRenderFunction<unknown, IInputProps> =
 
     Circle: shape === 'circle',
     Square: shape === 'square',
+    SoftSquare: shape === 'soft-square',
     Rounded: shape === 'rounded',
   });
 

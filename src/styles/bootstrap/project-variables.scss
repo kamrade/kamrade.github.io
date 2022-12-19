@@ -66,6 +66,7 @@ $colors: (
   yellow-900: #ECC913
 );
 
+// THEMES
 $theme-base: (
   bg100:   map-get($colors, gray-100),
   bg200:   map-get($colors, gray-200),
@@ -202,12 +203,18 @@ $grid-gutter-width: 8px;
 $grid-row-columns: 6;
 
 // OTHERS
-$font-family-sans-serif: "Maison Neue Extended", -apple-system, BlinkMacSystemFont, "Segoe UI",
+$font-family-sans-serif: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
 Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
 "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-family-sans-serif-base: "Maison Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+$font-family-sans-serif-base: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
 Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
 "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//$font-family-sans-serif: "Maison Neue Extended", -apple-system, BlinkMacSystemFont, "Segoe UI",
+//Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+//"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//$font-family-sans-serif-base: "Maison Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+//Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+//"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 $zIndexAside: 101;
 $zIndexAsideToggler: $zIndexAside + 1;
@@ -217,14 +224,15 @@ $asideWidth: 18rem;
 $hover-factor: 3%;
 $active-factor: 5%;
 
-// TRANSITION
+// TRANSITIONS
 $transition-func-cubic: cubic-bezier(0.15, 0.5, 0.5, 1);
 $transition-time: .3s;
 $transition-function: ease-in-out;
 $transition-default: all $transition-time $transition-function;
 
-// CONTROLS
+// BASIC CONTROLS
 $focus-shadow: 0 0 0 0.15rem rgba($primary, 0.2);
+$focus-color: $primary;
 $btn-disabled-opacity: 0.5;
 
 $border-radius: 6px;
@@ -232,3 +240,6 @@ $border-radius-block: 12px;
 $box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 $dropdownBoxShadow: rgba(21, 23, 26, 0.03) 0 0.1rem 0.5rem 0,
 rgba(21, 23, 26, 0.07) 0 0.4rem 1rem 0, rgba(21, 23, 26, 0.04) 0 1px 0 0;
+
+
+// INPUT

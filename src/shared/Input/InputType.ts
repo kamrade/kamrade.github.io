@@ -32,6 +32,8 @@ export type InputShape = Shape;
 
 export type InputSize = 'sm' | 'md' | 'lg';
 
+export type InputVariant = 'base' | 'outline' | 'line' | 'filled-inverted' | 'filled-base';
+
 export interface IInputProps {
   name?: string;
   placeholder?: string;
