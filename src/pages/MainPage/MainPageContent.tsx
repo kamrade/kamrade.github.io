@@ -14,8 +14,6 @@ import {thumbnail as unlimintBank} from 'data/preview/unlimint-bank';
 import {thumbnail as unlimintMobile} from 'data/preview/unlimint-mobile';
 import {thumbnail as userFlowTool} from 'data/preview/user-flow-tool';
 
-
-
 import s from './MainPageContent.module.scss';
 
 
@@ -28,13 +26,13 @@ export const MainPageContent = () => {
             Create <span className={s.Milq}>products</span> <br />
             for the perfect experience
           </PageTitle>
-          <p className={s.Desc}>
-            I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World
-          </p>
+          {/*<p className={s.Desc}>*/}
+          {/*  I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World*/}
+          {/*</p>*/}
         </div>
       </div>
 
-      <div className={`container-fluid`}>
+      <div className={`container`}>
         <div className='row'>
 
           <div className='col-md-8'>

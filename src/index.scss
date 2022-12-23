@@ -23,6 +23,9 @@ body {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 500;
+  @include media-breakpoint-down(sm) {
+    padding: 0 1rem;
+  }
 }
 
 code {
@@ -32,4 +35,8 @@ code {
 
 label {
   width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans-serif-heading;
 }

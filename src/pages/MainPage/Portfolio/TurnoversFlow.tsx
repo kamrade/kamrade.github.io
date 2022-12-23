@@ -5,7 +5,7 @@ import {BackToMain} from "shared";
 
 export const TurnoversFlow = () => {
   return (
-    <div>
+    <div className={'container'}>
 
       <BackToMain/>
 

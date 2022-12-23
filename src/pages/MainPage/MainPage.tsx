@@ -10,19 +10,17 @@ import {B2B} from './Portfolio/B2B';
 import {Mbank} from './Portfolio/Mbank';
 import {TurnoversFlow} from "./Portfolio/TurnoversFlow";
 
-// import classNames from "classnames/bind";
-// const sx = classNames.bind(s);
-
-
 export const MainPage = () => {
-
 
   return (
     <>
       <div className={`container`}>
 
         <header className={s.Header}>
-          <div className={s.Title}>Dennis Mikhailov</div>
+          <div className={s.Title}>
+            <div >Dennis Mikhailov</div>
+            <div className={s.Description}>Seasoned UX designer</div>
+          </div>
           <div className={s.Menu}>
             <div className={s.MenuItem}><NavLink exact to='/main'>Home</NavLink></div>
             <div className={s.MenuItem}><NavLink exact to='/main/contacts'>Contacts</NavLink></div>

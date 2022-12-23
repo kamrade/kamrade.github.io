@@ -6,7 +6,7 @@ import {BackToMain} from "shared";
 
 export const B2B = () => {
   return (
-    <div>
+    <div className={'container'}>
 
       <BackToMain/>
 

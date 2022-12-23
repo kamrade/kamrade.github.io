@@ -6,7 +6,7 @@ import {BackToMain} from "shared";
 
 export const Mbank = () => {
   return (
-    <div>
+    <div className={'container'}>
 
       <BackToMain/>
 
