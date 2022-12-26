@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import { ProgressiveImage } from 'shared/ProgressiveImage/ProgressiveImage';
-import {PageTitle} from 'shared/PageTitle/PageTitle';
 
 import {thumbnail as b2bcardsThumb} from 'data/preview/b2bcards';
 import {thumbnail as designSystem} from 'data/preview/design-system';
@@ -20,18 +19,6 @@ import s from './MainPageContent.module.scss';
 export const MainPageContent = () => {
   return (
     <div>
-      <div className={`container`}>
-        <div className={s.Body}>
-          <PageTitle>
-            Create <span className={s.Milq}>products</span> <br />
-            for the perfect experience
-          </PageTitle>
-          {/*<p className={s.Desc}>*/}
-          {/*  I am happy to work with enthusiasts, designers, visual artists and developers who envolved in digital transformation of the World*/}
-          {/*</p>*/}
-        </div>
-      </div>
-
       <div className={`container`}>
         <div className='row'>
 
@@ -96,6 +83,19 @@ export const MainPageContent = () => {
                   preview={b2bcardsThumb}
                   image="/img/b2bcards/thumbnail-compressed.png"
                   alt="b2bcards-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/haystack'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Merchant Onboarding Application (2022)"
+                  preview={timer}
+                  image="/img/haystack/haystack-thumbnail.jpg"
+                  alt="Merchant onboarding" />
               </div>
             </Link>
           </div>

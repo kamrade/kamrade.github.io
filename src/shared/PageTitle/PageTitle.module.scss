@@ -3,16 +3,10 @@
 
 .PageTitle {
   text-transform: uppercase;
-  letter-spacing: 12px;
-  margin-bottom: 0.5em;
-  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5em;
+  font-size: 1.5rem;
   line-height: 1.2;
-  font-weight: 600;
-  color: $gray-600;
-
-  @include media-breakpoint-down(sm) {
-    font-size: 1rem;
-    line-height: 1.5;
-    letter-spacing: 8px;
-  }
+  font-weight: 800;
+  color: $gray-900;
 }

@@ -4,7 +4,7 @@ import s from './ScrambledText.module.scss';
 
 export const ScrambledText: React.FC<ScrambledTextProps> = ({
   value,
-  slideLength = 4000}) => {
+  slideLength = 2000}) => {
 
   const elRef = useRef<HTMLDivElement>(null);
   let chars = '![]#____________![]#____________';
@@ -15,7 +15,6 @@ export const ScrambledText: React.FC<ScrambledTextProps> = ({
   const phrases = value;
 
   let counter = 0;
-
 
   useEffect(() => {
     next();
@@ -41,8 +40,8 @@ export const ScrambledText: React.FC<ScrambledTextProps> = ({
     for (let i = 0; i < length; i++) {
       const from   = content[i] || '';
       const to     = newText[i] || '';
-      const start  = Math.floor(Math.random() * 40);          // start и end – это рандомный промежуток
-      const end    = start + Math.floor(Math.random() * 40);  // между 0 и 80, например [0,2], [10,25], [40, 80]
+      const start  = Math.floor(Math.random() * 20);          // start и end – это рандомный промежуток
+      const end    = start + Math.floor(Math.random() * 20);  // между 0 и 80, например [0,2], [10,25], [40, 80]
       queue.push({ from, to, start, end });
     }
 

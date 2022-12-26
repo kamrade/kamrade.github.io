@@ -6,9 +6,14 @@
 }
 
 .ScrambledText {
-  font-weight: 400;
-  font-size: 1.25rem;
-  line-height: 1;
+  font-family: $font-family-sans-serif-heading;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 800;
+  opacity: .5;
+
 }
 
 :global {

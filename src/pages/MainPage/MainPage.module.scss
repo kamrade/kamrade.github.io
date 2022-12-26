@@ -11,7 +11,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 800;
-  margin-bottom: 20rem;
+  margin-bottom: 10rem;
 
   @include media-breakpoint-down(sm) {
     display: block;
@@ -21,7 +21,8 @@
 .Title {
   .Description {
     font-size: 1rem;
-    color: $gray-600;
+    color: $gray-900;
+    margin-bottom: 0.25rem;
   }
   @include media-breakpoint-down(sm) {
     margin-bottom: 2rem;

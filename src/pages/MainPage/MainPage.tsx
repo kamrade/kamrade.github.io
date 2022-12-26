@@ -9,6 +9,7 @@ import {ExtremeWaves} from './Portfolio/ExtremeWaves';
 import {B2B} from './Portfolio/B2B';
 import {Mbank} from './Portfolio/Mbank';
 import {TurnoversFlow} from "./Portfolio/TurnoversFlow";
+import {ScrambledText} from "shared/ScrambledText";
 
 export const MainPage = () => {
 
@@ -18,8 +19,18 @@ export const MainPage = () => {
 
         <header className={s.Header}>
           <div className={s.Title}>
-            <div >Dennis Mikhailov</div>
-            <div className={s.Description}>Seasoned UX designer</div>
+            <div className={s.Description}>D. Mykhailov. Seasoned UX designer</div>
+            <ScrambledText
+              slideLength={2000}
+              value={[
+                '[ Product design ]',
+                '[ Prototyping ]',
+                '[ Infographic ]',
+                '[ Design systems ]',
+                '[ React/Angular components ]',
+                '[ Business and system analytics ]',
+              ]}
+            />
           </div>
           <div className={s.Menu}>
             <div className={s.MenuItem}><NavLink exact to='/main'>Home</NavLink></div>
