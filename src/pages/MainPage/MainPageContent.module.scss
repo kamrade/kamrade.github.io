@@ -1,2 +1,22 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
+
+
+.MainPageContent {
+  padding-bottom: 10rem;
+}
+
+.Title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $gray-600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 10rem;
+  margin-bottom: 1.5rem;
+}
+
+.Box {
+  background-color: $gray-050;
+  min-height: 120px;
+}

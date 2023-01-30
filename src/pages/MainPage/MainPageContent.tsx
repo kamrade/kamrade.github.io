@@ -18,8 +18,11 @@ import s from './MainPageContent.module.scss';
 
 export const MainPageContent = () => {
   return (
-    <div>
+    <div className={s.MainPageContent}>
       <div className={`container`}>
+
+        <h2 className={s.Title}>Work</h2>
+
         <div className='row'>
 
           <div className='col-md-8'>
@@ -88,19 +91,6 @@ export const MainPageContent = () => {
           </div>
 
           <div className='col-md-8'>
-            <Link to={'/haystack'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="Merchant Onboarding Application (2022)"
-                  preview={timer}
-                  image="/img/haystack/haystack-thumbnail.jpg"
-                  alt="Merchant onboarding" />
-              </div>
-            </Link>
-          </div>
-
-          <div className='col-md-8'>
             <Link to={'/main/portfolio/turnovers-flow'}>
               <div className={s.Box}>
                 <ProgressiveImage
@@ -109,6 +99,19 @@ export const MainPageContent = () => {
                   preview={turnoverFlow}
                   image="/img/turnovers-flow/thumbnail-compressed.jpg"
                   alt="turnovers-flow-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/haystack'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Merchant Onboarding Application (2022)"
+                  preview={timer}
+                  image="/img/haystack/haystack-thumbnail.jpg"
+                  alt="Merchant onboarding" />
               </div>
             </Link>
           </div>
@@ -148,6 +151,51 @@ export const MainPageContent = () => {
             </div>
           </div>
 
+
+
+        </div>
+
+
+        <h2 className={s.Title}>Screens</h2>
+
+        <div className="row">
+
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className={s.Box}>
+
+            </div>
+          </div>
 
 
         </div>
