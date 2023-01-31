@@ -14,6 +14,7 @@ import {LineChartPage} from "./projects/LineChart/LineChartPage";
 import RxTraining from "./projects/RxTraining/RxTraining";
 
 import { UIKitPage } from './projects/UIKit/UIKitPage';
+import { GridShowcase } from './projects/GridShowcase';
 
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
@@ -93,6 +94,8 @@ export const Main = () => {
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
           <Route exact path={`${path}/rx-training`}><RxTraining /></Route>
           <Route path={`${path}/uikit`}><UIKitPage /></Route>
+          <Route path={`${path}/grid`}><GridShowcase /></Route>
+          
           <Route path={`${path}/**`}><NoMatch /></Route>
         </Switch>
       </div>
