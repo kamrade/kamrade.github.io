@@ -21,7 +21,26 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
   }, {
     title: 'Formaline',
     link: '/apps/formaline'
-  }]
+  }, {
+    title: 'Grid',
+    link: '/apps/grid'
+  }
+
+  // {
+  //   title: 'Wheelson',
+  //   link: '/apps/wheelson'
+  // }, {
+  //   title: 'Exchange',
+  //   link: '/apps/exchange'
+  // }, {
+  //   title: 'Formaline',
+  //   link: '/apps/formaline'
+  // }, {
+  //   title: 'Rx Tutorial',
+  //   link: '/apps/rx-tutorial'
+  // }
+
+  ]
 }, {
   id: 'components',
   togglerTitle: 'Components',

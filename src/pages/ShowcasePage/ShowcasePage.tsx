@@ -12,6 +12,7 @@ import Formaline from "./projects/Formaline/Formaline";
 import NoMatch from "./projects/NoMatch/NoMatch";
 import {LineChartPage} from "./projects/LineChart/LineChartPage";
 import RxTraining from "./projects/RxTraining/RxTraining";
+
 import { UIKitPage } from './projects/UIKit/UIKitPage';
 
 import {useWindowSize} from "hooks/useWindowSize";

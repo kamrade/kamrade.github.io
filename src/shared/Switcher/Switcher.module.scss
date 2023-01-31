@@ -1,0 +1,63 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Switcher {
+  margin: 0;
+  cursor: pointer;
+  line-height: 0 !important;
+  display: inline-flex;
+  vertical-align: top;
+
+  .SwitcherContent {
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 0.5rem;
+    font-weight: 400;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+    &:checked {
+      & + .customSwitcher {
+        background: $success;
+        box-shadow: 0 8px 16px -1px rgba($success, .2);
+        &:before {
+          margin-left: 8px;
+          background: $white;
+        }
+      }
+    }
+  }
+
+  .customSwitcher {
+    width: 28px;
+    height: 20px;
+    border-radius: 12px;
+    transition: all .3s ease-in-out;
+    display: inline-block;
+    position: relative;
+    background: $gray-300;
+    box-shadow: 0 8px 16px -1px rgba($gray-300, .2);
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      transition: all .3s ease;
+    }
+    &:before {
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+    }
+    &:active {
+      transform: scale(.92);
+    }
+
+  }
+
+
+}
