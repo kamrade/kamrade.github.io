@@ -95,7 +95,7 @@ export const Main = () => {
           <Route exact path={`${path}/rx-training`}><RxTraining /></Route>
           <Route path={`${path}/uikit`}><UIKitPage /></Route>
           <Route path={`${path}/grid`}><GridShowcase /></Route>
-          
+
           <Route path={`${path}/**`}><NoMatch /></Route>
         </Switch>
       </div>

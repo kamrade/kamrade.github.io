@@ -37,6 +37,7 @@ export const GridColumnCaption: React.FC<IGridColumnCaption> =
 
   useEffect(() => {
     setColumn(initialSize + (currentX - initialX));
+  // eslint-disable-next-line
   }, [currentX]);
 
   const separatorMouseUp = (e: any) => {
@@ -57,8 +58,10 @@ export const GridColumnCaption: React.FC<IGridColumnCaption> =
   return (
 
     <div className={s.ColumnCaption} style={{width: columnSize}} onClick={sortHandler}>
-      {columnTitle}
-      {columnCaption === sortedBy && (sortDirection === 'asc' ? <Icon.ChevronDown size={16} /> : <Icon.ChevronUp size={16} />) }
+      <div className={s.ColumnTitle}>
+        {columnTitle}
+        {columnCaption === sortedBy && (sortDirection === 'asc' ? <Icon.ChevronDown size={12} /> : <Icon.ChevronUp size={12} />) }
+      </div>
       <div className={s.ColumnSeparator} onMouseDown={separatorMouseDown} />
     </div>
 

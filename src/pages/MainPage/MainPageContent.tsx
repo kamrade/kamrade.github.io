@@ -26,6 +26,58 @@ export const MainPageContent = () => {
         <div className='row'>
 
           <div className='col-md-8'>
+            <Link to={'/main/portfolio/mbank'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Unlimint iBank Mobile (2021)"
+                  preview={unlimintMobile}
+                  image="/img/unlimint-ibank-mobile/thumbnail.jpg"
+                  alt="unlimint-ibank-mobile-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/turnovers-flow'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Turnovers Flow (2017)"
+                  preview={turnoverFlow}
+                  image="/img/turnovers-flow/thumbnail-compressed.jpg"
+                  alt="turnovers-flow-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/extreme-waves'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Extreme waves (2014)"
+                  preview={extremeWaves}
+                  image="/img/extreme-waves/thumbnail-compressed.png"
+                  alt="extreme waves" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <Link to={'/main/portfolio/b2b'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="B2BCards (2017)"
+                  preview={b2bcardsThumb}
+                  image="/img/b2bcards/thumbnail-compressed.png"
+                  alt="b2bcards-preview" />
+              </div>
+            </Link>
+          </div>
+
+          <div className='col-md-8'>
             <Link to={'/timer'}>
               <div className={s.Box}>
                 <ProgressiveImage
@@ -65,45 +117,6 @@ export const MainPageContent = () => {
           </div>
 
           <div className='col-md-8'>
-            <Link to={'/main/portfolio/extreme-waves'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="Extreme waves (2014)"
-                  preview={extremeWaves}
-                  image="/img/extreme-waves/thumbnail-compressed.png"
-                  alt="extreme waves" />
-              </div>
-            </Link>
-          </div>
-
-          <div className='col-md-8'>
-            <Link to={'/main/portfolio/b2b'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="B2BCards (2017)"
-                  preview={b2bcardsThumb}
-                  image="/img/b2bcards/thumbnail-compressed.png"
-                  alt="b2bcards-preview" />
-              </div>
-            </Link>
-          </div>
-
-          <div className='col-md-8'>
-            <Link to={'/main/portfolio/turnovers-flow'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="Turnovers Flow (2017)"
-                  preview={turnoverFlow}
-                  image="/img/turnovers-flow/thumbnail-compressed.jpg"
-                  alt="turnovers-flow-preview" />
-              </div>
-            </Link>
-          </div>
-
-          <div className='col-md-8'>
             <Link to={'/main/portfolio/haystack'}>
               <div className={s.Box}>
                 <ProgressiveImage
@@ -127,18 +140,7 @@ export const MainPageContent = () => {
             </div>
           </div>
 
-          <div className='col-md-8'>
-            <Link to={'/main/portfolio/mbank'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="Unlimint iBank Mobile (2021)"
-                  preview={unlimintMobile}
-                  image="/img/unlimint-ibank-mobile/thumbnail.jpg"
-                  alt="unlimint-ibank-mobile-preview" />
-              </div>
-            </Link>
-          </div>
+
 
           <div className='col-md-8'>
             <div className={s.Box}>
