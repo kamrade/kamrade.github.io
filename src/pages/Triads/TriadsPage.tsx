@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+// Modes:
+// 1. Find all possible triads
+// 2. Find one and refresh
+// 3. Increase contrast between elements size
+
+import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import { Button } from 'shared';
 
 import { triadColors } from './TriadNode/TriadNode.types';
-import { TriadsMenu } from './TriadsMenu/TriadsMenu';
 import { RandomMode } from './RandomMode';
 
 import s from './TriadsPage.module.scss';
@@ -11,44 +15,25 @@ import {RiArrowLeftLine} from "react-icons/ri";
 
 const TriadsPage: React.FC = () => {
 
-  const [showMenu, setShowMenu] = useState<boolean>(false);
-
-    useEffect(() => {
-
-    const keyHandler = (e: any) => {
-      if (e.key === 'Escape') {
-        setShowMenu(true);
-      }
-    }
-
-   document.addEventListener('keydown', keyHandler);
-
-   return () => {
-     document.removeEventListener('keydown', keyHandler);
-   }
-
-  }, [setShowMenu]);
-
   return (
     <div className={s.TriadsPage}>
 
       {/* Link back */}
-      <div className={s.BackLink}>
-        <NavLink exact to='/main'>
-          <Button prefix={<RiArrowLeftLine />} variant={'contained'} theme={'base'} size={'sm'}>back to the website</Button>
-        </NavLink>
-      </div>
+      <NavLink exact to='/main'>
+        <div className={s.BackLink}>
+          <Button
+            className='Button-back'
+            prefix={<RiArrowLeftLine />}
+            variant={'contained'}
+            theme={'base'}
+            size={'sm'}>back to the website</Button>
+        </div>
+      </NavLink>
 
       {/* Main layout */}
       <Route path='/triads/random'>
-        <RandomMode setShowMenu={setShowMenu} showMenu={showMenu} />
+        <RandomMode />
       </Route>
-
-      <Route path='/triads/career'>
-        This content is in progress…
-      </Route>
-
-      {showMenu && <TriadsMenu showMenu={showMenu} setShowMenu={setShowMenu} />}
 
       {/* Define lines pattern */}
       <svg width='41' height='40' viewBox="0 0 41 40" xmlns="http://www.w3.org/2000/svg">              

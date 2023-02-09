@@ -8,11 +8,9 @@ import { PopupNotification } from 'shared';
 import s from './RandomMode.module.scss';
 
 interface IRandomModeProps {
-  setShowMenu: (showMenu: boolean) => void;
-  showMenu: boolean;
 }
 
-const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
+const RandomMode: React.FC<IRandomModeProps> = () => {
 
   const [triads, setTriads] = useState<number[][]>( initiateTriads() );
   const [selection, setSelection] = useState<number[]>([]);
@@ -30,9 +28,15 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
     if (selection.length >= 3) {
       triadsFound.map((tr, _i) => {
         let keys = Object.keys(tr);
-        if (keys[0] === selection[0].toString() && keys[1] === selection[1].toString() && keys[2] === selection[2].toString()) {
-          setResult(true);
+
+        if (
+          (keys.includes( selection[0].toString() )) &&
+          (keys.includes( selection[1].toString() )) &&
+          (keys.includes( selection[2].toString() ))
+        ) {
           setSelection([]);
+          setTriads( initiateTriads());
+          setResult(true);
         }
         return null;
       });
@@ -48,49 +52,35 @@ const RandomMode: React.FC<IRandomModeProps> = ({ showMenu, setShowMenu }) => {
 
   return (
     <div className={s.RandomMode}>
-      <div className="container-fluid">
-        <div className="row">
 
-          <div className="col-8">
-          </div>
-
-          <div className="col-8">
-            <div className={s.TriadsPageContent}>
-              <div className={s.TriadPageHead} onClick={() => setShowMenu(true)}>
-                Triads. Random mode.
-              </div>
-              <TriadsBoard selection={selection} setSelection={setSelection} triads={triads} />
-            </div>
-          </div>
-
-          <div className="col-8">
-
-            <div className={s.TriadsWidget} style={{ marginTop: '4rem' }}>
-              <button onClick={reset} className={s.TriadsButton}>Refresh</button>
-              <button style={{marginBottom: '0'}} onClick={() => setSelection([])} className={s.TriadsButton}>Clear selection</button>
-            </div>
-
-            <div className={s.TriadsWidget}>
-              Triads possible: {triadsFound.length}
-                {triadsFound.map((triad, i) => {
-                  return (
-                    <div key={i}>
-                      {Object.keys(triad).map((number, j) => (
-                        <span style={{marginRight: '4px'}} key={j}>{number}</span>
-                      ))}
-                    </div>
-                  )
-                })}
-            </div>
-          </div>
-
-        </div>
+      <div className={s.TriadsPageContent}>
+        <TriadsBoard selection={selection} setSelection={setSelection} triads={triads} />
       </div>
+
+      <div className={s.TriadsControls} >
+        <button onClick={reset} className={s.TriadsButton}>Refresh</button>
+        <button onClick={() => setSelection([])} className={s.TriadsButton}>Clear</button>
+      </div>
+
+      <div className={s.TriadsWidget}>
+        Triads possible: {triadsFound.length}
+        {triadsFound.map((triad, i) => {
+          return (
+            <div key={i} className={s.posibilities}>
+              {Object.keys(triad).map((number, j) => (
+                <span style={{marginRight: '4px'}} key={j}>{number}</span>
+              ))}
+            </div>
+          )
+        })}
+      </div>
+
 
       <PopupNotification
         popupState={{ isShowed: result }}
         setPopupState={setResult}
-        textContent={'test'} />
+        textContent={'OK'} />
+
     </div>
   );
 }

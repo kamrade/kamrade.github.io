@@ -3,19 +3,32 @@
 @import "./triads.variables.scss";
 
 .TriadsPage {
-  height: 100vh;
-  width: 100vw;
   color: yellow;
   background-color: $triadPageBg;
+  min-height: 100vh;
 
   .TriadsPageContent {
     margin: auto;
   }
 
   .BackLink {
-    position: absolute;
-    z-index: $zindex-fixed;
-    top: 1rem;
-    left: 2rem;
+    padding: 1rem 0 0;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+:global {
+  .Button-back {
+    background-color: $nodeBg !important;
+    border-color: $nodeBg !important;
+    &:hover {
+      background-color: darken($nodeBg, 3%) !important;
+      border-color: darken($nodeBg, 3%) !important;
+    }
+    &:active {
+      background-color: darken($nodeBg, 5%) !important;
+      border-color: darken($nodeBg, 5%) !important;
+    }
   }
 }

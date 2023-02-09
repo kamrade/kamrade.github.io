@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
-import {randomIntFromInterval} from 'helpers/random-int-from-interval';
+// import {randomIntFromInterval} from 'helpers/random-int-from-interval';
 
 import { ITriadNodeProps } from './TriadNode.types';
 import s from './TriadNode.module.scss';
@@ -19,10 +19,12 @@ export const TriadNode: React.FC<ITriadNodeProps> = ({
   const [invisible, setInvisible] = useState(true);
 
   useEffect(() => {
-    setInvisible(true);
-    setTimeout(() => {
-      setInvisible(false);
-    }, randomIntFromInterval(0, 11)*50);
+    // setInvisible(true);
+    // setTimeout(() => {
+    //   setInvisible(false);
+    // }, randomIntFromInterval(0, 11)*5);
+    setInvisible(false);
+
   }, [size, shape, color, fill]);
 
 

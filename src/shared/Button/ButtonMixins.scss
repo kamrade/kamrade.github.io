@@ -9,11 +9,11 @@
     color: map-get($theme, text);
 
     &:not(:disabled):hover {
-      background-color: map-get($theme, bg100);
+      background-color: rgba(map-get($theme, bg100), .1);
     }
 
     &:not(:disabled):active {
-      background-color: map-get($theme, bg200);
+      background-color: rgba(map-get($theme, bg200), .1);
       box-shadow: none;
     }
 

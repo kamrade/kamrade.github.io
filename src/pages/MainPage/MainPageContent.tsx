@@ -26,19 +26,6 @@ export const MainPageContent = () => {
         <div className='row'>
 
           <div className='col-md-8'>
-            <Link to={'/main/portfolio/mbank'}>
-              <div className={s.Box}>
-                <ProgressiveImage
-                  interactive={true}
-                  description="Unlimint iBank Mobile (2021)"
-                  preview={unlimintMobile}
-                  image="/img/unlimint-ibank-mobile/thumbnail.jpg"
-                  alt="unlimint-ibank-mobile-preview" />
-              </div>
-            </Link>
-          </div>
-
-          <div className='col-md-8'>
             <Link to={'/main/portfolio/turnovers-flow'}>
               <div className={s.Box}>
                 <ProgressiveImage
@@ -104,16 +91,27 @@ export const MainPageContent = () => {
           </div>
 
           <div className='col-md-8'>
-            <Link to={'/triads/random'}>
+            <Link to={'/main/portfolio/mbank'}>
               <div className={s.Box}>
                 <ProgressiveImage
                   interactive={true}
-                  description="Triads (In progress from 2021)"
-                  preview={triads}
-                  image="/img/triads/Thumbnail.png"
-                  alt="triads" />
+                  description="Unlimint iBank Mobile (2021)"
+                  preview={unlimintMobile}
+                  image="/img/unlimint-ibank-mobile/thumbnail.jpg"
+                  alt="unlimint-ibank-mobile-preview" />
               </div>
             </Link>
+          </div>
+
+          <div className='col-md-8'>
+            <div className={s.Box}>
+              <ProgressiveImage
+                interactive={true}
+                description="Unlimint iBank (2019-2020)"
+                preview={unlimintBank}
+                image="/img/unlimint-ibank/thumbnail-dark-compressed.png"
+                alt="unlimint-ibank-preview" />
+            </div>
           </div>
 
           <div className='col-md-8'>
@@ -130,17 +128,17 @@ export const MainPageContent = () => {
           </div>
 
           <div className='col-md-8'>
-            <div className={s.Box}>
-              <ProgressiveImage
-                interactive={true}
-                description="Unlimint iBank (2019-2020)"
-                preview={unlimintBank}
-                image="/img/unlimint-ibank/thumbnail-dark-compressed.png"
-                alt="unlimint-ibank-preview" />
-            </div>
+            <Link to={'/triads/random'}>
+              <div className={s.Box}>
+                <ProgressiveImage
+                  interactive={true}
+                  description="Triads (In progress from 2021)"
+                  preview={triads}
+                  image="/img/triads/Thumbnail.png"
+                  alt="triads" />
+              </div>
+            </Link>
           </div>
-
-
 
           <div className='col-md-8'>
             <div className={s.Box}>

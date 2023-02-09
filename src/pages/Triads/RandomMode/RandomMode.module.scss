@@ -4,26 +4,8 @@
 
 .RandomMode {
   position: relative;
-}
-
-.TriadPageHead {
-  width: $triadsBoardWidth;
-  margin: 4rem auto 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-align: center;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  border-radius: $border-radius;
-  user-select: none;
-  @include transition(background);
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+  max-width: 242px;
+  margin: 0 auto;
 }
 
 .TriadsButton {
@@ -34,7 +16,6 @@
   width: 100%;
   padding: 0.5rem;
   border-radius: $border-radius;
-  margin-bottom: 1rem;
   @include transition(background);
 
   &:hover {
@@ -51,11 +32,18 @@
   }
 }
 
-.TriadsWidget {
-  margin: 0 2rem;
-  padding: 1rem;
-  border-radius: $border-radius * 2;
-  background-color: $triadElementBg;
-  position: relative;
+.TriadsControls {
+  display: flex;
+  gap: .5rem;
   margin-bottom: 1rem;
+}
+
+.TriadsWidget {
+  text-align: center;
+
+  .posibilities {
+    border: 1px solid rgba($triadPrimary, .1);
+    padding: .25rem;
+    margin: .25rem 0;
+  }
 }

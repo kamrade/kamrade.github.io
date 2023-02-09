@@ -18,7 +18,8 @@ export const PopupNotification = ({ textContent, popupState, setPopupState }: IP
     (popupState.isShowed &&
       <div className={s.PopupNotification} onClick={() => setPopupState(false)}>
         {textContent}
-    </div>),
+      </div>
+    ),
     document.getElementById('popup-notification-root') as HTMLDivElement
   );
 }
