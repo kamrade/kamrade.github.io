@@ -3,6 +3,7 @@
 @import "./Grid.global";
 
 .GridTD {
-  padding: $cellPadding;
-  margin: $cellMargin;
+  padding: $cellPaddingY $cellPaddingX;
+  margin: $cellMarginY $cellMarginX;
+  border-right: 1px solid $gray-200;
 }

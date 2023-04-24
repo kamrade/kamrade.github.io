@@ -2,8 +2,6 @@
 @import "src/styles/bootstrap/mixins";
 @import "./Grid.global";
 
-.GridTableRow {
-  display: flex;
-  border-bottom: 1px solid $gray-200;
-  padding: $cellMarginY $cellMarginX;
+.GridWrapper {
+  padding-top: 4rem;
 }

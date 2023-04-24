@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid } from './Grid';
 import { GridTableHead } from './GridTableHead';
 import { GridTableBody } from './GridTableBody';
@@ -8,6 +8,7 @@ import { RuleVeto } from './rule-veto.types';
 import { ruleVetoData, allTableHeadingsMap } from "./rule-veto.data";
 import { TableHeading } from './grid.types';
 import { GridTableRow } from './GridTableRow';
+import s from './GridWrapper.module.scss';
 
 export const GridWrapper: React.FC<{}> = () => {
 
@@ -15,6 +16,7 @@ export const GridWrapper: React.FC<{}> = () => {
     .filter((el: TableHeading) => el.isShowed)
     .sort((el1: TableHeading, el2: TableHeading) => el1.position - el2.position);
 
+  const [cols, setCols] = useState(sortedAndFilteredTabs);
 
   function calculateFullWidth(data: TableHeading[]) {
     let fullWidth = 0;
@@ -26,14 +28,23 @@ export const GridWrapper: React.FC<{}> = () => {
     return fullWidth;
   }
 
+  // TODO: Refactoring needed
   function resizeColumn(el: TableHeading, offset: number) {
-    console.log('::: resize column', el.id, offset);
-    
+    let newArr = sortedAndFilteredTabs = sortedAndFilteredTabs.filter((element: TableHeading, i: number) => {
+      if (el.id !== element.id) {
+        return element;
+      } else {
+        element.width += offset;
+        return element;
+      }
+    });
+
+    setCols(newArr);
   }
 
   return (
     <div>
-      <div className={'uimp-grid-control'}>
+      <div className={s.GridWrapper}>
         {/*
           Here will be displayed:
             - table name,
@@ -48,8 +59,8 @@ export const GridWrapper: React.FC<{}> = () => {
 
       <Grid data={ruleVetoData}>
 
-        <GridTableHead fullWidth={calculateFullWidth(sortedAndFilteredTabs)}>
-          {sortedAndFilteredTabs.map((el: TableHeading, i: number) =>
+        <GridTableHead fullWidth={calculateFullWidth(cols)}>
+          {cols.map((el: TableHeading, i: number) =>
             <GridTH resizeHandler={resizeColumn} el={el} key={i}>{el.title}</GridTH>)
           }
         </GridTableHead>
@@ -58,8 +69,8 @@ export const GridWrapper: React.FC<{}> = () => {
 
             {ruleVetoData.map((element: RuleVeto, j: number) =>
               (
-                <GridTableRow key={j} fullWidth={calculateFullWidth(sortedAndFilteredTabs)}>
-                  { sortedAndFilteredTabs.map((el: TableHeading, i: number) =>
+                <GridTableRow key={j} fullWidth={calculateFullWidth(cols)}>
+                  { cols.map((el: TableHeading, i: number) =>
                     <GridTD el={el} key={i}>{ element[el.id] }</GridTD>)
                   }
                 </GridTableRow>

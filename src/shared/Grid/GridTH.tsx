@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import s from './GridTH.module.scss';
 import { TableHeading } from './grid.types';
+import { RiArrowDownSLine } from "react-icons/ri";
 
 interface GridTHProps {
   el: TableHeading;
@@ -20,7 +21,8 @@ export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children}) => 
     // console.log(':: init', initialX, initialY);
     // console.log(':: moving', e.pageX - initialX, e.pageY - initialY);
     resizeHandler(el, e.pageX - initialX);
-
+    initialX = e.pageX;
+    initialY = e.pageY;
   }
 
   const mouseUpHandler = (e: MouseEvent): any => {
@@ -42,7 +44,9 @@ export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children}) => 
     <div className={s.GridTH} style={{ width: `${el.width}px` }}>
       <div className={s.GridTHContent}>
         { children }
+        {/*<RiArrowDownSLine />*/}
       </div>
+
       <div
         className={s.GridTHControl}
         onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => mouseDownHandler(el, e)}>

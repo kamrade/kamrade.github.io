@@ -3,15 +3,23 @@
 @import "./Grid.global";
 
 .GridTH {
-  padding: $cellPadding;
-  margin: $cellMargin;
+  padding: $cellPaddingY $cellPaddingX;
+  margin: $cellMarginY $cellMarginX;
   cursor: pointer;
   display: flex;
   position: relative;
   justify-content: space-between;
+  border-right: 1px solid transparent;
+  font-weight: 600;
+  color: $gray-600;
 
   &:hover {
     background-color: $gray-050;
+
+    .GridTHControl {
+      opacity: 1;
+    }
+
   }
 
   .GridTHContent {
@@ -19,9 +27,11 @@
   }
 
   .GridTHControl {
-    width: 2px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    width: 5px;
     height: 100%;
-    background-color: $gray-200;
+    border-right: 1px solid $gray-200;
     cursor: e-resize;
   }
 }
