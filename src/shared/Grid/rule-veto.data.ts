@@ -97,66 +97,79 @@ export const ruleVetoData: RuleVeto[] = [
 
 // columns set
 export const allTableHeadingsMap: TableHeading[] = [{
+  id: 'id',
   title: 'ID',
   isShowed: true,
   position: 0,
   width: 220,
 }, {
+  id: 'tenantId',
   title: 'Tenant ID',
   isShowed: true,
   position: 5,
   width: 220,
 }, {
+  id: 'ruleId',
   title: 'Rule ID',
   isShowed: true,
   position: 1,
   width: 220,
 }, {
+  id: 'ruleVetoType',
   title: 'Rule veto type',
   isShowed: true,
   position: 2,
-  width: 220,
+  width: 320,
 }, {
+  id: 'referenceId',
   title: 'Reference ID',
   isShowed: true,
   position: 3,
-  width: 220,
+  width: 320,
 }, {
+  id: 'status',
   title: 'Status',
   isShowed: true,
   position: 6,
   width: 220,
 }, {
+  id: 'comments',
   title: 'Comments',
   isShowed: false,
   position: -1,
   width: 220,
 }, {
+  id: 'startDate',
   title: 'Start date',
   isShowed: false,
   position: -1,
   width: 220,
 }, {
+  id: 'expiryDate',
   title: 'Expiry date',
   isShowed: true,
   position: 4,
   width: 220,
 }, {
+  id: 'createdDate',
   title: 'Created date',
   isShowed: false,
   position: -1,
   width: 220,
 }, {
+  id: 'updatedDate',
   title: 'Updated date',
   isShowed: false,
   position: -1,
   width: 220,
 }, {
+  id: 'createdBy',
   title: 'Created by',
   isShowed: false,
   position: -1,
   width: 220,
 }, {
+  id: 'updatedBy',
   title: 'Updated by',
   isShowed: false,
   position: -1,

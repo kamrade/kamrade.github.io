@@ -1,7 +1,8 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
 
-.GridTableHeadContent {
+.GridTableRow {
   display: flex;
   border-bottom: 1px solid $gray-200;
+  padding: 0.125rem 0;
 }

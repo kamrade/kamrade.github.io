@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './Grid.module.scss';
 
 export interface GridProps {
   data: any[];
@@ -14,10 +15,11 @@ export const Grid = (props: GridProps) => {
   // - sorted
   // - filtered (included search string)
   // This means that Grid is only consuming (processing) data, not transforming it
+
   const data = props.data;
 
   return (
-    <div className={'uimp-grid'}>
+    <div className={s.Grid}>
       {props.children}
     </div>
   );

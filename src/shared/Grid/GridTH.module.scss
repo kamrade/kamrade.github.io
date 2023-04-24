@@ -1,6 +1,27 @@
 @import "src/styles/bootstrap/variables";
 @import "src/styles/bootstrap/mixins";
+@import "./Grid.global";
 
 .GridTH {
-  padding: 1rem;
+  padding: $cellPadding;
+  margin: $cellMargin;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: $gray-050;
+  }
+
+  .GridTHContent {
+
+  }
+
+  .GridTHControl {
+    width: 2px;
+    height: 100%;
+    background-color: $gray-200;
+    cursor: e-resize;
+  }
 }
