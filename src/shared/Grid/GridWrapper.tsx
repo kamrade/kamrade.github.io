@@ -25,15 +25,14 @@ export const GridWrapper: React.FC = () => {
   const prepareData = (data: RuleVeto[], sortedBy: ISortedBy) => data;
 
   const [cols, setCols] = useState( prepareHeadingData(allTableHeadingsMap) );
-  const [data, setData] = useState( prepareData(ruleVetoData, {
-    column: cols[0].id,
-    direction: 'acc',
-  }) );
 
-  const [sortedBy, setSortedBy] = useState<ISortedBy>({
+  const defaultSorting: ISortedBy = {
     column: cols[0].id,
     direction: 'acc',
-  });
+  }
+  const [data, setData] = useState( prepareData(ruleVetoData, defaultSorting) );
+
+  const [sortedBy, setSortedBy] = useState<ISortedBy>(defaultSorting);
 
   useEffect(() => {
     setData( prepareData(ruleVetoData, sortedBy) );

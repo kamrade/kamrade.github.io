@@ -12,6 +12,7 @@ export const GridTD: React.FC<GridTDProps> = ({ children, el }) => {
   return (
     <div className={s.GridTD} style={{ width: `${el.width}px` }}>
       {children}
+      <div className={s.openDetails} onClick={() => console.log('open details')}>Open</div>
     </div>
   );
 

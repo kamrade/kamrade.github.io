@@ -6,4 +6,36 @@
   padding: $cellPaddingY $cellPaddingX;
   margin: $cellMarginY $cellMarginX;
   border-right: 1px solid $gray-200;
+  position: relative;
+
+  .openDetails {
+    display: none;
+    position: absolute;
+    bottom: .25rem;
+    right: .25rem;
+    border: 1px solid $gray-200;
+    background-color: $white;
+    border-radius: $border-radius;
+    padding: .125rem .25rem;
+    color: $gray-700;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: background .3s ease-in-out;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:active {
+      background-color: $gray-200;
+    }
+  }
+
+  &:hover {
+    &:first-of-type {
+      .openDetails {
+        display: block;
+      }
+    }
+  }
 }
