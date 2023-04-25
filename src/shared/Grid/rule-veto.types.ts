@@ -8,6 +8,7 @@ export type RuleVetoStatus = 'active' | 'expired' | 'deactivated';
 //   [key: string]: any;
 // }
 
+export type TableStyle = 'base' | 'list';
 
 export interface RuleVeto {
   id: string;

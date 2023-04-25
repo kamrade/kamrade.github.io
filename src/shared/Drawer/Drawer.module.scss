@@ -1,0 +1,22 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+
+.Drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: $white;
+  z-index: $zindex-modal;
+  box-shadow: 0 0 80px rgba(0,0,0,0.04);
+  padding: 0.5rem 2rem 0.5rem 2rem;
+
+  .DrawerContent {
+
+  }
+
+  .DrawerControl {
+    margin-bottom: 1.5rem;
+  }
+}

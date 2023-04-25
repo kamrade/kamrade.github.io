@@ -16,3 +16,5 @@ export {TermLoader, TermLoaderBlocks} from "./TermLoader";
 export {Skeleton} from './Skeleton';
 export {Label} from './Label';
 export {Switcher} from './Switcher';
+export {Drawer} from './Drawer';
+export {Checkbox} from './Checkbox';

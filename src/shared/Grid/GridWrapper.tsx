@@ -11,16 +11,20 @@ import {GridTableRow} from './GridTableRow';
 import s from './GridWrapper.module.scss';
 import { calculateFullWidth } from './helpers/claculateFulWidth';
 import { prepareData } from './helpers/prepareData';
-import {Button} from "../Button";
 import {RiRestartLine, RiTableFill} from "react-icons/ri";
+import { Drawer, Checkbox, Button } from 'shared';
 
 export const GridWrapper: React.FC = () => {
+
+  const [styledTable, setStyledTable] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [allTh, setAllTh] = useState(allTableHeadingsMap);
 
   const prepareHeadingData = (data: TableHeading[]) => data
     .filter((el: TableHeading) => el.isShowed)
     .sort((el1: TableHeading, el2: TableHeading) => el1.position - el2.position);
 
-  const [cols, setCols] = useState( prepareHeadingData(allTableHeadingsMap) );
+  const [cols, setCols] = useState( prepareHeadingData(allTh) );
 
   const defaultSorting: ISortedBy = {
     column: cols[0].id,
@@ -48,8 +52,25 @@ export const GridWrapper: React.FC = () => {
     setCols(newArr);
   }
 
+  function toggleColumn(el: TableHeading) {
+    let newArr = allTh.filter((element: TableHeading, i: number) => {
+      if (el.id !== element.id) {
+        return element;
+      } else {
+        element.isShowed = !element.isShowed;
+        return element;
+      }
+    });
+
+    setAllTh(newArr);
+  }
+
+  useEffect(() => {
+    setCols( prepareHeadingData(allTh) );
+  }, [allTh]);
+
   const setupColumns = () => {
-    alert('setup columns');
+    setShowDrawer(!showDrawer);
   }
 
   const resetColumns = () => {
@@ -59,6 +80,11 @@ export const GridWrapper: React.FC = () => {
   // @ts-ignore
   return (
     <div className={s.GridWrapper} >
+
+      <div className={'mb-3'}>
+        <Checkbox labelText={'Styled'} value={styledTable} onChange={() => setStyledTable(!styledTable) } />
+      </div>
+
       <div className={s.GridHeader}>
 
         <h2>Rule vetos monitor</h2>
@@ -109,6 +135,23 @@ export const GridWrapper: React.FC = () => {
           )}
         </GridTableBody>
       </Grid>
+
+      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawer} setShowDrawer={setShowDrawer}>
+        <div className="my-5">
+
+          {allTh.map((col, i) => (
+            <div key={i} className={'mb-2'}>
+              <Checkbox
+                labelText={col.title}
+                value={col.isShowed}
+                onChange={() => toggleColumn(col)}
+              />
+            </div>
+          ))}
+
+        </div>
+      </Drawer>
+
     </div>
   );
 }
