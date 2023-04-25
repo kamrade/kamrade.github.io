@@ -18,9 +18,6 @@ export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children, sort
   const mouseMoveHandler = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // console.log(':: init', initialX, initialY);
-    // console.log(':: moving', e.pageX - initialX, e.pageY - initialY);
     resizeHandler(el, e.pageX - initialX);
     initialX = e.pageX;
   }

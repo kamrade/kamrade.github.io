@@ -3,9 +3,9 @@ import s from './GridTD.module.scss';
 import { TableHeading } from './grid.types';
 import { Button } from 'shared';
 import classNames from "classnames/bind";
-const sx = classNames.bind(s);
+import { GridTDTheme } from './grid.types';
 
-export type GridTDTheme = 'base' | 'primary' | 'muted' | 'danger' | 'success';
+const sx = classNames.bind(s);
 
 export interface GridTDProps {
   el: TableHeading;

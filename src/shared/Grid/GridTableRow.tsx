@@ -6,6 +6,7 @@ export interface GridTableRowProps {
   fullWidth: number;
 }
 export const GridTableRow: React.FC<GridTableRowProps> = ({ children, fullWidth }) => {
+
   return (
     <div className={s.GridTableRow} style={{ width: fullWidth }}>
       { children }
