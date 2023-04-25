@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import s from './GridTH.module.scss';
-import { TableHeading } from './grid.types';
-import { RiArrowDownSLine } from "react-icons/ri";
+import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
+import { TableHeading, ISortedBy } from './grid.types';
 
 interface GridTHProps {
   el: TableHeading;
   resizeHandler: any;
+  sortedBy: ISortedBy;
+  setSortedBy: any;
   children: any;
 }
 
-export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children}) => {
+export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy}) => {
 
   let initialX = 0;
-  let initialY = 0;
 
   const mouseMoveHandler = (e: MouseEvent) => {
     e.preventDefault();
@@ -22,29 +23,49 @@ export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children}) => 
     // console.log(':: moving', e.pageX - initialX, e.pageY - initialY);
     resizeHandler(el, e.pageX - initialX);
     initialX = e.pageX;
-    initialY = e.pageY;
   }
 
   const mouseUpHandler = (e: MouseEvent): any => {
+    e.preventDefault();
+    e.stopPropagation();
     document.removeEventListener('mousemove', mouseMoveHandler);
     document.removeEventListener('mouseup', mouseUpHandler);
   }
 
   function mouseDownHandler(el: TableHeading, e: React.MouseEvent<HTMLDivElement>) {
 
+    e.preventDefault();
+    e.stopPropagation();
+
     initialX = e.pageX;
-    initialY = e.pageY;
 
     document.addEventListener('mousemove', mouseMoveHandler);
     document.addEventListener('mouseup', mouseUpHandler);
   }
 
+  const sort = () => {
+    if (sortedBy.column === el.id) {
+      setSortedBy({
+        column: el.id,
+        direction: sortedBy.direction === 'acc' ? 'dec' : 'acc',
+      });
+    } else {
+      setSortedBy({
+        column: el.id,
+        direction: 'acc',
+      });
+    }
+
+  }
+
 
   return (
-    <div className={s.GridTH} style={{ width: `${el.width}px` }}>
+    <div className={s.GridTH} style={{ width: `${el.width}px` }} onMouseDown={sort}>
       <div className={s.GridTHContent}>
         { children }
-        {/*<RiArrowDownSLine />*/}
+        { sortedBy.column === el.id &&
+          (sortedBy.direction === 'acc' ? <RiArrowDownSLine /> :  <RiArrowUpSLine />)
+        }
       </div>
 
       <div

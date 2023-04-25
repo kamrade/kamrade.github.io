@@ -5,3 +5,10 @@ export interface TableHeading {
   position: number,
   width: number,
 }
+
+export type SortDirection = 'acc' | 'dec';
+
+export interface ISortedBy {
+  column: string;
+  direction: SortDirection;
+}

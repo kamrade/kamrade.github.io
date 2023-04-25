@@ -121,7 +121,7 @@ export const allTableHeadingsMap: TableHeading[] = [{
   position: 2,
   width: 320,
 }, {
-  id: 'referenceId',
+  id: 'referenceIdentifier',
   title: 'Reference ID',
   isShowed: true,
   position: 3,

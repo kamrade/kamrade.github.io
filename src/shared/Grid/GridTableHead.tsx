@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './GridTableHead.module.scss'
-import { TableHeading } from './grid.types';
 
 interface GridTableHeadProps {
   children: any;

@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Grid.module.scss';
 
 export interface GridProps {
-  data: any[];
   children: any;
 }
 
@@ -16,7 +15,6 @@ export const Grid = (props: GridProps) => {
   // - filtered (included search string)
   // This means that Grid is only consuming (processing) data, not transforming it
 
-  const data = props.data;
 
   return (
     <div className={s.Grid}>
