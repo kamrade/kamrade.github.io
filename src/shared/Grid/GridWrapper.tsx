@@ -11,6 +11,8 @@ import {GridTableRow} from './GridTableRow';
 import s from './GridWrapper.module.scss';
 import { calculateFullWidth } from './helpers/claculateFulWidth';
 import { prepareData } from './helpers/prepareData';
+import {Button} from "../Button";
+import {RiRestartLine, RiTableFill} from "react-icons/ri";
 
 export const GridWrapper: React.FC = () => {
 
@@ -46,10 +48,27 @@ export const GridWrapper: React.FC = () => {
     setCols(newArr);
   }
 
+  const setupColumns = () => {
+    alert('setup columns');
+  }
+
+  const resetColumns = () => {
+    alert('reset columns');
+  }
+
   // @ts-ignore
   return (
     <div className={s.GridWrapper} >
-      <div className={s.GridHeader}></div>
+      <div className={s.GridHeader}>
+
+        <h2>Rule vetos monitor</h2>
+
+        <div className={s.setupColumns} >
+          <Button iconButton prefix={<RiRestartLine />} size={'sm'} theme={'base'} variant={'light'} onClick={resetColumns} />
+          <Button iconButton prefix={<RiTableFill />} size={'sm'} theme={'primary'} variant={'light'} onClick={setupColumns} />
+        </div>
+
+      </div>
 
       <Grid>
         <GridTableHead fullWidth={calculateFullWidth(cols)}>
@@ -63,8 +82,27 @@ export const GridWrapper: React.FC = () => {
             (
               <GridTableRow key={j} fullWidth={calculateFullWidth(cols)}>
                 { cols.map((el: TableHeading, i: number) => {
+
                   // @ts-ignore
-                  return <GridTD theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                  if (el.id === 'status') {
+                    switch (element[el.id]) {
+                      case 'active':
+                        return <GridTD theme={'success'} el={el} key={i}>{ element[el.id] }</GridTD>
+                      case 'deactivated':
+                        return <GridTD theme={'muted'} el={el} key={i}>{ element[el.id] }</GridTD>
+                      case 'expired':
+                        return <GridTD theme={'danger'} el={el} key={i}>{ element[el.id] }</GridTD>
+                      default:
+                        return <GridTD theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                    }
+                  }
+
+                  if (el.id === 'ruleId') {
+                    return <GridTD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                  }
+
+                  // @ts-ignore
+                  return <GridTD interactionText={'Edit'} theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
                 })}
               </GridTableRow>
             )

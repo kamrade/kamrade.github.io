@@ -11,12 +11,3 @@
   border-bottom: 1px solid $gray-200;
   position: relative;
 }
-
-.setupColumns {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: .125rem;
-  display: flex;
-  gap: .25rem;
-}

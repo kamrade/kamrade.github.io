@@ -7,6 +7,7 @@
   margin: $cellMarginY $cellMarginX;
   border-right: 1px solid $gray-200;
   position: relative;
+  white-space: nowrap;
 
   &.GridThemeBase {
     color: $gray-900;
@@ -28,10 +29,30 @@
     color: $text-muted;
   }
 
+  .GridTDChildren {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .Link {
+    opacity: 0;
+  }
+  
+  &.GridLink {
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      .Link {
+        opacity: 1;
+      }
+    }
+  }
+
   .openDetails {
     display: none;
     position: absolute;
-    bottom: .25rem;
+    top: 50%;
+    transform: translateY(-50%);
     right: .25rem;
     background-color: $white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);

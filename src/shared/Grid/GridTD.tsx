@@ -4,16 +4,20 @@ import { TableHeading } from './grid.types';
 import { Button } from 'shared';
 import classNames from "classnames/bind";
 import { GridTDTheme } from './grid.types';
+import { RiArrowRightUpFill } from "react-icons/ri";
+
 
 const sx = classNames.bind(s);
 
 export interface GridTDProps {
   el: TableHeading;
   theme?: GridTDTheme;
+  link?: string;
   children: any;
+  interactionText?: string;
 }
 
-export const GridTD: React.FC<GridTDProps> = ({ children, el, theme = 'base' }) => {
+export const GridTD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText }) => {
 
   function openDetails() {
     // @ts-ignore
@@ -28,11 +32,19 @@ export const GridTD: React.FC<GridTDProps> = ({ children, el, theme = 'base' }) 
       GridThemeSuccess: theme === 'success',
       GridThemeDanger: theme === 'danger',
       GridThemeMuted: theme === 'muted',
+      GridLink: link,
     })} style={{ width: `${el.width}px` }}>
-      {children}
-      <div className={s.openDetails} >
-        <Button size={'xs'} theme={'primary'} variant={'light'} onClick={openDetails}>Open</Button>
+      <div className={s.GridTDChildren} title={children}>
+        {children}
+        <span className={s.Link}>
+          {link && <RiArrowRightUpFill/>}
+        </span>
       </div>
+
+      <div className={s.openDetails} >
+        <Button size={'xs'} theme={'primary'} variant={'light'} onClick={openDetails}>{interactionText || 'Open'}</Button>
+      </div>
+
     </div>
   );
 

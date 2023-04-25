@@ -36,7 +36,7 @@ export const ruleVetoData: RuleVeto[] = [
     "referenceIdentifier": "GB94BARC10201530093459",
     "startDate": "2021-10-08",
     "expiryDate": "2021-10-19",
-    "status": "expired",
+    "status": "deactivated",
     "comments": "test23122321",
     "createdDate": "2022-08-10T20:21:38.936205",
     "createdBy": "Mikhail Titchenko",
@@ -102,7 +102,6 @@ export const allTableHeadingsMap: TableHeading[] = [{
   isShowed: true,
   position: 0,
   width: 220,
-  theme: 'primary',
 }, {
   id: 'tenantId',
   title: 'Tenant ID',
@@ -115,6 +114,7 @@ export const allTableHeadingsMap: TableHeading[] = [{
   isShowed: true,
   position: 1,
   width: 220,
+  theme: 'primary',
 }, {
   id: 'ruleVetoType',
   title: 'Rule veto type',

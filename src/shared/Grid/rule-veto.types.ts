@@ -1,5 +1,5 @@
 export type RuleVetoType = 'SENDER_BENEFICIARY_BIC' | 'CLIENT_ID' | 'SENDER_IBAN';
-export type RuleVetoStatus = 'active' | 'expired';
+export type RuleVetoStatus = 'active' | 'expired' | 'deactivated';
 
 // export type RuleVeloKey = 'id' | 'tenantId' | 'ruleId' | 'ruleVetoType' | 'referenceIdentifier' |
 //   'status' | 'comments' | 'startDate' | 'expiryDate' | 'createdDate' | 'updatedDate' | 'createdBy' | 'updatedBy';
