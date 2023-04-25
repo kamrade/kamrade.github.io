@@ -7,4 +7,10 @@
   border-bottom: 1px solid $gray-200;
   padding: $cellMarginY $cellMarginX;
   position: relative;
+
+  &.GridTableRowStriped {
+    &:nth-child(2n) {
+      background-color: $gray-100;
+    }
+  }
 }

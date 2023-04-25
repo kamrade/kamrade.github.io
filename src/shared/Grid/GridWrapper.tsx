@@ -106,7 +106,7 @@ export const GridWrapper: React.FC = () => {
         <GridTableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <GridTableRow key={j} fullWidth={calculateFullWidth(cols)}>
+              <GridTableRow key={j} fullWidth={calculateFullWidth(cols)} striped>
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore
