@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {Grid} from './Grid';
 import {GridTableHead} from './GridTableHead';
 import {GridTableBody} from './GridTableBody';
@@ -9,6 +9,8 @@ import {allTableHeadingsMap, ruleVetoData} from "./rule-veto.data";
 import {ISortedBy, TableHeading} from './grid.types';
 import {GridTableRow} from './GridTableRow';
 import s from './GridWrapper.module.scss';
+import { calculateFullWidth } from './helpers/claculateFulWidth';
+import { prepareData } from './helpers/prepareData';
 
 export const GridWrapper: React.FC = () => {
 
@@ -16,20 +18,13 @@ export const GridWrapper: React.FC = () => {
     .filter((el: TableHeading) => el.isShowed)
     .sort((el1: TableHeading, el2: TableHeading) => el1.position - el2.position);
 
-  // TODO: implementation
-  // Here is the place where data should be
-  // - sorted
-  // - filtered
-  // - paginated
-  // - calculate statistic
-  const prepareData = (data: RuleVeto[], sortedBy: ISortedBy) => data;
-
   const [cols, setCols] = useState( prepareHeadingData(allTableHeadingsMap) );
 
   const defaultSorting: ISortedBy = {
     column: cols[0].id,
     direction: 'acc',
   }
+
   const [data, setData] = useState( prepareData(ruleVetoData, defaultSorting) );
 
   const [sortedBy, setSortedBy] = useState<ISortedBy>(defaultSorting);
@@ -38,17 +33,6 @@ export const GridWrapper: React.FC = () => {
     setData( prepareData(ruleVetoData, sortedBy) );
   }, [sortedBy, sortedBy.direction, sortedBy.column]);
 
-  function calculateFullWidth(data: TableHeading[]) {
-    let fullWidth = 0;
-    for(let i = 0; i < data.length; i++) {
-      if (data[i].isShowed) {
-        fullWidth += data[i].width;
-      }
-    }
-    return fullWidth;
-  }
-
-  // TODO: Refactoring needed
   function resizeColumn(el: TableHeading, offset: number) {
     let newArr = cols.filter((element: TableHeading, i: number) => {
       if (el.id !== element.id) {
@@ -63,25 +47,11 @@ export const GridWrapper: React.FC = () => {
   }
 
   // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
   return (
-    <div>
-      <div className={s.GridWrapper}>
-        {/*
-          Here will be displayed:
-            - table name,
-            - sorting method
-            - searching,
-            - filtering,
-            - pagination,
-            - adding new items,
-            - data statistics
-         */}
-      </div>
+    <div className={s.GridWrapper} >
+      <div className={s.GridHeader}></div>
 
       <Grid>
-
         <GridTableHead fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <GridTH sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</GridTH>)
@@ -100,7 +70,6 @@ export const GridWrapper: React.FC = () => {
             )
           )}
         </GridTableBody>
-
       </Grid>
     </div>
   );

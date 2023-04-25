@@ -1,4 +1,4 @@
-import React, { MouseEvent, useRef, useEffect } from 'react';
+import React, { MouseEvent } from 'react';
 import s from './Grid.module.scss';
 
 export interface GridProps {
@@ -6,12 +6,6 @@ export interface GridProps {
 }
 
 export const Grid = (props: GridProps) => {
-
-  const gridElement = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    console.log('gridElement:', gridElement.current?.getBoundingClientRect());
-  }, []);
 
   // Get data, make some calculations and provide context for children
   // This data is already
@@ -26,7 +20,7 @@ export const Grid = (props: GridProps) => {
   }
 
   return (
-    <div ref={gridElement} className={s.Grid} onMouseMove={mouseMoveHandler}>
+    <div className={s.Grid} onMouseMove={mouseMoveHandler}>
       {props.children}
     </div>
   );
