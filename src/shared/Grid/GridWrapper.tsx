@@ -62,6 +62,9 @@ export const GridWrapper: React.FC = () => {
     setCols(newArr);
   }
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div>
       <div className={s.GridWrapper}>
@@ -89,9 +92,10 @@ export const GridWrapper: React.FC = () => {
           { data.map((element: RuleVeto, j: number) =>
             (
               <GridTableRow key={j} fullWidth={calculateFullWidth(cols)}>
-                { cols.map((el: TableHeading, i: number) =>
-                  <GridTD el={el} key={i}>{ element[el.id] }</GridTD>)
-                }
+                { cols.map((el: TableHeading, i: number) => {
+                  // @ts-ignore
+                  return <GridTD el={el} key={i}>{ element[el.id] }</GridTD>
+                })}
               </GridTableRow>
             )
           )}
