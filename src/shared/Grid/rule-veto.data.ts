@@ -102,6 +102,7 @@ export const allTableHeadingsMap: TableHeading[] = [{
   isShowed: true,
   position: 0,
   width: 220,
+  theme: 'primary',
 }, {
   id: 'tenantId',
   title: 'Tenant ID',

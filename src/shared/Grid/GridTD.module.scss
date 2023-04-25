@@ -12,19 +12,19 @@
     color: $gray-900;
   }
 
-  .GridThemePrimary {
+  &.GridThemePrimary {
     color: map-get($theme-primary, text);
   }
 
-  .GridThemeSuccess {
+  &.GridThemeSuccess {
     color: map-get($theme-success, text);
   }
 
-  .GridThemeDanger {
+  &.GridThemeDanger {
     color: map-get($theme-danger, text);
   }
 
-  .GridThemeMuted {
+  &.GridThemeMuted {
     color: $text-muted;
   }
 

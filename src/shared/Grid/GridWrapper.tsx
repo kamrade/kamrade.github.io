@@ -64,7 +64,7 @@ export const GridWrapper: React.FC = () => {
               <GridTableRow key={j} fullWidth={calculateFullWidth(cols)}>
                 { cols.map((el: TableHeading, i: number) => {
                   // @ts-ignore
-                  return <GridTD el={el} key={i}>{ element[el.id] }</GridTD>
+                  return <GridTD theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
                 })}
               </GridTableRow>
             )
