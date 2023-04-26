@@ -8,13 +8,13 @@ import {RuleVeto} from './data/rule-veto.types';
 import {allTableHeadingsMap, ruleVetoData} from "./data/rule-veto.data";
 import {ISortedBy, TableHeading} from './grid.types';
 import {GridTableRow} from './GridTableRow';
-import s from './GridWrapper.module.scss';
+import s from './GridCardsWrapper.module.scss';
 import { calculateFullWidth } from './helpers/claculateFulWidth';
 import { prepareData } from './helpers/prepareData';
 import {RiRestartLine, RiTableFill} from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
 
-export const GridWrapper: React.FC = () => {
+export const GridCardsWrapper: React.FC = () => {
 
   const [styledTable, setStyledTable] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
@@ -87,7 +87,7 @@ export const GridWrapper: React.FC = () => {
 
       <div className={s.GridHeader}>
 
-        <h2>Rule vetos monitor</h2>
+        <h2>Rule vetos monitor (cards)</h2>
 
         <div className={s.setupColumns} >
           <Button iconButton prefix={<RiRestartLine />} size={'sm'} theme={'base'} variant={'light'} onClick={resetColumns} />

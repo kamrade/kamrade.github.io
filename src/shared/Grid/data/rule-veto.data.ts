@@ -1,4 +1,4 @@
-import { TableHeading } from './grid.types';
+import { TableHeading } from '../grid.types';
 import { RuleVeto } from './rule-veto.types';
 
 export const ruleVetoData: RuleVeto[] = [

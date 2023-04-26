@@ -1,4 +1,4 @@
-import { RuleVeto } from '../rule-veto.types';
+import { RuleVeto } from '../data/rule-veto.types';
 import { ISortedBy } from '../grid.types';
 
 // TODO: implementation

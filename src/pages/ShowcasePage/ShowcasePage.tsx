@@ -15,6 +15,7 @@ import RxTraining from "./projects/RxTraining/RxTraining";
 
 import { UIKitPage } from './projects/UIKit/UIKitPage';
 import { GridPage } from './projects/GridPage';
+import { GridCardsPage } from './projects/GridCardsPage';
 
 import {useWindowSize} from "hooks/useWindowSize";
 import {useOnClickOutside} from "hooks/useOnClickOutside";
@@ -95,6 +96,7 @@ export const Main = () => {
           <Route exact path={`${path}/rx-training`}><RxTraining /></Route>
           <Route path={`${path}/uikit`}><UIKitPage /></Route>
           <Route path={`${path}/grid`}><GridPage /></Route>
+          <Route path={`${path}/grid-cards`}><GridCardsPage /></Route>
 
           <Route path={`${path}/**`}><NoMatch /></Route>
         </Switch>
