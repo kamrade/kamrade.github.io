@@ -5,9 +5,13 @@
 .GridTD {
   padding: $cellPaddingY $cellPaddingX;
   margin: $cellMarginY $cellMarginX;
-  border-right: 1px solid $gray-200;
   position: relative;
+  border-right: 1px solid transparent;
   white-space: nowrap;
+
+  &.GridTDBorder {
+    border-right: 1px solid $gray-200;
+  }
 
   &.GridThemeBase {
     color: $gray-900;
@@ -41,7 +45,7 @@
   &.GridLink {
     cursor: pointer;
     &:hover {
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      //box-shadow: 0 0 12px rgba(0,0,0,0.1);
       .Link {
         opacity: 1;
       }

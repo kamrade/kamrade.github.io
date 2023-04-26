@@ -4,9 +4,23 @@
 
 .GridTableRow {
   display: flex;
-  border-bottom: 1px solid $gray-200;
+  border-bottom: 1px solid transparent;
   padding: $cellMarginY $cellMarginX;
   position: relative;
+
+  &.GridTableRowBorder {
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &.GridTableRowCard {
+    border-radius: 12px;
+    cursor: pointer;
+    padding: $cellMarginY+4px $cellMarginX+4px;
+
+    &:hover {
+      background-color: $gray-050;
+    }
+  }
 
   &.GridTableRowStriped {
     &:nth-child(2n) {

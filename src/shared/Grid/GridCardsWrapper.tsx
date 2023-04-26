@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {Grid} from './Grid';
-import {GridTableHead} from './GridTableHead';
-import {GridTableBody} from './GridTableBody';
-import {GridTH} from './GridTH';
-import {GridTD} from './GridTD';
-import {RuleVeto} from './data/rule-veto.types';
-import {allTableHeadingsMap, ruleVetoData} from "./data/rule-veto.data";
-import {ISortedBy, TableHeading} from './grid.types';
-import {GridTableRow} from './GridTableRow';
-import s from './GridCardsWrapper.module.scss';
-import { calculateFullWidth } from './helpers/claculateFulWidth';
-import { prepareData } from './helpers/prepareData';
-import {RiRestartLine, RiTableFill} from "react-icons/ri";
+import {Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading} from '.';
+import { calculateFullWidth, prepareData } from './helpers';
+import { RuleVeto, allTableHeadingsMap, ruleVetoData } from './data';
+
+import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
+
+import s from './GridWrapper.module.scss';
 
 export const GridCardsWrapper: React.FC = () => {
 
-  const [styledTable, setStyledTable] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [allTh, setAllTh] = useState(allTableHeadingsMap);
 
@@ -81,10 +74,6 @@ export const GridCardsWrapper: React.FC = () => {
   return (
     <div className={s.GridWrapper} >
 
-      <div className={'mb-3'}>
-        <Checkbox labelText={'Styled'} value={styledTable} onChange={() => setStyledTable(!styledTable) } />
-      </div>
-
       <div className={s.GridHeader}>
 
         <h2>Rule vetos monitor (cards)</h2>
@@ -97,43 +86,43 @@ export const GridCardsWrapper: React.FC = () => {
       </div>
 
       <Grid>
-        <GridTableHead fullWidth={calculateFullWidth(cols)}>
+        <TableHead fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
-            <GridTH sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</GridTH>)
+            <TH sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
           }
-        </GridTableHead>
+        </TableHead>
 
-        <GridTableBody>
+        <TableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <GridTableRow key={j} fullWidth={calculateFullWidth(cols)} striped>
+              <TableRow key={j} fullWidth={calculateFullWidth(cols)} card>
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore
                   if (el.id === 'status') {
                     switch (element[el.id]) {
                       case 'active':
-                        return <GridTD theme={'success'} el={el} key={i}>{ element[el.id] }</GridTD>
+                        return <TD theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'deactivated':
-                        return <GridTD theme={'muted'} el={el} key={i}>{ element[el.id] }</GridTD>
+                        return <TD theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'expired':
-                        return <GridTD theme={'danger'} el={el} key={i}>{ element[el.id] }</GridTD>
+                        return <TD theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
                       default:
-                        return <GridTD theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                        return <TD theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                     }
                   }
 
                   if (el.id === 'ruleId') {
-                    return <GridTD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                    return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   // @ts-ignore
-                  return <GridTD interactionText={'Edit'} theme={el.theme} el={el} key={i}>{ element[el.id] }</GridTD>
+                  return <TD interactionText={'Edit'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                 })}
-              </GridTableRow>
+              </TableRow>
             )
           )}
-        </GridTableBody>
+        </TableBody>
       </Grid>
 
       <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawer} setShowDrawer={setShowDrawer}>

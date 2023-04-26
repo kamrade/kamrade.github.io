@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './GridTD.module.scss';
+import s from './TD.module.scss';
 import { TableHeading } from './grid.types';
 import { Button } from 'shared';
 import classNames from "classnames/bind";
@@ -15,9 +15,10 @@ export interface GridTDProps {
   link?: string;
   children: any;
   interactionText?: string;
+  border?: boolean;
 }
 
-export const GridTD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText }) => {
+export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border }) => {
 
   function openDetails() {
     // @ts-ignore
@@ -33,6 +34,7 @@ export const GridTD: React.FC<GridTDProps> = ({ children, el, theme = 'base', li
       GridThemeDanger: theme === 'danger',
       GridThemeMuted: theme === 'muted',
       GridLink: link,
+      GridTDBorder: border,
     })} style={{ width: `${el.width}px` }}>
       <div className={s.GridTDChildren} title={children}>
         {children}

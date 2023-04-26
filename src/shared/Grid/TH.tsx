@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './GridTH.module.scss';
+import s from './TH.module.scss';
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { TableHeading, ISortedBy } from './grid.types';
 
@@ -11,7 +11,7 @@ interface GridTHProps {
   children: any;
 }
 
-export const GridTH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy}) => {
+export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy}) => {
 
   let initialX = 0;
 
