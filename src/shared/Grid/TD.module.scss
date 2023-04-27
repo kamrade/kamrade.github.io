@@ -8,6 +8,8 @@
   position: relative;
   border-right: 1px solid transparent;
   white-space: nowrap;
+  overflow: hidden;
+  display: flex;
 
   &.GridTDBorder {
     border-right: 1px solid $gray-200;
@@ -32,15 +34,6 @@
   &.GridThemeMuted {
     color: $text-muted;
   }
-
-  .GridTDChildren {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .Link {
-    opacity: 0;
-  }
   
   &.GridLink {
     cursor: pointer;
@@ -51,6 +44,23 @@
       }
     }
   }
+
+  .GridTDContent {
+    overflow: hidden;
+  }
+
+  .More {
+    //position: absolute;
+    //top: 50%;
+    //transform: translateY(-40%);
+    //right: 8px;
+
+  }
+
+  .Link {
+    opacity: 0;
+  }
+
 
   .openDetails {
     display: none;

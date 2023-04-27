@@ -5,8 +5,10 @@ import { RuleVeto, allTableHeadingsMap, ruleVetoData } from './data';
 
 import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
+import { gridOptions } from "./Options";
 
 import s from './GridWrapper.module.scss';
+
 
 export const GridWrapper: React.FC = () => {
 
@@ -38,6 +40,13 @@ export const GridWrapper: React.FC = () => {
         return element;
       } else {
         element.width += offset;
+        if ((element.width + offset) < gridOptions.minColumnWidth) {
+          element.width = gridOptions.minColumnWidth;
+        }
+
+        if ((element.width + offset) > gridOptions.maxColumnWidth) {
+          element.width = gridOptions.maxColumnWidth;
+        }
         return element;
       }
     });

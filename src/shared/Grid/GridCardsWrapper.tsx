@@ -5,6 +5,7 @@ import { RuleVeto, allTableHeadingsMap, ruleVetoData } from './data';
 
 import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
+import { gridOptions } from './Options';
 
 import s from './GridWrapper.module.scss';
 
@@ -38,6 +39,15 @@ export const GridCardsWrapper: React.FC = () => {
         return element;
       } else {
         element.width += offset;
+
+        if ((element.width + offset) < gridOptions.minColumnWidth) {
+          element.width = gridOptions.minColumnWidth;
+        }
+
+        if ((element.width + offset) > gridOptions.maxColumnWidth) {
+          element.width = gridOptions.maxColumnWidth;
+        }
+
         return element;
       }
     });
@@ -67,7 +77,8 @@ export const GridCardsWrapper: React.FC = () => {
   }
 
   const resetColumns = () => {
-    alert('reset columns');
+    console.log(data);
+    console.log( calculateFullWidth(cols) );
   }
 
   // @ts-ignore
@@ -86,9 +97,9 @@ export const GridCardsWrapper: React.FC = () => {
       </div>
 
       <Grid>
-        <TableHead fullWidth={calculateFullWidth(cols)}>
+        <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
-            <TH sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
+            <TH card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
           }
         </TableHead>
 
@@ -112,12 +123,16 @@ export const GridCardsWrapper: React.FC = () => {
                     }
                   }
 
+                  if (el.id === 'id') {
+                    return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                  }
+
                   if (el.id === 'ruleId') {
                     return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   // @ts-ignore
-                  return <TD interactionText={'Edit'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                  return <TD theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                 })}
               </TableRow>
             )
