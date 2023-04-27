@@ -50,7 +50,7 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
 
       <div className={sx({
         GridTDContent: true,
-      })} ref={refContent} style={{ marginRight: showEllipsis ? '4px' : '0'}}>
+      })} ref={refContent} style={{ marginRight: showEllipsis ? '24px' : '0'}}>
 
         <span className={s.GridTDChildren} ref={refChildren}>
           {children}
@@ -58,15 +58,17 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
 
       </div>
 
-      <span className={s.Link}>
-          {link && <RiArrowRightUpFill/>}
-        </span>
-
       { showEllipsis &&
         <span className={s.More} title={children}>
           <RiMoreFill/>
         </span>
       }
+
+      <span className={s.Link}>
+        {link && <RiArrowRightUpFill/>}
+      </span>
+
+
 
       {interactionText &&
         <div className={s.openDetails} >

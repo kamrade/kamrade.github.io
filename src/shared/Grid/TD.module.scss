@@ -47,13 +47,14 @@
 
   .GridTDContent {
     overflow: hidden;
+    position: relative;
   }
 
   .More {
-    //position: absolute;
-    //top: 50%;
-    //transform: translateY(-40%);
-    //right: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-40%);
+    right: 24px;
 
   }
 

@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import {Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading} from '.';
-import { calculateFullWidth, prepareData } from './helpers';
-import { RuleVeto, allTableHeadingsMap, ruleVetoData } from './data';
+import React, {useEffect, useState} from 'react';
+import {Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions} from '.';
+import { calculateFullWidth, prepareData, prepareHeadingData } from './helpers';
+import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 
 import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
-import { gridOptions } from "./Options";
 
 import s from './GridWrapper.module.scss';
 
-
 export const GridWrapper: React.FC = () => {
 
-  const [showDrawer, setShowDrawer] = useState(false);
-  const [allTh, setAllTh] = useState(allTableHeadingsMap);
-
-  const prepareHeadingData = (data: TableHeading[]) => data
-    .filter((el: TableHeading) => el.isShowed)
-    .sort((el1: TableHeading, el2: TableHeading) => el1.position - el2.position);
-
-  const [cols, setCols] = useState( prepareHeadingData(allTh) );
-
-  const defaultSorting: ISortedBy = {
-    column: cols[0].id,
-    direction: 'acc',
-  }
-
-  const [data, setData] = useState( prepareData(ruleVetoData, defaultSorting) );
-
-  const [sortedBy, setSortedBy] = useState<ISortedBy>(defaultSorting);
+  const [showDrawerColumns, setShowDrawerColumns] = useState(false);
+  const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
+  const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
+  const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
+  const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
 
   useEffect(() => {
     setData( prepareData(ruleVetoData, sortedBy) );
   }, [sortedBy, sortedBy.direction, sortedBy.column]);
+
+  useEffect(() => {
+    setCols( prepareHeadingData(allTh) );
+  }, [allTh]);
 
   function resizeColumn(el: TableHeading, offset: number) {
     let newArr = cols.filter((element: TableHeading, i: number) => {
@@ -67,12 +57,8 @@ export const GridWrapper: React.FC = () => {
     setAllTh(newArr);
   }
 
-  useEffect(() => {
-    setCols( prepareHeadingData(allTh) );
-  }, [allTh]);
-
   const setupColumns = () => {
-    setShowDrawer(!showDrawer);
+    setShowDrawerColumns(!showDrawerColumns);
   }
 
   const resetColumns = () => {
@@ -134,7 +120,7 @@ export const GridWrapper: React.FC = () => {
         </TableBody>
       </Grid>
 
-      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawer} setShowDrawer={setShowDrawer}>
+      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns}>
         <div className="my-5">
 
           {allTh.map((col, i) => (
