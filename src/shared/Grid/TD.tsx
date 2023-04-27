@@ -15,18 +15,18 @@ export interface GridTDProps {
   children: any;
   interactionText?: string;
   border?: boolean;
-  checkMaxWidth?: any;
+  setColumnMaxWidth?: any;
 }
 
-export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border, checkMaxWidth }) => {
+export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border, setColumnMaxWidth }) => {
 
   const refContent  = useRef<HTMLDivElement>(null);
-  const refChildren = useRef<HTMLDivElement>(null);
+  const refChildren = useRef<HTMLSpanElement>(null);
   const [showEllipsis, setShowEllipsis] = useState(false);
 
   useEffect(() => {
-    if (checkMaxWidth) {
-      checkMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
+    if (setColumnMaxWidth) {
+      setColumnMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
     }
   }, [])
 

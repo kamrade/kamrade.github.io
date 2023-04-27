@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions } from '.';
 import { calculateFullWidth, prepareData, prepareHeadingData } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
+import { TbArrowAutofitContent } from "react-icons/tb";
 
-import { RiRestartLine, RiTableFill } from "react-icons/ri";
+
+import { RiRestartLine, RiTableFill, RiFullscreenFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
 
 import s from './GridWrapper.module.scss';
@@ -11,7 +13,6 @@ import s from './GridWrapper.module.scss';
 export const GridCardsWrapper: React.FC = () => {
 
   const refGridWrapper                            = useRef<HTMLDivElement>(null);
-  const [gridWidth, setGridWidth]                 = useState<number>(0);
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
@@ -26,15 +27,17 @@ export const GridCardsWrapper: React.FC = () => {
     setCols( prepareHeadingData(allTh) );
   }, [allTh]);
 
+  // try to make cell width for content, but not more than maxColumnWidth
   function setColumnsMax() {
     let newArr = cols.map((element: TableHeading) => {
-      element.width = element.maxWidth + 48;
+      element.width = element.maxWidth + gridOptions.defaultContentOffset;
       return element;
     });
     setCols(newArr);
   }
 
-  function checkMaxWidth(el: TableHeading, currentWidth: number) {
+  // collect max width
+  function setColumnMaxWidth(el: TableHeading, currentWidth: number) {
     let newArr = cols.filter((element: TableHeading) => {
       if (el.id !== element.id) {
         return element;
@@ -89,14 +92,37 @@ export const GridCardsWrapper: React.FC = () => {
     setAllTh(newArr);
   }
 
+  // show/hide columns
   const setupColumns = () => {
     setShowDrawerColumns(!showDrawerColumns);
   }
 
-  const resetColumns = () => {
-    const gridWidth = refGridWrapper.current?.getBoundingClientRect().width || 0;
-    setGridWidth(gridWidth);
+  // make column content size, but not more than maxWidth
+  const fillColumns = () => {
     setColumnsMax();
+  }
+
+  // avoid scroll in table
+  const fitToWidth = () => {
+    let fullWidth = refGridWrapper.current?.getBoundingClientRect().width  || 0;
+    console.log('Fit to width', refGridWrapper.current?.getBoundingClientRect().width || 0);
+    let newArr = cols.map((el) => el.maxWidth);
+    console.log(newArr);
+    let sum = newArr.reduce((acc, currValue) => acc + currValue, 0);
+    let ratioArr = cols.map((el) => el.maxWidth / sum);
+    console.log(ratioArr);
+    let ratioSum = ratioArr.reduce((acc, currVal) => acc + currVal, 0);
+    console.log(ratioSum);
+    let resultWidth = ratioArr.map((el) => el * fullWidth);
+    console.log(resultWidth);
+    
+    let resultArray = cols.map((el, i) => {
+      el.width = resultWidth[i];
+      return el;
+    });
+
+    setCols(resultArray);
+
   }
 
   // @ts-ignore
@@ -108,8 +134,9 @@ export const GridCardsWrapper: React.FC = () => {
         <h2>Rule vetos monitor (cards)</h2>
 
         <div className={s.setupColumns} >
-          <Button iconButton prefix={<RiRestartLine />} size={'sm'} theme={'base'} variant={'light'} onClick={resetColumns} />
-          <Button iconButton prefix={<RiTableFill />} size={'sm'} theme={'primary'} variant={'light'} onClick={setupColumns} />
+          <Button iconButton prefix={<RiFullscreenFill />} size={'sm'} theme={'base'} variant={'light'} onClick={fitToWidth} />
+          <Button iconButton prefix={<TbArrowAutofitContent />} size={'sm'} theme={'base'} variant={'light'} onClick={fillColumns} />
+          <Button iconButton prefix={<RiTableFill />} size={'sm'} theme={'base'} variant={'light'} onClick={setupColumns} />
         </div>
 
       </div>
@@ -117,7 +144,7 @@ export const GridCardsWrapper: React.FC = () => {
       <Grid>
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
-            <TH card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
+            <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
           }
         </TableHead>
 
@@ -131,26 +158,26 @@ export const GridCardsWrapper: React.FC = () => {
                   if (el.id === 'status') {
                     switch (element[el.id]) {
                       case 'active':
-                        return <TD checkMaxWidth={checkMaxWidth} theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD setColumnMaxWidth={setColumnMaxWidth} theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'deactivated':
-                        return <TD  checkMaxWidth={checkMaxWidth} theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD  setColumnMaxWidth={setColumnMaxWidth} theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'expired':
-                        return <TD checkMaxWidth={checkMaxWidth} theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD setColumnMaxWidth={setColumnMaxWidth} theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
                       default:
-                        return <TD checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD setColumnMaxWidth={setColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                     }
                   }
 
                   if (el.id === 'id') {
-                    return <TD link={'/'} checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    return <TD link={'/'} setColumnMaxWidth={setColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   if (el.id === 'ruleId') {
-                    return <TD link={'/'} checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    return <TD link={'/'} setColumnMaxWidth={setColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   // @ts-ignore
-                  return <TD checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                  return <TD setColumnMaxWidth={setColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                 })}
               </TableRow>
             )
@@ -158,7 +185,7 @@ export const GridCardsWrapper: React.FC = () => {
         </TableBody>
       </Grid>
 
-      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={showDrawerColumns}>
+      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns}>
         <div className="my-5">
 
           {allTh.map((col, i) => (

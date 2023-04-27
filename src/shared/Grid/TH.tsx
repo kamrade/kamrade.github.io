@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './TH.module.scss';
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
+import { RxDragHandleDots2 } from "react-icons/rx";
 import { TableHeading, ISortedBy } from './grid.types';
 import classNames from "classnames/bind";
 const sx = classNames.bind(s);
@@ -12,9 +13,12 @@ interface GridTHProps {
   setSortedBy: any;
   card?: boolean;
   children: any;
+  setColumnMaxWidth?: any;
 }
 
-export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy, card}) => {
+export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy, card, setColumnMaxWidth}) => {
+
+  const refChildren = useRef<HTMLDivElement>(null);
 
   let initialX = 0;
 
@@ -43,6 +47,12 @@ export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy
     document.addEventListener('mouseup', mouseUpHandler);
   }
 
+  useEffect(() => {
+    if (setColumnMaxWidth) {
+      setColumnMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
+    }
+  }, [])
+
   const sort = () => {
     if (sortedBy.column === el.id) {
       setSortedBy({
@@ -62,18 +72,30 @@ export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy
     <div className={sx({
       GridTH: true,
       GridTHCard: card,
-    })} style={{ width: `${el.width}px` }} onMouseDown={sort}>
-      <div className={s.GridTHContent}>
-        { children }
+    })} style={{ width: `${el.width}px` }} onMouseDown={sort} draggable>
+
+      <div className={s.GridTHContent} ref={refChildren}>
+
+        <span className={s.GridTHChildren} >
+          {children}
+        </span>
+
+        <span className={s.GridTHDragger}>
+          <RxDragHandleDots2 />
+        </span>
+
         { sortedBy.column === el.id &&
           (sortedBy.direction === 'acc' ? <RiArrowDownSLine /> :  <RiArrowUpSLine />)
         }
+
       </div>
+
 
       <div
         className={s.GridTHControl}
         onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => mouseDownHandler(el, e)}>
       </div>
+
     </div>
   );
 }
