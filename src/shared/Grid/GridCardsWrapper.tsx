@@ -26,8 +26,36 @@ export const GridCardsWrapper: React.FC = () => {
     setCols( prepareHeadingData(allTh) );
   }, [allTh]);
 
+  function setColumnsMax() {
+    let newArr = cols.map((element: TableHeading) => {
+      element.width = element.maxWidth + 48;
+      return element;
+    });
+    setCols(newArr);
+  }
+
+  function checkMaxWidth(el: TableHeading, currentWidth: number) {
+    let newArr = cols.filter((element: TableHeading) => {
+      if (el.id !== element.id) {
+        return element;
+      } else {
+
+        if (element.maxWidth < currentWidth) {
+          element.maxWidth = currentWidth;
+        }
+
+        if (element.maxWidth < gridOptions.minColumnWidth) {
+          element.maxWidth = gridOptions.minColumnWidth;
+        }
+
+        return element;
+      }
+    });
+    setCols(newArr);
+  }
+
   function resizeColumn(el: TableHeading, offset: number) {
-    let newArr = cols.filter((element: TableHeading, i: number) => {
+    let newArr = cols.filter((element: TableHeading) => {
       if (el.id !== element.id) {
         return element;
       } else {
@@ -49,7 +77,7 @@ export const GridCardsWrapper: React.FC = () => {
   }
 
   function toggleColumn(el: TableHeading) {
-    let newArr = allTh.filter((element: TableHeading, i: number) => {
+    let newArr = allTh.filter((element: TableHeading) => {
       if (el.id !== element.id) {
         return element;
       } else {
@@ -68,8 +96,7 @@ export const GridCardsWrapper: React.FC = () => {
   const resetColumns = () => {
     const gridWidth = refGridWrapper.current?.getBoundingClientRect().width || 0;
     setGridWidth(gridWidth);
-    console.log(gridWidth);
-    console.log(cols);
+    setColumnsMax();
   }
 
   // @ts-ignore
@@ -104,26 +131,26 @@ export const GridCardsWrapper: React.FC = () => {
                   if (el.id === 'status') {
                     switch (element[el.id]) {
                       case 'active':
-                        return <TD theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD checkMaxWidth={checkMaxWidth} theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'deactivated':
-                        return <TD theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD  checkMaxWidth={checkMaxWidth} theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'expired':
-                        return <TD theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD checkMaxWidth={checkMaxWidth} theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
                       default:
-                        return <TD theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                     }
                   }
 
                   if (el.id === 'id') {
-                    return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    return <TD link={'/'} checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   if (el.id === 'ruleId') {
-                    return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    return <TD link={'/'} checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   // @ts-ignore
-                  return <TD theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                  return <TD checkMaxWidth={checkMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                 })}
               </TableRow>
             )

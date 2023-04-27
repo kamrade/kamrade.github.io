@@ -37,6 +37,9 @@
   
   &.GridLink {
     cursor: pointer;
+    .More {
+      right: 20px;
+    }
     &:hover {
       //box-shadow: 0 0 12px rgba(0,0,0,0.1);
       .Link {
@@ -54,8 +57,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-40%);
-    right: 24px;
-
+    right: 8px;
   }
 
   .Link {

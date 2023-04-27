@@ -7,6 +7,7 @@ export interface TableHeading {
   position: number;
   width: number;
   theme?: GridTDTheme;
+  maxWidth: number;
 }
 
 export type SortDirection = 'acc' | 'dec';

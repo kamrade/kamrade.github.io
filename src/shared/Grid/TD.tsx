@@ -15,13 +15,20 @@ export interface GridTDProps {
   children: any;
   interactionText?: string;
   border?: boolean;
+  checkMaxWidth?: any;
 }
 
-export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border }) => {
+export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border, checkMaxWidth }) => {
 
   const refContent  = useRef<HTMLDivElement>(null);
   const refChildren = useRef<HTMLDivElement>(null);
   const [showEllipsis, setShowEllipsis] = useState(false);
+
+  useEffect(() => {
+    if (checkMaxWidth) {
+      checkMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
+    }
+  }, [])
 
   useEffect(() => {
     const contentWidth  = refContent.current?.getBoundingClientRect().width;
@@ -29,7 +36,7 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
     if (childrenWidth && contentWidth) {
       setShowEllipsis(childrenWidth > contentWidth);
     }
-  });
+  }, [el.width]);
 
   function openDetails() {
     // @ts-ignore
@@ -50,7 +57,7 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
 
       <div className={sx({
         GridTDContent: true,
-      })} ref={refContent} style={{ marginRight: showEllipsis ? '24px' : '0'}}>
+      })} ref={refContent} style={{ marginRight: showEllipsis ? '16px' : '0'}}>
 
         <span className={s.GridTDChildren} ref={refChildren}>
           {children}
@@ -67,8 +74,6 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
       <span className={s.Link}>
         {link && <RiArrowRightUpFill/>}
       </span>
-
-
 
       {interactionText &&
         <div className={s.openDetails} >
