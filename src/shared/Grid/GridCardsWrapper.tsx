@@ -1,13 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef, useCallback} from 'react';
 import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions } from '.';
-import { calculateFullWidth, prepareData, prepareHeadingData } from './helpers';
+import { calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 import { TbArrowAutofitContent } from "react-icons/tb";
-
-
-import { RiRestartLine, RiTableFill, RiFullscreenFill } from "react-icons/ri";
+import { RiTableFill, RiFullscreenFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
-
 import s from './GridWrapper.module.scss';
 
 export const GridCardsWrapper: React.FC = () => {
@@ -19,26 +16,32 @@ export const GridCardsWrapper: React.FC = () => {
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
 
-  useEffect(() => {
-    setData( prepareData(ruleVetoData, sortedBy) );
-  }, [sortedBy, sortedBy.direction, sortedBy.column]);
+  // Prepare data
+  useEffect(() =>
+    setData( prepareData(ruleVetoData, sortedBy) ),
+    [sortedBy, sortedBy.direction, sortedBy.column]
+  );
 
-  useEffect(() => {
-    setCols( prepareHeadingData(allTh) );
-  }, [allTh]);
+  // Prepare columns
+  useEffect(() =>
+    setCols( prepareHeadingData(allTh) ),
+    [allTh]
+  );
 
-  // try to make cell width for content, but not more than maxColumnWidth
+  // Make cells content size
   function setColumnsMax() {
-    let newArr = cols.map((element: TableHeading) => {
-      element.width = element.maxWidth + gridOptions.defaultContentOffset;
-      return element;
-    });
-    setCols(newArr);
+    setCols(
+      cols.map((element: TableHeading) => {
+        element.width = element.maxWidth + gridOptions.defaultContentOffset;
+        return element;
+      })
+    );
+
   }
 
-  // collect max width
-  function setColumnMaxWidth(el: TableHeading, currentWidth: number) {
-    let newArr = cols.filter((element: TableHeading) => {
+  // Determine max possible width for columns
+  const setColumnMaxWidth = (el: TableHeading, currentWidth: number) => {
+    setCols( cols.filter((element: TableHeading) => {
       if (el.id !== element.id) {
         return element;
       } else {
@@ -53,49 +56,20 @@ export const GridCardsWrapper: React.FC = () => {
 
         return element;
       }
-    });
-    setCols(newArr);
+    }));
   }
 
-  function resizeColumn(el: TableHeading, offset: number) {
-    let newArr = cols.filter((element: TableHeading) => {
-      if (el.id !== element.id) {
-        return element;
-      } else {
-        element.width += offset;
+  // Resize column
+  const resizeColumn = (el: TableHeading, offset: number) =>
+    setCols(resizeColumnHelper(cols, el, offset));
 
-        if ((element.width + offset) < gridOptions.minColumnWidth) {
-          element.width = gridOptions.minColumnWidth;
-        }
+  // Update column set by show/hide particular column
+  const toggleColumn = (el: TableHeading) =>
+    setAllTh( toggleColumnHelper(allTh, el) );
 
-        if ((element.width + offset) > gridOptions.maxColumnWidth) {
-          element.width = gridOptions.maxColumnWidth;
-        }
-
-        return element;
-      }
-    });
-
-    setCols(newArr);
-  }
-
-  function toggleColumn(el: TableHeading) {
-    let newArr = allTh.filter((element: TableHeading) => {
-      if (el.id !== element.id) {
-        return element;
-      } else {
-        element.isShowed = !element.isShowed;
-        return element;
-      }
-    });
-
-    setAllTh(newArr);
-  }
-
-  // show/hide columns
-  const setupColumns = () => {
+  // Show setup columns dialog
+  const setupColumns = () =>
     setShowDrawerColumns(!showDrawerColumns);
-  }
 
   // make column content size, but not more than maxWidth
   const fillColumns = () => {
@@ -118,15 +92,15 @@ export const GridCardsWrapper: React.FC = () => {
     let ratioArr = cols.map((el) => el.maxWidth / sum);
 
     // Проверяем, что сумма всех соотношений === 1
-    let ratioSum = ratioArr.reduce((acc, currVal) => acc + currVal, 0);
+    // let ratioSum = ratioArr.reduce((acc, currVal) => acc + currVal, 0);
 
     // Вычисляем новую ширину для каждой колонки, чтобы все они поместились в контейнер
     let resultWidth = ratioArr.map((el) => el * fullWidth);
-    console.log(resultWidth);
+    // console.log(resultWidth);
 
     // Найти колонки с шириной меньше минимальной
     let needToIncrease = resultWidth.map((el) => gridOptions.minColumnWidth - el > 0 ? gridOptions.minColumnWidth - el : 0);
-    console.log(needToIncrease);
+    // console.log(needToIncrease);
 
     // Проверить сможем ли мы откусить ширину у больших, чтоб маленькие сделать побольше
 
@@ -135,12 +109,12 @@ export const GridCardsWrapper: React.FC = () => {
       // Если нет, то просто задаем маленьким минимальную ширину и оставляем скролл
 
     // Собираем и устанавливаем результирующий массив
-    let resultArray = cols.map((el, i) => {
-      el.width = resultWidth[i];
-      return el;
-    });
-
-    setCols(resultArray);
+    setCols(
+      cols.map((el, i) => {
+        el.width = resultWidth[i];
+        return el;
+      })
+    );
 
   }
 

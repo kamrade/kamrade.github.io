@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions} from '.';
-import { calculateFullWidth, prepareData, prepareHeadingData } from './helpers';
+import {calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper} from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
-
 import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
-
 import s from './GridWrapper.module.scss';
 
 export const GridWrapper: React.FC = () => {
@@ -16,51 +14,39 @@ export const GridWrapper: React.FC = () => {
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
 
-  useEffect(() => {
-    setData( prepareData(ruleVetoData, sortedBy) );
-  }, [sortedBy, sortedBy.direction, sortedBy.column]);
+  // Prepare data
+  useEffect(() =>
+      setData( prepareData(ruleVetoData, sortedBy) ),
+    [sortedBy, sortedBy.direction, sortedBy.column]
+  );
 
-  useEffect(() => {
-    setCols( prepareHeadingData(allTh) );
-  }, [allTh]);
+  // Prepare columns
+  useEffect(() =>
+      setCols( prepareHeadingData(allTh) ),
+    [allTh]
+  );
 
-  function resizeColumn(el: TableHeading, offset: number) {
-    let newArr = cols.filter((element: TableHeading, i: number) => {
-      if (el.id !== element.id) {
-        return element;
-      } else {
-        element.width += offset;
-        if ((element.width + offset) < gridOptions.minColumnWidth) {
-          element.width = gridOptions.minColumnWidth;
-        }
+  // Make cells content size
 
-        if ((element.width + offset) > gridOptions.maxColumnWidth) {
-          element.width = gridOptions.maxColumnWidth;
-        }
-        return element;
-      }
-    });
+  // Determine max possible width for columns
 
-    setCols(newArr);
-  }
+  // Resize column
+  const resizeColumn = (el: TableHeading, offset: number) =>
+    setCols(resizeColumnHelper(cols, el, offset));
 
-  function toggleColumn(el: TableHeading) {
-    let newArr = allTh.filter((element: TableHeading, i: number) => {
-      if (el.id !== element.id) {
-        return element;
-      } else {
-        element.isShowed = !element.isShowed;
-        return element;
-      }
-    });
+  // Update column set by show/hide particular column
+  const toggleColumn = (el: TableHeading) =>
+    setAllTh( toggleColumnHelper(allTh, el) );
 
-    setAllTh(newArr);
-  }
-
-  const setupColumns = () => {
+  // Show setup columns dialog
+  const setupColumns = () =>
     setShowDrawerColumns(!showDrawerColumns);
-  }
 
+  // make column content size, but not more than maxWidth
+
+  // avoid scroll in table
+
+  // reset columns
   const resetColumns = () => {
     alert('reset columns');
   }
@@ -108,7 +94,7 @@ export const GridWrapper: React.FC = () => {
                   }
 
                   if (el.id === 'ruleId') {
-                    return <TD link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    return <TD border link={'/'} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   }
 
                   // @ts-ignore

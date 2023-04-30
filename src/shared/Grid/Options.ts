@@ -1,6 +1,5 @@
 export const gridOptions = {
-  minColumnWidth: 120,
+  minColumnWidth: 60,
   maxColumnWidth: 600,
-  // a difference between the cell content and cell wrapper
-  defaultContentOffset: 48,
+  defaultContentOffset: 24, // cell padding 12 + 12
 }

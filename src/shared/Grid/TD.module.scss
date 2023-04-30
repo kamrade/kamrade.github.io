@@ -11,10 +11,12 @@
   overflow: hidden;
   display: flex;
 
+  // Border
   &.GridTDBorder {
     border-right: 1px solid $gray-200;
   }
 
+  // Themes
   &.GridThemeBase {
     color: $gray-900;
   }
@@ -34,34 +36,41 @@
   &.GridThemeMuted {
     color: $text-muted;
   }
-  
+
+  // Has link
   &.GridLink {
     cursor: pointer;
-    .More {
-      right: 20px;
-    }
     &:hover {
-      //box-shadow: 0 0 12px rgba(0,0,0,0.1);
       .Link {
         opacity: 1;
       }
     }
   }
 
+  // Inner
   .GridTDContent {
     overflow: hidden;
     position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .GridTDContentHidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      opacity: 0;
+    }
   }
 
-  .More {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-40%);
-    right: 8px;
+  // Addons
+  .GridTDAddons {
+    position: relative;
   }
 
   .Link {
     opacity: 0;
+    transition: opacity .2s ease-in-out;
   }
 
 

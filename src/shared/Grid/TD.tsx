@@ -20,23 +20,27 @@ export interface GridTDProps {
 
 export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border, setColumnMaxWidth }) => {
 
-  const refContent  = useRef<HTMLDivElement>(null);
-  const refChildren = useRef<HTMLSpanElement>(null);
-  const [showEllipsis, setShowEllipsis] = useState(false);
+  const refContent       = useRef<HTMLDivElement>(null);
+  const refHiddenContent = useRef<HTMLSpanElement>(null);
+  const refAddons        = useRef<HTMLDivElement>(null);
 
+  const [contentWidth, setContentWidth] = useState<number>(0);
+  const [actualContentWidth, setActualContentWidth] = useState<number>(0);
+  const [addonWidth, setAddonWidth] = useState<number>(0);
+
+  // Calculate width of all elements
+  useEffect(() => {
+    setContentWidth( refHiddenContent?.current?.getBoundingClientRect().width || 0 );
+    setAddonWidth( refAddons?.current?.getBoundingClientRect().width || 0 );
+    setActualContentWidth( refContent?.current?.getBoundingClientRect().width || 0 );
+  }, [el, el.width]);
+
+  // Send width to parent to determine the max possible width of this column by content
   useEffect(() => {
     if (setColumnMaxWidth) {
-      setColumnMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
+      setColumnMaxWidth(el, contentWidth + addonWidth);
     }
-  }, [])
-
-  useEffect(() => {
-    const contentWidth  = refContent.current?.getBoundingClientRect().width;
-    const childrenWidth = refChildren.current?.getBoundingClientRect().width;
-    if (childrenWidth && contentWidth) {
-      setShowEllipsis(childrenWidth > contentWidth);
-    }
-  }, [el.width]);
+  }, [contentWidth, addonWidth]);
 
   function openDetails() {
     // @ts-ignore
@@ -44,38 +48,35 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
   }
 
   return (
-    <div className={sx({
-      GridTD: true,
-      GridThemeBase: theme === 'base' || !theme,
-      GridThemePrimary: theme === 'primary',
-      GridThemeSuccess: theme === 'success',
-      GridThemeDanger: theme === 'danger',
-      GridThemeMuted: theme === 'muted',
-      GridLink: link,
-      GridTDBorder: border,
-    })} style={{ width: `${el.width}px` }}>
+    <div
+      title={contentWidth.toString() + ' | ' + actualContentWidth.toString()}
+      className={sx({
+        GridTD: true,
+        GridThemeBase: theme === 'base' || !theme,
+        GridThemePrimary: theme === 'primary',
+        GridThemeSuccess: theme === 'success',
+        GridThemeDanger: theme === 'danger',
+        GridThemeMuted: theme === 'muted',
+        GridLink: link,
+        GridTDBorder: border,
+      })}
+      style={{ width: `${el.width}px` }}
+    >
 
-      <div className={sx({
-        GridTDContent: true,
-      })} ref={refContent} style={{ marginRight: showEllipsis ? '16px' : '0'}}>
+      <div className={s.GridTDContent} ref={refContent}>
+        {children}
+        <span className={s.GridTDContentHidden} ref={refHiddenContent}>{children}</span>
+      </div>
 
-        <span className={s.GridTDChildren} ref={refChildren}>
-          {children}
+      <div className={s.GridTDAddons} ref={refAddons} >
+
+        <span className={s.Link}>
+          {link && <RiArrowRightUpFill/>}
         </span>
 
       </div>
 
-      { showEllipsis &&
-        <span className={s.More} title={children}>
-          <RiMoreFill/>
-        </span>
-      }
-
-      <span className={s.Link}>
-        {link && <RiArrowRightUpFill/>}
-      </span>
-
-      {interactionText &&
+      { interactionText &&
         <div className={s.openDetails} >
           <Button bold size={'xs'} theme={'base'} variant={'outlined'} onClick={openDetails}>{interactionText || 'Open'}</Button>
         </div>

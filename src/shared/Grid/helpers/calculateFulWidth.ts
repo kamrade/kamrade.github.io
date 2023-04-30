@@ -1,3 +1,8 @@
+/*
+ // Calculate full width of the table
+ // accordingly data
+ */
+
 import {TableHeading} from "../grid.types";
 
 export const calculateFullWidth = (data: TableHeading[]) => {
