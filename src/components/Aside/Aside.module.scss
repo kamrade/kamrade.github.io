@@ -12,6 +12,7 @@
     width: $asideWidth;
     background-color: $gray-100;
     padding-top: 2.5rem;
+    overflow-y: scroll;
 
     &.AsideHiddenAnimate {
       animation: 0.3s $transition-func-cubic 0s Aside-Slide-Out;
