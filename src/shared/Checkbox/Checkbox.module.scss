@@ -28,7 +28,7 @@
     width: 20px;
     height: 20px;
     background-color: $white;
-    border-radius: 2px;
+    border-radius: 6px;
     border: 1px solid $gray-300;
   }
 
@@ -36,8 +36,9 @@
     font-size: 20px;
     position: relative;
     left: -1px;
-    bottom: 3px;
+    bottom: 2px;
     opacity: 0;
+    color: white;
   }
 
   .CheckboxText {
@@ -45,8 +46,9 @@
   }
 
   &.CheckboxSet {
-    .CheckboxIndicator {
 
+    .CheckboxIndicator {
+      background-color: $primary;
     }
 
     .CheckboxIcon {

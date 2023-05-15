@@ -83,13 +83,13 @@ export const GridWrapper: React.FC = () => {
                   if (el.id === 'status') {
                     switch (element[el.id]) {
                       case 'active':
-                        return <TD theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD border theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'deactivated':
-                        return <TD theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD border theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
                       case 'expired':
-                        return <TD theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD border theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
                       default:
-                        return <TD theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                        return <TD border theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                     }
                   }
 

@@ -49,7 +49,6 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
 
   return (
     <div
-      title={contentWidth.toString() + ' | ' + actualContentWidth.toString()}
       className={sx({
         GridTD: true,
         GridThemeBase: theme === 'base' || !theme,

@@ -9,9 +9,10 @@ export interface IDrawerProps {
   setShowDrawer: any;
   drawerTitle: string;
   children: any;
+  initialWidth?: number;
 }
 
-export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDrawer, drawerTitle }) => {
+export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDrawer, drawerTitle, initialWidth }) => {
 
   const hideDrawer = () => {
     setShowDrawer(false);
@@ -21,7 +22,7 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
     (showDrawer &&
       (
 
-        <div className={s.Drawer}>
+        <div className={s.Drawer} style={{ width: `${initialWidth ? `${initialWidth}px` : 'auto'}`}}>
           <div className={s.DrawerContent}>
 
             <div className={s.DrawerControl}>
