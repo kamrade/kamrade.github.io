@@ -33,7 +33,10 @@
   }
 
   .GridTHContent {
-    //position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: .5rem;
   }
 
   .GridTHDragger {

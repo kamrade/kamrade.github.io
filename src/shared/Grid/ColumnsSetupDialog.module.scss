@@ -1,0 +1,26 @@
+@import "src/styles/bootstrap/variables";
+@import "src/styles/bootstrap/mixins";
+@import "./Grid.global";
+
+.ColumnsSetupDialog {
+  position: relative;
+}
+
+.CheckboxWrapper {
+  padding: .25rem;
+  transition: background .3s ease-in-out;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    background: $gray-050;
+  }
+
+  .dragIcon {
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+}

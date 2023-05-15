@@ -1,11 +1,12 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react';
-import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions } from '.';
+import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions, ColumnsSetupDialog } from '.';
 import { calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 import { TbArrowAutofitContent } from "react-icons/tb";
 import { RiTableFill, RiFullscreenFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';
-import s from './GridWrapper.module.scss';
+import s from './GridCardsWrapper.module.scss';
+import { RxDragHandleDots2 } from "react-icons/rx";
 
 export const GridCardsWrapper: React.FC = () => {
 
@@ -15,6 +16,7 @@ export const GridCardsWrapper: React.FC = () => {
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
+
 
   // Prepare data
   useEffect(() =>
@@ -178,20 +180,8 @@ export const GridCardsWrapper: React.FC = () => {
         </TableBody>
       </Grid>
 
-      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns}>
-        <div className="my-5">
-
-          {allTh.map((col, i) => (
-            <div key={i} className={'mb-2'}>
-              <Checkbox
-                labelText={col.title}
-                value={col.isShowed}
-                onChange={() => toggleColumn(col)}
-              />
-            </div>
-          ))}
-
-        </div>
+      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={300}>
+        <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} />
       </Drawer>
 
     </div>
