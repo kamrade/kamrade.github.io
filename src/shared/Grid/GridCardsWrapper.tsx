@@ -180,7 +180,7 @@ export const GridCardsWrapper: React.FC = () => {
       </Grid>
 
       <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={300}>
-        <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} />
+        <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} setAllTh={setAllTh} />
       </Drawer>
 
     </div>

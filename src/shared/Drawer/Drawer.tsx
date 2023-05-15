@@ -29,7 +29,7 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
               <Button iconButton size={'sm'} theme={'base'} variant={'light'} prefix={<RiArrowRightSLine/>} onClick={hideDrawer}/>
             </div>
 
-            <h3>{drawerTitle}</h3>
+            <h4 className={'mb-2'}>{drawerTitle}</h4>
             {children}
 
           </div>

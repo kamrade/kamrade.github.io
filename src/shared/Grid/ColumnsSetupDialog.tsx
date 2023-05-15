@@ -1,6 +1,6 @@
 import React, { useEffect, useState, DragEvent } from 'react';
-import {Checkbox} from "../Checkbox";
-import {RxDragHandleDots2} from "react-icons/rx";
+import { RxDragHandleDots2 } from "react-icons/rx";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import { TableHeading } from '.';
 import s from './ColumnsSetupDialog.module.scss';
 import classNames from "classnames/bind";
@@ -9,35 +9,35 @@ const sx = classNames.bind(s);
 interface IColumnsSetupDialogProps {
   allTh: TableHeading[];
   toggleColumn: (el: TableHeading) => any;
+  setAllTh: any;
 }
 
 interface IState {
   draggedFrom: number;
   draggedTo: number;
   isDragging: boolean;
-  originalOrder: TableHeading[];
-  updatedOrder: TableHeading[];
 }
 
 const initialState: IState = {
   draggedFrom: -1,
   draggedTo: -1,
   isDragging: false,
-  originalOrder: [],
-  updatedOrder: [],
 }
 
-export const ColumnsSetupDialog: React.FC<IColumnsSetupDialogProps> = ({ allTh, toggleColumn }) => {
+type DragDirection = 'up' | 'down';
+
+export const ColumnsSetupDialog: React.FC<IColumnsSetupDialogProps> = ({ allTh, toggleColumn, setAllTh }) => {
 
   const [list, setList] = useState<TableHeading[]>(allTh);
   const [dragAndDrop, setDragAndDrop] = useState<IState>(initialState);
+  const [direction, setDirection] = useState<DragDirection | null>(null);
 
   const onDragStart = (event: DragEvent<HTMLDivElement>) => {
     setDragAndDrop({
       ...dragAndDrop,
       draggedFrom: Number(event.currentTarget.dataset.position),
+      draggedTo: Number(event.currentTarget.dataset.position),
       isDragging: true,
-      originalOrder: list
     });
     // Firefox fix
     event.dataTransfer.setData("text/html", '');
@@ -55,21 +55,35 @@ export const ColumnsSetupDialog: React.FC<IColumnsSetupDialogProps> = ({ allTh, 
     }
   }
 
-  const onDrop = () => {
-    let newOrder = dragAndDrop.originalOrder.map((el: TableHeading, i: number) => {
+  useEffect(() => {
 
-      if (el.position === dragAndDrop.draggedFrom) {
-        el.position = dragAndDrop.draggedTo;
+    const { draggedFrom, draggedTo } = dragAndDrop;
+    if (draggedFrom < draggedTo) {
+      setDirection('down');
+    }
+    if (draggedFrom > draggedTo) {
+      setDirection('up');
+    }
+
+  }, [dragAndDrop.draggedFrom, dragAndDrop.draggedTo, dragAndDrop]);
+
+  const onDrop = () => {
+    let newList = list.map((el: TableHeading, i: number) => {
+
+      const { draggedFrom, draggedTo } = dragAndDrop;
+
+      if (el.position === draggedFrom) {
+        el.position = draggedTo;
       } else {
         // move down
-        if (dragAndDrop.draggedFrom < dragAndDrop.draggedTo) {
-          if (el.position <= dragAndDrop.draggedTo && el.position > dragAndDrop.draggedFrom) {
+        if (draggedFrom < draggedTo) {
+          if (el.position <= draggedTo && el.position > draggedFrom) {
             el.position = el.position - 1;
           }
         }
         // move up
-        if (dragAndDrop.draggedFrom > dragAndDrop.draggedTo) {
-          if (el.position >= dragAndDrop.draggedTo && el.position < dragAndDrop.draggedFrom) {
+        if (draggedFrom > draggedTo) {
+          if (el.position >= draggedTo && el.position < draggedFrom) {
             el.position = el.position + 1;
           }
         }
@@ -77,26 +91,22 @@ export const ColumnsSetupDialog: React.FC<IColumnsSetupDialogProps> = ({ allTh, 
 
       return el;
     })
-    setList(newOrder);
+    setList(newList);
     setDragAndDrop({
-      ...dragAndDrop,
       draggedFrom: -1,
       draggedTo: -1,
       isDragging: false
     });
+    setDirection(null);
+    setAllTh(newList);
   }
 
   const onDragLeave = () => {
     setDragAndDrop({
       ...dragAndDrop,
-      draggedTo: -1
     });
+    setDirection(null);
   }
-
-  useEffect(() => {
-  // Log here
-    console.log(list);
-  }, [list]);
 
   return (
     <div className={s.ColumnsSetupDialog}>
@@ -112,20 +122,58 @@ export const ColumnsSetupDialog: React.FC<IColumnsSetupDialogProps> = ({ allTh, 
 
             className={sx({
               CheckboxWrapper: true,
-              dropArea: dragAndDrop && (dragAndDrop.draggedTo === Number(i))
+              dropArea: dragAndDrop && dragAndDrop.isDragging && (dragAndDrop.draggedTo === Number(i)),
+              up: direction === 'up',
+              down: direction === 'down'
             })}
           >
-            <Checkbox
+
+
+            <ColumnIndicator
               labelText={col.title}
-              value={col.isShowed}
+              val={col.isShowed}
               onChange={() => toggleColumn(col)}
             />
-            <span className={s.dragIcon}>
-              <RxDragHandleDots2 />
-            </span>
+
           </div>
       ))}
     </div>
   );
 
+}
+
+interface IColumnIndicator {
+  labelText: string;
+  val: boolean;
+  onChange: () => void;
+}
+
+export const ColumnIndicator: React.FC<IColumnIndicator> = ({ labelText, val, onChange }) => {
+
+  const clickHandler = () => {
+    onChange();
+  }
+
+  return (
+    <div className={sx({
+      ColumnIndicator: true,
+      on: val
+    })}>
+      <span className={s.dragIcon}>
+        <RxDragHandleDots2 />
+      </span>
+      <span className={s.TextContent}>
+        {labelText}
+      </span>
+      <span
+        onClick={clickHandler}
+        className={s.eye}
+      >
+        {val && <RiEyeFill />}
+        {!val && <RiEyeOffFill />}
+
+      </span>
+
+    </div>
+  );
 }

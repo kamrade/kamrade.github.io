@@ -4,6 +4,9 @@
 
 .ColumnsSetupDialog {
   position: relative;
+  border-radius: 12px;
+  padding: .5rem;
+  border: 1px solid $gray-200;
 }
 
 .CheckboxWrapper {
@@ -27,6 +30,21 @@
 
 .dropArea {
   position: relative;
+
+  &.up {
+    &::after {
+      border-bottom: none;
+      border-top: 2px solid blue;
+    }
+  }
+
+  &.down {
+    &::after {
+      border-top: none;
+      border-bottom: 2px solid blue;
+    }
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -34,6 +52,31 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border-top: 2px solid blue;
+  }
+}
+
+.ColumnIndicator {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  color: $gray-400;
+
+  .dragIcon {
+    color: $gray-600;
+  }
+
+  .TextContent {
+    flex-grow: 1;
+  }
+
+  &.on {
+    color: $gray-900;
+    .eye {
+      color: $gray-900;
+    }
+
   }
 }
