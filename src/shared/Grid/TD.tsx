@@ -4,7 +4,7 @@ import { TableHeading } from './grid.types';
 import { Button } from 'shared';
 import classNames from "classnames/bind";
 import { GridTDTheme } from './grid.types';
-import { RiArrowRightUpFill, RiMoreFill } from "react-icons/ri";
+import { RiArrowRightUpFill } from "react-icons/ri";
 
 const sx = classNames.bind(s);
 
@@ -25,21 +25,21 @@ export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, 
   const refAddons        = useRef<HTMLDivElement>(null);
 
   const [contentWidth, setContentWidth] = useState<number>(0);
-  const [actualContentWidth, setActualContentWidth] = useState<number>(0);
   const [addonWidth, setAddonWidth] = useState<number>(0);
 
   // Calculate width of all elements
   useEffect(() => {
     setContentWidth( refHiddenContent?.current?.getBoundingClientRect().width || 0 );
     setAddonWidth( refAddons?.current?.getBoundingClientRect().width || 0 );
-    setActualContentWidth( refContent?.current?.getBoundingClientRect().width || 0 );
   }, [el, el.width]);
 
   // Send width to parent to determine the max possible width of this column by content
+  //
   useEffect(() => {
     if (setColumnMaxWidth) {
       setColumnMaxWidth(el, contentWidth + addonWidth);
     }
+    // eslint-disable-next-line
   }, [contentWidth, addonWidth]);
 
   function openDetails() {

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions} from '.';
-import {calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper} from './helpers';
+import React, { useEffect, useState } from 'react';
+import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading } from '.';
+import { calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 import { RiRestartLine, RiTableFill } from "react-icons/ri";
 import { Drawer, Checkbox, Button } from 'shared';

@@ -51,6 +51,7 @@ export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy
     if (setColumnMaxWidth) {
       setColumnMaxWidth(el, refChildren.current?.getBoundingClientRect().width || 0);
     }
+    // eslint-disable-next-line
   }, [])
 
   const sort = () => {

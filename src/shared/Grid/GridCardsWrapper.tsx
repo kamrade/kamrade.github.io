@@ -1,12 +1,11 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions, ColumnsSetupDialog } from '.';
 import { calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 import { TbArrowAutofitContent } from "react-icons/tb";
 import { RiTableFill, RiFullscreenFill } from "react-icons/ri";
-import { Drawer, Checkbox, Button } from 'shared';
+import { Drawer, Button } from 'shared';
 import s from './GridCardsWrapper.module.scss';
-import { RxDragHandleDots2 } from "react-icons/rx";
 
 export const GridCardsWrapper: React.FC = () => {
 
@@ -101,7 +100,7 @@ export const GridCardsWrapper: React.FC = () => {
     // console.log(resultWidth);
 
     // Найти колонки с шириной меньше минимальной
-    let needToIncrease = resultWidth.map((el) => gridOptions.minColumnWidth - el > 0 ? gridOptions.minColumnWidth - el : 0);
+    // let needToIncrease = resultWidth.map((el) => gridOptions.minColumnWidth - el > 0 ? gridOptions.minColumnWidth - el : 0);
     // console.log(needToIncrease);
 
     // Проверить сможем ли мы откусить ширину у больших, чтоб маленькие сделать побольше
