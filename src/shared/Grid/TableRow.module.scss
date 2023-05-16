@@ -10,6 +10,9 @@
 
   &.GridTableRowBorder {
     border-bottom: 1px solid $gray-200;
+    &:last-of-type {
+      border-bottom: none;
+    }
   }
 
   &.GridTableRowCard {
@@ -56,7 +59,7 @@
 
   &.GridTableRowStriped {
     &:nth-child(2n) {
-      background-color: $gray-100;
+      background-color: $gray-050;
     }
   }
 }

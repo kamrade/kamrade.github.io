@@ -7,18 +7,24 @@
 }
 
 .Content {
-  padding-left: $asideWidth + 1rem;
+  padding-left: $asideWidth + 2rem;
   padding-right: 4rem;
   transition: padding 0.2s $transition-func-cubic;
+
+  &.ContentExpanded {
+    padding-left: 4rem;
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 
   @include media-breakpoint-down(sm) {
     padding-left: 0;
     padding-right: 0;
   }
 
-  &.ContentExpanded {
-    padding-left: 0;
-  }
+
 }
 
 .AsideToggler {

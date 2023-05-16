@@ -60,13 +60,13 @@ export const GridWrapper: React.FC = () => {
         <h2>Rule vetos monitor</h2>
 
         <div className={s.setupColumns} >
-          <Button iconButton prefix={<RiRestartLine />} size={'sm'} theme={'base'} variant={'light'} onClick={resetColumns} />
+          <Button iconButton prefix={<RiRestartLine />} size={'sm'} theme={'base'} variant={'light'} onClick={resetColumns} />{' '}
           <Button iconButton prefix={<RiTableFill />} size={'sm'} theme={'primary'} variant={'light'} onClick={setupColumns} />
         </div>
 
       </div>
 
-      <Grid>
+      <Grid gridBorder={'table'}>
         <TableHead fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <TH sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)

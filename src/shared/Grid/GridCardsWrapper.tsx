@@ -125,7 +125,7 @@ export const GridCardsWrapper: React.FC = () => {
 
       <div className={s.GridHeader}>
 
-        <h2>Rule vetos monitor (cards)</h2>
+        <h2 style={{ marginBottom: '1em' }}>Rule vetos monitor (cards)</h2>
 
         <div className={s.setupColumns} >
           <Button iconButton prefix={<RiFullscreenFill />} size={'sm'} theme={'base'} variant={'light'} onClick={fitToWidth} />
@@ -135,7 +135,7 @@ export const GridCardsWrapper: React.FC = () => {
 
       </div>
 
-      <Grid>
+      <Grid gridBorder={'table'}>
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
@@ -145,7 +145,7 @@ export const GridCardsWrapper: React.FC = () => {
         <TableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <TableRow key={j} fullWidth={calculateFullWidth(cols)} card>
+              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)}>
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore

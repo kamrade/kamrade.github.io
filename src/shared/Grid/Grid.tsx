@@ -5,8 +5,13 @@
 
 import React, { MouseEvent } from 'react';
 import s from './Grid.module.scss';
+import classNames from 'classnames/bind';
+const sx = classNames.bind(s);
+
+type GridBorder = 'card' | 'table';
 
 export interface GridProps {
+  gridBorder?: GridBorder;
   children: any;
 }
 
@@ -17,7 +22,11 @@ export const Grid = (props: GridProps) => {
   }
 
   return (
-    <div className={s.Grid} onMouseMove={mouseMoveHandler}>
+    <div className={sx({
+      Grid: true,
+      GridPanel: props.gridBorder === 'card',
+      GridTable: props.gridBorder === 'table',
+    })} onMouseMove={mouseMoveHandler}>
       {props.children}
     </div>
   );
