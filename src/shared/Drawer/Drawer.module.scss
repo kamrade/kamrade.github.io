@@ -5,15 +5,26 @@
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
-  width: 400px;
+  min-height: 100%;
+  width: 520px;
   background-color: $white;
   z-index: $zindex-modal;
-  box-shadow: 0 0 80px rgba(0,0,0,0.04);
-  padding: 0.5rem 2rem 0.5rem 2rem;
+  box-shadow: 0 0 80px rgba(0,0,0,0.04), 0 0 30px rgba(0,0,0,0.08);
+  transform: translateX(150%);
+  transition: all .3s ease-in-out;
+
+  &.animated {
+    transform: translateX(0);
+  }
 
   .DrawerContent {
-
+    overflow-y: auto;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    padding: 1rem;
   }
 
   .DrawerControl {

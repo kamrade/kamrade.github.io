@@ -15,48 +15,6 @@
     }
   }
 
-  &.GridTableRowCard {
-    border-radius: 12px;
-    cursor: pointer;
-    padding: $cellMarginY+4px $cellMarginX+4px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: $white;
-      opacity: 0;
-      transition: opacity .2s ease-in-out;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: $gray-200;
-      opacity: 1;
-      transition: opacity .2s ease-in-out;
-    }
-
-    &:hover {
-      background-color: $gray-050;
-
-      &::after {
-        opacity: 0;
-      }
-
-      &::before {
-        opacity: 1;
-      }
-    }
-  }
-
   &.GridTableRowStriped {
     &:nth-child(2n) {
       background-color: $gray-050;

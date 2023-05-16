@@ -9,16 +9,14 @@ export interface GridTableRowProps {
   fullWidth: number;
   striped?: boolean;
   border?: boolean;
-  card?: boolean;
 }
-export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, striped, border, card }) => {
+export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, striped, border }) => {
 
   return (
     <div className={sx({
       GridTableRow: true,
       GridTableRowStriped: striped,
       GridTableRowBorder: border,
-      GridTableRowCard: card,
     })} style={{ width: fullWidth }}>
       { children }
     </div>

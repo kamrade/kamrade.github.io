@@ -12,5 +12,5 @@ export const calculateFullWidth = (data: TableHeading[]) => {
       fullWidth += data[i].width;
     }
   }
-  return fullWidth;
+  return fullWidth - 2; // Grid border
 }

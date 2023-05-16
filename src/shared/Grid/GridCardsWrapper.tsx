@@ -80,36 +80,12 @@ export const GridCardsWrapper: React.FC = () => {
   // avoid scroll in table
   const fitToWidth = () => {
 
-    // Получаем ширину контейнера
     let fullWidth = refGridWrapper.current?.getBoundingClientRect().width  || 0;
-
-    // Получаем новый массив с максимальными ширинами всех колонок
     let newArr = cols.map((el) => el.maxWidth);
-
-    // Получаем сумму всех максимальных ширин
     let sum = newArr.reduce((acc, currValue) => acc + currValue, 0);
-
-    // Вычисляем процентное соотношение каждой ширины
     let ratioArr = cols.map((el) => el.maxWidth / sum);
-
-    // Проверяем, что сумма всех соотношений === 1
-    // let ratioSum = ratioArr.reduce((acc, currVal) => acc + currVal, 0);
-
-    // Вычисляем новую ширину для каждой колонки, чтобы все они поместились в контейнер
     let resultWidth = ratioArr.map((el) => el * fullWidth);
-    // console.log(resultWidth);
 
-    // Найти колонки с шириной меньше минимальной
-    // let needToIncrease = resultWidth.map((el) => gridOptions.minColumnWidth - el > 0 ? gridOptions.minColumnWidth - el : 0);
-    // console.log(needToIncrease);
-
-    // Проверить сможем ли мы откусить ширину у больших, чтоб маленькие сделать побольше
-
-      // Если сможем, то делаем
-
-      // Если нет, то просто задаем маленьким минимальную ширину и оставляем скролл
-
-    // Собираем и устанавливаем результирующий массив
     setCols(
       cols.map((el, i) => {
         el.width = resultWidth[i];
@@ -135,7 +111,7 @@ export const GridCardsWrapper: React.FC = () => {
 
       </div>
 
-      <Grid gridBorder={'table'}>
+      <Grid>
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
@@ -179,7 +155,7 @@ export const GridCardsWrapper: React.FC = () => {
         </TableBody>
       </Grid>
 
-      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={300}>
+      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={400}>
         <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} setAllTh={setAllTh} />
       </Drawer>
 
