@@ -23,11 +23,16 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
   useEffect(() => {
     if (showDrawer) {
       setVisible(true);
-      setTimeout(() => setAnimated(true));
     } else {
       setAnimated(false);
     }
   }, [showDrawer]);
+
+  useEffect(() => {
+    if (visible) {
+      setTimeout(() => setAnimated(true));
+    }
+  }, [visible]);
 
   const hideDrawer = () => {
     setShowDrawer(false);
