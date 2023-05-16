@@ -8,6 +8,21 @@
   padding: $cellMarginY $cellMarginX;
   position: relative;
 
+  &:hover {
+    .indicator {
+      opacity: 1;
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
   &.GridTableRowBorder {
     border-bottom: 1px solid $gray-200;
     &:last-of-type {

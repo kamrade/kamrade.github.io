@@ -9,13 +9,14 @@ import s from './GridCardsWrapper.module.scss';
 
 export const GridCardsWrapper: React.FC = () => {
 
+  const [gridScroll, setGridScroll]               = useState(0);
+  const [gridWidth, setGridWidth]                 = useState(0);
   const refGridWrapper                            = useRef<HTMLDivElement>(null);
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
-
 
   // Prepare data
   useEffect(() =>
@@ -28,6 +29,10 @@ export const GridCardsWrapper: React.FC = () => {
     setCols( prepareHeadingData(allTh) ),
     [allTh]
   );
+
+  useEffect(() => {
+    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
+  }, []);
 
   // Make cells content size
   function setColumnsMax() {
@@ -111,7 +116,7 @@ export const GridCardsWrapper: React.FC = () => {
 
       </div>
 
-      <Grid>
+      <Grid setGridScroll={setGridScroll}>
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
@@ -121,7 +126,7 @@ export const GridCardsWrapper: React.FC = () => {
         <TableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)}>
+              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)} gridScroll={gridScroll} gridWidth={gridWidth}>
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore
