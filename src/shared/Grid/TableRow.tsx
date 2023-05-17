@@ -22,10 +22,6 @@ export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, str
     setWidth(trRef?.current?.getBoundingClientRect().width || 0);
   }, []);
 
-  useEffect(() => {
-    console.log(gridScroll, gridWidth, width);
-  });
-
   return (
     <div ref={trRef} className={sx({
       GridTableRow: true,
@@ -35,12 +31,14 @@ export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, str
       { children }
 
       <div
-        className={s.indicator}
+        className={s.openButtonWrapper}
         style={{
           'transform' : `translateX(${-1 * (width || 0) + (gridScroll || 0) + (gridWidth || 0) }px)`
         }}
       >
-        <Button bold variant={'contained'} theme={'primary'}>Open</Button>
+        <div className={s.openButton}>
+          Open
+        </div>
       </div>
 
 
