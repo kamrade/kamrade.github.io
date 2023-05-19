@@ -14,7 +14,6 @@ import {LineChartPage} from "./projects/LineChart/LineChartPage";
 import RxTraining from "./projects/RxTraining/RxTraining";
 
 import { UIKitPage } from './projects/UIKit/UIKitPage';
-import { GridPage } from './projects/GridPage';
 import { GridCardsPage } from './projects/GridCardsPage';
 
 import {useWindowSize} from "hooks/useWindowSize";
@@ -95,7 +94,6 @@ export const Main = () => {
           <Route exact path={`${path}/formaline`}><Formaline /></Route>
           <Route exact path={`${path}/rx-training`}><RxTraining /></Route>
           <Route path={`${path}/uikit`}><UIKitPage /></Route>
-          <Route path={`${path}/grid`}><GridPage /></Route>
           <Route path={`${path}/grid-cards`}><GridCardsPage /></Route>
 
           <Route path={`${path}/**`}><NoMatch /></Route>

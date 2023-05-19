@@ -67,9 +67,6 @@ export const menuItems: (IMenuItem | IMenuLink)[] = [{
     title: 'Skeleton',
     link: '/apps/uikit/skeleton'
   }, {
-    title: 'Grid',
-    link: '/apps/grid'
-  }, {
     title: 'Grid cards',
     link: '/apps/grid-cards'
   }]
