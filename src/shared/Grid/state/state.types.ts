@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
+import {ISortedBy, TableHeading} from "../grid.types";
 
 export interface IGridState {
   currentDrawer: string;
@@ -23,4 +24,9 @@ export type GridBorder = 'card' | 'table';
 export interface GridProps {
   gridBorder?: GridBorder;
   children: any;
+  columns: TableHeading[];
+  setColumnMaxWidth: (el: TableHeading, currentWidth: number) => void;
+  sortedBy: ISortedBy;
+  setSortedBy: Dispatch<SetStateAction<ISortedBy>>;
+  resizeColumn: (el: TableHeading, offset: number) => any;
 }

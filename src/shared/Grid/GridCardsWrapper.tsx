@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import { Grid, TableHead, TableBody, TH, TD, TableRow, ISortedBy, TableHeading, gridOptions, ColumnsSetupDialog } from '.';
+import { Grid, TableBody, TD, TableRow, ISortedBy, TableHeading, gridOptions, ColumnsSetupDialog } from '.';
 import { calculateFullWidth, prepareData, prepareHeadingData, resizeColumnHelper, toggleColumnHelper } from './helpers';
 import { RuleVeto, allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
 import { TbArrowAutofitContent } from "react-icons/tb";
@@ -14,8 +14,8 @@ export const GridCardsWrapper: React.FC = () => {
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [showDrawerDetails, setShowDrawerDetails] = useState(false);
 
-  const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
-  const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
+  const [allTh, setAllTh]                         = useState(allTableHeadingsMap); // all columns, including invisible
+  const [cols, setCols]                           = useState( prepareHeadingData(allTh) ); // only visible columns set
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
 
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
@@ -33,7 +33,7 @@ export const GridCardsWrapper: React.FC = () => {
     [allTh]
   );
 
-  // Make cells content size
+  // make column content size, but not more than maxWidth
   function setColumnsMax() {
     setCols(
       cols.map((element: TableHeading) => {
@@ -76,11 +76,6 @@ export const GridCardsWrapper: React.FC = () => {
   const setupColumns = () =>
     setShowDrawerColumns(!showDrawerColumns);
 
-  // make column content size, but not more than maxWidth
-  const fillColumns = () => {
-    setColumnsMax();
-  }
-
   // avoid scroll in table
   const fitToWidth = () => {
 
@@ -109,18 +104,14 @@ export const GridCardsWrapper: React.FC = () => {
 
         <div className={s.setupColumns} >
           <Button iconButton prefix={<RiFullscreenFill />} size={'sm'} theme={'base'} variant={'light'} onClick={fitToWidth} />
-          <Button iconButton prefix={<TbArrowAutofitContent />} size={'sm'} theme={'base'} variant={'light'} onClick={fillColumns} />
+          <Button iconButton prefix={<TbArrowAutofitContent />} size={'sm'} theme={'base'} variant={'light'} onClick={setColumnsMax} />
           <Button iconButton prefix={<RiTableFill />} size={'sm'} theme={'base'} variant={'light'} onClick={setupColumns} />
         </div>
 
       </div>
 
-      <Grid>
-        <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
-          {cols.map((el: TableHeading, i: number) =>
-            <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
-          }
-        </TableHead>
+      <Grid columns={cols} setColumnMaxWidth={setColumnMaxWidth} sortedBy={sortedBy} setSortedBy={setSortedBy} resizeColumn={resizeColumn}>
+
 
         <TableBody>
           { data.map((element: RuleVeto, j: number) =>
