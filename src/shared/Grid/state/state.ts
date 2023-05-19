@@ -3,6 +3,7 @@ import {IGridState, IReducer} from "./state.types";
 export const initialState: IGridState = {
   currentDrawer: '',
   gridScroll: 0,
+  gridWidth: 0,
 }
 
 export const reducer: IReducer = (state, action) => {
@@ -16,6 +17,11 @@ export const reducer: IReducer = (state, action) => {
       return {
         ...state,
         gridScroll: action.value
+      }
+    case 'SET_GRID_WIDTH':
+      return {
+        ...state,
+        gridWidth: action.value
       }
     default:
       return state;

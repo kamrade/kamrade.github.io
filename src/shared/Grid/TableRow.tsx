@@ -10,13 +10,13 @@ export interface GridTableRowProps {
   fullWidth: number;
   striped?: boolean;
   border?: boolean;
-  gridWidth?: number;
   onClick?: () => any;
 }
-export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, gridWidth = 0, fullWidth, onClick }) => {
+export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, fullWidth, onClick }) => {
 
   const context = useContext(GridContext);
   let gridScroll = context?.gridState.gridScroll || 0;
+  let gridWidth = context?.gridState.gridWidth || 0;
 
   const getScroll = () =>
     (fullWidth - gridWidth) < gridScroll ? fullWidth - gridWidth : gridScroll;

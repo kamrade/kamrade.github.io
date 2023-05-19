@@ -6,36 +6,26 @@ import { TbArrowAutofitContent } from "react-icons/tb";
 import { RiTableFill, RiFullscreenFill } from "react-icons/ri";
 import { Drawer, Button } from 'shared';
 import s from './GridCardsWrapper.module.scss';
-import { useWindowSize } from "hooks/useWindowSize";
 
 export const GridCardsWrapper: React.FC = () => {
 
-  const [gridWidth, setGridWidth]                 = useState(0);
+  // still needed for calculating fitting cells.
   const refGridWrapper                            = useRef<HTMLDivElement>(null);
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [showDrawerDetails, setShowDrawerDetails] = useState(false);
+
   const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
+
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
-  // Current selected ruleVeto
-  const [currentElement, setCurrentElement]       = useState<RuleVeto | null>(null);
-
-  const windowSize = useWindowSize(400);
-
-  useEffect(() => {
-    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
-  }, [windowSize]);
+  const [currentElement, setCurrentElement]       = useState<RuleVeto | null>(null); // Current selected ruleVeto
 
   // Prepare data
   useEffect(() =>
     setData( prepareData(ruleVetoData, sortedBy) ),
     [sortedBy, sortedBy.direction, sortedBy.column]
   );
-
-  useEffect(() => {
-    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
-  }, [cols]);
 
   // Prepare columns
   useEffect(() =>
@@ -139,7 +129,6 @@ export const GridCardsWrapper: React.FC = () => {
                 striped
                 key={j}
                 fullWidth={calculateFullWidth(cols)}
-                gridWidth={gridWidth}
                 onClick={() => {
                   setCurrentElement(element);
                   setShowDrawerDetails(true);
@@ -186,7 +175,6 @@ export const GridCardsWrapper: React.FC = () => {
           {currentElement && Object.keys(currentElement).map((el, i) =>
             <div key={i}>{(currentElement as any)[el]}</div>
           )}
-
         </Drawer>
 
       </Grid>

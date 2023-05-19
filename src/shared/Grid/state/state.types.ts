@@ -3,6 +3,7 @@ import {Dispatch, SetStateAction} from "react";
 export interface IGridState {
   currentDrawer: string;
   gridScroll: number;
+  gridWidth: number;
 }
 
 export interface IGridAction {
