@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from "classnames/bind";
 import s from './TableRow.module.scss';
+import { GridContext } from "./Grid";
 
 const sx = classNames.bind(s);
 
@@ -9,11 +10,13 @@ export interface GridTableRowProps {
   fullWidth: number;
   striped?: boolean;
   border?: boolean;
-  gridScroll?: number;
   gridWidth?: number;
   onClick?: () => any;
 }
-export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, gridScroll = 0, gridWidth = 0, fullWidth, onClick }) => {
+export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, gridWidth = 0, fullWidth, onClick }) => {
+
+  const context = useContext(GridContext);
+  let gridScroll = context?.gridState.gridScroll || 0;
 
   const getScroll = () =>
     (fullWidth - gridWidth) < gridScroll ? fullWidth - gridWidth : gridScroll;

@@ -10,7 +10,6 @@ import { useWindowSize } from "hooks/useWindowSize";
 
 export const GridCardsWrapper: React.FC = () => {
 
-  const [gridScroll, setGridScroll]               = useState(0);
   const [gridWidth, setGridWidth]                 = useState(0);
   const refGridWrapper                            = useRef<HTMLDivElement>(null);
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
@@ -126,7 +125,7 @@ export const GridCardsWrapper: React.FC = () => {
 
       </div>
 
-      <Grid setGridScroll={setGridScroll}>
+      <Grid>
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(cols)}>
           {cols.map((el: TableHeading, i: number) =>
             <TH setColumnMaxWidth={setColumnMaxWidth} card sortedBy={sortedBy} setSortedBy={setSortedBy} resizeHandler={resizeColumn} el={el} key={i}>{el.title}</TH>)
@@ -140,7 +139,6 @@ export const GridCardsWrapper: React.FC = () => {
                 striped
                 key={j}
                 fullWidth={calculateFullWidth(cols)}
-                gridScroll={gridScroll}
                 gridWidth={gridWidth}
                 onClick={() => {
                   setCurrentElement(element);
