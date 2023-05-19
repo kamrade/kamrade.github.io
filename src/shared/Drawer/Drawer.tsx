@@ -24,10 +24,6 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
   const context = useContext(GridContext);
 
   useEffect(() => {
-    console.log('hide:', drawerTitle);
-  }, [context?.gridState.currentDrawer]);
-
-  useEffect(() => {
     if (showDrawer) {
       setVisible(true);
       context?.dispatch({
@@ -36,12 +32,16 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
       });
     } else {
       setAnimated(false);
-      context?.dispatch({
-        type: 'SET_CURRENT_DRAWER',
-        value: '',
-      });
     }
-  }, [showDrawer]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showDrawer, drawerTitle]);
+
+  useEffect(() => {
+    if (context?.gridState.currentDrawer !== drawerTitle) {
+      setShowDrawer(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [context?.gridState.currentDrawer]);
 
   useEffect(() => {
     if (visible) {

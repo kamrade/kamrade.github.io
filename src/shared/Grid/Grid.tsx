@@ -4,14 +4,12 @@
  */
 
 import React, {
-  MouseEvent,
   UIEvent,
   Dispatch,
   SetStateAction,
   useReducer,
   Reducer,
   createContext,
-  useEffect
 } from 'react';
 import s from './Grid.module.scss';
 import classNames from 'classnames/bind';
