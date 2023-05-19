@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import s from './Drawer.module.scss';
 import classNames from 'classnames/bind';
 import { Button } from 'shared';
 import { RiArrowRightSLine } from "react-icons/ri";
+import { GridContext } from "../Grid/Grid";
 
 let sx = classNames.bind(s);
 
@@ -20,11 +21,25 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
   const [animated, setAnimated] = useState(false);
   const [visible, setVisible] = useState(false);
 
+  const context = useContext(GridContext);
+
+  useEffect(() => {
+    console.log('hide:', drawerTitle);
+  }, [context?.gridState.currentDrawer]);
+
   useEffect(() => {
     if (showDrawer) {
       setVisible(true);
+      context?.dispatch({
+        type: 'SET_CURRENT_DRAWER',
+        value: drawerTitle,
+      });
     } else {
       setAnimated(false);
+      context?.dispatch({
+        type: 'SET_CURRENT_DRAWER',
+        value: '',
+      });
     }
   }, [showDrawer]);
 
@@ -53,6 +68,7 @@ export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDr
         animated: animated,
       })} style={{ width: `${initialWidth ? `${initialWidth}px` : 'auto'}`}}
            onTransitionEnd={transitionEndHandler}
+           role="dialog"
       >
 
         <div className={s.DrawerContent}>

@@ -6,6 +6,7 @@ import { TbArrowAutofitContent } from "react-icons/tb";
 import { RiTableFill, RiFullscreenFill } from "react-icons/ri";
 import { Drawer, Button } from 'shared';
 import s from './GridCardsWrapper.module.scss';
+import { useWindowSize } from "hooks/useWindowSize";
 
 export const GridCardsWrapper: React.FC = () => {
 
@@ -13,10 +14,17 @@ export const GridCardsWrapper: React.FC = () => {
   const [gridWidth, setGridWidth]                 = useState(0);
   const refGridWrapper                            = useRef<HTMLDivElement>(null);
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
+  const [showDrawerDetails, setShowDrawerDetails] = useState(false);
   const [allTh, setAllTh]                         = useState(allTableHeadingsMap);
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
+
+  const windowSize = useWindowSize(400);
+
+  useEffect(() => {
+    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
+  }, [windowSize]);
 
   // Prepare data
   useEffect(() =>
@@ -24,15 +32,15 @@ export const GridCardsWrapper: React.FC = () => {
     [sortedBy, sortedBy.direction, sortedBy.column]
   );
 
+  useEffect(() => {
+    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
+  }, [cols]);
+
   // Prepare columns
   useEffect(() =>
     setCols( prepareHeadingData(allTh) ),
     [allTh]
   );
-
-  useEffect(() => {
-    setGridWidth(refGridWrapper?.current?.getBoundingClientRect().width || 0);
-  }, []);
 
   // Make cells content size
   function setColumnsMax() {
@@ -126,7 +134,7 @@ export const GridCardsWrapper: React.FC = () => {
         <TableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)} gridScroll={gridScroll} gridWidth={gridWidth}>
+              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)} gridScroll={gridScroll} gridWidth={gridWidth} onClick={() => setShowDrawerDetails(true)}>
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore
@@ -158,11 +166,18 @@ export const GridCardsWrapper: React.FC = () => {
             )
           )}
         </TableBody>
+
+        <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={400}>
+          <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} setAllTh={setAllTh} />
+        </Drawer>
+
+        <Drawer drawerTitle={'Details'} showDrawer={showDrawerDetails} setShowDrawer={setShowDrawerDetails} initialWidth={400}>
+          <div>Details</div>
+        </Drawer>
+
       </Grid>
 
-      <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={400}>
-        <ColumnsSetupDialog allTh={allTh} toggleColumn={toggleColumn} setAllTh={setAllTh} />
-      </Drawer>
+
 
     </div>
   );

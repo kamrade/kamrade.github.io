@@ -36,7 +36,7 @@ export const Main = () => {
   const refAside = useRef<HTMLDivElement>(null);
   const refAsideToggler = useRef<HTMLDivElement>(null);
 
-  const size = useWindowSize();
+  const size = useWindowSize(400);
 
   // save showAside value if screen more than ${showAsideBreakpoint} px
   useEffect(() => {

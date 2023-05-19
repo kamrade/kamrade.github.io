@@ -6,7 +6,7 @@ export interface IWindowSize {
   heigth: number;
 }
 
-export const useWindowSize = () => {
+export const useWindowSize: (debounceTime?: number) => IWindowSize = (debounceTime) => {
 
   const [windowSize, setWindowSize] = useState<IWindowSize>({
     width: 0,
@@ -22,7 +22,7 @@ export const useWindowSize = () => {
       })
     }
 
-    const handleResizeDebounced = debounce(handleResize, 400);
+    const handleResizeDebounced = debounceTime ? debounce(handleResize, debounceTime) : handleResize;
 
     window.addEventListener('resize', handleResizeDebounced);
 

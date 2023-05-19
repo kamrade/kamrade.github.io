@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import classNames from "classnames/bind";
 import s from './TableRow.module.scss';
-import { Button } from 'shared';
 
 const sx = classNames.bind(s);
 
@@ -12,18 +11,15 @@ export interface GridTableRowProps {
   border?: boolean;
   gridScroll?: number;
   gridWidth?: number;
+  onClick?: () => any;
 }
-export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, striped, border, gridScroll, gridWidth }) => {
+export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, gridScroll = 0, gridWidth = 0, fullWidth, onClick }) => {
 
-  const trRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    setWidth(trRef?.current?.getBoundingClientRect().width || 0);
-  }, []);
+  const getScroll = () =>
+    (fullWidth - gridWidth) < gridScroll ? fullWidth - gridWidth : gridScroll;
 
   return (
-    <div ref={trRef} className={sx({
+    <div className={sx({
       GridTableRow: true,
       GridTableRowStriped: striped,
       GridTableRowBorder: border,
@@ -32,16 +28,10 @@ export const TableRow: React.FC<GridTableRowProps> = ({ children, fullWidth, str
 
       <div
         className={s.openButtonWrapper}
-        style={{
-          'transform' : `translateX(${-1 * (width || 0) + (gridScroll || 0) + (gridWidth || 0) }px)`
-        }}
+        style={{ 'transform' : `translateX(${ getScroll() + (gridWidth || 0) - fullWidth}px)` }}
       >
-        <div className={s.openButton}>
-          Open
-        </div>
+        <div className={s.openButton} onClick={onClick}>Open</div>
       </div>
-
-
     </div>
   );
 }
