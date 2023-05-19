@@ -19,6 +19,8 @@ export const GridCardsWrapper: React.FC = () => {
   const [cols, setCols]                           = useState( prepareHeadingData(allTh) );
   const [data, setData]                           = useState( prepareData(ruleVetoData, getDefaultSorting(cols, 'id')) );
   const [sortedBy, setSortedBy]                   = useState<ISortedBy>( getDefaultSorting(cols, 'id') );
+  // Current selected ruleVeto
+  const [currentElement, setCurrentElement]       = useState<RuleVeto | null>(null);
 
   const windowSize = useWindowSize(400);
 
@@ -134,7 +136,17 @@ export const GridCardsWrapper: React.FC = () => {
         <TableBody>
           { data.map((element: RuleVeto, j: number) =>
             (
-              <TableRow striped key={j} fullWidth={calculateFullWidth(cols)} gridScroll={gridScroll} gridWidth={gridWidth} onClick={() => setShowDrawerDetails(true)}>
+              <TableRow
+                striped
+                key={j}
+                fullWidth={calculateFullWidth(cols)}
+                gridScroll={gridScroll}
+                gridWidth={gridWidth}
+                onClick={() => {
+                  setCurrentElement(element);
+                  setShowDrawerDetails(true);
+                }}
+              >
                 { cols.map((el: TableHeading, i: number) => {
 
                   // @ts-ignore
@@ -173,6 +185,10 @@ export const GridCardsWrapper: React.FC = () => {
 
         <Drawer drawerTitle={'Details'} showDrawer={showDrawerDetails} setShowDrawer={setShowDrawerDetails} initialWidth={400}>
           <div>Details</div>
+          {currentElement && Object.keys(currentElement).map((el, i) =>
+            <div key={i}>{(currentElement as any)[el]}</div>
+          )}
+
         </Drawer>
 
       </Grid>
