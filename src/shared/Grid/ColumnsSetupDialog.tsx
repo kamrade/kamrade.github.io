@@ -9,7 +9,7 @@ const sx = classNames.bind(s);
 interface IColumnsSetupDialogProps {
   allTh: TableHeading[];
   toggleColumn: (el: TableHeading) => any;
-  setAllTh: any;
+  setAllTh: (value: TableHeading[]) => any;
 }
 
 interface IState {

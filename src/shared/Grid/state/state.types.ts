@@ -5,6 +5,8 @@ export interface IGridState {
   currentDrawer: string;
   gridScroll: number;
   gridWidth: number;
+  allColumns: TableHeading[];
+  columns: TableHeading[];
 }
 
 export interface IGridAction {
@@ -23,10 +25,9 @@ export type GridBorder = 'card' | 'table';
 
 export interface GridProps {
   gridBorder?: GridBorder;
-  children: any;
-  columns: TableHeading[];
-  setColumnMaxWidth: (el: TableHeading, currentWidth: number) => void;
+  allColumns: TableHeading[];
   sortedBy: ISortedBy;
   setSortedBy: Dispatch<SetStateAction<ISortedBy>>;
-  resizeColumn: (el: TableHeading, offset: number) => any;
+  updateColumns: (columns: TableHeading[]) => any;
+  data: any[];
 }

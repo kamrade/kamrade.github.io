@@ -1,9 +1,12 @@
 import {IGridState, IReducer} from "./state.types";
+import {TableHeading} from "../grid.types";
 
 export const initialState: IGridState = {
   currentDrawer: '',
   gridScroll: 0,
   gridWidth: 0,
+  columns: [] as TableHeading[],
+  allColumns: [] as TableHeading[],
 }
 
 export const reducer: IReducer = (state, action) => {
@@ -22,6 +25,16 @@ export const reducer: IReducer = (state, action) => {
       return {
         ...state,
         gridWidth: action.value
+      }
+    case 'SET_ALL_COLUMNS':
+      return {
+        ...state,
+        allColumns: action.value
+      }
+    case 'SET_COLUMNS':
+      return {
+        ...state,
+        columns: action.value
       }
     default:
       return state;
