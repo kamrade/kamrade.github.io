@@ -1,17 +1,18 @@
 import React, { UIEvent, useReducer, Reducer, createContext, useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import s from './Grid.module.scss';
 import classNames from 'classnames/bind';
-import { IGridState, IGridContext, IGridAction, GridProps } from './state/state.types';
+import { IGridState, IGridContext, IGridAction, GridProps, IData } from './state/state.types';
 import { initialState, reducer } from './state/state';
 import { useWindowSize } from "../../hooks/useWindowSize";
-import {TableHead} from "./TableHead";
 import {calculateFullWidth, prepareHeadingData, resizeColumnHelper, toggleColumnHelper} from "./helpers";
 import {TableHeading} from "./grid.types";
-import {TH} from "./TH";
 import {gridOptions} from "./Options";
 import {Drawer} from "../Drawer";
 import {ColumnsSetupDialog} from "./ColumnsSetupDialog";
 import {RuleVeto} from "./data";
+
+import {TableHead} from "./TableHead";
+import {TH} from "./TH";
 import {TableRow} from "./TableRow";
 import {TD} from "./TD";
 import {TableBody} from "./TableBody";
@@ -23,7 +24,7 @@ export const GridContext = createContext<IGridContext | null>(null);
 
 export const Grid = forwardRef((props: GridProps, ref: any) => {
 
-  const {allColumns, data, updateColumns} = props;
+  const {allColumns, data, updateColumns, sortedBy, setSortedBy} = props;
 
   const [gridState, dispatch] = useReducer<Reducer<IGridState, IGridAction>>(reducer, initialState);
   const refGrid = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ export const Grid = forwardRef((props: GridProps, ref: any) => {
 
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [showDrawerDetails, setShowDrawerDetails] = useState(false);
-  const [currentElement, setCurrentElement] = useState<RuleVeto | null>(null); // Current selected ruleVeto - need to change to Generic
+  const [currentElement, setCurrentElement] = useState<Partial<IData> | null>(null); // Current selected ruleVeto - need to change to Generic
 
   useEffect(() => {
     dispatch({
@@ -148,53 +149,55 @@ export const Grid = forwardRef((props: GridProps, ref: any) => {
         <TableHead marginBottom paddingBottom fullWidth={calculateFullWidth(gridState.columns)}>
           {gridState.columns.map((el: TableHeading, i: number) =>
             <TH el={el} setColumnMaxWidth={calculateColumnMaxWidth} resizeHandler={resizeColumn}
-                card key={i} sortedBy={props.sortedBy} setSortedBy={props.setSortedBy}
+                card key={i} sortedBy={sortedBy} setSortedBy={setSortedBy}
             >{el.title}</TH>)
           }
         </TableHead>
 
         <TableBody>
-          { data.map((element: RuleVeto, j: number) =>
-            (
-              <TableRow
-                striped
-                key={j}
-                fullWidth={calculateFullWidth(gridState.columns)}
-                onClick={() => {
-                  setCurrentElement(element);
-                  setShowDrawerDetails(true);
-                }}
-              >
-                { gridState.columns.map((el: TableHeading, i: number) => {
+          <div>
+            { data.map((element: Partial<IData>, j: number) =>
+              (
+                <TableRow
+                  striped
+                  key={j}
+                  fullWidth={calculateFullWidth(gridState.columns)}
+                  onClick={() => {
+                    setCurrentElement(element);
+                    setShowDrawerDetails(true);
+                  }}
+                >
+                  { gridState.columns.map((el: TableHeading, i: number) => {
 
-                  // @ts-ignore
-                  if (el.id === 'status') {
-                    switch (element[el.id]) {
-                      case 'active':
-                        return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
-                      case 'deactivated':
-                        return <TD  setColumnMaxWidth={calculateColumnMaxWidth} theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
-                      case 'expired':
-                        return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
-                      default:
-                        return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    // @ts-ignore
+                    if (el.id === 'status') {
+                      switch (element[el.id]) {
+                        case 'active':
+                          return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={'success'} el={el} key={i}>{ element[el.id] }</TD>
+                        case 'deactivated':
+                          return <TD  setColumnMaxWidth={calculateColumnMaxWidth} theme={'muted'} el={el} key={i}>{ element[el.id] }</TD>
+                        case 'expired':
+                          return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={'danger'} el={el} key={i}>{ element[el.id] }</TD>
+                        default:
+                          return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                      }
                     }
-                  }
 
-                  if (el.id === 'id') {
-                    return <TD link={'/'} setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
-                  }
+                    if (el.id === 'id') {
+                      return <TD link={'/'} setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    }
 
-                  if (el.id === 'ruleId') {
-                    return <TD link={'/'} setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
-                  }
+                    if (el.id === 'ruleId') {
+                      return <TD link={'/'} setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                    }
 
-                  // @ts-ignore
-                  return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
-                })}
-              </TableRow>
-            )
-          )}
+                    // @ts-ignore
+                    return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
+                  })}
+                </TableRow>
+              )
+            )}
+          </div>
         </TableBody>
 
         <Drawer drawerTitle={'Setup columns'} showDrawer={showDrawerColumns} setShowDrawer={setShowDrawerColumns} initialWidth={400}>
@@ -202,10 +205,12 @@ export const Grid = forwardRef((props: GridProps, ref: any) => {
         </Drawer>
 
         <Drawer drawerTitle={'Details'} showDrawer={showDrawerDetails} setShowDrawer={setShowDrawerDetails} initialWidth={400}>
-          <div>Details</div>
-          {currentElement && Object.keys(currentElement).map((el, i) =>
-            <div key={i}>{(currentElement as any)[el]}</div>
-          )}
+          <div>
+            <div>Details</div>
+            {currentElement && Object.keys(currentElement).map((el, i) =>
+              <div key={i}>{(currentElement as any)[el]}</div>
+            )}
+          </div>
         </Drawer>
 
       </div>

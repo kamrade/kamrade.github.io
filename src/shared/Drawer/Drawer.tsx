@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext, Dispatch, SetStateAction, PropsWithChildren} from 'react';
 import ReactDOM from 'react-dom';
 import s from './Drawer.module.scss';
 import classNames from 'classnames/bind';
@@ -10,13 +10,12 @@ let sx = classNames.bind(s);
 
 export interface IDrawerProps {
   showDrawer: boolean;
-  setShowDrawer: any;
+  setShowDrawer: Dispatch<SetStateAction<boolean>>;
   drawerTitle: string;
-  children: any;
   initialWidth?: number;
 }
 
-export const Drawer: React.FC<IDrawerProps> = ({ children, showDrawer, setShowDrawer, drawerTitle, initialWidth }) => {
+export const Drawer: React.FC<PropsWithChildren<IDrawerProps>> = ({ children, showDrawer, setShowDrawer, drawerTitle, initialWidth }) => {
 
   const [animated, setAnimated] = useState(false);
   const [visible, setVisible] = useState(false);

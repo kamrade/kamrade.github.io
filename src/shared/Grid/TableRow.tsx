@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, PropsWithChildren } from 'react';
 import classNames from "classnames/bind";
 import s from './TableRow.module.scss';
 import { GridContext } from "./Grid";
@@ -6,13 +6,12 @@ import { GridContext } from "./Grid";
 const sx = classNames.bind(s);
 
 export interface GridTableRowProps {
-  children: any;
   fullWidth: number;
   striped?: boolean;
   border?: boolean;
   onClick?: () => any;
 }
-export const TableRow: React.FC<GridTableRowProps> = ({ children, striped, border, fullWidth, onClick }) => {
+export const TableRow: React.FC<PropsWithChildren<GridTableRowProps>> = ({ children, striped, border, fullWidth, onClick }) => {
 
   const context = useContext(GridContext);
   let gridScroll = context?.gridState.gridScroll || 0;

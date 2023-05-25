@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, Dispatch, SetStateAction, PropsWithChildren} from 'react';
 import s from './TH.module.scss';
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 import { RxDragHandleDots2 } from "react-icons/rx";
@@ -8,15 +8,14 @@ const sx = classNames.bind(s);
 
 interface GridTHProps {
   el: TableHeading;
-  resizeHandler: any;
+  resizeHandler: (el: TableHeading, offset: number) => void;
   sortedBy: ISortedBy;
-  setSortedBy: any;
+  setSortedBy: Dispatch<SetStateAction<ISortedBy>>;
   card?: boolean;
-  children: any;
-  setColumnMaxWidth?: any;
+  setColumnMaxWidth?: (el: TableHeading, currentWidth: number) => void;
 }
 
-export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy, setSortedBy, card, setColumnMaxWidth}) => {
+export const TH: React.FC<PropsWithChildren<GridTHProps>> = ({el, resizeHandler, children, sortedBy, setSortedBy, card, setColumnMaxWidth}) => {
 
   const refChildren = useRef<HTMLDivElement>(null);
 
@@ -29,7 +28,7 @@ export const TH: React.FC<GridTHProps> = ({el, resizeHandler, children, sortedBy
     initialX = e.pageX;
   }
 
-  const mouseUpHandler = (e: MouseEvent): any => {
+  const mouseUpHandler = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     document.removeEventListener('mousemove', mouseMoveHandler);

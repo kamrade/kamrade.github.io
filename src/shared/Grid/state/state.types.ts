@@ -28,6 +28,12 @@ export interface GridProps {
   allColumns: TableHeading[];
   sortedBy: ISortedBy;
   setSortedBy: Dispatch<SetStateAction<ISortedBy>>;
-  updateColumns: (columns: TableHeading[]) => any;
-  data: any[];
+  updateColumns: (columns: TableHeading[]) => void;
+  data: Partial<IData>[];
+}
+
+export interface IData {
+  id: number | string;
+  status?: string;
+  ruleId?: number | string;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, {useRef, useEffect, useState, PropsWithChildren} from 'react'
 import s from './TD.module.scss';
 import { TableHeading } from './grid.types';
 import { Button } from 'shared';
@@ -12,13 +12,12 @@ export interface GridTDProps {
   el: TableHeading;
   theme?: GridTDTheme;
   link?: string;
-  children: any;
   interactionText?: string;
   border?: boolean;
-  setColumnMaxWidth?: any;
+  setColumnMaxWidth?: (el: TableHeading, currentWidth: number) => void;
 }
 
-export const TD: React.FC<GridTDProps> = ({ children, el, theme = 'base', link, interactionText, border, setColumnMaxWidth }) => {
+export const TD: React.FC<PropsWithChildren<GridTDProps>> = ({ children, el, theme = 'base', link, interactionText, border, setColumnMaxWidth }) => {
 
   const refContent       = useRef<HTMLDivElement>(null);
   const refHiddenContent = useRef<HTMLSpanElement>(null);

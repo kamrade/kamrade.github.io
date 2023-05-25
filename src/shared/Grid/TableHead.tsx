@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import s from './TableHead.module.scss'
 
 interface GridTableHeadProps {
-  children: any;
   fullWidth: number;
   marginBottom?: boolean;
   paddingBottom?: boolean;
 }
 
-export const TableHead: React.FC<GridTableHeadProps> = ({children, fullWidth, marginBottom, paddingBottom}) => {
+export const TableHead: React.FC<PropsWithChildren<GridTableHeadProps>> = ({children, fullWidth, marginBottom, paddingBottom}) => {
 
   return (
     <div className={s.GridTableHead}>

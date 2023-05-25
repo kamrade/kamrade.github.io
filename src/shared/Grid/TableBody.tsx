@@ -1,10 +1,8 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import s from './TableBody.module.scss';
 
-interface GridTableBodyProps {
-  children: any;
-}
-export const TableBody: React.FC<GridTableBodyProps> = ({ children }) => {
+interface GridTableBodyProps {}
+export const TableBody: React.FC<PropsWithChildren<GridTableBodyProps>> = ({ children }) => {
   return (
     <div className={s.GridTableBody}>
       {children}
