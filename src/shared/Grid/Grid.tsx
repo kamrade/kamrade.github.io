@@ -1,4 +1,16 @@
-import React, { UIEvent, useReducer, Reducer, createContext, useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
+import React, {
+  UIEvent,
+  useReducer,
+  Reducer,
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  ForwardRefExoticComponent,
+  RefAttributes
+} from 'react';
 import s from './Grid.module.scss';
 import classNames from 'classnames/bind';
 import { IGridState, IGridContext, IGridAction, GridProps, IData } from './state/state.types';
@@ -9,7 +21,6 @@ import {TableHeading} from "./grid.types";
 import {gridOptions} from "./Options";
 import {Drawer} from "../Drawer";
 import {ColumnsSetupDialog} from "./ColumnsSetupDialog";
-import {RuleVeto} from "./data";
 
 import {TableHead} from "./TableHead";
 import {TH} from "./TH";
@@ -17,12 +28,12 @@ import {TableRow} from "./TableRow";
 import {TD} from "./TD";
 import {TableBody} from "./TableBody";
 
-import { cloneDeep } from 'lodash';
+import {cloneDeep, divide} from 'lodash';
 
 const sx = classNames.bind(s);
 export const GridContext = createContext<IGridContext | null>(null);
 
-export const Grid = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref: any) => {
+export const Grid: ForwardRefExoticComponent<GridProps & RefAttributes<HTMLDivElement>> = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref: any) => {
 
   const {allColumns, data, updateColumns, sortedBy, setSortedBy} = props;
 
@@ -32,7 +43,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref
 
   const [showDrawerColumns, setShowDrawerColumns] = useState(false);
   const [showDrawerDetails, setShowDrawerDetails] = useState(false);
-  const [currentElement, setCurrentElement] = useState<Partial<IData> | null>(null); // Current selected ruleVeto - need to change to Generic
+  const [currentElement, setCurrentElement] = useState<Partial<IData> | null>(null); // Need to update to smth more Generic
 
   useEffect(() => {
     dispatch({
@@ -157,7 +168,9 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref
         <TableBody>
           <div>
             { data.map((element: Partial<IData>, j: number) =>
+
               (
+                <div key={j}>
                 <TableRow
                   striped
                   key={j}
@@ -195,6 +208,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref
                     return <TD setColumnMaxWidth={calculateColumnMaxWidth} theme={el.theme} el={el} key={i}>{ element[el.id] }</TD>
                   })}
                 </TableRow>
+                </div>
               )
             )}
           </div>

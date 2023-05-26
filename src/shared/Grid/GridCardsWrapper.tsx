@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef } from 'react';
 import {Grid, ISortedBy, TableHeading} from '.';
 import { prepareData } from './helpers';
-import { allTableHeadingsMap, ruleVetoData, getDefaultSorting } from './data';
+import {allTableHeadingsMap, ruleVetoData, getDefaultSorting, RuleVeto} from './data';
 import { Button } from 'shared';
 import s from './GridCardsWrapper.module.scss';
 import { RiFullscreenFill, RiTableFill } from "react-icons/ri";
@@ -13,8 +13,8 @@ const defaultSorting = getDefaultSorting(allTableHeadingsMap, 'id');
 export const GridCardsWrapper: React.FC = () => {
 
   const [allTh, setAllTh]                 = useState(allTableHeadingsMap); // all columns, including invisible
-  const [data, setData]                   = useState( prepareData(ruleVetoData, getDefaultSorting(allTh, 'id')) );
-  const [sortedBy, setSortedBy]           = useState<ISortedBy>( getDefaultSorting(allTh, 'id') );
+  const [data, setData]                   = useState<RuleVeto[]>( ruleVetoData );
+  const [sortedBy, setSortedBy]           = useState<ISortedBy>( defaultSorting );
   const gridRef                           = useRef<any>();
 
   useEffect(() => {

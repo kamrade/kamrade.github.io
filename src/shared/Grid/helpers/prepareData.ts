@@ -1,17 +1,24 @@
 import { RuleVeto, RuleVetoFields } from '../data/rule-veto.types';
 import { ISortedBy } from '../grid.types';
+import { cloneDeep } from 'lodash';
 
 // TODO: implementation
 // Here is the place where data should be - sorted, filtered, paginated, calculate statistic
 export const prepareData = (data: RuleVeto[], sortedBy: ISortedBy) => {
+  let newData =  data.sort((a: RuleVeto, b: RuleVeto) => {
 
-  console.log(sortedBy);
+    const fieldA: string = String(a[sortedBy.column as RuleVetoFields]).toLowerCase();
+    const fieldB: string = String(b[sortedBy.column as RuleVetoFields]).toLowerCase();
 
-  return data.sort((a: RuleVeto, b: RuleVeto) => {
-    // console.log(a[sortedBy.column as RuleVetoFields]);
-    // console.log(b[sortedBy.column as RuleVetoFields]);
+    if (fieldA < fieldB) {
+      return sortedBy.direction === 'acc' ? 1 : -1;
+    }
+    if (fieldA > fieldB) {
+      return sortedBy.direction === 'acc' ? -1 : 1;
+    }
     return 0;
-  })
 
-  return [...data];
+  });
+
+  return cloneDeep(newData);
 }
