@@ -10,6 +10,20 @@ export type RuleVetoStatus = 'active' | 'expired' | 'deactivated';
 
 export type TableStyle = 'base' | 'list';
 
+export type RuleVetoFields = 'id'
+  | 'tenantId'
+  | 'ruleId'
+  | 'ruleVetoType'
+  | 'referenceIdentifier'
+  | 'status'
+  | 'comments'
+  | 'startDate'
+  | 'expiryDate'
+  | 'createdDate'
+  | 'updatedDate'
+  | 'createdBy'
+  | 'updatedBy';
+
 export interface RuleVeto {
   id: string;
   tenantId: number;

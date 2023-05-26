@@ -6,6 +6,9 @@ import { Button } from 'shared';
 import s from './GridCardsWrapper.module.scss';
 import { RiFullscreenFill, RiTableFill } from "react-icons/ri";
 import { TbArrowAutofitContent } from "react-icons/tb";
+import {debounce} from 'lodash';
+
+const defaultSorting = getDefaultSorting(allTableHeadingsMap, 'id');
 
 export const GridCardsWrapper: React.FC = () => {
 
@@ -14,14 +17,24 @@ export const GridCardsWrapper: React.FC = () => {
   const [sortedBy, setSortedBy]           = useState<ISortedBy>( getDefaultSorting(allTh, 'id') );
   const gridRef                           = useRef<any>();
 
-  useEffect(() =>
-    setData(prepareData(ruleVetoData, sortedBy)),
-    [sortedBy, sortedBy.direction, sortedBy.column]);
+  useEffect(() => {
+    setData( prepareData(ruleVetoData, sortedBy) );
+  }, [sortedBy, sortedBy.direction, sortedBy.column]);
 
   const fitToWidth = () => gridRef?.current?.fitToWidth();
   const setColumnsMax = () => gridRef?.current?.setColumnsMax();
   const setupColumns = () => gridRef?.current?.setupColumns();
-  const updateColumns = (columns: TableHeading[]) => setAllTh([ ...columns ]);
+
+  const saveData = (columns: TableHeading[]) => {
+    // console.log('save columns data:', columns);
+  }
+
+  const debouncedSaveData = debounce(saveData, 1000);
+
+  const updateColumns = (columns: TableHeading[]) => {
+    debouncedSaveData(columns);
+    setAllTh([...columns])
+  };
 
   // @ts-ignore
   return (

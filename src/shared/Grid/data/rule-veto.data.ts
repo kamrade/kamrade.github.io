@@ -3,7 +3,7 @@ import { RuleVeto } from './rule-veto.types';
 
 export const ruleVetoData: RuleVeto[] = [
   {
-    "id": "a9f49fa4-4561-486e-a72c-8479448f1f7d",
+    "id": "0001-a9f49fa4-4561-486e-a72c-8479448f1f7d",
     "tenantId": 3,
     "ruleId": "33834",
     "ruleVetoType": "SENDER_BENEFICIARY_BIC",
@@ -14,7 +14,7 @@ export const ruleVetoData: RuleVeto[] = [
     "createdBy": "Iurii Skorokhod"
   },
   {
-    "id": "e47cd765-cbe3-4423-8934-5bc9833576f5",
+    "id": "0002-e47cd765-cbe3-4423-8934-5bc9833576f5",
     "tenantId": 3,
     "ruleId": "34435",
     "ruleVetoType": "SENDER_IBAN",
@@ -29,7 +29,7 @@ export const ruleVetoData: RuleVeto[] = [
     "updatedBy": "admin admin"
   },
   {
-    "id": "9f289959-4329-409a-bc89-5ff30c7e29e9",
+    "id": "0003-9f289959-4329-409a-bc89-5ff30c7e29e9",
     "tenantId": 3,
     "ruleId": "33834",
     "ruleVetoType": "SENDER_IBAN",
@@ -44,7 +44,7 @@ export const ruleVetoData: RuleVeto[] = [
     "updatedBy": "Mikhail Titchenko"
   },
   {
-    "id": "8e83c104-a486-41b8-9332-0b3af55248aa",
+    "id": "0004-8e83c104-a486-41b8-9332-0b3af55248aa",
     "tenantId": 3,
     "ruleId": "33834",
     "ruleVetoType": "CLIENT_ID",
@@ -57,7 +57,7 @@ export const ruleVetoData: RuleVeto[] = [
     "updatedBy": "admin admin"
   },
   {
-    "id": "46db44e8-60d7-4c6d-a6ec-2d928c136624",
+    "id": "0005-46db44e8-60d7-4c6d-a6ec-2d928c136624",
     "tenantId": 3,
     "ruleId": "33834",
     "ruleVetoType": "CLIENT_ID",
@@ -70,7 +70,7 @@ export const ruleVetoData: RuleVeto[] = [
     "updatedBy": "andrei.salnikov Salnikov"
   },
   {
-    "id": "3c59d3f2-8669-4535-9385-7e9dc6944761",
+    "id": "0006-3c59d3f2-8669-4535-9385-7e9dc6944761",
     "tenantId": 3,
     "ruleId": "34363",
     "ruleVetoType": "SENDER_IBAN",
@@ -83,7 +83,7 @@ export const ruleVetoData: RuleVeto[] = [
     "createdBy": "Andrei Salnikov"
   },
   {
-    "id": "f73478dc-5900-4516-a5d5-99521f50cd4d",
+    "id": "0007-f73478dc-5900-4516-a5d5-99521f50cd4d",
     "tenantId": 3,
     "ruleId": "33834",
     "ruleVetoType": "SENDER_IBAN",

@@ -22,7 +22,7 @@ import { cloneDeep } from 'lodash';
 const sx = classNames.bind(s);
 export const GridContext = createContext<IGridContext | null>(null);
 
-export const Grid = forwardRef((props: GridProps, ref: any) => {
+export const Grid = forwardRef<HTMLDivElement, GridProps>((props: GridProps, ref: any) => {
 
   const {allColumns, data, updateColumns, sortedBy, setSortedBy} = props;
 
