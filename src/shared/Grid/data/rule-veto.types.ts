@@ -1,13 +1,6 @@
 export type RuleVetoType = 'SENDER_BENEFICIARY_BIC' | 'CLIENT_ID' | 'SENDER_IBAN';
 export type RuleVetoStatus = 'active' | 'expired' | 'deactivated';
 
-// export type RuleVeloKey = 'id' | 'tenantId' | 'ruleId' | 'ruleVetoType' | 'referenceIdentifier' |
-//   'status' | 'comments' | 'startDate' | 'expiryDate' | 'createdDate' | 'updatedDate' | 'createdBy' | 'updatedBy';
-
-// export interface RuleVeto {
-//   [key: string]: any;
-// }
-
 export type TableStyle = 'base' | 'list';
 
 export type RuleVetoFields = 'id'
