@@ -5,20 +5,21 @@ import { applicationsHeading, IApplicationHeading} from './data/applications-hea
 
 export const ApplicationsManagement = () => {
 
-  const gridRef = useRef<any>();
-  const [data, setData] = useState<IApplication[]>(applicationsData);
-  const [allColumns, setAllColumns] = useState<IApplicationHeading[]>(applicationsHeading); // all columns, including invisible
-  const updateColumns = (columns: IApplicationHeading[]) => setAllColumns([ ...columns ]);
+  // const gridRef = useRef<any>();
+  // const [data, setData] = useState<IApplication[]>(applicationsData);
+  // const [allColumns, setAllColumns] = useState<IApplicationHeading[]>(applicationsHeading); // all columns, including invisible
+  // const updateColumns = (columns: IApplicationHeading[]) => setAllColumns([ ...columns ]);
 
 
   return (
     <div className={'GridCardsPage'}>
-      <Grid
-        ref={gridRef}
-        data={data}
-        allColumns={allColumns}
-        updateColumns={updateColumns}
-      />
+      Applications Management
+      {/*<Grid*/}
+      {/*  ref={gridRef}*/}
+      {/*  data={data}*/}
+      {/*  allColumns={allColumns}*/}
+      {/*  updateColumns={updateColumns}*/}
+      {/*/>*/}
     </div>
   );
 }
