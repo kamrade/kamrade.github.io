@@ -5,11 +5,9 @@ import s from './MainPage.module.scss';
 import {MainPageContent} from './MainPageContent';
 import {AboutPage} from 'pages/AboutPage/AboutPage';
 import {ContactsPage} from 'pages/ContactsPage/ContactsPage';
-import {ExtremeWaves} from './Portfolio/ExtremeWaves';
-import {B2B} from './Portfolio/B2B';
-import {Mbank} from './Portfolio/Mbank';
-import {TurnoversFlow} from "./Portfolio/TurnoversFlow";
 import {ScrambledText} from "shared/ScrambledText";
+
+import { extremeWaves, b2bCards, mBank, turnoversFlow, PortfolioPage } from './Portfolio';
 
 export const MainPage = () => {
 
@@ -41,13 +39,24 @@ export const MainPage = () => {
       </div>
 
       <Switch>
+
         <Route exact path='/main'><MainPageContent /></Route>
         <Route path='/main/about'><AboutPage /></Route>
         <Route path='/main/contacts'><ContactsPage /></Route>
-        <Route path='/main/portfolio/extreme-waves'><ExtremeWaves /></Route>
-        <Route path='/main/portfolio/b2b'><B2B /></Route>
-        <Route path='/main/portfolio/mbank'><Mbank /></Route>
-        <Route path='/main/portfolio/turnovers-flow'><TurnoversFlow /></Route>
+
+        <Route path='/main/portfolio/extreme-waves'>
+          <PortfolioPage images={extremeWaves} />
+        </Route>
+        <Route path='/main/portfolio/b2b'>
+          <PortfolioPage images={b2bCards} />
+        </Route>
+        <Route path='/main/portfolio/mbank'>
+          <PortfolioPage images={mBank} />
+        </Route>
+        <Route path='/main/portfolio/turnovers-flow'>
+          <PortfolioPage images={turnoversFlow} />
+        </Route>
+
       </Switch>
 
 
