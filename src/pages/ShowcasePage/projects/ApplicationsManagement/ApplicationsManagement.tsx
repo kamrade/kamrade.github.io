@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
-import {Grid} from 'shared/Grid';
-import {applicationsData, IApplication} from './data/applications.data';
-import { applicationsHeading, IApplicationHeading} from './data/applications-heading.data';
+// import {Grid} from 'shared/Grid';
+// import {applicationsData, IApplication} from './data/applications.data';
+// import { applicationsHeading, IApplicationHeading} from './data/applications-heading.data';
 
 export const ApplicationsManagement = () => {
 

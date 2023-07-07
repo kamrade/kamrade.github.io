@@ -28,7 +28,7 @@ import {TableRow} from "./TableRow";
 import {TD} from "./TD";
 import {TableBody} from "./TableBody";
 
-import {cloneDeep, divide} from 'lodash';
+import { cloneDeep } from 'lodash';
 
 const sx = classNames.bind(s);
 export const GridContext = createContext<IGridContext | null>(null);
