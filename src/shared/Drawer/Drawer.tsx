@@ -22,6 +22,14 @@ export const Drawer: React.FC<PropsWithChildren<IDrawerProps>> = ({ children, sh
 
   const context = useContext(GridContext);
 
+  let drawerRoot = document.getElementById('drawer-root') as HTMLDivElement;
+  if (!drawerRoot) {
+    let createdDrawerRoot = document.createElement('div');
+    createdDrawerRoot.className = 'drawer-root';
+    createdDrawerRoot.id = 'drawer-root';
+    document.body.appendChild(createdDrawerRoot);
+  }
+
   useEffect(() => {
     if (showDrawer) {
       setVisible(true);
