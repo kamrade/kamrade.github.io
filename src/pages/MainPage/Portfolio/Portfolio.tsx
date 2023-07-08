@@ -6,6 +6,9 @@ export interface IPortfolioImage {
   preview: string;
   path: string;
   alt: string;
+  interactive?: boolean;
+  description?: string;
+  link?: string;
 }
 
 export interface IPortfolioTitle {
