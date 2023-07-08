@@ -13,6 +13,9 @@ import {thumbnail as unlimintBank} from 'data/preview/unlimint-bank';
 import {thumbnail as unlimintMobile} from 'data/preview/unlimint-mobile';
 import {thumbnail as userFlowTool} from 'data/preview/user-flow-tool';
 
+import { IPortfolioImage, IPortfolioTitle } from './Portfolio';
+import { allImages } from './Portfolio/all-images';
+
 import s from './MainPageContent.module.scss';
 
 
@@ -21,7 +24,7 @@ export const MainPageContent = () => {
     <div className={s.MainPageContent}>
       <div className={`container`}>
 
-        <h2 className={s.Title}>Work</h2>
+        <h2 className={s.Title}>Products</h2>
 
         <div className='row'>
 
@@ -150,55 +153,35 @@ export const MainPageContent = () => {
                 alt="ux-flow-preview" />
             </div>
           </div>
-
-
-
         </div>
 
+        <>
+          <h2 className={s.Title}>Random screens</h2>
 
-        <h2 className={s.Title}>Screens</h2>
+          { allImages.map((image, i) => {
 
-        <div className="row">
+            let img = image as IPortfolioImage;
+            let title = image as IPortfolioTitle;
 
+            if (img.path) {
+              return (<ProgressiveImage key={i} preview={img.preview} image={img.path} alt={img.alt}/>)
+            } else if (title.title) {
+              return <h2>{title.title}</h2>;
+            }
+          })}
+        </>
 
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
+        <>
+          <h2 className={s.Title}>Gallery</h2>
+          <div className="row">
+            <div className="col-md-4"><div className={s.Box} /></div>
+            <div className="col-md-4"><div className={s.Box} /></div>
+            <div className="col-md-4"><div className={s.Box} /></div>
+            <div className="col-md-4"><div className={s.Box} /></div>
+            <div className="col-md-4"><div className={s.Box} /></div>
+            <div className="col-md-4"><div className={s.Box} /></div>
           </div>
-
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className={s.Box}>
-
-            </div>
-          </div>
-
-
-        </div>
+        </>
 
       </div>
     </div>

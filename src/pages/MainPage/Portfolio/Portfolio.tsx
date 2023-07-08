@@ -8,6 +8,10 @@ export interface IPortfolioImage {
   alt: string;
 }
 
+export interface IPortfolioTitle {
+  title: string;
+}
+
 interface IPortfolioPageProps {
   images: IPortfolioImage[];
 }
