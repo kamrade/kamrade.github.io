@@ -1,6 +1,5 @@
 import React from 'react';
 import {ProgressiveImage} from "shared/ProgressiveImage/ProgressiveImage";
-import {BackToMain} from "shared";
 
 export interface IPortfolioImage {
   preview: string;

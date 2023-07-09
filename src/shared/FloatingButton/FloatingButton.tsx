@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {colors} from 'config/colors';
 
 import s from './FloatingButton.module.scss';
 
