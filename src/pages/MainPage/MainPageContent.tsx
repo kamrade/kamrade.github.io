@@ -14,7 +14,7 @@ export const MainPageContent = () => {
         <h2 className={s.Title}>Products</h2>
         <div className='row'>
           { products.map((product, i) => (
-              <div className='col-md-8'>
+              <div className='col-md-8' key={i}>
                 <Link to={product.link || '#'}>
                   <div className={s.Box}>
                     <ProgressiveImage key={i} alt={product.alt}
@@ -38,7 +38,7 @@ export const MainPageContent = () => {
             if (img.path) {
               return (<ProgressiveImage key={i} preview={img.preview} image={img.path} alt={img.alt}/>)
             } else if (title.title) {
-              return <h2>{title.title}</h2>;
+              return <h2 key={i}>{title.title}</h2>;
             }
             return null;
           })}
