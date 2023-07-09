@@ -11,7 +11,7 @@ const sx = classNames.bind(s);
 export interface IAsideProps {
   isShowing: boolean;
   hide: () => void;
-};
+}
 
 export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: ForwardedRef<HTMLDivElement>) => {
 
@@ -39,7 +39,11 @@ export const Aside = React.forwardRef(({ isShowing, hide }: IAsideProps, ref: Fo
   return (
     <aside ref={ref} className={asideClassNames} onAnimationEnd={ handleAnimationEnd }>
       <UserBlock username="Dennis" companyName="Muzq" />
-      <AsideNav />
+
+      <div className={s.AsideNavWrapper}>
+        <AsideNav />
+      </div>
+
     </aside>
   );
 });

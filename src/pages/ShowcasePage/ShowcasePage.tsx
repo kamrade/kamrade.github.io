@@ -73,7 +73,7 @@ export const Main = () => {
     <div className={s.Main}>
 
       <div className={s.AsideToggler} ref={refAsideToggler}>
-        <Button onClick={ toggleAside }>
+        <Button variant={'light'} onClick={ toggleAside }>
           <Icon color="#212529" icon="hamburger" size={20} stroke={2} />
         </Button>
       </div>
