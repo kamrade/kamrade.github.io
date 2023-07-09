@@ -9,6 +9,8 @@ import TriadsPage from 'pages/Triads/TriadsPage';
 import s from './App.module.scss';
 import NoMatch from "pages/ShowcasePage/projects/NoMatch/NoMatch";
 import {TimerPage} from "./pages/Timer/TimerPage";
+import {FloatingButton} from "shared";
+import {RiHomeLine} from "react-icons/ri";
 
 function App() {
 
@@ -24,6 +26,9 @@ function App() {
         <Route path={'/timer'}><TimerPage /></Route>
         <Route path="**"><NoMatch /></Route>
       </Switch>
+
+      <FloatingButton><RiHomeLine /></FloatingButton>
+
 
     </div>
   );

@@ -26,8 +26,6 @@ export const PortfolioPage: React.FC<IPortfolioPageProps> = (props) => {
   return (
     <div className={'container'}>
 
-      <BackToMain/>
-
       { images.map((image, i) => (
         <ProgressiveImage
           key={i}

@@ -9,6 +9,7 @@ import s from './MainPageContent.module.scss';
 export const MainPageContent = () => {
   return (
     <div className={s.MainPageContent}>
+
       <div className={`container`}>
 
         <h2 className={s.Title}>Products</h2>
@@ -57,6 +58,7 @@ export const MainPageContent = () => {
         </>
 
       </div>
+
     </div>
   );
 }

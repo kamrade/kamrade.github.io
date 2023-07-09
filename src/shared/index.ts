@@ -18,3 +18,4 @@ export {Label} from './Label';
 export {Switcher} from './Switcher';
 export {Drawer} from './Drawer';
 export {Checkbox} from './Checkbox';
+export * from './FloatingButton';

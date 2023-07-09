@@ -12,7 +12,7 @@ import { extremeWaves, b2bCards, mBank, turnoversFlow, PortfolioPage } from './P
 export const MainPage = () => {
 
   return (
-    <>
+    <div>
       <div className={`container`}>
 
         <header className={s.Header}>
@@ -59,7 +59,6 @@ export const MainPage = () => {
 
       </Switch>
 
-
-    </>
+    </div>
   );
 }

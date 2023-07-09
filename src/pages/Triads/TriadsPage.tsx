@@ -4,31 +4,17 @@
 // 3. Increase contrast between elements size
 
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import { Button } from 'shared';
+import { Route } from 'react-router-dom';
 
 import { triadColors } from './TriadNode/TriadNode.types';
 import { RandomMode } from './RandomMode';
 
 import s from './TriadsPage.module.scss';
-import {RiArrowLeftLine} from "react-icons/ri";
 
 const TriadsPage: React.FC = () => {
 
   return (
     <div className={s.TriadsPage}>
-
-      {/* Link back */}
-      <NavLink exact to='/main'>
-        <div className={s.BackLink}>
-          <Button
-            className='Button-back'
-            prefix={<RiArrowLeftLine />}
-            variant={'contained'}
-            theme={'base'}
-            size={'sm'}>back to the website</Button>
-        </div>
-      </NavLink>
 
       {/* Main layout */}
       <Route path='/triads/random'>
