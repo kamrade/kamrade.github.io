@@ -22,7 +22,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 400;
   overflow-y: scroll;
 
   @include media-breakpoint-down(sm) {
@@ -41,5 +41,24 @@ label {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-sans-serif-heading;
-  font-weight: 800;
+  font-weight: 400;
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-300;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-500;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
 }

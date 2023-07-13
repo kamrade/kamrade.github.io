@@ -24,11 +24,11 @@ export const UIKitButton = () => {
         <div className={'mb-8'}>
           <h4 className={'text-muted'}>Theme</h4>
           <DocSection flex space={'sm'}>
-            <Button bold theme={'base'}>Base</Button>
-            <Button bold disabled theme={'base'}>Base</Button>
-            <Button bold variant={'contained'} theme={'base'}>Base</Button>
-            <Button bold variant={'light'} theme={'base'}>Base</Button>
-            <Button bold variant={'outlined'} theme={'base'}>Base</Button>
+            <Button  theme={'base'}>Base</Button>
+            <Button  disabled theme={'base'}>Base</Button>
+            <Button  variant={'contained'} theme={'base'}>Base</Button>
+            <Button  variant={'light'} theme={'base'}>Base</Button>
+            <Button  variant={'outlined'} theme={'base'}>Base</Button>
           </DocSection>
 
           <DocSection flex space={'sm'}>

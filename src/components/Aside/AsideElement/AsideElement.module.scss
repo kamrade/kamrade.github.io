@@ -2,9 +2,9 @@
 @import "src/styles/bootstrap/mixins";
 
 .AsideElement {
-  padding: 0.5rem 1rem 0.5rem 2rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 0.875rem;
-  line-height: 1.45;
+  border-radius: $border-radius;
 
   &.AsideElementInteractive {
     cursor: pointer;

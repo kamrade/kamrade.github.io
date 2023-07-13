@@ -1,9 +1,11 @@
 import React from 'react';
 import { AsideElement } from 'components/Aside/AsideElement/AsideElement';
-import { Icon } from 'shared/Icon/Icon';
+import {RiArrowDownSLine, RiArrowRightSLine} from 'react-icons/ri';
+
+import { colors } from 'config/colors';
+
 import classNames from 'classnames/bind';
 import s from './AsideNavGroupHead.module.scss';
-
 const sx = classNames.bind(s);
 
 export interface IAsideNavGroupHeadProps {
@@ -23,8 +25,13 @@ export const AsideNavGroupHead = ({ groupState, title, innerPadding, active }: I
   return (
     <AsideElement interactive={true}>
       <div className={asideNavItemClassNames} style={{ paddingLeft: (innerPadding || 0) + 'px' }}>
-        <Icon color={groupState ? '#007bff' : '#212529'  } icon={groupState ? 'chevronDown' : 'chevronRight'} size={20} stroke={1.5} />
+
+        <span className={'pr-1'}>
+          {groupState && <RiArrowDownSLine color={colors.gray600} /> }
+          {!groupState && <RiArrowRightSLine color={colors.gray400} /> }
+        </span>
         {title}
+
       </div>
     </AsideElement>
   );
